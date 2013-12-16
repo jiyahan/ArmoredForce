@@ -86,7 +86,7 @@
     <ClCompile>
       <AdditionalOptions>-Zm200 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\3rdParty\atom;..\..\3rdParty\RCF\include;..\..\3rdParty\glog\src\windows;..\..\3rdParty\libmysql\include;..\..\3rdParty\MySQL++\include;E:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\3rdParty\atom;..\..\3rdParty\RCF\include;..\..\3rdParty\glog\src\windows;..\..\3rdParty\libmysql\include;..\..\3rdParty\MySQL++\lib;E:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG;_CRT_SECURE_NO_WARNINGS;GOOGLE_GLOG_DLL_DECL=;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>

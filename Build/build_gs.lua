@@ -25,6 +25,7 @@ solution "GameServer"
             "_CRT_SECURE_NO_WARNINGS",
         }
         buildoptions "-Zm200"
+        linkoptions "/INCREMENTAL:NO"
             
     configuration "gmake"
         defines {}
