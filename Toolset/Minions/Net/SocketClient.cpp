@@ -3,12 +3,13 @@
 #include "CClientEventHandle.h"
 
 
-#define THREAD_AMOUNT   2
+#define THREAD_AMOUNT   1
 
 
 using namespace std;
 using namespace atom;
 using namespace electron;
+
 
 SocketClient::SocketClient(void)
 {
@@ -32,7 +33,8 @@ bool SocketClient::Start(const char* ip,U16 port)
 	if( phase && space )
 	{
 		CInterface<IEventSpaceController> segment_4;
-		if( segment_4.Mount(space, IID_EVENT_SPACE_CONTROLLER) ) {
+		if( segment_4.Mount(space, IID_EVENT_SPACE_CONTROLLER) ) 
+        {
 			bool step_4 = segment_4 -> Attach( phase );
 			if(!step_4)
 			{
@@ -91,8 +93,6 @@ void SocketClient::GetSocketMessage(CMessageQueueControllerSetBind &messages)
 				segment -> Obtain( i, messages );
 				//segment -> Repose( i, 1000 );
 			}
-
-
 		}
 	}
 }

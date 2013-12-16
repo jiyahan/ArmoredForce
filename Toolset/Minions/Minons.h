@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <unordered_map>
 #include "Net/SocketClient.h"
 #include "../../Server/Utility/Singleton.h"
@@ -17,13 +18,17 @@ public:
 
     bool    Run();
 
+    SocketClient&  GetClient() {return *client_ptr_;}
+
+    bool    ResetClient(const char* host, int port);
+
 private:
     // 处理消息
     void    ProcessMessage();
     void    RegisterMessageHandler();
 
 private:
-    SocketClient    client_;
+    std::shared_ptr<SocketClient>    client_ptr_;
 
     typedef std::function<void (CMessage&)>   HandlerType;
 

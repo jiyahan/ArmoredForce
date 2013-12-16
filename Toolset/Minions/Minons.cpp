@@ -5,6 +5,7 @@
 #include <boost/thread.hpp>
 #include "../../common/MSGLogin.h"
 #include "../../common/MSGCode.h"
+#include "../../common/MSGGame.h"
 #include "MessageProcess.h"
 
 using namespace std;
@@ -32,12 +33,13 @@ bool Minions::Init()
 
     RegisterMessageHandler();
 
-    if (client_.Start("10.226.34.41", 32450))
+    client_ptr_.reset(new SocketClient);
+    if (client_ptr_->Start("10.226.34.41", 32450))
     {
         MSGLoginVersionVerify verify_request;
         verify_request.major = 10;
         verify_request.minor = 21;
-        client_.Send(MID_VERSION_VERIFY, verify_request);
+        client_ptr_->Send(MID_VERSION_VERIFY, verify_request);
     }
     return true;
 }
@@ -48,6 +50,13 @@ void Minions::Release()
     CAtom::Shutdown();
     CElectron::Destruct();
     CAtom::Destruct();
+}
+
+bool Minions::ResetClient(const char* host, int port)
+{
+    client_ptr_->Close();
+    client_ptr_.reset(new SocketClient);
+    return client_ptr_->Start(host, port);
 }
 
 bool Minions::Run()
@@ -70,7 +79,7 @@ bool Minions::Run()
 void Minions::ProcessMessage()
 {
     CMessageQueueControllerSetBind messages;
-    client_.GetSocketMessage(messages);
+    client_ptr_->GetSocketMessage(messages);
     for (auto iter = messages.begin(); iter != messages.end(); ++iter)
     {
         CMessage* pMsg = *iter;
@@ -93,4 +102,5 @@ void    Minions::RegisterMessageHandler()
 {
     handler_map_[MID_LOGIN_LOGINRESPONSE] = HandleLoginResponse;
     handler_map_[MID_VERSION_VERIFYRESPONSE] = HandleVerifyResponse;
+    handler_map_[MID_ACCOUNT_AUTHORIZE_RESPOND] = HandleAuthResponse;
 }
