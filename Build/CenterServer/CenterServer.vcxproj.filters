@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Server">
+      <UniqueIdentifier>{34E44519-1BC1-514C-A686-51A0A3A4A2B5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\CenterServer">
+      <UniqueIdentifier>{6149780C-FAE1-524D-BD52-CBBECB437152}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\Utility">
+      <UniqueIdentifier>{9C172EF1-1740-CA43-AAF0-474F7274CA21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\RPC">
+      <UniqueIdentifier>{18D13837-7225-9F4F-BF89-B5255798A551}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Server\CenterServer\AppConfig.h">
+      <Filter>Server\CenterServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\CenterServer\CenterRpcService.h">
+      <Filter>Server\CenterServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\CenterServer\CenterServer.h">
+      <Filter>Server\CenterServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\CenterServer\StdAfx.h">
+      <Filter>Server\CenterServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\Utility\Markup.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\Utility\Preprocessor.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\Utility\ScopeGuard.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\Utility\Singleton.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\Utility\UncaughtExceptionCounter.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\RPC\ICenterRpcService.h">
+      <Filter>Server\RPC</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Server\CenterServer\AppConfig.cpp">
+      <Filter>Server\CenterServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Server\CenterServer\CenterRpcService.cpp">
+      <Filter>Server\CenterServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Server\CenterServer\CenterServer.cpp">
+      <Filter>Server\CenterServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Server\CenterServer\Main.cpp">
+      <Filter>Server\CenterServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Server\CenterServer\StdAfx.cpp">
+      <Filter>Server\CenterServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Server\Utility\Markup.cpp">
+      <Filter>Server\Utility</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

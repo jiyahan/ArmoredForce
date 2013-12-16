@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Server">
+      <UniqueIdentifier>{D0E34429-18CF-CF48-BDD7-8ACFBB6AE47B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\LoginServer">
+      <UniqueIdentifier>{784D86B1-607F-2B4B-8456-E61DF62912C6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\LoginServer\DB">
+      <UniqueIdentifier>{82CD5B13-8EB2-C545-BEC5-72D25C03593B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\LoginServer\Net">
+      <UniqueIdentifier>{FB2044CE-D60F-D14B-9117-95783BD90BEF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\Utility">
+      <UniqueIdentifier>{295AD953-DA01-FB43-AC62-386ED4FF1D0C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\RPC">
+      <UniqueIdentifier>{EDDE4824-2E66-E745-90DE-FBFC88F521FB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{BB7F686A-5B37-234E-B35C-DA3C57A50ABB}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Server\LoginServer\AppConfig.h">
+      <Filter>Server\LoginServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\LoginServer\LoginServer.h">
+      <Filter>Server\LoginServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\LoginServer\MsgProcess.h">
+      <Filter>Server\LoginServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\LoginServer\StdAfx.h">
+      <Filter>Server\LoginServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\LoginServer\DB\ConnectionPool.h">
+      <Filter>Server\LoginServer\DB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\LoginServer\Net\CClientEventHandle.h">
+      <Filter>Server\LoginServer\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\LoginServer\Net\CClientEventHandleReceiver.h">
+      <Filter>Server\LoginServer\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\LoginServer\Net\SocketServer.h">
+      <Filter>Server\LoginServer\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\Utility\Markup.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\Utility\Preprocessor.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\Utility\ScopeGuard.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\Utility\Singleton.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\Utility\UncaughtExceptionCounter.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\RPC\ICenterRpcService.h">
+      <Filter>Server\RPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\MESSAGE_ID.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\MSGCode.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\MSGGame.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\MSGLogin.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\RoleCommon.h">
+      <Filter>common</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Server\LoginServer\AppConfig.cpp">
+      <Filter>Server\LoginServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Server\LoginServer\LoginServer.cpp">
+      <Filter>Server\LoginServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Server\LoginServer\Main.cpp">
+      <Filter>Server\LoginServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Server\LoginServer\MsgProcess.cpp">
+      <Filter>Server\LoginServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Server\LoginServer\StdAfx.cpp">
+      <Filter>Server\LoginServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Server\LoginServer\DB\ConnectionPool.cpp">
+      <Filter>Server\LoginServer\DB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Server\LoginServer\Net\CClientEventHandle.cpp">
+      <Filter>Server\LoginServer\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Server\LoginServer\Net\CClientEventHandleReceiver.cpp">
+      <Filter>Server\LoginServer\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Server\LoginServer\Net\SocketServer.cpp">
+      <Filter>Server\LoginServer\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Server\Utility\Markup.cpp">
+      <Filter>Server\Utility</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

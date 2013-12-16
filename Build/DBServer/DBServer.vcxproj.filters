@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Server">
+      <UniqueIdentifier>{6300A92F-595B-7C43-BAAB-26196672228A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\DBServer">
+      <UniqueIdentifier>{32891EB6-4545-7F44-8817-01DCCE75BABC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\DBServer\DB">
+      <UniqueIdentifier>{B0E1D057-2E89-0F44-9495-634D9A453796}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\Utility">
+      <UniqueIdentifier>{9E30D04E-A5CF-A240-8E78-A1F40F21DBD4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\RPC">
+      <UniqueIdentifier>{2DAB8283-CED0-7D41-96D0-BBF0F93A5EF0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Server\DBServer\AppConfig.h">
+      <Filter>Server\DBServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\DBServer\DBRpcService.h">
+      <Filter>Server\DBServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\DBServer\DBServer.h">
+      <Filter>Server\DBServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\DBServer\StdAfx.h">
+      <Filter>Server\DBServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\DBServer\DB\ConnectionPool.h">
+      <Filter>Server\DBServer\DB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\Utility\Markup.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\Utility\Preprocessor.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\Utility\ScopeGuard.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\Utility\Singleton.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\Utility\UncaughtExceptionCounter.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Server\RPC\IDBRpcService.h">
+      <Filter>Server\RPC</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Server\DBServer\AppConfig.cpp">
+      <Filter>Server\DBServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Server\DBServer\DBRpcService.cpp">
+      <Filter>Server\DBServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Server\DBServer\DBServer.cpp">
+      <Filter>Server\DBServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Server\DBServer\Main.cpp">
+      <Filter>Server\DBServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Server\DBServer\StdAfx.cpp">
+      <Filter>Server\DBServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Server\DBServer\DB\ConnectionPool.cpp">
+      <Filter>Server\DBServer\DB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Server\Utility\Markup.cpp">
+      <Filter>Server\Utility</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

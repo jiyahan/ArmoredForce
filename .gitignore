@@ -11,3 +11,13 @@
 *.lai
 *.la
 *.a
+
+# Visual C++ files
+*.obj
+*.ncb
+*.pch
+*.ilk
+*.scc
+
+Debug/
+Release/

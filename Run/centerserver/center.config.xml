@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<!-- rpc服务器配置 -->
+	<server host="127.0.0.1" port="42200" />
+
+	<!-- 连接数dbserver的RPC客户端配置 -->
+	<dbserver host="127.0.0.1" port="42100" />
+
+</config>
