@@ -1,7 +1,7 @@
 #pragma once
 
-#include <atom/CAtom.h>
-#include <electron/CElectron.h>
+#include "atom/CAtom.h"
+#include "electron/CElectron.h"
 
 
 class CClientEventHandleReceiver : public IEventReceiver
@@ -14,11 +14,14 @@ public:
     virtual int DecRef(); 
     virtual int GetRef(); 
 
-    virtual IInterface* QueryInterface(U32 iid); 
-    virtual void SetNest(IInterface* nest); 
-    virtual bool OnEvent(const tagEvent& event); 
+    virtual IInterface * QueryInterface(U32 iid); 
+
+    virtual void SetNest(IInterface * nest); 
+
+    virtual bool OnEvent(const tagEvent & event); 
+
 private:
-    IInterface*     nest;
+    IInterface*    nest;
 };
 
 

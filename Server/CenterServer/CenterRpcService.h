@@ -16,4 +16,7 @@ public:
 
     //
     bool            RegisterGameServer(const std::string& address, int port);
+
+private:
+    std::vector<ServerAddress>      gameserver_list_;
 };

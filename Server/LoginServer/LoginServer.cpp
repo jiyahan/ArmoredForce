@@ -50,13 +50,13 @@ bool LoginServer::Init()
     // 开始网络服务器	
     if (!server_.Start(config_.host.c_str(),config_.port))
     {
-        LOG(INFO) << "初始化TCP服务器失败! IP:" << config_.host 
+        LOG(ERROR) << "初始化TCP服务器失败! IP:" << config_.host 
             << ",端口:" << config_.port;
         return false;
     }
     LOG(INFO) << "TCP服务器开始监听" << config_.host << ":" << config_.port;
 
-    RCF::TcpEndpoint remoteEndpoint(config_.rpc_host, config_.rpc_port);
+    RCF::TcpEndpoint remoteEndPoint(config_.rpc_host, config_.rpc_port);
     client_.reset(new RcfClient<ICenterRpcService>(remoteEndpoint));
 
     // 注册客户端消息回调处理函数
@@ -104,16 +104,15 @@ void LoginServer::ProcessMessage()
 {
     CMessageQueueControllerSetBind messages;
     server_.GetSocketMessage(messages);
-    for (auto iter = messages.begin(); iter != messages.end(); ++iter)
+    std::for_each(messages.begin(), messages.end(), [this](CMessage* pMsg)
     {
-        CMessage* pMsg = *iter;
         U32 command_id = pMsg->GetCommandID();
-        auto handler = handler_map_.find(command_id);
-        if (handler != handler_map_.end())
+        auto iter = handler_map_.find(command_id);
+        if (iter != handler_map_.end())
         {
             try
             {
-                (handler->second)(*pMsg);
+                (iter->second)(*pMsg);
             }
             catch(std::exception& ex)
             {
@@ -121,13 +120,9 @@ void LoginServer::ProcessMessage()
                     << "\t" << ex.what();
             }
         }
-        else
-        {
-            LOG(ERROR) << "invalid command id, " << command_id;
-        }
 
         CMessageAllocator::GetInstance()->Released( pMsg );
-    }
+    });
 }
 
 void LoginServer::RegisterMsgHandler()

@@ -2,13 +2,14 @@
 #include "CClientEventHandleReceiver.h"
 
 
+
 using namespace atom;
 using namespace electron;
-
 
 CClientEventHandleReceiver::CClientEventHandleReceiver() 
     : nest(NULL)
 {
+    
 }
 
 
@@ -22,11 +23,10 @@ int CClientEventHandleReceiver::IncRef()
     int result = 0;
     if( nest )
     {
-        IReferencedInterface* refered = 
-            dynamic_cast<IReferencedInterface*>( nest );
-        if( refered ) 
-        {
-            result = refered->IncRef();
+        IReferencedInterface * refered = 
+            dynamic_cast<IReferencedInterface *>( nest );
+        if( refered ) {
+            result = refered -> IncRef();
         }
     }
     return result;
@@ -38,11 +38,10 @@ int CClientEventHandleReceiver::DecRef()
     int result = 0;
     if( nest )
     {
-        IReferencedInterface* refered = 
-            dynamic_cast<IReferencedInterface*>( nest );
-        if( refered ) 
-        {
-            result = refered->DecRef();
+        IReferencedInterface * refered = 
+            dynamic_cast<IReferencedInterface *>( nest );
+        if( refered ) {
+            result = refered -> DecRef();
         }
     }
     return result;
@@ -54,38 +53,34 @@ int CClientEventHandleReceiver::GetRef()
     int result = 0;
     if( nest )
     {
-        IReferencedInterface* refered = 
-            dynamic_cast<IReferencedInterface*>( nest );
-        if( refered ) 
-        {
-            result = refered->GetRef();
+        IReferencedInterface * refered = 
+            dynamic_cast<IReferencedInterface *>( nest );
+        if( refered ) {
+            result = refered -> GetRef();
         }
     }
     return result;
 }
 
 
-IInterface* CClientEventHandleReceiver::QueryInterface(U32 iid) 
+IInterface * CClientEventHandleReceiver::QueryInterface(U32 iid) 
 {
-    IInterface* result = NULL;
-    if( nest && iid ) 
-    {
-        result = nest->QueryInterface( iid );
+    IInterface * result = NULL;
+    if( nest && iid ) {
+        result = nest -> QueryInterface( iid );
     }
     return result;
 }
 
 
-void CClientEventHandleReceiver::SetNest(IInterface* value) 
+void CClientEventHandleReceiver::SetNest(IInterface * value) 
 {
     if( value ) 
-    {
         nest = value;
-    }
 }
 
 
-bool CClientEventHandleReceiver::OnEvent(const tagEvent& eh) 
+bool CClientEventHandleReceiver::OnEvent(const tagEvent & eh) 
 {
 	switch( eh.handle )
 	{
@@ -134,9 +129,9 @@ bool CClientEventHandleReceiver::OnEvent(const tagEvent& eh)
 				if( segment.Mount(object, IID_IMPORT_STREAM) )
 				{
 					printf( "Msg: " );
-					while( segment->Available() ) 
+					while( segment -> Available() ) 
 					{
-						char value = segment->Read();
+						char value = segment -> Read();
 						printf( "%c", value );
 					}
 					printf( "\n" );

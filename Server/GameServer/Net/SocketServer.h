@@ -2,7 +2,8 @@
 
 #include <string>
 #include <boost/noncopyable.hpp>
-
+#include <atom/CAtom.h>
+#include <electron/CElectron.h>
 
 using namespace atom;
 using namespace electron;
@@ -10,12 +11,8 @@ using namespace electron;
 
 class SocketServer : boost::noncopyable
 {
-private:
-	U64           listener_;
-	CObjectPtr    msg_queue_;
 public:
-	SocketServer(void);
-	
+	SocketServer(void);	
 	~SocketServer(void);
 
 	bool Start(const std::string& host, U16 port);
@@ -38,5 +35,8 @@ public:
 
 	void CloseAConnection(U64 connector);
 
+private:
+    U64           listener_;
+    CObjectPtr    msg_queue_;
 };
 

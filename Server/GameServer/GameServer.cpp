@@ -64,12 +64,18 @@ bool GameServer::Init()
 
 void GameServer::Release()
 {
+    CElectron::Shutdown();
+    CAtom::Shutdown();
+    CElectron::Destruct();
+    CAtom::Destruct();
 }
 
 bool GameServer::Run()
 {
     using namespace boost::chrono;
     auto start = high_resolution_clock::now();
+
+	ProcessMessage();
 
     auto elapsed = duration_cast<milliseconds>(high_resolution_clock::now() - start);
     if (elapsed.count() < 1)
@@ -92,17 +98,20 @@ void GameServer::ProcessMessage()
     server_.GetSocketMessage(messages);
     std::for_each(messages.begin(), messages.end(), [this](CMessage* pMsg)
     {
-        cout << "command id: " << pMsg->GetCommandID()
-            << ",\tsession id: " << pMsg->GetConnector() << endl;
-
-        auto handler = handler_map_.find(pMsg->GetCommandID());
-        if (handler != handler_map_.end())
+        U32 command_id = pMsg->GetCommandID();
+        cout << "command id: " << command_id << endl;
+        auto iter = handler_map_.find(command_id);
+        if (iter != handler_map_.end())
         {
-            (handler->second)(*pMsg);
-        }
-        else
-        {
-            cout << "invalid command id.\n";
+            try
+            {
+                (iter->second)(*pMsg);
+            }
+            catch(exception& ex)
+            {
+                LOG(ERROR) << "command id: " << command_id
+                    << "\t" << ex.what();
+            }
         }
         CMessageAllocator::GetInstance()->Released( pMsg );
     });
