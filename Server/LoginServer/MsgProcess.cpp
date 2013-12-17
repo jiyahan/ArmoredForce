@@ -1,9 +1,9 @@
-#include "StdAfx.h"
+#include "stdafx.h"
 #include "MsgProcess.h"
-#include "LoginServer.h"
-#include "DB/ConnectionPool.h"
 #include <iostream>
 #include <RCF/RCF.hpp>
+#include "LoginServer.h"
+#include "../Utility/MyConnectionPool.h"
 #include "../../common/MSGLogin.h"
 #include "../../common/MSGCode.h"
 #include "../../common/update/tagGameServer.h"

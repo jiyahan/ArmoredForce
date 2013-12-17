@@ -1,7 +1,5 @@
-#include "StdAfx.h"
+#include "stdafx.h"
 #include "AppConfig.h"
-
-
 #include "../Utility/Markup.h"
 
 

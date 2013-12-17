@@ -1,7 +1,7 @@
-#include "StdAfx.h"
+#include "stdafx.h"
 #include "CenterServer.h"
-#include <boost/thread.hpp>
-#include <boost/chrono.hpp>
+#include <thread>
+#include <chrono>
 #include <RCF/RCF.hpp>
 #include <glog/logging.h>
 
@@ -45,14 +45,15 @@ void CenterServer::Release()
 
 bool CenterServer::Run()
 {
-    using namespace boost::chrono;
+    using namespace std::chrono;
     auto start = high_resolution_clock::now();
 
+    //
 
     auto elapsed = duration_cast<milliseconds>(high_resolution_clock::now() - start);
     if (elapsed.count() < 1)
     {
-        boost::this_thread::sleep_for(milliseconds(1));
+        this_thread::sleep_for(milliseconds(1));
     }
     
     return true;

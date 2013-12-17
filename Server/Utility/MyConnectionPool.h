@@ -1,12 +1,19 @@
+/**
+ *	@file	MyConnectionPool.h
+ *	@author	ichenq@gmail.com
+ *	@date	Dec 17, 2013
+ *  @brief	MySQL连接池
+ */
+
 #pragma once
 
 #include <string>
-#include <boost/atomic.hpp>
+#include <atomic>
 #include <mysql++.h>
-#include "../../Utility/Singleton.h"
+#include "Singleton.h"
 
 
-// 连接池
+
 class MyConnectionPool
 	: public mysqlpp::ConnectionPool, 
 	  public Singleton<MyConnectionPool>
@@ -47,6 +54,6 @@ private:
 	unsigned int 			max_idle_time();
 	
 private:	
-	boost::atomic<int32_t> 	conns_in_use_;      // 当前的连接数量
+	std::atomic<int32_t> 	conns_in_use_;      // 当前的连接数量
     ConnetionConfig         config_;            // 连接配置
 };

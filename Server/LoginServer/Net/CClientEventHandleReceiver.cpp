@@ -1,10 +1,7 @@
-#include "StdAfx.h"
+#include "stdafx.h"
 #include "CClientEventHandleReceiver.h"
 
 
-
-using namespace atom;
-using namespace electron;
 
 CClientEventHandleReceiver::CClientEventHandleReceiver() 
     : nest(NULL)

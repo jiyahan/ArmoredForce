@@ -1,6 +1,6 @@
 #include "StdAfx.h"
 #include "DBRpcService.h"
-#include "DB/ConnectionPool.h"
+#include "../Utility/MyConnectionPool.h"
 
 
 using namespace std;

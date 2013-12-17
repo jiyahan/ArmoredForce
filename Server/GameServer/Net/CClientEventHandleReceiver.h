@@ -1,7 +1,7 @@
 #pragma once
 
-#include "atom/CAtom.h"
-#include "electron/CElectron.h"
+#include <atom/CAtom.h>
+#include <electron/CElectron.h>
 
 
 class CClientEventHandleReceiver : public IEventReceiver

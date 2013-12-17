@@ -1,12 +1,12 @@
-#include "StdAfx.h"
+#include "stdafx.h"
 #include "CenterServer.h"
 #include <iostream>
-#include <boost/filesystem.hpp>
+#include <filesystem>
 #include <glog/logging.h>
 #include <RCF/RCF.hpp>
 
 using namespace std;
-namespace fs = boost::filesystem;
+namespace fs = std::tr2::sys;
 
 // 初始化日志
 void InitLogging(int argc, const char* argv[])

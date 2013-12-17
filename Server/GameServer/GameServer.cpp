@@ -1,7 +1,7 @@
-#include "StdAfx.h"
+#include "stdafx.h"
 #include "GameServer.h"
-#include <boost/chrono.hpp>
-#include <boost/thread.hpp>
+#include <chrono>
+#include <thread>
 #include "MsgProcess.h"
 #include "../../common/MESSAGE_ID.h"
 
@@ -72,7 +72,7 @@ void GameServer::Release()
 
 bool GameServer::Run()
 {
-    using namespace boost::chrono;
+    using namespace std::chrono;
     auto start = high_resolution_clock::now();
 
 	ProcessMessage();
@@ -80,7 +80,7 @@ bool GameServer::Run()
     auto elapsed = duration_cast<milliseconds>(high_resolution_clock::now() - start);
     if (elapsed.count() < 1)
     {
-        boost::this_thread::sleep_for(milliseconds(1));
+        std::this_thread::sleep_for(milliseconds(1));
     }
 
     return true;
@@ -96,7 +96,7 @@ void GameServer::ProcessMessage()
 {
     CMessageQueueControllerSetBind messages;
     server_.GetSocketMessage(messages);
-    std::for_each(messages.begin(), messages.end(), [this](CMessage* pMsg)
+    for(CMessage* pMsg : messages)
     {
         U32 command_id = pMsg->GetCommandID();
         cout << "command id: " << command_id << endl;
@@ -114,7 +114,7 @@ void GameServer::ProcessMessage()
             }
         }
         CMessageAllocator::GetInstance()->Released( pMsg );
-    });
+    }
 }
 
 

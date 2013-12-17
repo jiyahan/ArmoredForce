@@ -2,11 +2,11 @@
 #include "DBServer.h"
 #include <iostream>
 #include <exception>
-#include <boost/filesystem.hpp>
+#include <filesystem>
 #include <glog/logging.h>
 
 using namespace std;
-namespace fs = boost::filesystem;
+namespace fs = std::tr2::sys;
 
 // 初始化日志
 void InitLogging(int argc, const char* argv[])

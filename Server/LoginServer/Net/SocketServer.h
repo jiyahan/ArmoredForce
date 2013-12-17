@@ -5,8 +5,6 @@
 #include <atom/CAtom.h>
 #include <electron/CElectron.h>
 
-using namespace atom;
-using namespace electron;
 
 
 class SocketServer : boost::noncopyable

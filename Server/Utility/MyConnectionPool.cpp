@@ -1,7 +1,7 @@
-#include "StdAfx.h"
-#include "ConnectionPool.h"
-#include "../../Utility/ScopeGuard.h"
+#include "stdafx.h"
+#include "MyConnectionPool.h"
 #include <glog/logging.h>
+#include <folly/ScopeGuard.h>
 
 
 using namespace mysqlpp;
@@ -64,8 +64,8 @@ Connection*  MyConnectionPool::create()
     }
     catch(std::exception& ex)
     {
-        LOG(ERROR) << ex.what();
         delete result;
+        LOG(ERROR) << ex.what();
         return NULL;
     }
 

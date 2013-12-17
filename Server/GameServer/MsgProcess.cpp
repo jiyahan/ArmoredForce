@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+#include "stdafx.h"
 #include "MsgProcess.h"
 #include "GameServer.h"
 #include "../../common/RoleCommon.h"

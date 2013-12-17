@@ -1,6 +1,6 @@
 #pragma once
 
-#include "atom/CAtom.h"
+#include <atom/CAtom.h>
 #include "CClientEventHandleReceiver.h"
 
 
@@ -10,8 +10,8 @@ public:
     CClientEventHandle(); 
     virtual ~CClientEventHandle(); 
 
-    const char * ToString(); 
-    IInterface * QueryInterface(U32 iid); 
+    const char*     ToString(); 
+    IInterface*     QueryInterface(U32 iid); 
 
 private:
     CClientEventHandleReceiver      receiver_;

@@ -1,9 +1,9 @@
 #include "StdAfx.h"
 #include "DBServer.h"
 #include <iostream>
-#include <boost/chrono.hpp>
-#include <boost/thread.hpp>
-#include "DB/ConnectionPool.h"
+#include <chrono>
+#include <thread>
+#include "../Utility/MyConnectionPool.h"
 
 
 using namespace std;
@@ -61,7 +61,7 @@ void DBServer::Release()
 
 bool DBServer::Run()
 {
-    using namespace boost::chrono;
+    using namespace std::chrono;
     auto start = high_resolution_clock::now();
 
     // do things here
@@ -69,7 +69,7 @@ bool DBServer::Run()
     auto elapsed = duration_cast<milliseconds>(high_resolution_clock::now() - start);
     if (elapsed.count() < 1)
     {
-        boost::this_thread::sleep_for(milliseconds(1));
+        std::this_thread::sleep_for(milliseconds(1));
     }
 
     return true;

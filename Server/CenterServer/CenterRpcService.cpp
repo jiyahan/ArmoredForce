@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+#include "stdafx.h"
 #include "CenterRpcService.h"
 #include <glog/logging.h>
 

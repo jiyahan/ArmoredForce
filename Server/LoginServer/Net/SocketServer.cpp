@@ -1,17 +1,16 @@
-#include "StdAfx.h"
+#include "stdafx.h"
 #include "SocketServer.h"
 #include "CClientEventHandle.h"
 
 
 using namespace std;
-using namespace atom;
-using namespace electron;
+
 
 
 #define LISTEN_THREAD_NUM   1
 
 
-static CClientEventHandle nest;
+static CClientEventHandle       nest;
 
 
 SocketServer::SocketServer(void)
@@ -22,8 +21,6 @@ SocketServer::SocketServer(void)
 SocketServer::~SocketServer(void)
 {
 }
-
-
 
 bool SocketServer::Start(const string& host, U16 port)
 {

@@ -2,7 +2,6 @@
 
 #include <memory>
 #include <unordered_map>
-#include <boost/shared_ptr.hpp>
 #include <RCF/RCF.hpp>
 #include "AppConfig.h"
 #include "Net/SocketServer.h"
@@ -10,7 +9,7 @@
 #include "../RPC/ICenterRpcService.h"
 
 
-typedef boost::shared_ptr<RcfClient<ICenterRpcService>>   RpcClientPtr;
+typedef std::shared_ptr<RcfClient<ICenterRpcService>>   RpcClientPtr;
 
 //
 // сно╥╥Ч

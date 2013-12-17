@@ -1,7 +1,7 @@
-#include "StdAfx.h"
+#include "stdafx.h"
 #include "LoginServer.h"
-#include <boost/chrono.hpp>
-#include <boost/thread.hpp>
+#include <chrono>
+#include <thread>
 #include <glog/logging.h>
 #include <RCF/RCF.hpp>
 
@@ -11,9 +11,6 @@
 
 
 using namespace std;
-using namespace atom;
-using namespace electron;
-
 
 
 LoginServer::LoginServer()
@@ -57,7 +54,7 @@ bool LoginServer::Init()
     LOG(INFO) << "TCP服务器开始监听" << config_.host << ":" << config_.port;
 
     RCF::TcpEndpoint remoteEndPoint(config_.rpc_host, config_.rpc_port);
-    client_.reset(new RcfClient<ICenterRpcService>(remoteEndpoint));
+    client_.reset(new RcfClient<ICenterRpcService>(remoteEndPoint));
 
     // 注册客户端消息回调处理函数
     RegisterMsgHandler();
@@ -78,7 +75,7 @@ void LoginServer::Release()
 
 bool LoginServer::Run()
 {
-    using namespace boost::chrono;
+    using namespace std::chrono;
     auto start = high_resolution_clock::now();
 
     // 处理网络消息
@@ -87,7 +84,7 @@ bool LoginServer::Run()
     auto elapsed = duration_cast<milliseconds>(high_resolution_clock::now() - start);
     if (elapsed.count() < 1)
     {
-        boost::this_thread::sleep_for(milliseconds(1));
+        this_thread::sleep_for(milliseconds(1));
     }
 
     return true;
@@ -104,7 +101,7 @@ void LoginServer::ProcessMessage()
 {
     CMessageQueueControllerSetBind messages;
     server_.GetSocketMessage(messages);
-    std::for_each(messages.begin(), messages.end(), [this](CMessage* pMsg)
+    for(CMessage* pMsg : messages)
     {
         U32 command_id = pMsg->GetCommandID();
         auto iter = handler_map_.find(command_id);
@@ -122,7 +119,7 @@ void LoginServer::ProcessMessage()
         }
 
         CMessageAllocator::GetInstance()->Released( pMsg );
-    });
+    }
 }
 
 void LoginServer::RegisterMsgHandler()
