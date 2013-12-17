@@ -4,13 +4,13 @@ Thirsty
 
 
 
-### 如何构建(Windows)
+### 构建步骤(Windows)
     * 下载[git for windows](http://msysgit.github.io/)	
-	* 下载[Boost](http://boost.org)，设置其路径为环境变量BOOST_DIR
+	* 下载[Boost](http://boost.org)，设置其路径为环境变量BOOST_DIR    
     * git clone https://code.csdn.net/ichenq/Thirsty.git
 	* 编译premake工具(Toolset/premake)
 	* 使用premake生成3rdParty下所有依赖库
-	* 进入Build下打开Server解决方案
+	* 进入Build目录生成Server解决方案(build_vs2012.bat)
 	
 	
 ### 目录说明
