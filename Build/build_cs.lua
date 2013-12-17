@@ -1,9 +1,11 @@
 --
--- Premake 4.x build configuration script
+-- Premake4.x build configuration script
+-- http://industriousone.com/scripting-premake
 --
 
 local BOOST_DIR = os.getenv("BOOST_DIR")
 
+-- CenterServer解决方案
 solution "CenterServer"
 	configurations { "Release", "Debug" }
     location "CenterServer" 
@@ -17,7 +19,7 @@ solution "CenterServer"
 
 	configuration "release"
         defines { "NDEBUG" }
-        flags { "Optimize" }
+        flags { "Optimize", "Symbols"}
 
 	configuration "vs*"
         defines 
@@ -25,35 +27,49 @@ solution "CenterServer"
             "_CRT_SECURE_NO_WARNINGS",
         }
         buildoptions "-Zm200"
-        linkoptions "/INCREMENTAL:NO"
+        
+    configuration "gmake"
+        linkoptions "-lpthread -ldl"        
 
-	-- CenterServer
+	-- CenterServer项目
 	project "CenterServer"
 		kind "ConsoleApp"
+        uuid "755FAC6C-5706-A74D-8D5B-C88B7A728C90"
 		defines 
 		{
+            "__CENTER_SERVER__",
 			"GOOGLE_GLOG_DLL_DECL=",
 		}		
 
+        -- 源代码文件
 		files
 		{
 			"../Server/CenterServer/**.h",
 			"../Server/CenterServer/**.cpp",
-			"../Server/Utility/**.h",
-			"../Server/Utility/**.cpp",
             "../Server/RPC/ICenterRpcService.h",
+			"../Server/Utility/**.h",
+			"../Server/Utility/**.cpp",            
 		}
+        excludes 
+        {
+            "../Server/Utility/MyConnectionPool.h",
+            "../Server/Utility/MyConnectionPool.cpp",
+        }
 		
-        pchheader "StdAfx.h"
-		pchsource "StdAfx.cpp"
+        -- 预编译头
+        pchheader "stdafx.h"
+		pchsource "../Server/CenterServer/stdafx.cpp"
         
+        -- 包含目录
 		includedirs 
 		{ 
+            "../3rdParty/folly",
 			"../3rdParty/glog/src/windows/",
 			"../3rdParty/RCF/include",
 			BOOST_DIR,
 		}
 		
+        -- 库目录
 		libdirs 
 		{
 			"../3rdParty/libs",
@@ -64,4 +80,4 @@ solution "CenterServer"
 		{
 			"librcf",
 			"libglog",
-		}			
+		}

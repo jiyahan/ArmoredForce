@@ -1,12 +1,15 @@
 --
--- Premake 4.x build configuration script
+-- Premake4.x build configuration script
+-- http://industriousone.com/scripting-premake
 --
 
 local BOOST_DIR = os.getenv("BOOST_DIR")
 
-solution "UnitTest"
+
+-- unittest和benchmark
+solution "Test"
 	configurations { "Release", "Debug" }
-    location "UnitTest"
+    location "Test"
 	language    "C++"
 	flags       { "No64BitChecks", "StaticRuntime" }
 	
@@ -24,23 +27,30 @@ solution "UnitTest"
             "_CRT_SECURE_NO_WARNINGS",
         }
         buildoptions "-Zm200"
-        linkoptions "/INCREMENTAL:NO"
+        
+    configuration "gmake"
+        linkoptions "-lpthread -ldl"        
 
-	project "UnitTest"
+    -- Test项目
+	project "Test"
 		kind "ConsoleApp"
-		defines 
-		{
-		}
-
+        uuid "3C53977F-705F-7746-9DB1-AD248EE761F0"
+        
+        -- 源代码文件
 		files
 		{
 			"../Toolset/UnitTest/**.h",
 			"../Toolset/UnitTest/**.cpp",
 		}
-		
-        pchheader "StdAfx.h"
-		pchsource "StdAfx.cpp"
+        excludes
+        {
+        }  
         
+        -- 预编译头
+        pchheader "stdafx.h"
+		pchsource "stdafx.cpp"        
+		        
+        -- 包含目录
 		includedirs 
 		{ 			
 			"../3rdParty/atom",
@@ -48,7 +58,7 @@ solution "UnitTest"
             "../3rdParty/gtest/include",
 			"../3rdParty/glog/src/windows/",
 			"../3rdParty/libmysql/include",
-			"../3rdParty/MySQL++/include",
+			"../3rdParty/MySQL++/lib",
 			BOOST_DIR,
 		}
         
