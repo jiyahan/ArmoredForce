@@ -30,7 +30,7 @@ solution "DenpendLibs"
             "WIN32_LEAN_AND_MEAN",
         }
             
-    -- MySQL++
+    -- mysql++
 	project "libmysqlpp"
 		kind "StaticLib"
 		defines 
@@ -88,6 +88,10 @@ solution "DenpendLibs"
     -- gtest
 	project "libgtest"
 		kind "StaticLib"
+        defines
+        {
+            "GTEST_HAS_TR1_TUPLE=0",
+        }
 		
 		files
 		{
