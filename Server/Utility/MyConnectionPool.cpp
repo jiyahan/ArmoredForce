@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "MyConnectionPool.h"
 #include <glog/logging.h>
-#include <folly/ScopeGuard.h>
+#include "ScopeGuard.h"
 
 
 using namespace mysqlpp;
