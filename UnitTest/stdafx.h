@@ -15,15 +15,4 @@
 #   endif
 #endif
 
-#ifndef GLOG_NO_ABBREVIATED_SEVERITIES
-#define GLOG_NO_ABBREVIATED_SEVERITIES
-#endif
-#include <glog/logging.h>
-
 #include <gtest/gtest.h>
-
-#include <atom/CAtom.h>
-#include <electron/CElectron.h>
-
-using namespace atom;
-using namespace electron;
