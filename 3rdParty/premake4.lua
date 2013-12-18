@@ -29,6 +29,7 @@ solution "DenpendLibs"
             "_CRT_SECURE_NO_WARNINGS",
             "WIN32_LEAN_AND_MEAN",
         }
+        buildoptions " /wd\"4996\""
             
     -- mysql++
 	project "libmysqlpp"
@@ -130,4 +131,5 @@ solution "DenpendLibs"
 		{
 			"glog/src/windows",
 		}
+       
        

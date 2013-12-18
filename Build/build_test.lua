@@ -26,7 +26,7 @@ solution "Test"
         { 
             "_CRT_SECURE_NO_WARNINGS",
         }
-        buildoptions "-Zm200"
+        buildoptions "-Zm200 /FI\"stdafx.h\""
         
     configuration "gmake"
         linkoptions "-lpthread -ldl"        
@@ -35,31 +35,37 @@ solution "Test"
 	project "Test"
 		kind "ConsoleApp"
         uuid "3C53977F-705F-7746-9DB1-AD248EE761F0"
+        defines
+        {
+            "GOOGLE_GLOG_DLL_DECL=",
+            "GTEST_HAS_TR1_TUPLE=0",
+        }
         
         -- 源代码文件
 		files
 		{
-			"../Toolset/UnitTest/**.h",
-			"../Toolset/UnitTest/**.cpp",
+            "../Server/Utility/*.h",
+            "../Server/Utility/*.cpp",
+			"../UnitTest/**.h",
+			"../UnitTest/**.cpp",
 		}
         excludes
         {
-        }  
-        
-        -- 预编译头
+            "../Server/Utility/Markup.cpp",
+            "../Server/Utility/MyConnectionPool.cpp",
+        }     
+
         pchheader "stdafx.h"
-		pchsource "stdafx.cpp"        
-		        
+		pchsource "../UnitTest/stdafx.cpp"
+        
         -- 包含目录
 		includedirs 
 		{ 			
-			"../3rdParty/atom",
-			"../3rdParty/RCF/include",
+            "../Server/Utility",
             "../3rdParty/gtest/include",
-			"../3rdParty/glog/src/windows/",
-			"../3rdParty/libmysql/include",
-			"../3rdParty/MySQL++/lib",
-			BOOST_DIR,
+            "../3rdParty/glog/src/windows/",   
+            "../3rdParty/mysql++/lib",            
+            BOOST_DIR,
 		}
         
         libdirs 
@@ -70,10 +76,7 @@ solution "Test"
 		
 		links 
 		{
-			"librcf",
-			"libAtom",
 			"libglog",
-            "libgtest",
-			"libmysqlpp",
-			"libmysql",
+            "libgtest",  
 		}
+        

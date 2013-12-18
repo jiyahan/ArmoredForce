@@ -61,7 +61,7 @@ solution "DBServer"
             "../3rdParty/folly",
 			"../3rdParty/glog/src/windows/",
 			"../3rdParty/libmysql/include",
-			"../3rdParty/MySQL++/lib",
+			"../3rdParty/mysql++/lib",
 			"../3rdParty/RCF/include",
 			BOOST_DIR,
 		}
