@@ -122,7 +122,7 @@ inline void Serialize(Archive & archive, MSGLoginVersionVerifyResponse & value, 
 {
 	UNREFERENCED_PARAMETER(isSave);
 	archive.Bind( value.result );
-    archive.Bind( value.server_area );
+	archive.Bind(value.server_area);
 }
 
 #endif

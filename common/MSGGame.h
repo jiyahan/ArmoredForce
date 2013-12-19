@@ -35,6 +35,26 @@ struct MSGAccountAuthorizeResponse
 	
 };
 
+//战斗pve请求
+struct MSGBattleCombat
+{
+	static const NOVA_MESSAGE_ID msgId=MID_CHARACTER_BATTLE_COMBAT_REQUEST;	
+	//目标位置
+	U08 mapId;
+	//目标相对位置
+	U08 posId;
+};
+
+//战斗pve请求返回
+struct MSGBattleCombatResponse
+{
+	static const NOVA_MESSAGE_ID msgId=MID_CHARACTER_BATTLE_COMBAT_RESPOND;
+	//0成功
+	bool result;
+	//战斗数据
+	CMemory data;
+};
+
 template<class Archive>
 inline void Serialize(Archive & archive, MSGAccountAuthorize & value, bool isSave)
 {
@@ -45,7 +65,6 @@ inline void Serialize(Archive & archive, MSGAccountAuthorize & value, bool isSav
 	archive.Bind(value.usrsign);	
 }
 
-
 template<class Archive>
 inline void Serialize(Archive & archive, MSGAccountAuthorizeResponse & value, bool isSave)
 {
@@ -54,5 +73,24 @@ inline void Serialize(Archive & archive, MSGAccountAuthorizeResponse & value, bo
 	archive.Bind(value.roleId);
 	archive.Bind(value.data);
 }
+
+
+template<class Archive>
+inline void Serialize(Archive & archive, MSGBattleCombat & value, bool isSave)
+{
+	UNREFERENCED_PARAMETER(isSave);
+	archive.Bind(value.mapId);
+	archive.Bind(value.posId);
+}
+
+
+template<class Archive>
+inline void Serialize(Archive & archive, MSGBattleCombatResponse & value, bool isSave)
+{
+	UNREFERENCED_PARAMETER(isSave);
+	archive.Bind( value.result );
+	archive.Bind( value.data );
+}
+
 
 #endif

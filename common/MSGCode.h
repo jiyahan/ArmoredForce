@@ -2,7 +2,7 @@
 #define CHGAME_MSGCode_H
 #include "..\3rdparty\atom\electron\celectron.h"
 
-//解码
+//从message解码
 template <typename T>
 inline CMessage& operator >> (CMessage& msg, T& value)
 {
@@ -13,23 +13,39 @@ inline CMessage& operator >> (CMessage& msg, T& value)
 		msg.ReadBytes( data, length );
 		data.SetLength( length );
 	}
-	CArchive achieve;
-	achieve.Assign(data);
-	achieve>>value;
+	data>>value;
 	return msg;
 }
 
-//编码
+//从message编码
 template <typename T>
 inline CMessage& operator << (CMessage& msg, T& value)
 {
-	CArchive archive;
-	archive<<value;
 	CMemory data;
-	archive.Clone(data);
+	data<<value;
 	msg.Write(data.GetLength());
 	msg.Write(data,data.GetLength());
 	return msg;
+}
+
+//从memory解码
+template <typename T>
+inline CMemory& operator >> (CMemory& data, T& value)
+{
+	CArchive achieve;
+	achieve.Assign(data);
+	achieve>>value;
+	return data;
+}
+
+//从memory编码
+template <typename T>
+inline CMemory& operator << (CMemory& data, T& value)
+{
+	CArchive archive;
+	archive<<value;
+	archive.Clone(data);
+	return data;
 }
 
 #endif
