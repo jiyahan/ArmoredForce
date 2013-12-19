@@ -6,33 +6,6 @@
 
 using namespace atom;
 
-//战斗数据
-struct tagBattle
-{
-	//攻击方
-	tagBattleRole attacker;
-	//防守方
-	tagBattleRole defender;
-	//结果 
-	tagBattleResult result;
-	//奖励
-	vector<tagBattlePrize> prize;
-	//过程
-	vector<tagBattleRound> rounds;
-};
-
-//角色基本数据
-struct tagBattleRole
-{
-	//名字
-	a_string name;
-	//等级
-	U08 level;
-	//hp
-	U32 hp;
-	//头像
-	U32 pic;
-};
 
 //角色弟子基本数据
 struct tagBattleRoleOfficer
@@ -71,6 +44,16 @@ struct tagBattlePrize
 	U32	typeNumber;
 };
 
+//被攻击目标数据
+struct tagBattleObject
+{
+	//被攻击位置ID
+	U08 pos;
+	//伤害值
+	U32 loseHP;
+	//目标弟子剩余hp
+	U32 remainHP;
+};
 
 //战斗过程
 struct tagBattleStep
@@ -87,23 +70,43 @@ struct tagBattleStep
 	vector<tagBattleObject> objs;
 };
 
-//被攻击目标数据
-struct tagBattleObject
-{
-	//被攻击位置ID
-	U08 pos;
-	//伤害值
-	U32 loseHP;
-	//目标弟子剩余hp
-	U32 remainHP;
-};
-
 //战斗回合
 struct tagBattleRound
 {
 	//战斗过程列表
 	vector<tagBattleStep> steps;
 };
+
+//角色基本数据
+struct tagBattleRole
+{
+	//名字
+	a_string name;
+	//等级
+	U08 level;
+	//hp
+	U32 hp;
+	//头像
+	U32 pic;
+	//角色弟子列表
+	vector<tagBattleRoleOfficer> officers;
+};
+
+//战斗数据
+struct tagBattle
+{
+	//攻击方
+	tagBattleRole attacker;
+	//防守方
+	tagBattleRole defender;
+	//结果 
+	tagBattleResult result;
+	//奖励
+	vector<tagBattlePrize> prize;
+	//过程
+	vector<tagBattleRound> rounds;
+};
+
 
 
 template<class Archive>

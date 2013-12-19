@@ -45,21 +45,17 @@ solution "GameServer"
         -- 源代码文件
 		files
 		{
+            "../common/**.h",
 			"../Server/GameServer/**.h",
 			"../Server/GameServer/**.cpp",
-			"../Server/Utility/**.h",
-			"../Server/Utility/**.cpp",
-            "../Server/RPC/ICenterRpcService.h",
-            "../common/**.h",
-		}
-        excludes 
-        {
-            "../Server/Utility/MyConnectionPool.h",
-            "../Server/Utility/MyConnectionPool.cpp",
-        }        
+            "../Server/RPC/ICenterRpcService.h",  
+            
+			"../Server/Utility/Markup.cpp",
+			"../Server/Utility/Utility.cpp",
+		}       
         excludes
         {
-        }		
+        }
         -- 预编译头
         pchheader "stdafx.h"
 		pchsource "../Server/GameServer/stdafx.cpp"

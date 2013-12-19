@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "MsgProcess.h"
 #include "GameServer.h"
+#include "../../common/battle/tagBattle.h"
 #include "../../common/RoleCommon.h"
 #include "../../common/MSGCode.h"
 #include "../../common/MSGGame.h"
