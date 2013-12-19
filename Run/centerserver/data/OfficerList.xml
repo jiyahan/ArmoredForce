@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+    军官配置  
+    品质: 1: 白， 2：蓝，3：黄，4：绿，5：紫，6：橙
+    command_force: 指挥力
+-->
+<OfficerList>
+    <!-- 小米步枪 -->
+    <Officer name="柴科夫" type="1" picture_large="K10001" picture_small="D00001" 
+          quality="1", commandforce="" leadership="", passive_skill="K300001" 
+          intro_desc="民间组织的武装部队，隐藏无数超神高手，潜力无限。" 
+          skill_desc="齐射，集中火力对单一目标造成中量伤害。"
+        />
+    
+    <!-- 土坦克 -->
+    <Officer name="土坦克" type="2" picture="K10003" animation="D00003" 
+          general_skill="K10003", active_skill="K20003", passive_skill="K300003" 
+          intro_desc="民间组织的武装部队，隐藏无数超神高手，潜力无限。" 
+          skill_desc="齐射，集中火力对单一目标造成中量伤害。"
+        />
+        
+</OfficerList>

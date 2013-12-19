@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 地图配置 -->
+<RegionList>
+    <!-- 普通场景 -->
+    <World type="general" picture="">
+        <region>
+            <target>
+            </target>
+        </region>
+    </World>
+    
+    <!-- 探险场景 -->
+    <World type="explore" picture="">
+        <region/>
+    </World>
+    
+    <!-- 活动场景 -->
+    <World type="activity" picture="">
+        <region/>
+    </World>    
+</RegionList>

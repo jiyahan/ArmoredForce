@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- 怪物配置 -->
+<MonsterList>
+    <Monster>
+        <property index="M1010104" name="新手对练" type="S001" attack="10" />
+    </Monster>
+</MonsterList>

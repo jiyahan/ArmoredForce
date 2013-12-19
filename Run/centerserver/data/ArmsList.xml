@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+    兵种配置 
+    picture: 兵种图形
+    animation: 动画编号
+    general_skill: 普通技能
+    active_skill: 主动技能
+    passive_skill: 被动技能
+    intro_desc: 兵种介绍
+    skill_desc: 主动技能介绍
+-->
+<ArmsList>
+    <!-- 小米步枪 -->
+    <Arms name="小米步枪" type="1" picture="K10001" animation="D00001" 
+          general_skill="K10001", active_skill="K20001", passive_skill="K300001" 
+          intro_desc="民间组织的武装部队，隐藏无数超神高手，潜力无限。" 
+          skill_desc="齐射，集中火力对单一目标造成中量伤害。"
+        />
+    
+    <!-- 土坦克 -->
+    <Arms name="土坦克" type="2" picture="K10003" animation="D00003" 
+          general_skill="K10003", active_skill="K20003", passive_skill="K300003" 
+          intro_desc="民间组织的武装部队，隐藏无数超神高手，潜力无限。" 
+          skill_desc="齐射，集中火力对单一目标造成中量伤害。"
+        />
+        
+</ArmsList>
