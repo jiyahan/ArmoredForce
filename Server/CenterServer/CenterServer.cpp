@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "CenterServer.h"
 #include <thread>
 #include <chrono>

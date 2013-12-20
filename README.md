@@ -17,15 +17,14 @@ Thirsty
 	* 3rdParty	第三方依赖库
 	* Build		生成项目工程
 	* common	与客户端的协议
-    * Run		包含服务器启动配置文件
-    * Toolset   工具相关
+    * Public    工具性函数    
 	* Server	服务器源码目录
-            + Utility       工具函数
             + RPC           RPC接口定义
             + SQL           表及存储过程定义
             + DBServer      数据存储服务器
             + CenterServer  中心服务器
             + GameServer    游戏服务器
             + LoginServer   登录服务器
-
+    * Run		包含服务器启动配置文件
+    * Toolset   工具相关
 	

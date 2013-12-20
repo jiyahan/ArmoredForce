@@ -1,22 +1,50 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 
-<!-- 地图配置 -->
-<RegionList>
+<!-- 
+    地图(关卡，副本)配置 
+    
+    type: 1:普通，2:探险，3:活动
+-->
+<region_list>
     <!-- 普通场景 -->
-    <World type="general" picture="">
-        <region>
-            <target>
-            </target>
-        </region>
-    </World>
+    <region name="极乐世界" id="F001" type="1" picture="">
     
-    <!-- 探险场景 -->
-    <World type="explore" picture="">
-        <region/>
-    </World>
-    
-    <!-- 活动场景 -->
-    <World type="activity" picture="">
-        <region/>
-    </World>    
-</RegionList>
+        <!-- 第一阶段 -->
+        <stage_1>
+            <!-- 怪物阵型，6个位置的怪物 -->
+            <monsters pos_1="J10001" 
+                      pos_2="J10002" 
+                      pos_3="J10003" 
+                      pos_4="J10004" 
+                      pos_5="J10005"
+                      pos_6="J10006" />
+                     
+            <!-- 奖励 -->
+            <prize name="未开封的子弹" id="GZ1001" num="10" />
+        </stage_1>
+        
+        <!-- 第二阶段 -->
+        <stage_2 >
+            <monsters pos_1="J10001" 
+                      pos_2="J10002" 
+                      pos_3="J10003" 
+                      pos_4="J10004" 
+                      pos_5="J10005"
+                      pos_6="J10006" />
+                     
+            <prize name="未开封的子弹" id="GZ1001" num="12" />
+        </stage_2>
+        
+        <!-- 第三阶段 -->
+        <stage_3 >
+            <monsters pos_1="J10001" 
+                      pos_2="J10002" 
+                      pos_3="J10003" 
+                      pos_4="J10004" 
+                      pos_5="J10005"
+                      pos_6="J10006" />
+                     
+            <prize name="未开封的子弹" id="GZ1001" num="15" />
+        </stage_3>
+    </region>
+</region_list>

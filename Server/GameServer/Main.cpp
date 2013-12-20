@@ -4,6 +4,7 @@
 #include <filesystem>
 #include <glog/logging.h>
 #include <RCF/RCF.hpp>
+#include "setup/tagArmyCategory.h"
 
 using namespace std;
 namespace fs = std::tr2::sys;
@@ -29,7 +30,8 @@ void InitLogging(int argc, const char* argv[])
 int main(int argc, const char* argv[])
 {
     try
-    {        
+    {  
+        ArmyCategoryMap result = LoadFromFile("data/ArmyCategory.xml");
         InitLogging(argc, argv);    // 初始化日志        
         RCF::RcfInitDeinit rcfInit; // 初始化RPC框架
 

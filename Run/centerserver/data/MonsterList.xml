@@ -1,7 +1,59 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<!-- 怪物配置 -->
-<MonsterList>
-    <Monster>
-        <property index="M1010104" name="新手对练" type="S001" attack="10" />
-    </Monster>
-</MonsterList>
+
+<!-- 
+    怪物(卡片)配置
+    
+    name:               名字
+    index:              编号
+    category:           所属部队类型
+    quality:            品质，1: 白， 2：蓝，3：黄，4：绿，5：紫，6：橙
+    base_hp:            基础血量
+    commander_force:    指挥力
+    leadership:         统帅力
+    base_attack:        基础攻击
+    attack_upgrade:     攻击成长
+    base_force:         基础兵力
+    force_upgrade:      兵力成长
+    max_level:          等级上限
+    price:              出售价格
+    picture_large:      大图片
+    picture_small:      小图片    
+    intro:              说明文字
+-->
+
+<monster_list>
+    <monster name="柴科夫" 
+             index="J10001"             
+             category="B00001" 
+             quality="1"
+             base_hp="500"
+             commander_force="60" 
+             leadership="50"
+             base_attack="50"
+             attack_upgrade="12"
+             base_force="200"
+             force_updage="50"
+             price="1000" 
+             picture_large="K10001" 
+             picture_small="D00001"
+             intro="天煞孤星，一骑绝尘。"
+        />
+        
+    <monster name="奥斯特洛夫" 
+             index="J10002"             
+             category="2"
+             quality="1"
+             base_hp="500"
+             commander_force="60" 
+             leadership="50"
+             base_attack="50"
+             attack_upgrade="12"
+             base_force="200"
+             force_updage="50"
+             price="1000" 
+             picture_large="K10002" 
+             picture_small="D00002"              
+             intro="高尔基，搞尔基"
+        />
+        
+</monster_list>

@@ -27,7 +27,7 @@ solution "GameServer"
         { 
             "_CRT_SECURE_NO_WARNINGS",
         }
-        buildoptions "-Zm200"
+        buildoptions "-Zm200 /FI\"stdafx.h\""
         
     configuration "gmake"
         linkoptions "-lpthread -ldl"
@@ -39,6 +39,7 @@ solution "GameServer"
 		defines 
 		{
             "__GAME_SERVER__",
+            "MARKUP_STL",
 			"GOOGLE_GLOG_DLL_DECL=",
 		}
 
@@ -46,16 +47,16 @@ solution "GameServer"
 		files
 		{
             "../common/**.h",
+            
+            "../Server/Utility/Markup.h",
+            "../Server/Utility/Markup.cpp",
+            
 			"../Server/GameServer/**.h",
 			"../Server/GameServer/**.cpp",
             "../Server/RPC/ICenterRpcService.h",  
             
-			"../Server/Utility/Markup.cpp",
-			"../Server/Utility/Utility.cpp",
 		}       
-        excludes
-        {
-        }
+
         -- 预编译头
         pchheader "stdafx.h"
 		pchsource "../Server/GameServer/stdafx.cpp"
@@ -63,10 +64,13 @@ solution "GameServer"
         -- 包含目录
 		includedirs 
 		{
-            "../3rdParty/folly",
+            "../common/",
+            "../3rdParty/",
+            "../Public/",
+            "../Server/Utility/",
             "../3rdParty/atom/",             
 			"../3rdParty/glog/src/windows/",
-			"../3rdParty/RCF/include",
+			"../3rdParty/RCF/include/",
 			BOOST_DIR,
 		}        
 		

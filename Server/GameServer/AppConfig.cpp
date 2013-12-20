@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "AppConfig.h"
-#include "../Utility/Markup.h"
+#include "Markup.h"
 
 
 bool  LoadAppConfig(AppConfig& cfg)

@@ -17,13 +17,6 @@
 
 #include <cstdint>
 
-#ifndef MARKUP_STL
-#define MARKUP_STL
-#endif
-
-#ifndef GLOG_NO_ABBREVIATED_SEVERITIES
-#define GLOG_NO_ABBREVIATED_SEVERITIES
-#endif
 #include <glog/logging.h>
 
 //#define RCF_USE_ZLIB

@@ -1,4 +1,4 @@
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "CClientEventHandle.h"
 
 
@@ -15,7 +15,7 @@ CClientEventHandle::~CClientEventHandle()
 }
 
 
-const char * CClientEventHandle::ToString() 
+const char* CClientEventHandle::ToString() 
 {
 	const static char name[] = "Simple Event Handle";
     return name;
