@@ -35,6 +35,10 @@ tuple<CommandType, string, string> ParseCommand(int argc, const char* argv[])
     {
         cmdtype = CmdMonster;
     }
+    else if (cmd == "--category")
+    {
+        cmdtype = CmdArmyCategory;
+    }
     else if (cmd == "--regionlist")
     {
         cmdtype = CmdRegionList;

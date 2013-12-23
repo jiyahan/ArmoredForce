@@ -7,42 +7,58 @@ using namespace std;
 using namespace atom;
 using namespace setup;
 
-CMemory TransformMonsterList(const std::string& file)
+
+void TestLoadFile(const string& path)
 {
-    OfficerMap monsterlist = LoadOffficerMap(file);
-    CArchive archive;
-    archive << monsterlist.size();
-    archive << 
+    CMemory data = CFile::LoadFile(path.c_str());
+    if (data.GetLength() > 0)
+    {
+        CArchive ar;
+        ar.Assign(data);
+        ArmyCategoryMap category;
+        ar >> category;
+        cout << category.size();
+    }
+}
+
+template <typename T>
+bool WriteMemoryToFile(const T& value, const string& path)
+{
     CMemory data;
-}
+    CArchive ar;
+    ar << value;
+    ar.Clone(data);
 
-
-void RunTransform(CommandType cmd, 
-                   const std::string& file, 
-                   const std::string& outfile)
-{
-
-}
-
-void LoadFile()
-{
-    const char* path = "main.cpp";
-    CMemory data = CFile::LoadFile(path);
-    cout << data.GetLength();
-}
-
-void WriteFile()
-{
-    const char* name = "";
-    CMemory data;
-    CFile file( name );
-    if( file.Open() )
+    CFile file(path.c_str());
+    if (file.Open())
     {
         CInterface<IFileStream> segment;
         if( segment.Mount(&file, IID_FILE_STREAM) ) 
         {
-            segment->Write(&data, data.GetLength());
+            segment->Write(data, data.GetLength());
+            return true;
         }
     }
+    return false;
+}
 
+
+
+void RunTransform(CommandType cmd, 
+                  const std::string& infile, 
+                  const std::string& outfile)
+{    
+    CMemory data;
+    if (cmd == CmdArmyCategory)
+    {
+        WriteMemoryToFile(LoadArmyCategoryMap(infile), outfile);
+    }
+    else if (cmd == CmdRegionList)
+    {
+        WriteMemoryToFile(LoadRegionMap(infile), outfile);
+    }
+    else if (cmd == CmdMonster)
+    {
+        WriteMemoryToFile(LoadOffficerMap(infile), outfile);
+    }
 }
