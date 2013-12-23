@@ -3,17 +3,17 @@
 
 #include <cstdint>
 #include <string>
-#include <unordered_map>
-
+#include <map>
+#include <array>
 
 namespace setup {
 
 // 胜利后获得奖励
 struct tagPrize
 {
-    std::string      name;       // 奖励物品名称
-    std::string      index;      // 奖励物品编号
-    int32_t     count;      // 奖励物品数量
+    std::string     name;       // 奖励物品名称
+    std::string     index;      // 奖励物品编号
+    int32_t         count;      // 奖励物品数量
 };
 
 
@@ -40,16 +40,16 @@ struct tagRegion
 
     // 三个阶段
     enum {MAX_STAGE = 3};
-    tagRegionStage  stages[MAX_STAGE];
+    std::array<tagRegionStage, MAX_STAGE>  stages;
 };
 
 // 所有的地图配置，key为编号
-typedef std::unordered_map<std::string, tagRegion>     RegionMap;
+typedef std::map<std::string, tagRegion>     RegionMap;
 
 } // namespace setup
 
 
-template<class Archive>
+template<typename Archive>
 inline void Serialize(Archive& archive, setup::tagPrize& value, bool isSave)
 {
     UNREFERENCED_PARAMETER(isSave);
@@ -58,7 +58,7 @@ inline void Serialize(Archive& archive, setup::tagPrize& value, bool isSave)
     archive.Bind( value.count );
 }
 
-template<class Archive>
+template<typename Archive>
 inline void Serialize(Archive& archive, setup::tagRegionStage& value, bool isSave)
 {
     UNREFERENCED_PARAMETER(isSave);
@@ -72,7 +72,7 @@ inline void Serialize(Archive& archive, setup::tagRegionStage& value, bool isSav
 }
 
 
-template<class Archive>
+template<typename Archive>
 inline void Serialize(Archive& archive, setup::tagRegion& value, bool isSave)
 {
     UNREFERENCED_PARAMETER(isSave);

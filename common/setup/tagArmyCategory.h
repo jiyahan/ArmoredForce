@@ -4,7 +4,8 @@
 
 #include <cstdint>
 #include <string>
-#include <unordered_map>
+#include <map>
+
 
 namespace setup {
 
@@ -31,13 +32,13 @@ struct tagArmyCategory
 };
 
 // 所有的兵种，key为名称
-typedef std::unordered_map<std::string, tagArmyCategory>     ArmyCategoryMap;
+typedef std::map<std::string, tagArmyCategory>     ArmyCategoryMap;
 
 } // namespace setup
 
 
 
-template<class Archive>
+template<typename Archive>
 inline void Serialize(Archive& archive, setup::tagArmyCategory& value, bool isSave)
 {
     UNREFERENCED_PARAMETER(isSave);
@@ -51,6 +52,5 @@ inline void Serialize(Archive& archive, setup::tagArmyCategory& value, bool isSa
     archive.Bind( value.intro );
     archive.Bind( value.skill_desc );
 }
-
 
 #endif // COMMON_SETUP_ARMYCATEGORY_H

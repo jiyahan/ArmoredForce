@@ -38,7 +38,7 @@ struct MSGAccountAuthorizeResponse
 //战斗pve请求
 struct MSGBattleCombat
 {
-	static const NOVA_MESSAGE_ID msgId=MID_CHARACTER_BATTLE_COMBAT_REQUEST;	
+	static const NOVA_MESSAGE_ID msgId=MID_CHARACTER_INSTANCE_COMBAT_REQUEST;	
 	//目标位置
 	U08 mapId;
 	//目标相对位置
@@ -48,7 +48,7 @@ struct MSGBattleCombat
 //战斗pve请求返回
 struct MSGBattleCombatResponse
 {
-	static const NOVA_MESSAGE_ID msgId=MID_CHARACTER_BATTLE_COMBAT_RESPOND;
+	static const NOVA_MESSAGE_ID msgId=MID_CHARACTER_INSTANCE_COMBAT_RESPOND;
 	//0成功
 	bool result;
 	//战斗数据

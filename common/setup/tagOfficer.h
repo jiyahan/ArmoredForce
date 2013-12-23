@@ -3,7 +3,7 @@
 
 #include <cstdint>
 #include <string>
-#include <unordered_map>
+#include <map>
 
 namespace setup {
     
@@ -41,12 +41,12 @@ struct tagOfficer
 
 
 // 所有的军官，key为编号
-typedef std::unordered_map<std::string, tagOfficer>     OfficerMap;
+typedef std::map<std::string, tagOfficer>     OfficerMap;
 
 } // namespace setup
 
 
-template<class Archive>
+template<typename Archive>
 inline void Serialize(Archive& archive, setup::tagOfficer& value, bool isSave)
 {
     UNREFERENCED_PARAMETER(isSave);

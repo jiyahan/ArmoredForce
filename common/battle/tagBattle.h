@@ -7,6 +7,9 @@
 using namespace atom;
 
 
+//格子数
+#define GRID_AMOUNT 6
+
 //角色弟子基本数据
 struct tagBattleRoleOfficer
 {
@@ -58,7 +61,7 @@ struct tagBattleObject
 //战斗过程
 struct tagBattleStep
 {
-	//发动方
+	//发动方1左2右
 	U08 attacker;
 	//位置编号
 	U08 pos;
@@ -106,8 +109,6 @@ struct tagBattle
 	//过程
 	vector<tagBattleRound> rounds;
 };
-
-
 
 template<class Archive>
 inline void Serialize(Archive & archive, tagBattleRole & value, bool isSave)
