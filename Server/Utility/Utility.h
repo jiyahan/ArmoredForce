@@ -19,3 +19,4 @@ public:
     ~AtomAutoInit();
 };
 
+uint32_t random(uint32_t max);
