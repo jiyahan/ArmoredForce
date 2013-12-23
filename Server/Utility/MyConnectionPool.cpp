@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "MyConnectionPool.h"
 #include <glog/logging.h>
 #include "ScopeGuard.h"

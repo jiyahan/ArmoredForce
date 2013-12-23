@@ -21,11 +21,7 @@ DBServer::~DBServer()
 bool DBServer::Init()
 {
     // 读取启动配置文件
-    if (!LoadAppConfig(config_))
-    {
-        LOG(ERROR) << "读取配置错误";
-        return false;
-    }
+    config_ = LoadAppConfig("db.config.xml");
 
     MyConnectionPool::ConnetionConfig conn_cfg = {};
     conn_cfg.host = config_.mysql_host;

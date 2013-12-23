@@ -1,20 +1,17 @@
 #include "stdafx.h"
 #include "AppConfig.h"
-#include "../Utility/Markup.h"
+#include "Markup.h"
+#include <glog/logging.h>
 
 
 // ∂¡»°≈‰÷√
-bool  LoadAppConfig(AppConfig& cfg)
+AppConfig    LoadAppConfig(const std::string& path)
 {
+    AppConfig cfg = {};
+
     CMarkup xml;
-    if (!xml.Load("login.config.xml"))
-    {
-        return false;
-    }
-    if (!xml.FindElem("config"))
-    {
-        return false;
-    }
+    CHECK(xml.Load(path)) << xml.GetError() << path;
+    CHECK(xml.FindElem("config")) << "<config> not found.";
        
     //  ˝æ›ø‚≈‰÷√
     xml.IntoElem();
@@ -57,5 +54,5 @@ bool  LoadAppConfig(AppConfig& cfg)
         cfg.rpc_host = xml.GetAttrib("host");
         cfg.rpc_port = std::stoi(xml.GetAttrib("port"));
     } 
-    return true;
+    return cfg;
 }

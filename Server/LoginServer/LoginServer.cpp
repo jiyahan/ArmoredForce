@@ -21,36 +21,14 @@ LoginServer::~LoginServer()
 {
 }
 
-bool LoginServer::Init()
+bool LoginServer::Init(const AppConfig& cfg)
 {
-    // 读取启动配置文件
-    if (!LoadAppConfig(config_))
-    {
-        LOG(ERROR) << "读取配置错误";
-        return false;
-    }
-
-    // 初始化TCP网络服务器框架
-    CAtom::Presetup();
-    CElectron::Presetup();
-    if (!CAtom::Initiate(config_.pool_size))
-    {
-        LOG(ERROR) << "初始化atom错误";
-        return false;
-    }
-    if (!CElectron::Initiate(config_.thread_num))
-    {
-        LOG(ERROR) << "初始化electron错误";
-        return false;
-    }
+    config_ = cfg;
 
     // 开始网络服务器	
-    if (!server_.Start(config_.host.c_str(),config_.port))
-    {
-        LOG(ERROR) << "初始化TCP服务器失败! IP:" << config_.host 
-            << ",端口:" << config_.port;
-        return false;
-    }
+    CHECK(server_.Start(config_.host.c_str(),config_.port))
+        << "初始化TCP服务器失败! IP:" << config_.host << ",端口:" << config_.port;
+
     LOG(INFO) << "TCP服务器开始监听" << config_.host << ":" << config_.port;
 
     RCF::TcpEndpoint remoteEndPoint(config_.rpc_host, config_.rpc_port);
@@ -67,10 +45,6 @@ bool LoginServer::Init()
 
 void LoginServer::Release()
 {
-    CElectron::Shutdown();
-    CAtom::Shutdown();
-    CElectron::Destruct();
-    CAtom::Destruct();
 }
 
 bool LoginServer::Run()
@@ -113,8 +87,7 @@ void LoginServer::ProcessMessage()
             }
             catch(std::exception& ex)
             {
-                LOG(ERROR) << "command id: " << command_id
-                    << "\t" << ex.what();
+                LOG(ERROR) << "command id: " << command_id << "\t" << ex.what();
             }
         }
 

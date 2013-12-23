@@ -17,7 +17,7 @@ public:
     ~CenterServer();
 
     //初始化
-    bool    Init();
+    bool    Init(const AppConfig& cfg);
 
     // 释放资源
     void    Release();

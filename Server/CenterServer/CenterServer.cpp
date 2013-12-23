@@ -17,14 +17,9 @@ CenterServer::~CenterServer()
 {
 }
 
-bool CenterServer::Init()
+bool CenterServer::Init(const AppConfig& cfg)
 {
-    // 读取启动配置文件
-    if (!LoadAppConfig(config_))
-    {
-        LOG(ERROR) << "读取配置错误";
-        return false;
-    }
+    config_ = cfg;
 
     // 初始化RPC服务器
     RCF::TcpEndpoint endpoint(config_.rpc_host, config_.rpc_port);

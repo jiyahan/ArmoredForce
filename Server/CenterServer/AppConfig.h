@@ -1,6 +1,6 @@
 #pragma once
 
-#include <stdint.h>
+#include <cstdint>
 #include <string>
 
 
@@ -12,8 +12,11 @@ struct AppConfig
 
     std::string     rpc_db_host;      // DBServerµØÖ·
     int32_t         rpc_db_port;      // DBServerµÄ¶Ë¿Ú
+
+    int32_t         pool_size;
+    int32_t         thread_num;
 };
 
 
-bool    LoadAppConfig(AppConfig& cfg);
+AppConfig    LoadAppConfig(const std::string& path);
 

@@ -31,6 +31,12 @@ public:
         Send(connector, msg);
     }
 
+    template <typename T>
+    void Send(U64 connector, const T& data)
+    {
+        Send(connector, data.msgId, data);
+    }
+
 	void CloseAConnection(U64 connector);
 
 private:

@@ -3,6 +3,8 @@
 #include <filesystem>
 #include <glog/logging.h>
 #include <RCF/RCF.hpp>
+#include "Utility.h"
+#include "AppConfig.h"
 
 using namespace std;
 namespace fs = std::tr2::sys;
@@ -29,11 +31,21 @@ int main(int argc, const char* argv[])
 {
     try
     {        
-        InitLogging(argc, argv);    // 初始化日志        
-        RCF::RcfInitDeinit rcfInit; // 初始化RPC框架
+        // 初始化日志配置
+        InitLogging(argc, argv);
 
+        // 读取基础配置
+        AppConfig cfg = LoadAppConfig("center.config.xml");
+
+        // 初始化RPC框架
+        RCF::RcfInitDeinit rcfInit;
+
+        // 初始化atom
+        AtomAutoInit atomInit(cfg.pool_size, cfg.thread_num);
+
+        // 运行服务器
         CenterServer& theApp = CenterServer::GetInstance();
-        if (theApp.Init())
+        if (theApp.Init(cfg))
         {
             while (theApp.Run())
                 ; 

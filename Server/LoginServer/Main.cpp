@@ -3,6 +3,8 @@
 #include <filesystem>
 #include <glog/logging.h>
 #include <RCF/RCF.hpp>
+#include "Utility.h"
+#include "AppConfig.h"
 
 
 using namespace std;
@@ -30,11 +32,20 @@ int main(int argc, const char* argv[])
 {
     try
     {
-        InitLogging(argc, argv);    // 初始化日志        
-        RCF::RcfInitDeinit rcfInit; // 初始化RPC框架
+        // 初始化日志
+        InitLogging(argc, argv);
 
+        AppConfig cfg = LoadAppConfig("login.config.xml");
+
+        // 初始化RPC框架
+        RCF::RcfInitDeinit rcfInit;
+
+        // 初始化Atom
+        AtomAutoInit  atomInit(cfg.pool_size, cfg.thread_num);
+
+        // 运行服务器
         LoginServer& theApp = LoginServer::GetInstance();
-        if (theApp.Init())
+        if (theApp.Init(cfg))
         {
             while (theApp.Run())
                 ;

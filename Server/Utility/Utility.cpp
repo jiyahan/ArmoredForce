@@ -1,8 +1,25 @@
-//#include "stdafx.h"
-#include <random>
+#include "Utility.h"
+#include <glog/logging.h>
+#include <atom/atom/CAtom.h>
+#include <atom/electron/CElectron.h>
 
-int random(int max)
+
+using namespace atom;
+using namespace electron;
+
+
+AtomAutoInit::AtomAutoInit(int pool_size, int thread_num)
 {
-    static std::mt19937  engine;
-    return 0;
+    CAtom::Presetup();
+    CElectron::Presetup();
+    CHECK(CAtom::Initiate(pool_size)) << "初始化atom错误"; 
+    CHECK(CElectron::Initiate(pool_size)) << "初始化electron错误";
+}
+
+AtomAutoInit::~AtomAutoInit()
+{
+    CElectron::Shutdown();
+    CAtom::Shutdown();
+    CElectron::Destruct();
+    CAtom::Destruct();
 }

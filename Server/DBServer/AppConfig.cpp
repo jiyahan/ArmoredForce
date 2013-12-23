@@ -4,17 +4,12 @@
 
 
 // 读取配置信息
-bool  LoadAppConfig(AppConfig& cfg)
+AppConfig    LoadAppConfig(const std::string& path)
 {
+    AppConfig cfg = {};
     CMarkup xml;
-    if (!xml.Load("db.config.xml"))
-    {
-        return false;
-    }
-    if (!xml.FindElem("config"))
-    {
-        return false;
-    }
+    CHECK(xml.Load(path)) << xml.GetError() << path;
+    CHECK(xml.FindElem("config")) << "<config> not found.";
     
     // 数据库配置
     xml.IntoElem();
@@ -46,5 +41,5 @@ bool  LoadAppConfig(AppConfig& cfg)
         cfg.rpc_host = xml.GetAttrib("host");
         cfg.rpc_port = std::stoi(xml.GetAttrib("port").c_str());
     }
-    return true;
+    return cfg;
 }

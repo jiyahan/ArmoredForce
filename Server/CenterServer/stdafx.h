@@ -24,4 +24,5 @@
 //#define RCF_USE_PROTOBUF
 #include <RCF/RCF.hpp>
 
-
+#include <atom/CAtom.h>
+#include <electron/CElectron.h>

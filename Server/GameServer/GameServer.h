@@ -11,6 +11,9 @@
 
 typedef std::shared_ptr<RcfClient<ICenterRpcService>>   RpcClientPtr;
 
+typedef std::function<void (CMessage&)>		HandlerType;
+typedef std::unordered_map<int32_t, HandlerType>    HandlerMap;
+
 //
 // 游戏服
 //
@@ -21,7 +24,7 @@ public:
     ~GameServer();
 
     //初始化
-    bool    Init();
+    bool    Init(const AppConfig& cfg);
 
     // 释放资源
     void    Release();
@@ -48,8 +51,7 @@ private:
     SocketServer        server_;        // TCP服务器
 
     RpcClientPtr        client_;
+    
 
-    typedef std::function<void (CMessage&)>		HandlerType;
-
-    std::unordered_map<int32_t, HandlerType>	handler_map_;
+    HandlerMap	        handler_map_;
 };

@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "SocketServer.h"
 #include "CClientEventHandle.h"
 

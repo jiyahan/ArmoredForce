@@ -27,5 +27,5 @@ struct AppConfig
 };
 
 
-bool    LoadAppConfig(AppConfig& cfg);
+AppConfig    LoadAppConfig(const std::string& filepath);
 
