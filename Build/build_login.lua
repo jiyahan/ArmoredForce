@@ -26,7 +26,7 @@ solution "LoginServer"
         { 
             "_CRT_SECURE_NO_WARNINGS",
         }
-        buildoptions "-Zm200"
+        buildoptions "-Zm200 /FI\"stdafx.h\""
 
     configuration "gmake"
         linkoptions "-lpthread -ldl"        
@@ -38,22 +38,31 @@ solution "LoginServer"
 		defines 
 		{
             "__LOGIN_SERVER__",
+            "MARKUP_STL",
 			"GOOGLE_GLOG_DLL_DECL=",
+            "GLOG_NO_ABBREVIATED_SEVERITIES",
 		}
 
         -- 源代码文件
 		files
 		{
+            "../common/MESSAGE_ID.h",
+            "../common/MSGCode.h",
+            "../common/MSGLogin.h",
+            "../common/update/*.h",
+            
 			"../Server/LoginServer/**.h",
-			"../Server/LoginServer/**.cpp",
-			"../Server/Utility/**.h",
-			"../Server/Utility/**.cpp",
+			"../Server/LoginServer/**.cpp",            
+            
+			"../Server/Utility/MyConnectionPool.h",
+			"../Server/Utility/MyConnectionPool.cpp",
+            "../Server/Utility/Markup.h",
+            "../Server/Utility/Markup.cpp",
+            "../Server/Utility/Utility.h",
+            "../Server/Utility/Utility.cpp",
+
             "../Server/RPC/ICenterRpcService.h",
-			"../common/**.h",
-		}
-        excludes
-        {
-        }        
+		}   
 		
         -- 预编译头
         pchheader "stdafx.h"
@@ -61,13 +70,15 @@ solution "LoginServer"
         
         -- 包含目录
 		includedirs 
-		{ 	
-            "../3rdParty/folly/",
-			"../3rdParty/atom",
-			"../3rdParty/RCF/include",
+		{
+            "../",
+            "../Server/Utility/",
+            "../3rdParty/",
+			"../3rdParty/atom/",
+			"../3rdParty/RCF/include/",
 			"../3rdParty/glog/src/windows/",
-			"../3rdParty/libmysql/include",
-			"../3rdParty/mysql++/lib",
+			"../3rdParty/libmysql/include/",
+			"../3rdParty/mysql++/lib/",
 			BOOST_DIR,
 		}
         

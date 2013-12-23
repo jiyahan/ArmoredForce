@@ -41,6 +41,7 @@ solution "GameServer"
             "__GAME_SERVER__",
             "MARKUP_STL",
 			"GOOGLE_GLOG_DLL_DECL=",
+            "GLOG_NO_ABBREVIATED_SEVERITIES",
 		}
 
         -- 源代码文件
@@ -50,6 +51,8 @@ solution "GameServer"
             
             "../Server/Utility/Markup.h",
             "../Server/Utility/Markup.cpp",
+            "../Server/Utility/Utility.h",
+            "../Server/Utility/Utility.cpp",
             
 			"../Server/GameServer/**.h",
 			"../Server/GameServer/**.cpp",
@@ -64,9 +67,8 @@ solution "GameServer"
         -- 包含目录
 		includedirs 
 		{
-            "../common/",
+            "../",
             "../3rdParty/",
-            "../Public/",
             "../Server/Utility/",
             "../3rdParty/atom/",             
 			"../3rdParty/glog/src/windows/",

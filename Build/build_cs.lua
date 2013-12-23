@@ -56,6 +56,8 @@ solution "CenterServer"
             
 			"../Server/Utility/Markup.h",
 			"../Server/Utility/Markup.cpp",
+            "../Server/Utility/Utility.h",
+            "../Server/Utility/Utility.cpp",
             
             "../Server/RPC/ICenterRpcService.h",
          
@@ -68,10 +70,12 @@ solution "CenterServer"
         -- 包含目录
 		includedirs 
 		{ 
-            "../common",
+            "../",
+            "../3rdParty/",
             "../Server/Utility/",
+            "../3rdParty/atom/",
 			"../3rdParty/glog/src/windows/",
-			"../3rdParty/RCF/include",
+			"../3rdParty/RCF/include/",
 			BOOST_DIR,
 		}
 		
@@ -86,4 +90,5 @@ solution "CenterServer"
 		{
 			"librcf",
 			"libglog",
+            "libatom",
 		}
