@@ -1,13 +1,14 @@
-#ifndef COMMON_SETUP_OFFICER_H
-#define COMMON_SETUP_OFFICER_H
+#ifndef COMMON_SETUP_OFFICERLIST_H
+#define COMMON_SETUP_OFFICERLIST_H
 
-#include <cstdint>
-#include <string>
+
+#include "../Config.h"
 #include <map>
+#include "../3rdParty/atom/atom/CAtom.h"
 
 namespace setup {
     
-// 军官，即卡片或者怪物
+// 军官,卡片
 struct tagOfficer
 {
     // 卡片的品质
@@ -41,7 +42,20 @@ struct tagOfficer
 
 
 // 所有的军官，key为编号
-typedef std::map<String, tagOfficer>     OfficerMap;
+typedef std::map<String, tagOfficer>     OfficerList;
+
+class OfficerListSetup : public atom::CSingleton<OfficerListSetup>
+{
+public:
+    // 从二进制文件中加载所有的军官
+    void    Load(const String& path);
+
+    // 根据编号得到某个军官的配置
+    const tagOfficer&   GetOfficer(const String& index) const;
+
+private:
+    OfficerList      officer_list_;
+};
 
 } // namespace setup
 
@@ -67,4 +81,4 @@ inline void Serialize(Archive& archive, setup::tagOfficer& value, bool isSave)
     archive.Bind( value.intro );
 }
 
-#endif // COMMON_SETUP_OFFICER_H
+#endif // COMMON_SETUP_OFFICERLIST_H

@@ -3,11 +3,14 @@
 
 #include "../Config.h"
 #include <map>
+#include "../3rdParty/atom/atom/CAtom.h"
 
 
 namespace setup {
 
-// 兵种
+//
+// 兵种结构定义
+//
 struct tagArmyCategory
 {
     // 兵种分为：攻击，防御，辅助
@@ -29,13 +32,31 @@ struct tagArmyCategory
     String      skill_desc;     // 主动技能描述
 };
 
-// 所有的兵种，key为名称
-typedef std::map<String, tagArmyCategory>     ArmyCategoryMap;
+// 所有兵种类型定义
+typedef std::map<String, tagArmyCategory>     ArmyCategoryList;
+
+
+//////////////////////////////////////////////////////////////////////////
+//
+// 兵种类型管理
+//
+class ArmyCategorySetup : public atom::CSingleton<ArmyCategorySetup>
+{
+public:
+    // 从二进制文件中读取兵种配置
+    void    Load(const String& path);
+
+    // 根据名称查找兵种
+    const tagArmyCategory&  GetCategory(const String& name) const;
+
+private:
+    ArmyCategoryList       categories_;
+};
 
 } // namespace setup
 
 
-
+// 序列化支持
 template<typename Archive>
 inline void Serialize(Archive& archive, setup::tagArmyCategory& value, bool isSave)
 {

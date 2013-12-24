@@ -1,14 +1,14 @@
-#ifndef COMMON_SETUP_REGION_H
-#define COMMON_SETUP_REGION_H
+#ifndef COMMON_SETUP_REGIONLIST_H
+#define COMMON_SETUP_REGIONLIST_H
 
-#include <cstdint>
-#include <string>
+#include "../Config.h"
 #include <map>
 #include <array>
+#include "../3rdParty/atom/atom/CAtom.h"
 
 namespace setup {
 
-// 胜利后获得奖励
+// 胜利后获得奖励配置
 struct tagPrize
 {
     String     name;       // 奖励物品名称
@@ -17,7 +17,7 @@ struct tagPrize
 };
 
 
-// 三个阶段
+// 战斗中的三个阶段配置
 struct tagRegionStage
 {
     // 6个位置的卡片
@@ -31,7 +31,7 @@ struct tagRegionStage
     tagPrize    prize;
 };
 
-// 地图
+// 地图配置
 struct tagRegion
 {
     String      name;       // 名称
@@ -43,8 +43,25 @@ struct tagRegion
     std::array<tagRegionStage, MAX_STAGE>  stages;
 };
 
-// 所有的地图配置，key为编号
-typedef std::map<String, tagRegion>     RegionMap;
+
+typedef std::map<String, tagRegion>     RegionList;
+
+//////////////////////////////////////////////////////////////////////////
+//
+// 所有地图配置
+//
+class RegionListSetup : public atom::CSingleton<RegionListSetup>
+{
+public:
+    // 从二进制文件中加载地图
+    void    Load(const String& path);
+
+    // 根据名称查找地图
+    const tagRegion&  GetRegion(const String& name) const;
+
+private:
+    RegionList       regions_;
+};
 
 } // namespace setup
 
@@ -79,10 +96,10 @@ inline void Serialize(Archive& archive, setup::tagRegion& value, bool isSave)
     archive.Bind( value.name );
     archive.Bind( value.index );
     archive.Bind( value.picture );
-    for (int i = 0; i < tagRegion::MAX_STAGE; ++i)
+    for (const auto& item : value.stages)
     {
-        Serialize(archive, value.stages[i], isSave);
+        //Serialize(archive, item, isSave);
     }
 }
 
-#endif // COMMON_SETUP_REGION_H
+#endif // COMMON_SETUP_REGIONLIST_H
