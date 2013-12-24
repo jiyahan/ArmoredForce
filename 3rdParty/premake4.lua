@@ -34,6 +34,7 @@ solution "DenpendLibs"
     -- mysql++
 	project "libmysqlpp"
 		kind "StaticLib"
+        uuid "85BDBF0E-8BCC-6342-ACC3-F3B0D2EC54DC"
 		defines 
 		{ 
 			"HAVE_MYSQL_SSL_SET",
@@ -60,7 +61,7 @@ solution "DenpendLibs"
 	-- libAtom
 	project "libAtom"
 		kind "StaticLib"
-		
+		uuid "95269177-9BA3-1B42-98F3-8A901CA1B415"
 		files
 		{
 			"atom/atom/**.cpp",
@@ -73,6 +74,7 @@ solution "DenpendLibs"
 	-- RCF
 	project "librcf"
 		kind "StaticLib"
+        uuid "953B98EE-A11F-B44E-AF70-E1A6704A143E"
 		defines 
 		{
 		}
@@ -89,6 +91,7 @@ solution "DenpendLibs"
     -- gtest
 	project "libgtest"
 		kind "StaticLib"
+        uuid "F6820085-B31D-1B44-BC9D-E3F65615604C"
         defines
         {
             "GTEST_HAS_TR1_TUPLE=0",
@@ -107,6 +110,7 @@ solution "DenpendLibs"
 	-- glog
 	project "libglog"
 		kind "StaticLib"
+        uuid "17B9249C-63B6-564C-89EF-BE3288E483F8"
 		defines {"GOOGLE_GLOG_DLL_DECL= "}
 		files
 		{
@@ -131,5 +135,29 @@ solution "DenpendLibs"
 		{
 			"glog/src/windows",
 		}
-       
+        
+    -- lua
+	project "liblua"
+		kind "StaticLib"
+        uuid "DDBAFE27-F999-E24B-91CC-E51FEBE65EE2"
+        language "C"
+        defines
+        {
+            "",
+        }
+		
+		files
+		{
+			"lua/src/*.h",
+            "lua/src/*.c",
+		}
+        excludes 
+        {
+            "lua/src/lua.c",
+            "lua/src/luac.c",
+        }
+        includedirs 
+        {
+            "lua/src",
+        }       
        
