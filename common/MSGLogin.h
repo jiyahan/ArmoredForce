@@ -1,7 +1,7 @@
 #ifndef CHGAME_MSGLogig_H
 #define CHGAME_MSGLogin_H
 
-// linux下仅支持`/`作为路径分隔符
+#include "Config.h"
 #include "../3rdparty/atom/electron/celectron.h"
 #include "MESSAGE_ID.h"
 
@@ -12,15 +12,15 @@ using namespace electron;
 //注册账号
 struct MSGLoginRegist
 {
-	a_string account;
-	a_string password;
-	a_string email;
+	String account;
+	String password;
+	String email;
 };
 
 //注册账号返回
 struct MSGLoginRegistResponse
 {
-	a_string account;
+	String account;
 	//0成功1失败
 	I08 result;
 };
@@ -29,8 +29,8 @@ struct MSGLoginRegistResponse
 struct 	MSGLoginLogin
 {	
 	static const NOVA_MESSAGE_ID msgId=MID_LOGIN_LOGIN;
-	a_string account;
-	a_string password;
+	String account;
+	String password;
 };
 
 //账号登陆返回
@@ -38,7 +38,7 @@ struct 	MSGLoginLoginResponse
 {
 	static const NOVA_MESSAGE_ID msgId=MID_LOGIN_LOGINRESPONSE;
 	//验证码
-	a_string sign;
+	String sign;
 	//0成功1失败
 	I08 result;
 };
@@ -47,14 +47,14 @@ struct 	MSGLoginLoginResponse
 struct 	MSGLoginCreate
 {
 	int areaId;
-	string account;
+	String account;
 };
 
 //创建角色返回
 struct 	MSGLoginCreateResponse
 {
 	int areaId;
-	string account;
+	String account;
 	//0成功1失败
 	I08 result;
 };

@@ -1,7 +1,7 @@
 #ifndef CHGAME_RoleCommon_H
 #define CHGAME_RoleCommon_H
 
-// linux下仅支持`/`作为路径分隔符
+#include "Config.h"
 #include "../3rdparty/atom/atom/catom.h"
 
 using namespace atom;
@@ -11,7 +11,7 @@ using namespace atom;
 struct RoleCommon
 {
 	//角色名
-	a_string name;
+	String name;
 };
 
 template<class Archive>

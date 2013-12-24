@@ -21,27 +21,27 @@ struct tagOfficer
         CARD_ORANGE = 6,    // 橙色品质
     }; 
 
-    std::string     name;               // 军官名称
-    std::string     index;              // 军官编号
-    std::string     category;           // 部队类型
+    String          name;               // 军官名称
+    String          index;              // 军官编号
+    String          category;           // 部队类型
     Quality         quality;            // 品质    
-    int32_t         command_force;      // 指挥力
-    int32_t         leadership;         // 领导力
-    int32_t         base_hp;            // 基础血量
-    int32_t         base_atk;           // 基础攻击
-    int32_t         atk_upgrade;        // 攻击成长
-    int32_t         base_force;         // 基础兵力
-    int32_t         force_upgrade;      // 兵力成长
-    int32_t         max_level;          // 最大等级
-    int32_t         price;              // 出售价格
-    std::string     picture_large;      // 大图片
-    std::string     picture_small;      // 小图片
-    std::string     intro;              // 说明文字
+    I32             command_force;      // 指挥力
+    I32             leadership;         // 领导力
+    I32             base_hp;            // 基础血量
+    I32             base_atk;           // 基础攻击
+    I32             atk_upgrade;        // 攻击成长
+    I32             base_force;         // 基础兵力
+    I32             force_upgrade;      // 兵力成长
+    I32             max_level;          // 最大等级
+    I32             price;              // 出售价格
+    String          picture_large;      // 大图片
+    String          picture_small;      // 小图片
+    String          intro;              // 说明文字
 };
 
 
 // 所有的军官，key为编号
-typedef std::map<std::string, tagOfficer>     OfficerMap;
+typedef std::map<String, tagOfficer>     OfficerMap;
 
 } // namespace setup
 
@@ -53,7 +53,7 @@ inline void Serialize(Archive& archive, setup::tagOfficer& value, bool isSave)
     archive.Bind( value.name );
     archive.Bind( value.index );
     archive.Bind( value.category );
-    archive.Bind( (int32_t&)value.quality );
+    archive.Bind( (I32&)value.quality );
     archive.Bind( value.command_force );
     archive.Bind( value.base_hp );
     archive.Bind( value.base_atk );

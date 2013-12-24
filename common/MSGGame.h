@@ -1,7 +1,7 @@
 #ifndef CHGAME_MSGGame_H
 #define CHGAME_MSGGame_H
 
-// linux下仅支持`/`作为路径分隔符
+#include "Config.h"
 #include "MESSAGE_ID.h"
 #include "../3rdparty/atom/atom/catom.h"
 
@@ -14,13 +14,13 @@ struct MSGAccountAuthorize
 {
 	static const NOVA_MESSAGE_ID msgId=MID_ACCOUNT_AUTHORIZE_REQUEST;
 	// device  info;
-	a_string device ;         
+	String device ;         
 	// device  type;
-	a_string deviceType ;     
+	String deviceType ;     
 	// account info;
-	a_string account; 
+	String account; 
 	// user signature;
-	a_string usrsign; 
+	String usrsign; 
 };
 
 struct MSGAccountAuthorizeResponse

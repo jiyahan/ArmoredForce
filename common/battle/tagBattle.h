@@ -1,7 +1,7 @@
 #ifndef CHGAME_Battle_H
 #define CHGAME_Battle_H
 
-// linux下仅支持`/`作为路径分隔符
+#include "../Config.h"
 #include "../../3rdParty/atom/atom/CAtom.h"
 
 using namespace atom;
@@ -138,6 +138,7 @@ inline void Serialize(Archive & archive, tagBattle & value, bool isSave)
 	archive.Bind( value.defender );
 	archive.Bind( value.result );
 	archive.Bind( value.prize );
+    archive.Bind( value.rounds );
 }
 
 

@@ -11,9 +11,9 @@ namespace setup {
 // 胜利后获得奖励
 struct tagPrize
 {
-    std::string     name;       // 奖励物品名称
-    std::string     index;      // 奖励物品编号
-    int32_t         count;      // 奖励物品数量
+    String     name;       // 奖励物品名称
+    String     index;      // 奖励物品编号
+    I32        count;      // 奖励物品数量
 };
 
 
@@ -21,12 +21,12 @@ struct tagPrize
 struct tagRegionStage
 {
     // 6个位置的卡片
-    std::string   pos_1;
-    std::string   pos_2;
-    std::string   pos_3;
-    std::string   pos_4;
-    std::string   pos_5;
-    std::string   pos_6;
+    String   pos_1;
+    String   pos_2;
+    String   pos_3;
+    String   pos_4;
+    String   pos_5;
+    String   pos_6;
 
     tagPrize    prize;
 };
@@ -34,9 +34,9 @@ struct tagRegionStage
 // 地图
 struct tagRegion
 {
-    std::string      name;       // 名称
-    std::string      index;      // 编号
-    std::string      picture;    // 背景图片
+    String      name;       // 名称
+    String      index;      // 编号
+    String      picture;    // 背景图片
 
     // 三个阶段
     enum {MAX_STAGE = 3};
@@ -44,7 +44,7 @@ struct tagRegion
 };
 
 // 所有的地图配置，key为编号
-typedef std::map<std::string, tagRegion>     RegionMap;
+typedef std::map<String, tagRegion>     RegionMap;
 
 } // namespace setup
 
