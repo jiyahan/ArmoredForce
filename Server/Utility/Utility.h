@@ -7,6 +7,7 @@
  */
 #pragma once
 
+#include <cstdio>
 #include <boost/noncopyable.hpp>
 
 
@@ -19,4 +20,6 @@ public:
     ~AtomAutoInit();
 };
 
+
+// Ëæ»úÊý
 uint32_t random(uint32_t max);

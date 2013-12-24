@@ -32,7 +32,7 @@ bool GameServer::Init(const AppConfig& cfg)
     bool status = client_->RegisterGameServer(config_.host, config_.port);
 
     // 注册客户端消息回调处理函数
-    handler_map_ = GetHandlerMap();
+    msg_handlers_ = GetHandlerMap();
 
     LOG(INFO) << "GameServer初始化成功.";
 
@@ -74,8 +74,8 @@ void GameServer::ProcessMessage()
     for(CMessage* pMsg : messages)
     {
         U32 command_id = pMsg->GetCommandID();
-        auto iter = handler_map_.find(command_id);
-        if (iter != handler_map_.end())
+        auto iter = msg_handlers_.find(command_id);
+        if (iter != msg_handlers_.end())
         {
             try
             {

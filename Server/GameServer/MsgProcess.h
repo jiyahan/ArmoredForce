@@ -10,5 +10,5 @@ void HandleUserAuth(CMessage& msg);
 // 处理战斗
 void HandleCombatRequest(CMessage& msg);
 
-
-HandlerMap GetHandlerMap();
+// 消息处理函数表
+HandlerMap  GetHandlerMap();

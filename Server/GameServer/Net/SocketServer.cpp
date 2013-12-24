@@ -9,8 +9,11 @@ using namespace std;
 
 #define LISTEN_THREAD_NUM   1
 
+namespace {
 
-static CClientEventHandle       nest;
+    static CClientEventHandle       nest;
+
+} // anonymous namespace
 
 
 SocketServer::SocketServer(void)

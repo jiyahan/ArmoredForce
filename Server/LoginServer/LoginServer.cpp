@@ -4,9 +4,7 @@
 #include <thread>
 #include <glog/logging.h>
 #include <RCF/RCF.hpp>
-
 #include "../RPC/ICenterRpcService.h"
-#include "../../common/MESSAGE_ID.h"
 #include "MsgProcess.h"
 
 
@@ -35,7 +33,7 @@ bool LoginServer::Init(const AppConfig& cfg)
     client_.reset(new RcfClient<ICenterRpcService>(remoteEndPoint));
 
     // 注册客户端消息回调处理函数
-    RegisterMsgHandler();
+    handler_map_ = GetMsgHandlers();
 
     LOG(INFO) << "LoginServer初始化成功";
 
@@ -93,11 +91,5 @@ void LoginServer::ProcessMessage()
 
         CMessageAllocator::GetInstance()->Released( pMsg );
     }
-}
-
-void LoginServer::RegisterMsgHandler()
-{
-    handler_map_[MID_LOGIN_LOGIN] = ProcessUserLogin;
-    handler_map_[MID_VERSION_VERIFY] = ProcessVerifyVersion;    
 }
 

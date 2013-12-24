@@ -9,6 +9,8 @@
 
 
 typedef std::shared_ptr<RcfClient<ICenterRpcService>>   RpcClientPtr;
+typedef std::function<void (CMessage&)>                 HandlerType;
+typedef std::unordered_map<int32_t, HandlerType>        HandlerMap;
 
 //
 // 登录服
@@ -41,8 +43,6 @@ private:
     // 处理消息
     void    ProcessMessage();
 
-    // 注册消息回调
-    void    RegisterMsgHandler();
 
 private:
     AppConfig           config_;        // 配置
@@ -50,7 +50,5 @@ private:
 
     RpcClientPtr        client_;
 
-    typedef std::function<void (CMessage&)>   HandlerType;
-
-    std::unordered_map<int32_t, HandlerType>	handler_map_; //  所有回调函数
+    HandlerMap	        handler_map_; //  所有回调函数
 };

@@ -10,7 +10,6 @@
 
 
 typedef std::shared_ptr<RcfClient<ICenterRpcService>>   RpcClientPtr;
-
 typedef std::function<void (CMessage&)>		HandlerType;
 typedef std::unordered_map<int32_t, HandlerType>    HandlerMap;
 
@@ -53,5 +52,5 @@ private:
     RpcClientPtr        client_;
     
 
-    HandlerMap	        handler_map_;
+    HandlerMap	        msg_handlers_;
 };

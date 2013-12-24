@@ -42,9 +42,7 @@ void ProcessUserLogin(CMessage& msg)
 
     string signatrue = thisServer.GetClient()->GetLoginSignature(request.account.c_str());
 
-    MSGLoginLoginResponse response;
-    response.sign = signatrue.c_str();
-    response.result = status;
+    MSGLoginLoginResponse response = {signatrue, status};
     thisServer.GetSocketServer().Send(msg.GetConnector(), MID_LOGIN_LOGINRESPONSE, response);
 }
 
@@ -75,4 +73,13 @@ void ProcessVerifyVersion(CMessage& msg)
     archive.Clone(response.server_area);   
     
     thisServer.GetSocketServer().Send(msg.GetConnector(), MID_VERSION_VERIFYRESPONSE, response);
+}
+
+
+HandlerMap GetMsgHandlers()
+{
+    HandlerMap handlers;
+    handlers[MID_LOGIN_LOGIN] = ProcessUserLogin;
+    handlers[MID_VERSION_VERIFY] = ProcessVerifyVersion;
+    return std::move(handlers);
 }
