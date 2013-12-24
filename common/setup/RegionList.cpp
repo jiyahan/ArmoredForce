@@ -11,11 +11,14 @@ void    RegionListSetup::Load(const String& path)
 }
 
 // 根据名称查找地图
-const tagRegion&  RegionListSetup::GetRegion(const String& name) const
+const tagRegion*  RegionListSetup::GetRegion(const String& name) const
 {
-    static const tagRegion dummy = {};
     auto iter = regions_.find(name);
-    return (iter != regions_.end() ? iter->second : dummy);
+    if (iter != regions_.end())
+    {
+        return std::addressof(iter->second);
+    }
+    return nullptr;
 }
 
 } // namespace setup

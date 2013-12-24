@@ -58,7 +58,7 @@ public:
     void    Load(const String& path);
 
     // 根据名称查找地图
-    const tagRegion&  GetRegion(const String& name) const;
+    const tagRegion*  GetRegion(const String& name) const;
 
 private:
     RegionList       regions_;

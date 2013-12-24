@@ -47,7 +47,7 @@ public:
     void    Load(const String& path);
 
     // 根据名称查找兵种
-    const tagArmyCategory&  GetCategory(const String& name) const;
+    const tagArmyCategory*  GetCategory(const String& name) const;
 
 private:
     ArmyCategoryList       categories_;

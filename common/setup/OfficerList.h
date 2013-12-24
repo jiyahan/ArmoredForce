@@ -51,7 +51,7 @@ public:
     void    Load(const String& path);
 
     // 根据编号得到某个军官的配置
-    const tagOfficer&   GetOfficer(const String& index) const;
+    const tagOfficer*   GetOfficer(const String& index) const;
 
 private:
     OfficerList      officer_list_;

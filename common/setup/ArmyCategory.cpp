@@ -9,11 +9,15 @@ void  ArmyCategorySetup::Load(const String& path)
 }
 
 
-const tagArmyCategory&  ArmyCategorySetup::GetCategory(const String& name) const
+const tagArmyCategory*  ArmyCategorySetup::GetCategory(const String& name) const
 {
     static const tagArmyCategory dummy = {};
     auto iter = categories_.find(name);
-    return (iter != categories_.end() ? iter->second : dummy);
+    if(iter != categories_.end())
+    {
+        return std::addressof(iter->second);
+    }
+    return nullptr;
 }
 
 } // namespace setup
