@@ -4,7 +4,7 @@
 
 #include "../Config.h"
 #include <map>
-#include "../3rdParty/atom/atom/CAtom.h"
+#include "../../3rdParty/atom/atom/CAtom.h"
 
 namespace setup {
     

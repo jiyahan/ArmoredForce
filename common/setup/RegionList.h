@@ -4,7 +4,7 @@
 #include "../Config.h"
 #include <map>
 #include <array>
-#include "../3rdParty/atom/atom/CAtom.h"
+#include "../../3rdParty/atom/atom/CAtom.h"
 
 namespace setup {
 
@@ -28,7 +28,7 @@ struct tagRegionStage
     String   pos_5;
     String   pos_6;
 
-    tagPrize    prize;
+    std::vector<tagPrize>    prize;
 };
 
 // µØÍ¼ÅäÖÃ
@@ -36,6 +36,7 @@ struct tagRegion
 {
     String      name;       // Ãû³Æ
     String      index;      // ±àºÅ
+    I32         type;
     String      picture;    // ±³¾°Í¼Æ¬
 
     // Èý¸ö½×¶Î
