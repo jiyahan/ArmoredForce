@@ -3,6 +3,7 @@
 -- http://industriousone.com/scripting-premake
 --
 
+local BOOST_DIR = os.getenv('BOOST_DIR')
 
 -- 读取xml转换为二进制
 solution "Xml2Bin"
@@ -33,17 +34,25 @@ solution "Xml2Bin"
         {
             "MARKUP_STL",
             "GOOGLE_GLOG_DLL_DECL=",
+            "GLOG_NO_ABBREVIATED_SEVERITIES",
             "GTEST_HAS_TR1_TUPLE=0",
+            "NOT_USE_ATOM_ALLOCATOR",
         }
         
         -- 源代码文件
 		files
 		{
             "src/**.h",
-            "src/**.cpp",            
-            "../../common/setup/*.h",            
+            "src/**.cpp",      
+            
+            "../../common/setup/*.h",
+            "../../common/setup/*.cpp",
+            
             "../../Server/Utility/Markup.h",
             "../../Server/Utility/Markup.cpp",
+            "../../Server/Utility/Utility.h",
+            "../../Server/Utility/Utility.cpp",
+            
             "../../Server/Setup/LoadSetup.h",
             "../../Server/Setup/LoadSetup.cpp",
 		}
@@ -56,6 +65,8 @@ solution "Xml2Bin"
 		{ 			
             "../../Server/Utility",
             "../../3rdParty/atom",
+            "../../3rdParty/glog/src/windows/",
+            BOOST_DIR,
 		}
         
         libdirs 
@@ -66,5 +77,6 @@ solution "Xml2Bin"
 		links 
 		{
 			"libatom",
+            "libglog",
 		}
         

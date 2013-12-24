@@ -5,7 +5,8 @@
 enum CommandType 
 {
     CmdError,           // 错误
-    CmdMonster,         // 转换怪物列表
+    CmdMonsterList,     // 转换怪物列表
+    CmdOfficerList,     // 军官列表
     CmdArmyCategory,    // 兵种列表 
     CmdRegionList,      // 转换地图列表
     CmdWeaponList,      // 转换军备列表

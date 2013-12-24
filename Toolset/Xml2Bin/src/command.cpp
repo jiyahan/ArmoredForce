@@ -2,31 +2,21 @@
 #include <iostream>
 #include <atom/CAtom.h>
 #include "../../Server/Setup/LoadSetup.h"
+#include "../../common/setup/LoadBinaryFile.h"
 
 using namespace std;
 using namespace atom;
 using namespace setup;
 
 
-void TestLoadFile(const string& path)
-{
-    CMemory data = CFile::LoadFile(path.c_str());
-    if (data.GetLength() > 0)
-    {
-        CArchive ar;
-        ar.Assign(data);
-        ArmyCategoryMap category;
-        ar >> category;
-        cout << category.size();
-    }
-}
 
 template <typename T>
 bool WriteMemoryToFile(const T& value, const string& path)
 {
     CMemory data;
     CArchive ar;
-    ar << value;
+    int version = 1;
+    ar << version << value;
     ar.Clone(data);
 
     CFile file(path.c_str());
@@ -43,22 +33,34 @@ bool WriteMemoryToFile(const T& value, const string& path)
 }
 
 
+template <typename T, typename Fn>
+void DoTransform(Fn loader, T*, const string& infile, const string& outfile)
+{
+    auto v = loader(infile);
+    WriteMemoryToFile(v, outfile);
+    auto v2 = setup::LoadBinaryFile<T>(outfile);
+    assert(!v.empty() && v.size() == v2.size());
+}
 
-void RunTransform(CommandType cmd, 
-                  const std::string& infile, 
-                  const std::string& outfile)
+void RunTransform(CommandType cmd, const std::string& infile, const std::string& outfile)
 {    
-    CMemory data;
-    if (cmd == CmdArmyCategory)
+    switch (cmd)         
     {
-        WriteMemoryToFile(LoadArmyCategoryMap(infile), outfile);
+    case CmdArmyCategory:
+        DoTransform(LoadArmyCategoryList, (ArmyCategoryList*)nullptr, infile, outfile);
+        break;
+
+    case CmdRegionList:
+        DoTransform(LoadRegionList, (RegionList*)nullptr, infile, outfile);
+        break;
+
+    case CmdMonsterList:
+        DoTransform(LoadMonsterList, (MonsterList*)nullptr, infile, outfile);
+        break;
+
+    case CmdOfficerList:
+        DoTransform(LoadOfficerList, (OfficerList*)nullptr, infile, outfile);
+        break;
     }
-    else if (cmd == CmdRegionList)
-    {
-        WriteMemoryToFile(LoadRegionMap(infile), outfile);
-    }
-    else if (cmd == CmdMonster)
-    {
-        WriteMemoryToFile(LoadOffficerMap(infile), outfile);
-    }
+    cout << "OK. " << infile << " ==> " << outfile << endl;
 }

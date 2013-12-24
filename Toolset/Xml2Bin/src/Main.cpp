@@ -4,7 +4,7 @@
 #include <map>
 #include <tuple>
 #include <atom/CAtom.h>
-
+#include "Utility.h"
 
 using namespace std;
 
@@ -12,9 +12,12 @@ using namespace std;
 
 void PrintUsage()
 {
-    const char* usage = "Usage: \n\tXml2Bin --[cmd] [option=value] [file]."
-        "\t\t--monsterlist output=[output]\n"
-        "\t\t--regionlist output=[output]\n"
+    const char* usage = "Usage: \n\tXml2Bin [--配置类型] [输入文件(xml)] [输出文件(bin)].\n"
+        "\t配置类型\n"
+        "\t\t--monsterlist\t怪物配置\n"
+        "\t\t--officerlist\t军官配置\n"
+        "\t\t--regionlist\t地图配置\n"
+        "\t\t--category\t兵种配置\n"
         ;
     cout << usage << endl;
 }
@@ -33,7 +36,7 @@ tuple<CommandType, string, string> ParseCommand(int argc, const char* argv[])
     string cmd = argv[1];
     if (cmd == "--monsterlist")
     {
-        cmdtype = CmdMonster;
+        cmdtype = CmdMonsterList;
     }
     else if (cmd == "--category")
     {
@@ -43,28 +46,37 @@ tuple<CommandType, string, string> ParseCommand(int argc, const char* argv[])
     {
         cmdtype = CmdRegionList;
     }
-
-    for (int i = 2; i < argc; ++i)
+    else if (cmd == "--officerlist")
     {
-        string cmd = argv[i];
-        size_t pos = cmd.find_first_of('=');
-        if (pos == string::npos)
-        {
-            filename = cmd;
-            break;
-        }
-        string key = cmd.substr(0, pos);
-        string value;
-        if (++pos < cmd.length())
-        {
-             value = cmd.substr(pos);
-        }
-        if (key == "out")
-        {
-            output = value;
-        }
-        
+        cmdtype = CmdOfficerList;
     }
+
+    filename = argv[2];
+    if (argc > 3)
+    {
+        output = argv[3];        
+    }
+    else
+    {
+        output = filename + ".bin";
+    }
+
+    //for (int i = 2; i < argc; ++i)
+    //{
+    //    string cmd = argv[i];
+    //    size_t pos = cmd.find_first_of('=');
+    //    if (pos == string::npos)
+    //    {
+    //        filename = cmd;
+    //        break;
+    //    }
+    //    string key = cmd.substr(0, pos);
+    //    string value;
+    //    if (++pos < cmd.length())
+    //    {
+    //         value = cmd.substr(pos);
+    //    }
+    //}
     return make_tuple(cmdtype, filename, output);;
 }
 
@@ -74,8 +86,7 @@ int main(int argc, const char* argv[])
     using namespace atom;
     try
     {
-        CAtom::Presetup();
-        CAtom::Initiate(1024 * 32);
+        AtomAutoInit init(1024*32, 1);
         
         CommandType cmd;
         string filename;
@@ -91,16 +102,9 @@ int main(int argc, const char* argv[])
         }
     }
     catch(std::exception& ex)
-    {
-        cerr << typeid(ex).name() << ": " << ex.what() << endl;        
+    {        
+        cerr << typeid(ex).name() << ": " << ex.what() << endl;
     }
-    catch(...)
-    {
-        cerr << "unexpected exception.\n";
-    }
-
-    CAtom::Destruct();
-    CAtom::Shutdown();
 
     return 0;
 }
