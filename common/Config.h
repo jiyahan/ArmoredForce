@@ -1,6 +1,9 @@
 #ifndef COMMON_CONFIG_H
 #define COMMON_CONFIG_H
 
+#include <string>
+#include "../3rdParty/atom/atom/utility/stl/a_string.h"
+
 //
 // 使用宏来区分开Server和Client对string类的使用
 //
@@ -29,5 +32,6 @@ typedef std::string     String;
 #else
 typedef atom::a_string  String;
 #endif
+
 
 #endif // COMMON_CONFIG_H
