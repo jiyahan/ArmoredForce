@@ -5,9 +5,10 @@
 namespace setup {
 
 // 从二进制文件中加载地图
-void    RegionListSetup::Load(const String& path)
+bool    RegionListSetup::Load(const String& path)
 {
     regions_ = LoadBinaryFile<RegionList>(path);
+    return !regions_.empty();
 }
 
 // 根据名称查找地图

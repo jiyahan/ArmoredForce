@@ -37,11 +37,11 @@ typedef std::map<String, tagMonster>     MonsterList;
 class MonsterListSetup : public atom::CSingleton<MonsterListSetup>
 {
 public:
-    // 从二进制文件中加载所有的军官
-    void    Load(const String& path);
+    // 从二进制文件中加载所有的军官，返回false表示
+    bool    Load(const String& path);
 
-    // 根据编号得到某个军官的配置
-    const tagMonster&   GetMonster(const String& index) const;
+    // 根据编号得到某个军官的配置,返回nullptr表示没有此编号的军官
+    const tagMonster*   GetMonster(const String& index) const;
 
 private:
     MonsterList      monster_list_;

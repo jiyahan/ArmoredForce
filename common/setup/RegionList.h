@@ -55,7 +55,7 @@ class RegionListSetup : public atom::CSingleton<RegionListSetup>
 {
 public:
     // 从二进制文件中加载地图
-    void    Load(const String& path);
+    bool    Load(const String& path);
 
     // 根据名称查找地图
     const tagRegion*  GetRegion(const String& name) const;
@@ -97,9 +97,9 @@ inline void Serialize(Archive& archive, setup::tagRegion& value, bool isSave)
     archive.Bind( value.name );
     archive.Bind( value.index );
     archive.Bind( value.picture );
-    for (const auto& item : value.stages)
+    for (auto& stage : value.stages)
     {
-        //Serialize(archive, item, isSave);
+        Serialize(archive, stage, isSave);
     }
 }
 

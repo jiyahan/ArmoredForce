@@ -44,7 +44,7 @@ class ArmyCategorySetup : public atom::CSingleton<ArmyCategorySetup>
 {
 public:
     // 从二进制文件中读取兵种配置
-    void    Load(const String& path);
+    bool    Load(const String& path);
 
     // 根据名称查找兵种
     const tagArmyCategory*  GetCategory(const String& name) const;

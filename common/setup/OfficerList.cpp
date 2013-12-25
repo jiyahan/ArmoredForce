@@ -4,9 +4,10 @@
 namespace setup {
 
 // 从二进制文件中加载所有的军官
-void   OfficerListSetup::Load(const String& path)
+bool   OfficerListSetup::Load(const String& path)
 {
     officer_list_ = LoadBinaryFile<OfficerList>(path);
+    return !officer_list_.empty();
 }
 
 // 根据编号得到某个军官的配置

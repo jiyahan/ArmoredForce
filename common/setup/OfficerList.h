@@ -25,7 +25,7 @@ struct tagOfficer
     String          name;               // 军官名称
     String          index;              // 军官编号
     String          category;           // 部队类型
-    Quality         quality;            // 品质    
+    Quality         quality;            // 品质
     I32             command_force;      // 指挥力
     I32             leadership;         // 领导力
     I32             base_hp;            // 基础血量
@@ -48,7 +48,7 @@ class OfficerListSetup : public atom::CSingleton<OfficerListSetup>
 {
 public:
     // 从二进制文件中加载所有的军官
-    void    Load(const String& path);
+    bool    Load(const String& path);
 
     // 根据编号得到某个军官的配置
     const tagOfficer*   GetOfficer(const String& index) const;

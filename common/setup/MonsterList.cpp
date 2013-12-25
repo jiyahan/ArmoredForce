@@ -4,17 +4,21 @@
 namespace setup {
 
 // 从二进制文件中加载所有的军官
-void    MonsterListSetup::Load(const String& path)
+bool    MonsterListSetup::Load(const String& path)
 {
     monster_list_ = LoadBinaryFile<MonsterList>(path);
+    return !monster_list_.empty();
 }
 
 // 根据编号得到某个军官的配置
-const tagMonster&   MonsterListSetup::GetMonster(const String& index) const
+const tagMonster*   MonsterListSetup::GetMonster(const String& index) const
 {
-    static const tagMonster dummy = {};
     auto iter = monster_list_.find(index);
-    return (iter != monster_list_.end() ? iter->second : dummy);
+    if(iter != monster_list_.end())
+    {
+        return std::addressof(iter->second);
+    }
+    return nullptr;
 }
 
 } // namespace setup
