@@ -1,6 +1,7 @@
 #include "command.h"
 #include <iostream>
 #include <atom/CAtom.h>
+#include <glog/logging.h>
 #include "../../Server/Setup/LoadSetup.h"
 #include "../../common/setup/LoadBinaryFile.h"
 
@@ -39,7 +40,8 @@ void DoTransform(Fn loader, T*, const string& infile, const string& outfile)
     auto v = loader(infile);
     WriteMemoryToFile(v, outfile);
     auto v2 = setup::LoadBinaryFile<T>(outfile);
-    assert(!v.empty() && v.size() == v2.size());
+    CHECK(v == v2) << "\nfile: "<< infile;
+        
 }
 
 void RunTransform(CommandType cmd, const std::string& infile, const std::string& outfile)

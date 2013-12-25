@@ -46,7 +46,6 @@ OfficerList  LoadOfficerList(const std::string& file)
         officer.index = xml.GetAttrib("index");
         officer.category = xml.GetAttrib("category");
         officer.quality = (tagOfficer::Quality)std::stoi(xml.GetAttrib("quality"));
-        officer.base_hp = std::stoi(xml.GetAttrib("base_hp"));
         officer.command_force = std::stoi(xml.GetAttrib("commander_force"));        
         officer.leadership = std::stoi(xml.GetAttrib("leadership"));
         officer.base_atk = std::stoi(xml.GetAttrib("base_attack"));
@@ -81,7 +80,7 @@ tagRegionStage LoadStage(CMarkup& xml, const string& name)
         {
             tagPrize prize = {};
             prize.name = xml.GetAttrib("name");
-            prize.index = xml.GetAttrib("index");
+            prize.index = xml.GetAttrib("id");
             prize.count = std::stoi(xml.GetAttrib("num"));
             stage.prize.emplace_back(prize);
         }
@@ -128,6 +127,7 @@ MonsterList   LoadMonsterList(const std::string& file)
         monster.name = xml.GetAttrib("name");
         monster.index = xml.GetAttrib("index");
         monster.category = xml.GetAttrib("category");
+        monster.type = std::stoi(xml.GetAttrib("type"));        
         monster.attack = std::stoi(xml.GetAttrib("attack"));
         monster.force = std::stoi(xml.GetAttrib("force"));
         monster.blast = std::stoi(xml.GetAttrib("blast"));

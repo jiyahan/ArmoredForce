@@ -4,6 +4,7 @@
 #include <map>
 #include <tuple>
 #include <atom/CAtom.h>
+#include <glog/logging.h>
 #include "Utility.h"
 
 using namespace std;
@@ -86,6 +87,7 @@ int main(int argc, const char* argv[])
     using namespace atom;
     try
     {
+        google::InitGoogleLogging(argv[0]);
         AtomAutoInit init(1024*32, 1);
         
         CommandType cmd;
@@ -106,5 +108,6 @@ int main(int argc, const char* argv[])
         cerr << typeid(ex).name() << ": " << ex.what() << endl;
     }
 
+    google::ShutdownGoogleLogging();
     return 0;
 }
