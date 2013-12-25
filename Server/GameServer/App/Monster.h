@@ -1,16 +1,22 @@
 ﻿#pragma once
 
 #include <memory>
-#include "Card.h"
 
-class Monster : public Card
+
+class Monster;
+typedef std::shared_ptr<Monster>    MonsterPtr;
+
+class Monster
 {
 public:
     Monster();
     ~Monster();
 
+    void    Attack(OfficerPtr defender);
+    void    Defense(OfficerPtr attacker);
+
 private:
 
 };
 
-typedef std::shared_ptr<Monster>    MonsterPtr;
+

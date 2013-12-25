@@ -5,8 +5,10 @@
 #include <RCF/RCF.hpp>
 #include "AppConfig.h"
 #include "Net/SocketServer.h"
-#include "../Utility/Singleton.h"
-#include "../RPC/ICenterRpcService.h"
+#include "Singleton.h"
+#include "Server/RPC/ICenterRpcService.h"
+
+
 
 
 typedef std::shared_ptr<RcfClient<ICenterRpcService>>   RpcClientPtr;
@@ -51,6 +53,5 @@ private:
 
     RpcClientPtr        client_;
     
-
     HandlerMap	        msg_handlers_;
 };

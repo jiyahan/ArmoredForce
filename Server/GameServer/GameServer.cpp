@@ -4,6 +4,11 @@
 #include <thread>
 #include "MsgProcess.h"
 #include "ScopeGuard.h"
+#include "Server/Setup/LoadSetup.h"
+#include "common/setup/ArmyCategory.h"
+#include "common/setup/MonsterList.h"
+#include "common/setup/OfficerList.h"
+#include "common/setup/RegionList.h"
 
 using namespace std;
 
@@ -17,8 +22,13 @@ GameServer::~GameServer()
 }
 
 bool GameServer::Init(const AppConfig& cfg)
-{
+{    
     config_ = cfg;
+
+    setup::ArmyCategorySetup::GetInstance()->Load("data/ArmyCategoryList.xml.bin");
+    setup::OfficerListSetup::GetInstance()->Load("data/OfficerList.xml");
+    setup::RegionListSetup::GetInstance()->Load("data/RegionList.xml");
+    setup::MonsterListSetup::GetInstance()->Load("data/MonsterList.xml");
 
     // 开始网络服务器	
     CHECK(server_.Start(config_.host.c_str(),config_.port))

@@ -16,7 +16,7 @@ public:
 
 private:
     RoleCommon                  property_;      // 基础属性 
-    std::unordered_map<Officer>
+    //std::unordered_set<Officer>
 };
 
 typedef std::shared_ptr<Player>    PlayerPtr;

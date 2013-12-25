@@ -50,14 +50,14 @@ void HandleCombatRequest(CMessage& msg)
     tagBattleRole attacker = {"attacker", 100, 200000, 10003};
     for (int i = 0; i < 6; ++i)
     {
-        tagBattleRoleOfficer card = {1000+i, 13, i+1, 2000+i*10};
-        attacker.officers.push_back(card);
+        //tagBattleRoleOfficer card = {1000+i, 13, i+1, 2000+i*10};
+        //attacker.officers.push_back(card);
     }
     tagBattleRole defender = {"defender", 101, 230000, 10004};
     for (int i = 0; i < 6; ++i)
     {
-        tagBattleRoleOfficer card = {2000+i, 13, i+1, 1800+i*10};
-        defender.officers.push_back(card);
+        //tagBattleRoleOfficer card = {2000+i, 13, i+1, 1800+i*10};
+        //defender.officers.push_back(card);
     }
 
     tagBattleRound rounds;
