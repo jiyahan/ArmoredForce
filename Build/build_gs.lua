@@ -36,18 +36,21 @@ solution "GameServer"
 	project "GameServer"
 		kind "ConsoleApp"
         uuid "7C68D073-DD0F-C84B-BBD5-9941309F6D52"
+        buildoptions '/I"..\..\"'
 		defines 
 		{
             "__GAME_SERVER__",
             "MARKUP_STL",
 			"GOOGLE_GLOG_DLL_DECL=",
             "GLOG_NO_ABBREVIATED_SEVERITIES",
+            "NOT_USE_ATOM_ALLOCATOR",
 		}
 
         -- 源代码文件
 		files
 		{
             "../common/**.h",
+            "../common/**.cpp",
             
             "../Server/Utility/Markup.h",
             "../Server/Utility/Markup.cpp",
@@ -56,8 +59,11 @@ solution "GameServer"
             
 			"../Server/GameServer/**.h",
 			"../Server/GameServer/**.cpp",
-            "../Server/RPC/ICenterRpcService.h",  
             
+            "../Server/Setup/LoadSetup.h",
+            "../Server/Setup/LoadSetup.cpp",
+            
+            "../Server/RPC/ICenterRpcService.h",
 		}       
 
         -- 预编译头

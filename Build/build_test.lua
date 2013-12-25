@@ -39,6 +39,7 @@ solution "Test"
         {
             "GOOGLE_GLOG_DLL_DECL=",
             "GTEST_HAS_TR1_TUPLE=0",
+            "NOT_USE_ATOM_ALLOCATOR",
         }
         
         -- 源代码文件

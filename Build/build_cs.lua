@@ -41,6 +41,7 @@ solution "CenterServer"
             "MARKUP_STL",
 			"GOOGLE_GLOG_DLL_DECL=",            
             "GLOG_NO_ABBREVIATED_SEVERITIES",
+            "NOT_USE_ATOM_ALLOCATOR",
 		}		
 
         -- 源代码文件

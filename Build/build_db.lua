@@ -39,6 +39,7 @@ solution "DBServer"
 		{
             "__DB_SERVER__",
 			"GOOGLE_GLOG_DLL_DECL=",
+            "NOT_USE_ATOM_ALLOCATOR",
 		}
 
         -- 源代码文件
