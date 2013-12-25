@@ -3,15 +3,15 @@
 
 namespace setup {
 
-// ä»äºŒè¿›åˆ¶æ–‡ä»¶ä¸­åŠ è½½æ‰€æœ‰çš„å†›å®˜
-bool    MonsterListSetup::Load(const String& path)
+// ´Ó¶ş½øÖÆÎÄ¼şÖĞ¼ÓÔØËùÓĞµÄ¾ü¹Ù
+bool    MonsterListSetup::Load(const a_string& path)
 {
     monster_list_ = LoadBinaryFile<MonsterList>(path);
     return !monster_list_.empty();
 }
 
-// æ ¹æ®ç¼–å·å¾—åˆ°æŸä¸ªå†›å®˜çš„é…ç½®
-const tagMonster*   MonsterListSetup::GetMonster(const String& index) const
+// ¸ù¾İ±àºÅµÃµ½Ä³¸ö¾ü¹ÙµÄÅäÖÃ
+const tagMonster*   MonsterListSetup::GetMonster(const a_string& index) const
 {
     auto iter = monster_list_.find(index);
     if(iter != monster_list_.end())

@@ -2,7 +2,7 @@
 #define CHGAME_MSGCode_H
 #include "..\3rdparty\atom\electron\celectron.h"
 
-//ä»messageè§£ç 
+//´Ómessage½âÂë
 template <typename T>
 inline CMessage& operator >> (CMessage& msg, T& value)
 {
@@ -17,7 +17,7 @@ inline CMessage& operator >> (CMessage& msg, T& value)
 	return msg;
 }
 
-//ä»messageç¼–ç 
+//´Ómessage±àÂë
 template <typename T>
 inline CMessage& operator << (CMessage& msg, T& value)
 {
@@ -28,7 +28,7 @@ inline CMessage& operator << (CMessage& msg, T& value)
 	return msg;
 }
 
-//ä»memoryè§£ç 
+//´Ómemory½âÂë
 template <typename T>
 inline CMemory& operator >> (CMemory& data, T& value)
 {
@@ -38,7 +38,7 @@ inline CMemory& operator >> (CMemory& data, T& value)
 	return data;
 }
 
-//ä»memoryç¼–ç 
+//´Ómemory±àÂë
 template <typename T>
 inline CMemory& operator << (CMemory& data, T& value)
 {

@@ -9,11 +9,11 @@
 namespace setup {
 
 //
-// å…µç§ç»“æ„å®šä¹‰
+// ±øÖÖ½á¹¹¶¨Òå
 //
 struct tagArmyCategory
 {
-    // å…µç§åˆ†ä¸ºï¼šæ”»å‡»ï¼Œé˜²å¾¡ï¼Œè¾…åŠ©
+    // ±øÖÖ·ÖÎª£º¹¥»÷£¬·ÀÓù£¬¸¨Öú
     enum ArmyType 
     {
         ARMY_ATK = 1, 
@@ -21,19 +21,19 @@ struct tagArmyCategory
         ARMY_ASSIST = 3
     }; 
 
-    String      name;           // åç§°
-    ArmyType    type;           // ç±»å‹
-    String      picture_id;     // å…µç§å›¾ç‰‡
-    String      animation_id;   // åŠ¨ç”»ç¼–å·
-    String      general_skill;  // æ™®é€šæŠ€èƒ½
-    String      active_skill;   // ä¸»åŠ¨æŠ€èƒ½
-    String      passive_skill;  // è¢«åŠ¨æŠ€èƒ½
-    String      intro;          // å…µç§ä»‹ç»
-    String      skill_desc;     // ä¸»åŠ¨æŠ€èƒ½æè¿°
+    a_string      name;           // Ãû³Æ
+    ArmyType      type;           // ÀàĞÍ
+    a_string      picture_id;     // ±øÖÖÍ¼Æ¬
+    a_string      animation_id;   // ¶¯»­±àºÅ
+    a_string      general_skill;  // ÆÕÍ¨¼¼ÄÜ
+    a_string      active_skill;   // Ö÷¶¯¼¼ÄÜ
+    a_string      passive_skill;  // ±»¶¯¼¼ÄÜ
+    a_string      intro;          // ±øÖÖ½éÉÜ
+    a_string      skill_desc;     // Ö÷¶¯¼¼ÄÜÃèÊö
 };
 
 //
-// ç›¸ç­‰æ€§åˆ¤æ–­
+// ÏàµÈĞÔÅĞ¶Ï
 //
 inline bool operator == (const tagArmyCategory& lhs, const tagArmyCategory& rhs)
 {
@@ -48,22 +48,22 @@ inline bool operator == (const tagArmyCategory& lhs, const tagArmyCategory& rhs)
         && lhs.skill_desc == rhs.skill_desc);
 }
 
-// æ‰€æœ‰å…µç§ç±»å‹å®šä¹‰
-typedef std::map<String, tagArmyCategory>     ArmyCategoryList;
+// ËùÓĞ±øÖÖÀàĞÍ¶¨Òå
+typedef std::map<a_string, tagArmyCategory>     ArmyCategoryList;
 
 
 //////////////////////////////////////////////////////////////////////////
 //
-// å…µç§ç±»å‹ç®¡ç†
+// ±øÖÖÀàĞÍ¹ÜÀí
 //
 class ArmyCategorySetup : public atom::CSingleton<ArmyCategorySetup>
 {
 public:
-    // ä»äºŒè¿›åˆ¶æ–‡ä»¶ä¸­è¯»å–å…µç§é…ç½®
-    bool    Load(const String& path);
+    // ´Ó¶ş½øÖÆÎÄ¼şÖĞ¶ÁÈ¡±øÖÖÅäÖÃ
+    bool    Load(const a_string& path);
 
-    // æ ¹æ®åç§°æŸ¥æ‰¾å…µç§
-    const tagArmyCategory*  GetCategory(const String& name) const;
+    // ¸ù¾İÃû³Æ²éÕÒ±øÖÖ
+    const tagArmyCategory*  GetCategory(const a_string& name) const;
 
 private:
     ArmyCategoryList       categories_;
@@ -72,7 +72,7 @@ private:
 } // namespace setup
 
 
-// åºåˆ—åŒ–æ”¯æŒ
+// ĞòÁĞ»¯Ö§³Ö
 template<typename Archive>
 inline void Serialize(Archive& archive, setup::tagArmyCategory& value, bool isSave)
 {

@@ -2,22 +2,22 @@
 #define CHGAME_RoleCommon_H
 
 #include "Config.h"
-#include "../3rdParty/atom/atom/CAtom.h"
+#include "../3rdparty/atom/atom/catom.h"
 
 using namespace atom;
 
 
-//è§’è‰²åŸºæœ¬å±æ€§
+//½ÇÉ«»ù±¾ÊôĞÔ
 struct RoleCommon
 {	
-	String  name;           // è§’è‰²å
-    I32     id;             // è§’è‰²ID
-    I16     level;          // è§’è‰²ç­‰çº§
-    I16     official_title; // å†›è¡”ç­‰çº§
-    I32     exp;            // è§’è‰²ç»éªŒ
-    I32     action_point;   // è¡ŒåŠ¨åŠ›
-    I32     money;          // é‡‘é’±
-    I32     gems;           // é’»çŸ³æ•°é‡
+	a_string    name;           // ½ÇÉ«Ãû
+    I32         id;             // Î¨Ò»±àºÅ
+    I16         level;          // µÈ¼¶
+    I16         title;          // ¾üÏÎ
+    I32         exp;            // ¾­Ñé
+    I32         action_point;   // ĞĞ¶¯Á¦
+    I32         gold;           // ½ğÇ®
+    I32         gems;           // ×êÊ¯
 };
 
 template<class Archive>
@@ -27,10 +27,10 @@ inline void Serialize(Archive & archive, RoleCommon & value, bool isSave)
 	archive.Bind( value.name);
     archive.Bind( value.id);
     archive.Bind( value.level);
-    archive.Bind( value.official_title);
+    archive.Bind( value.title);
     archive.Bind( value.exp);
     archive.Bind( value.action_point);
-    archive.Bind( value.money);
+    archive.Bind( value.gold);
     archive.Bind( value.gems);
 }
 

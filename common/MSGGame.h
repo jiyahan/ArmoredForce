@@ -3,55 +3,55 @@
 
 #include "Config.h"
 #include "MESSAGE_ID.h"
-#include "../3rdparty/atom/atom/catom.h"
+#include "../3rdparty/atom/atom/CAtom.h"
 
 using namespace std;
 using namespace atom;
 
 
-//璐﹀彿楠岃瘉
+//账号验证
 struct MSGAccountAuthorize
 {
 	static const NOVA_MESSAGE_ID msgId=MID_ACCOUNT_AUTHORIZE_REQUEST;
 	// device  info;
-	String device ;         
+	a_string device ;         
 	// device  type;
-	String deviceType ;     
+	a_string deviceType ;     
 	// account info;
-	String account; 
+	a_string account; 
 	// user signature;
-	String usrsign; 
+	a_string usrsign; 
 };
 
 struct MSGAccountAuthorizeResponse
 {
 	static const NOVA_MESSAGE_ID msgId=MID_ACCOUNT_AUTHORIZE_RESPOND;
-	//0鎴愬姛1澶辫触
+	//0成功1失败
 	bool result;
-	//鐜╁鍞竴ID
+	//玩家唯一ID
 	U64	roleId;
-	//鐜╁鏁版嵁
+	//玩家数据
 	CMemory data;
 	
 };
 
-//鎴樻枟pve璇锋眰
+//战斗pve请求
 struct MSGBattleCombat
 {
 	static const NOVA_MESSAGE_ID msgId=MID_CHARACTER_INSTANCE_COMBAT_REQUEST;	
-	//鐩爣浣嶇疆
+	//目标位置
 	U08 mapId;
-	//鐩爣鐩稿浣嶇疆
+	//目标相对位置
 	U08 posId;
 };
 
-//鎴樻枟pve璇锋眰杩斿洖
+//战斗pve请求返回
 struct MSGBattleCombatResponse
 {
 	static const NOVA_MESSAGE_ID msgId=MID_CHARACTER_INSTANCE_COMBAT_RESPOND;
-	//0鎴愬姛
+	//0成功
 	bool result;
-	//鎴樻枟鏁版嵁
+	//战斗数据
 	CMemory data;
 };
 

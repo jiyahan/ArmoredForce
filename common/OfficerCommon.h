@@ -5,18 +5,18 @@
 #include "../3rdParty/atom/atom/CAtom.h"
 
 
-// å†›å®˜åŸºæœ¬å±æ€§
+// ¾ü¹Ù»ù±¾ÊôĞÔ
 struct OfficerCommon
 {
-    String      name;           // åç§°
-    I32         id;             // ç¼–å·
-    I16         level;          // ç­‰çº§
-    I32         attack;         // æ”»å‡»
-    I32         force;          // å…µåŠ›(è¡€é‡)
-    I32         blast;          // æš´å‡»
-    I32         accuracy;       // ç²¾å‡† 
-    I32         command_force;  // æŒ‡æŒ¥åŠ›
-    I32         leadership;     // ç»Ÿç‡åŠ›
+    a_string    name;           // Ãû³Æ
+    I32         id;             // ±àºÅ
+    I16         level;          // µÈ¼¶
+    I32         attack;         // ¹¥»÷
+    I32         force;          // ±øÁ¦(ÑªÁ¿)
+    I32         blast;          // ±©»÷
+    I32         accuracy;       // ¾«×¼ 
+    I32         command_force;  // Ö¸»ÓÁ¦
+    I32         leadership;     // Í³ÂÊÁ¦
 };
 
 template<class Archive>

@@ -8,44 +8,44 @@
 
 namespace setup {
 
-// èƒœåˆ©åè·å¾—å¥–åŠ±é…ç½®
+// Ê¤Àûºó»ñµÃ½±ÀøÅäÖÃ
 struct tagPrize
 {
-    String     name;       // å¥–åŠ±ç‰©å“åç§°
-    String     index;      // å¥–åŠ±ç‰©å“ç¼–å·
-    I32        count;      // å¥–åŠ±ç‰©å“æ•°é‡
+    a_string   name;       // ½±ÀøÎïÆ·Ãû³Æ
+    a_string   index;      // ½±ÀøÎïÆ·±àºÅ
+    I32        count;      // ½±ÀøÎïÆ·ÊıÁ¿
 };
 
 
-// æˆ˜æ–—ä¸­çš„ä¸‰ä¸ªé˜¶æ®µé…ç½®
+// Õ½¶·ÖĞµÄÈı¸ö½×¶ÎÅäÖÃ
 struct tagRegionStage
 {
-    // 6ä¸ªä½ç½®çš„å¡ç‰‡
-    String   pos_1;
-    String   pos_2;
-    String   pos_3;
-    String   pos_4;
-    String   pos_5;
-    String   pos_6;
+    // 6¸öÎ»ÖÃµÄ¿¨Æ¬
+    a_string   pos_1;
+    a_string   pos_2;
+    a_string   pos_3;
+    a_string   pos_4;
+    a_string   pos_5;
+    a_string   pos_6;
 
     std::vector<tagPrize>    prize;
 };
 
-// åœ°å›¾é…ç½®
+// µØÍ¼ÅäÖÃ
 struct tagRegion
 {
-    String      name;       // åç§°
-    String      index;      // ç¼–å·
-    I32         type;
-    String      picture;    // èƒŒæ™¯å›¾ç‰‡
+    a_string      name;       // Ãû³Æ
+    a_string      index;      // ±àºÅ
+    I32           type;
+    a_string      picture;    // ±³¾°Í¼Æ¬
 
-    // ä¸‰ä¸ªé˜¶æ®µ
+    // Èı¸ö½×¶Î
     enum {MAX_STAGE = 3};
     std::array<tagRegionStage, MAX_STAGE>  stages;
 };
 
 //
-// ç›¸ç­‰æ€§åˆ¤æ–­
+// ÏàµÈĞÔÅĞ¶Ï
 //
 inline bool operator == (const setup::tagPrize& lhs, const setup::tagPrize& rhs)
 {
@@ -74,20 +74,20 @@ inline bool operator == (const setup::tagRegion& lhs, const setup::tagRegion& rh
         && lhs.stages == rhs.stages);
 }
 
-typedef std::map<String, tagRegion>     RegionList;
+typedef std::map<a_string, tagRegion>     RegionList;
 
 //////////////////////////////////////////////////////////////////////////
 //
-// æ‰€æœ‰åœ°å›¾é…ç½®
+// ËùÓĞµØÍ¼ÅäÖÃ
 //
 class RegionListSetup : public atom::CSingleton<RegionListSetup>
 {
 public:
-    // ä»äºŒè¿›åˆ¶æ–‡ä»¶ä¸­åŠ è½½åœ°å›¾
-    bool    Load(const String& path);
+    // ´Ó¶ş½øÖÆÎÄ¼şÖĞ¼ÓÔØµØÍ¼
+    bool    Load(const a_string& path);
 
-    // æ ¹æ®åç§°æŸ¥æ‰¾åœ°å›¾
-    const tagRegion*  GetRegion(const String& name) const;
+    // ¸ù¾İÃû³Æ²éÕÒµØÍ¼
+    const tagRegion*  GetRegion(const a_string& name) const;
 
 private:
     RegionList       regions_;

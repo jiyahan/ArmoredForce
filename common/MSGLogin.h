@@ -2,7 +2,7 @@
 #define CHGAME_MSGLogin_H
 
 #include "Config.h"
-#include "../3rdparty/atom/electron/celectron.h"
+#include "../3rdparty/atom/electron/CElectron.h"
 #include "MESSAGE_ID.h"
 
 using namespace std;
@@ -12,15 +12,15 @@ using namespace electron;
 //注册账号
 struct MSGLoginRegist
 {
-	String account;
-	String password;
-	String email;
+	a_string account;
+	a_string password;
+	a_string email;
 };
 
 //注册账号返回
 struct MSGLoginRegistResponse
 {
-	String account;
+	a_string account;
 	//0成功1失败
 	I08 result;
 };
@@ -29,8 +29,8 @@ struct MSGLoginRegistResponse
 struct 	MSGLoginLogin
 {	
 	static const NOVA_MESSAGE_ID msgId=MID_LOGIN_LOGIN;
-	String account;
-	String password;
+	a_string account;
+	a_string password;
 };
 
 //账号登陆返回
@@ -38,7 +38,7 @@ struct 	MSGLoginLoginResponse
 {
 	static const NOVA_MESSAGE_ID msgId=MID_LOGIN_LOGINRESPONSE;
 	//验证码
-	String sign;
+	a_string sign;
 	//0成功1失败
 	I08 result;
 };
@@ -47,19 +47,17 @@ struct 	MSGLoginLoginResponse
 struct 	MSGLoginCreate
 {
 	int areaId;
-	String account;
+	a_string account;
 };
 
 //创建角色返回
 struct 	MSGLoginCreateResponse
 {
 	int areaId;
-	String account;
+	a_string account;
 	//0成功1失败
 	I08 result;
 };
-
-
 
 
 //版本验证

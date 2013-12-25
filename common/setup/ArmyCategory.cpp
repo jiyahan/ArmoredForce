@@ -3,15 +3,15 @@
 
 namespace setup {
 
-// ä»äºŒè¿›åˆ¶æ–‡ä»¶ä¸­è¯»å–å…µç§é…ç½®
-bool  ArmyCategorySetup::Load(const String& path)
+// ´Ó¶ş½øÖÆÎÄ¼şÖĞ¶ÁÈ¡±øÖÖÅäÖÃ
+bool  ArmyCategorySetup::Load(const a_string& path)
 {
     categories_ = LoadBinaryFile<ArmyCategoryList>(path);
     return !categories_.empty(); 
 }
 
-// æ ¹æ®åç§°æŸ¥æ‰¾å…µç§
-const tagArmyCategory*  ArmyCategorySetup::GetCategory(const String& name) const
+// ¸ù¾İÃû³Æ²éÕÒ±øÖÖ
+const tagArmyCategory*  ArmyCategorySetup::GetCategory(const a_string& name) const
 {
     auto iter = categories_.find(name);
     if(iter != categories_.end())

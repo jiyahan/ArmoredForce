@@ -8,39 +8,39 @@
 
 namespace setup {
     
-// å†›å®˜,å¡ç‰‡
+// ¾ü¹Ù,¿¨Æ¬
 struct tagOfficer
 {
-    // å¡ç‰‡çš„å“è´¨
+    // ¿¨Æ¬µÄÆ·ÖÊ
     enum Quality 
     {
-        CARD_WHITE = 1,     // ç™½è‰²å“è´¨
-        CARD_BLUE = 2,      // è“è‰²å“è´¨
-        CARD_YELLOW = 3,    // é»„è‰²å“è´¨
-        CARD_GREEN = 4,     // ç»¿è‰²å“è´¨
-        CARD_PURPLE = 5,    // ç´«è‰²å“è´¨
-        CARD_ORANGE = 6,    // æ©™è‰²å“è´¨
+        CARD_WHITE = 1,     // °×É«Æ·ÖÊ
+        CARD_BLUE = 2,      // À¶É«Æ·ÖÊ
+        CARD_YELLOW = 3,    // »ÆÉ«Æ·ÖÊ
+        CARD_GREEN = 4,     // ÂÌÉ«Æ·ÖÊ
+        CARD_PURPLE = 5,    // ×ÏÉ«Æ·ÖÊ
+        CARD_ORANGE = 6,    // ³ÈÉ«Æ·ÖÊ
     }; 
 
-    String          name;               // å†›å®˜åç§°
-    String          index;              // å†›å®˜ç¼–å·
-    String          category;           // éƒ¨é˜Ÿç±»å‹
-    Quality         quality;            // å“è´¨
-    I32             command_force;      // æŒ‡æŒ¥åŠ›
-    I32             leadership;         // é¢†å¯¼åŠ›
-    I32             base_atk;           // åŸºç¡€æ”»å‡»
-    I32             atk_upgrade;        // æ”»å‡»æˆé•¿
-    I32             base_force;         // åŸºç¡€å…µåŠ›
-    I32             force_upgrade;      // å…µåŠ›æˆé•¿
-    I32             max_level;          // æœ€å¤§ç­‰çº§
-    I32             price;              // å‡ºå”®ä»·æ ¼
-    String          picture_large;      // å¤§å›¾ç‰‡
-    String          picture_small;      // å°å›¾ç‰‡
-    String          intro;              // è¯´æ˜æ–‡å­—
+    a_string        name;               // ¾ü¹ÙÃû³Æ
+    a_string        index;              // ¾ü¹Ù±àºÅ
+    a_string        category;           // ²¿¶ÓÀàĞÍ
+    Quality         quality;            // Æ·ÖÊ
+    I32             command_force;      // Ö¸»ÓÁ¦
+    I32             leadership;         // Áìµ¼Á¦
+    I32             base_atk;           // »ù´¡¹¥»÷
+    I32             atk_upgrade;        // ¹¥»÷³É³¤
+    I32             base_force;         // »ù´¡±øÁ¦
+    I32             force_upgrade;      // ±øÁ¦³É³¤
+    I32             max_level;          // ×î´óµÈ¼¶
+    I32             price;              // ³öÊÛ¼Û¸ñ
+    a_string        picture_large;      // ´óÍ¼Æ¬
+    a_string        picture_small;      // Ğ¡Í¼Æ¬
+    a_string        intro;              // ËµÃ÷ÎÄ×Ö
 };
 
 //
-// ç›¸ç­‰æ€§åˆ¤æ–­
+// ÏàµÈĞÔÅĞ¶Ï
 //
 inline bool operator == (const tagOfficer& lhs, const tagOfficer& rhs)
 {
@@ -62,17 +62,17 @@ inline bool operator == (const tagOfficer& lhs, const tagOfficer& rhs)
 }
 
 
-// æ‰€æœ‰çš„å†›å®˜ï¼Œkeyä¸ºç¼–å·
-typedef std::map<String, tagOfficer>     OfficerList;
+// ËùÓĞµÄ¾ü¹Ù£¬keyÎª±àºÅ
+typedef std::map<a_string, tagOfficer>     OfficerList;
 
 class OfficerListSetup : public atom::CSingleton<OfficerListSetup>
 {
 public:
-    // ä»äºŒè¿›åˆ¶æ–‡ä»¶ä¸­åŠ è½½æ‰€æœ‰çš„å†›å®˜
-    bool    Load(const String& path);
+    // ´Ó¶ş½øÖÆÎÄ¼şÖĞ¼ÓÔØËùÓĞµÄ¾ü¹Ù
+    bool    Load(const a_string& path);
 
-    // æ ¹æ®ç¼–å·å¾—åˆ°æŸä¸ªå†›å®˜çš„é…ç½®
-    const tagOfficer*   GetOfficer(const String& index) const;
+    // ¸ù¾İ±àºÅµÃµ½Ä³¸ö¾ü¹ÙµÄÅäÖÃ
+    const tagOfficer*   GetOfficer(const a_string& index) const;
 
 private:
     OfficerList      officer_list_;

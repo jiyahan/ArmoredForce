@@ -5,18 +5,18 @@
 #include "../3rdParty/atom/atom/utility/stl/a_string.h"
 
 //
-// ä½¿ç”¨å®æ¥åŒºåˆ†å¼€Serverå’ŒClientå¯¹stringç±»çš„ä½¿ç”¨
+// Ê¹ÓÃºêÀ´Çø·Ö¿ªServerºÍClient¶ÔstringÀàµÄÊ¹ÓÃ
 //
-// ç¼˜ç”±: 1, ä¸åŒçš„STLç‰ˆæœ¬å¯¹std::stringå®ç°ä¸åŒï¼ŒåŒä¸€ä¸ªä¼˜åŒ–æ–¹æ¡ˆä¸ä¸€å®šé€‚ç”¨æ‰€æœ‰å¹³å°
-//          Visual C++          SSO (çŸ­å­—ç¬¦ä¸²ä¼˜åŒ–)
+// ÔµÓÉ: 1, ²»Í¬µÄSTL°æ±¾¶Ôstd::stringÊµÏÖ²»Í¬£¬Í¬Ò»¸öÓÅ»¯·½°¸²»Ò»¶¨ÊÊÓÃËùÓĞÆ½Ì¨
+//          Visual C++          SSO (¶Ì×Ö·û´®ÓÅ»¯)
 //          g++ string          COW (Copy on Write)
 //          Clang libc++        SSO
-//          SGI STL             eager copy(ç›´æ¥æ‹·è´ï¼Œç±»ä¼¼vectorçš„æ–¹å¼)
+//          SGI STL             eager copy(Ö±½Ó¿½±´£¬ÀàËÆvectorµÄ·½Ê½)
 //
-//       2ï¼ŒServerç«¯ä»£ç åœ¨å†…å­˜ç®¡ç†çš„ç­–ç•¥ä¸Šæ›´å€¾å‘äºï¼Œé¿å…æå‰ä¼˜åŒ–ï¼Œåœ¨å‰æœŸä½¿ç”¨RAIIã€
-//          æ™ºèƒ½æŒ‡é’ˆã€ScopeGuardç­‰æŠ€å·§æ¥å®Œå–„å†…å­˜(å’Œå…¶ä»–èµ„æº)çš„åˆ†é…å’Œé‡Šæ”¾ã€‚
-//          åæœŸå†è€ƒè™‘æ˜¯å¦å¼•å…¥ç¬¬ä¸‰æ–¹çš„å†…å­˜ä¼˜åŒ–æ–¹æ¡ˆ(boost.poolï¼Œtcmalloc, jemalloc)ï¼Œ
-//          æˆ–è€…Visual C++å®˜æ–¹æä¾›çš„åˆ†é…å™¨(allocator.h)ï¼š
+//       2£¬Server¶Ë´úÂëÔÚÄÚ´æ¹ÜÀíµÄ²ßÂÔÉÏ¸üÇãÏòÓÚ£¬±ÜÃâÌáÇ°ÓÅ»¯£¬ÔÚÇ°ÆÚÊ¹ÓÃRAII¡¢
+//          ÖÇÄÜÖ¸Õë¡¢ScopeGuardµÈ¼¼ÇÉÀ´ÍêÉÆÄÚ´æ(ºÍÆäËû×ÊÔ´)µÄ·ÖÅäºÍÊÍ·Å¡£
+//          ºóÆÚÔÙ¿¼ÂÇÊÇ·ñÒıÈëµÚÈı·½µÄÄÚ´æÓÅ»¯·½°¸(boost.pool£¬tcmalloc, jemalloc)£¬
+//          »òÕßVisual C++¹Ù·½Ìá¹©µÄ·ÖÅäÆ÷(allocator.h)£º
 //              allocator_unbounded
 //              allocator_fixed_size
 //              allocator_variable_size
@@ -24,14 +24,12 @@
 //              allocator_chunklist
 //          @see http://msdn.microsoft.com/en-us/library/ee292134(v=vs.110).aspx
 //
-//      3ï¼Œå‡å°‘Serverç«¯ä»£ç å¯¹atomåº“çš„ä¾èµ–
+//      3£¬¼õÉÙServer¶Ë´úÂë¶Ôatom¿âµÄÒÀÀµ
 //
 
 #ifdef NOT_USE_ATOM_ALLOCATOR
-typedef std::string     String;
-#else
-typedef atom::a_string  String;
+#define a_string        std::string
+#define atom_allocator  std::allocator
 #endif
-
 
 #endif // COMMON_CONFIG_H

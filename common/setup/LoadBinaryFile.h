@@ -5,13 +5,13 @@
 
 namespace setup {
 
-// 浠庝簩杩涘埗鏂囦欢璇诲彇鏁版嵁缁撴瀯
-// 浣跨敤鏂瑰紡:
+// 从二进制文件读取数据结构
+// 使用方式:
 //      auto region = LoadBinaryFile<RegionMap>(path); 
 //      auto category = LoadBinaryFile<ArmyCategoryMap>(path);
 //      auto officer = LoadBinaryFile<OfficerMap>(path);
 template <typename T>
-T   LoadBinaryFile(const String& path)
+T   LoadBinaryFile(const a_string& path)
 {
     using namespace atom;
     T value = T();

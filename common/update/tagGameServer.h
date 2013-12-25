@@ -1,7 +1,7 @@
 #ifndef TAGGAMESERVER_H
 #define TAGGAMESERVER_H
 
-#include "Config.h"
+#include "../Config.h"
 #include "../../3rdParty/atom/atom/CAtom.h"
 using namespace atom;
 
@@ -10,30 +10,24 @@ namespace version
 
     struct tagGameServer
     {
-        // åŒºæœIPåœ°å€å’Œç«¯å£
+        // Çø·şIPµØÖ·ºÍ¶Ë¿Ú
         tagDomain   domain;
 
-        // åŒºæœåç§°
-        String    entity;
+        // Çø·şÃû³Æ
+        a_string    entity;
 
-        // åŒºæœé¢œè‰²
-        String    color;
+        // Çø·şÑÕÉ«
+        a_string    color;
         
-        // ä¿ç•™
-        String    flag_1;
+        // ±£Áô
+        a_string    flag_1;
 
-        String    flag_2;
+        a_string    flag_2;
     };
 
-#ifdef  NOT_USE_ATOM_ALLOCATOR  
-    typedef std::vector<tagGameServer>          GameServerList;
-    typedef std::map<String, GameServerList>    GameServerArea;
-#else
     typedef std::vector<tagGameServer, atom_allocator<tagGameServer> >  GameServerList;
     typedef std::map<a_string, GameServerList, std::less<a_string>, 
-        atom_allocator<std::pair<a_string, GameServerList> > >      GameServerArea;
-#endif
-    
+        atom_allocator<std::pair<a_string, GameServerList> > >      GameServerArea;   
 
 } //end namespace version
 

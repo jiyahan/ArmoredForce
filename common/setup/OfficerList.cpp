@@ -3,15 +3,15 @@
 
 namespace setup {
 
-// ä»äºŒè¿›åˆ¶æ–‡ä»¶ä¸­åŠ è½½æ‰€æœ‰çš„å†›å®˜
-bool   OfficerListSetup::Load(const String& path)
+// ´Ó¶ş½øÖÆÎÄ¼şÖĞ¼ÓÔØËùÓĞµÄ¾ü¹Ù
+bool   OfficerListSetup::Load(const a_string& path)
 {
     officer_list_ = LoadBinaryFile<OfficerList>(path);
     return !officer_list_.empty();
 }
 
-// æ ¹æ®ç¼–å·å¾—åˆ°æŸä¸ªå†›å®˜çš„é…ç½®
-const tagOfficer*   OfficerListSetup::GetOfficer(const String& index) const
+// ¸ù¾İ±àºÅµÃµ½Ä³¸ö¾ü¹ÙµÄÅäÖÃ
+const tagOfficer*   OfficerListSetup::GetOfficer(const a_string& index) const
 {   
     auto iter = officer_list_.find(index);
     if(iter != officer_list_.end())
