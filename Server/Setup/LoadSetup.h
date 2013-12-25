@@ -8,19 +8,19 @@
 
 namespace setup {
 
-// ¶ÁÈ¡±øÖÖÅäÖÃ
+// è¯»å–å…µç§é…ç½®
 ArmyCategoryList    LoadArmyCategoryList(const std::string& file);
 
 
-// ¶ÁÈ¡ËùÓĞ¾ü¹ÙÅäÖÃ
+// è¯»å–æ‰€æœ‰å†›å®˜é…ç½®
 OfficerList         LoadOfficerList(const std::string& file);
 
 
-// ¶ÁÈ¡ËùÓĞ³¡¾°ÅäÖÃ
+// è¯»å–æ‰€æœ‰åœºæ™¯é…ç½®
 RegionList          LoadRegionList(const std::string& file);
 
 
-// ¶ÁÈ¡ËùÓĞµÄ¹ÖÎïÅäÖÃ
+// è¯»å–æ‰€æœ‰çš„æ€ªç‰©é…ç½®
 MonsterList         LoadMonsterList(const std::string& file);
 
 } // namespace setup

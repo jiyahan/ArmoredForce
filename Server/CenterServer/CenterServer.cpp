@@ -21,7 +21,7 @@ bool CenterServer::Init(const AppConfig& cfg)
 {
     config_ = cfg;
 
-    // ³õÊ¼»¯RPC·þÎñÆ÷
+    // åˆå§‹åŒ–RPCæœåŠ¡å™¨
     RCF::TcpEndpoint endpoint(config_.rpc_host, config_.rpc_port);
     rpc_server_.reset(new RCF::RcfServer(endpoint));
     rpc_server_->bind<ICenterRpcService>(rpc_impl_);

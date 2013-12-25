@@ -9,7 +9,7 @@ using namespace electron;
 
 namespace  {
 
-    static Random 		g_rand; // 不是线程安全
+    static Random 		g_rand; // 涓嶆槸绾跨▼瀹夊叏
 
 }
 
@@ -22,8 +22,8 @@ AtomAutoInit::AtomAutoInit(int pool_size, int thread_num)
 {
     CAtom::Presetup();
     CElectron::Presetup();
-    CHECK(CAtom::Initiate(pool_size)) << "初始化atom错误"; 
-    CHECK(CElectron::Initiate(pool_size)) << "初始化electron错误";
+    CHECK(CAtom::Initiate(pool_size)) << "鍒濆鍖朼tom閿欒"; 
+    CHECK(CElectron::Initiate(pool_size)) << "鍒濆鍖杄lectron閿欒";
 }
 
 AtomAutoInit::~AtomAutoInit()

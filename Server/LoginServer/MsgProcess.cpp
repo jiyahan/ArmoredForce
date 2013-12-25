@@ -15,7 +15,7 @@ using namespace mysqlpp;
 
 LoginServer& thisServer = LoginServer::GetInstance();
 
-// ´¦Àí½ÇÉ«µÇÂ¼
+// å¤„ç†è§’è‰²ç™»å½•
 void ProcessUserLogin(CMessage& msg)
 {
 	MSGLoginLogin request;
@@ -24,7 +24,7 @@ void ProcessUserLogin(CMessage& msg)
 
     int status = 0;
 
-    // µ÷ÓÃ´æ´¢¹ý³Ìsp_user_login»ñµÃµÇÂ¼½á¹û
+    // è°ƒç”¨å­˜å‚¨è¿‡ç¨‹sp_user_loginèŽ·å¾—ç™»å½•ç»“æžœ
     try
     {
         //ScopedConnection conn(MyConnectionPool::GetInstance());
@@ -53,7 +53,7 @@ void ProcessVerifyVersion(CMessage& msg)
     msg >> request;
     cout << request.major << "\t" << request.minor << endl;
 
-    // rpcµ÷ÓÃ
+    // rpcè°ƒç”¨
     ServerAddress addr = thisServer.GetClient()->GetGameServerAddress();
 
     version::GameServerArea game_area;
@@ -61,9 +61,9 @@ void ProcessVerifyVersion(CMessage& msg)
     version::tagGameServer game_server;
     game_server.domain.host = addr.first.c_str();
     game_server.domain.port = addr.second;
-    game_server.entity = "À×öª";
+    game_server.entity = "é›·éœ†";
     server_list.push_back(game_server);
-    game_area["Ò»Çø"] = server_list;
+    game_area["ä¸€åŒº"] = server_list;
 
     MSGLoginVersionVerifyResponse response;
     response.result = 0;

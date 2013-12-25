@@ -2,7 +2,7 @@
  *	@file	MyConnectionPool.h
  *	@author	ichenq@gmail.com
  *	@date	Dec 17, 2013
- *  @brief	MySQLÁ¬½Ó³Ø
+ *  @brief	MySQLè¿æ¥æ± 
  */
 
 #pragma once
@@ -21,39 +21,39 @@ class MyConnectionPool
 public:
     struct ConnetionConfig
     {
-        std::string     host;           // Êı¾İ¿âIP
-        int32_t         port;           // Êı¾İ¿â¶Ë¿Ú
-        std::string     user;           // Êı¾İ¿âÓÃ»§Ãû
-        std::string     pwd;            // Êı¾İ¿âÓÃ»§ÃÜÂë
-        std::string     db;             // Ä¬ÈÏÊı¾İ¿â
-        std::string     charset;        // ´«Êä±àÂë
-        int32_t         max_pool_size;  // Á¬½Ó³Ø´óĞ¡
-        int32_t         max_idle_time;  // Á¬½Ó¿ÕÏĞÊ±¼ä
+        std::string     host;           // æ•°æ®åº“IP
+        int32_t         port;           // æ•°æ®åº“ç«¯å£
+        std::string     user;           // æ•°æ®åº“ç”¨æˆ·å
+        std::string     pwd;            // æ•°æ®åº“ç”¨æˆ·å¯†ç 
+        std::string     db;             // é»˜è®¤æ•°æ®åº“
+        std::string     charset;        // ä¼ è¾“ç¼–ç 
+        int32_t         max_pool_size;  // è¿æ¥æ± å¤§å°
+        int32_t         max_idle_time;  // è¿æ¥ç©ºé—²æ—¶é—´
     };
 
 public:
 	MyConnectionPool();
 	~MyConnectionPool();
 
-    // ³õÊ¼»¯ÅäÖÃ
+    // åˆå§‹åŒ–é…ç½®
     bool init(const ConnetionConfig& cfg);
 	
-    // »ñÈ¡Ò»¸öĞÂÁ¬½Ó
+    // è·å–ä¸€ä¸ªæ–°è¿æ¥
     mysqlpp::Connection* 	grab();
 
-    // ÊÍ·ÅÒ»¸öÁ¬½Ó¸ø³Ø
+    // é‡Šæ”¾ä¸€ä¸ªè¿æ¥ç»™æ± 
     void release(const mysqlpp::Connection* p);
 
 private:
-    // ´´½¨ĞÂÁ¬½Ó
+    // åˆ›å»ºæ–°è¿æ¥
 	mysqlpp::Connection* 	create();
 
-    // ÊÍ·ÅÁ¬½Ó
+    // é‡Šæ”¾è¿æ¥
 	void 					destroy(mysqlpp::Connection* cp);
 
 	unsigned int 			max_idle_time();
 	
 private:	
-	std::atomic<int32_t> 	conns_in_use_;      // µ±Ç°µÄÁ¬½ÓÊıÁ¿
-    ConnetionConfig         config_;            // Á¬½ÓÅäÖÃ
+	std::atomic<int32_t> 	conns_in_use_;      // å½“å‰çš„è¿æ¥æ•°é‡
+    ConnetionConfig         config_;            // è¿æ¥é…ç½®
 };

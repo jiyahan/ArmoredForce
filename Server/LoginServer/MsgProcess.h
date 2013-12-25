@@ -3,5 +3,5 @@
 
 #include "LoginServer.h"
 
-// 所有消息路由表
+// 鎵�鏈夋秷鎭矾鐢辫〃
 HandlerMap  GetMsgHandlers();

@@ -49,7 +49,7 @@ bool Minions::Run()
     using namespace std::chrono;
     auto start = high_resolution_clock::now();
 
-    // 处理网络消息
+    // 澶勭悊缃戠粶娑堟伅
     ProcessMessage();
 
     auto elapsed = duration_cast<milliseconds>(high_resolution_clock::now() - start);

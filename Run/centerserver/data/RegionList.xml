@@ -12,12 +12,12 @@
         <!-- 第一阶段 -->
         <stage_1>
             <!-- 怪物阵型，6个位置的怪物 -->
-            <monsters pos_1="J10001" 
-                      pos_2="J10002" 
-                      pos_3="J10003" 
-                      pos_4="J10004" 
-                      pos_5="J10005"
-                      pos_6="J10006" />
+            <monsters pos_1="M10001" 
+                      pos_2="M10002" 
+                      pos_3="M10003" 
+                      pos_4="M10004" 
+                      pos_5="M10005"
+                      pos_6="M10006" />
                      
             <!-- 奖励 -->
             <prize name="未开封的子弹" id="GZ1001" num="10" />
@@ -25,26 +25,30 @@
         
         <!-- 第二阶段 -->
         <stage_2 >
-            <monsters pos_1="J10001" 
-                      pos_2="J10002" 
-                      pos_3="J10003" 
-                      pos_4="J10004" 
-                      pos_5="J10005"
-                      pos_6="J10006" />
+        	 <!-- 怪物阵型，6个位置的怪物 -->
+            <monsters pos_1="M10005" 
+                      pos_2="M10005" 
+                      pos_3="M10004" 
+                      pos_4="M10007" 
+                      pos_5="M10008"
+                      pos_6="M10009" />
                      
-            <prize name="未开封的子弹" id="GZ1001" num="12" />
+            <!-- 奖励 -->
+            <prize name="未开封的子弹" id="GZ1001" num="10" />
         </stage_2>
         
         <!-- 第三阶段 -->
         <stage_3 >
-            <monsters pos_1="J10001" 
-                      pos_2="J10002" 
-                      pos_3="J10003" 
-                      pos_4="J10004" 
-                      pos_5="J10005"
-                      pos_6="J10006" />
+            <!-- 怪物阵型，6个位置的怪物 -->
+            <monsters pos_1="M10008" 
+                      pos_2="M10009" 
+                      pos_3="M10007" 
+                      pos_4="M10008" 
+                      pos_5="M10007"
+                      pos_6="M10006" />
                      
-            <prize name="未开封的子弹" id="GZ1001" num="15" />
+            <!-- 奖励 -->
+            <prize name="未开封的子弹" id="GZ1001" num="10" />
         </stage_3>
     </region>
 </region_list>

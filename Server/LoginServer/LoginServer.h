@@ -13,7 +13,7 @@ typedef std::function<void (CMessage&)>                 HandlerType;
 typedef std::unordered_map<int32_t, HandlerType>        HandlerMap;
 
 //
-// µÇÂ¼·ş
+// ç™»å½•æœ
 //
 class LoginServer : public Singleton<LoginServer>
 {
@@ -21,16 +21,16 @@ public:
     LoginServer();
     ~LoginServer();
 
-    //½øĞĞ³õÊ¼»¯
+    //è¿›è¡Œåˆå§‹åŒ–
     bool    Init(const AppConfig& cfg);
 
-    // ÊÍ·ÅÉêÇëµÄ×ÊÔ´
+    // é‡Šæ”¾ç”³è¯·çš„èµ„æº
     void    Release();
 
-    // ÔËĞĞ·şÎñÆ÷
+    // è¿è¡ŒæœåŠ¡å™¨
     bool    Run();
 
-    // Í£Ö¹·şÎñÆ÷
+    // åœæ­¢æœåŠ¡å™¨
     void    Stop();
 
     SocketServer& GetSocketServer() { return server_; }
@@ -40,15 +40,15 @@ public:
     RpcClientPtr    GetClient() {return client_;}
 
 private:
-    // ´¦ÀíÏûÏ¢
+    // å¤„ç†æ¶ˆæ¯
     void    ProcessMessage();
 
 
 private:
-    AppConfig           config_;        // ÅäÖÃ
-    SocketServer        server_;        // TCP·şÎñÆ÷
+    AppConfig           config_;        // é…ç½®
+    SocketServer        server_;        // TCPæœåŠ¡å™¨
 
     RpcClientPtr        client_;
 
-    HandlerMap	        handler_map_; //  ËùÓĞ»Øµ÷º¯Êı
+    HandlerMap	        handler_map_; //  æ‰€æœ‰å›è°ƒå‡½æ•°
 };

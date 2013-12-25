@@ -11,7 +11,7 @@
 #include <boost/noncopyable.hpp>
 
 
-// ×Ô¶¯³õÊ¼»¯atom
+// è‡ªåŠ¨åˆå§‹åŒ–atom
 class AtomAutoInit : boost::noncopyable
 {
 public:
@@ -21,5 +21,5 @@ public:
 };
 
 
-// Ëæ»úÊı
+// éšæœºæ•°
 uint32_t random(uint32_t max);

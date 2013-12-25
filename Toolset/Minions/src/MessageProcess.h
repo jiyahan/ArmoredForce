@@ -2,6 +2,6 @@
 
 #include "Minons.h"
 
-// ËùÓĞÊÂ¼ş´¦Àíº¯Êı 
+// æ‰€æœ‰äº‹ä»¶å¤„ç†å‡½æ•° 
 HandlerMap  GetHandlerMap();
 

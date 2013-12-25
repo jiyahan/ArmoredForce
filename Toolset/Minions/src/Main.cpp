@@ -8,7 +8,7 @@
 using namespace std;
 
 
-// ³õÊ¼»¯ÈÕÖ¾
+// åˆå§‹åŒ–æ—¥å¿—
 void InitLogging(int argc, const char* argv[])
 {
     google::InitGoogleLogging(argv[0]);
@@ -21,7 +21,7 @@ int main(int argc, const char* argv[])
     {
         AtomAutoInit init(1024*32, 1);
 
-        InitLogging(argc, argv);    // ³õÊ¼»¯ÈÕÖ¾      
+        InitLogging(argc, argv);    // åˆå§‹åŒ–æ—¥å¿—      
 
         Minions&  app = Minions::GetInstance();
         if (app.Init())

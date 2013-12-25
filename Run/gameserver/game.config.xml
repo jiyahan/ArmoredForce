@@ -5,4 +5,6 @@
 
 	<!-- 连接数centerserver的RPC客户端配置 -->
 	<centerserver host="127.0.0.1" port="42200" />
+    
+    <atom pool_size="10240" thread_num="1" />
 </config>

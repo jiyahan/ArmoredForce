@@ -17,10 +17,10 @@ public:
 
 	void Close();
 
-	//»ñÈ¡SOCKETMESSAGE
+	//è·å–SOCKETMESSAGE
 	void GetSocketMessage(CMessageQueueControllerSetBind& msg);
 
-	//·¢ËÍÏûÏ¢
+	//å‘é€æ¶ˆæ¯
 	void Send(U64 connector, CMessage& msg);
 
     template <typename T>

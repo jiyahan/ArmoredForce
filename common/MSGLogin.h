@@ -9,7 +9,7 @@ using namespace std;
 using namespace electron;
 
 
-//×¢²áÕËºÅ
+//æ³¨å†Œè´¦å·
 struct MSGLoginRegist
 {
 	String account;
@@ -17,15 +17,15 @@ struct MSGLoginRegist
 	String email;
 };
 
-//×¢²áÕËºÅ·µ»Ø
+//æ³¨å†Œè´¦å·è¿”å›
 struct MSGLoginRegistResponse
 {
 	String account;
-	//0³É¹¦1Ê§°Ü
+	//0æˆåŠŸ1å¤±è´¥
 	I08 result;
 };
 
-//ÕËºÅµÇÂ½
+//è´¦å·ç™»é™†
 struct 	MSGLoginLogin
 {	
 	static const NOVA_MESSAGE_ID msgId=MID_LOGIN_LOGIN;
@@ -33,36 +33,36 @@ struct 	MSGLoginLogin
 	String password;
 };
 
-//ÕËºÅµÇÂ½·µ»Ø
+//è´¦å·ç™»é™†è¿”å›
 struct 	MSGLoginLoginResponse
 {
 	static const NOVA_MESSAGE_ID msgId=MID_LOGIN_LOGINRESPONSE;
-	//ÑéÖ¤Âë
+	//éªŒè¯ç 
 	String sign;
-	//0³É¹¦1Ê§°Ü
+	//0æˆåŠŸ1å¤±è´¥
 	I08 result;
 };
 
-//´´½¨½ÇÉ«
+//åˆ›å»ºè§’è‰²
 struct 	MSGLoginCreate
 {
 	int areaId;
 	String account;
 };
 
-//´´½¨½ÇÉ«·µ»Ø
+//åˆ›å»ºè§’è‰²è¿”å›
 struct 	MSGLoginCreateResponse
 {
 	int areaId;
 	String account;
-	//0³É¹¦1Ê§°Ü
+	//0æˆåŠŸ1å¤±è´¥
 	I08 result;
 };
 
 
 
 
-//°æ±¾ÑéÖ¤
+//ç‰ˆæœ¬éªŒè¯
 struct MSGLoginVersionVerify
 {
 	static const NOVA_MESSAGE_ID msgId=MID_VERSION_VERIFY;
@@ -70,14 +70,14 @@ struct MSGLoginVersionVerify
 	int minor;
 };
 
-//°æ±¾ÑéÖ¤·µ»Ø
+//ç‰ˆæœ¬éªŒè¯è¿”å›
 struct MSGLoginVersionVerifyResponse
 {
 	static const NOVA_MESSAGE_ID msgId=MID_VERSION_VERIFYRESPONSE;
-	//0³É¹¦1ÎŞĞ§°æ±¾
+	//0æˆåŠŸ1æ— æ•ˆç‰ˆæœ¬
 	U08 result;
     
-    // Çø·şĞÅÏ¢
+    // åŒºæœä¿¡æ¯
     CMemory server_area;
 };
 

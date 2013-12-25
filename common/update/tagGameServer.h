@@ -10,16 +10,16 @@ namespace version
 
     struct tagGameServer
     {
-        // Çø·şIPµØÖ·ºÍ¶Ë¿Ú
+        // åŒºæœIPåœ°å€å’Œç«¯å£
         tagDomain   domain;
 
-        // Çø·şÃû³Æ
+        // åŒºæœåç§°
         String    entity;
 
-        // Çø·şÑÕÉ«
+        // åŒºæœé¢œè‰²
         String    color;
         
-        // ±£Áô
+        // ä¿ç•™
         String    flag_1;
 
         String    flag_2;

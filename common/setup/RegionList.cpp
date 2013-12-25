@@ -4,14 +4,14 @@
 
 namespace setup {
 
-// ´Ó¶ş½øÖÆÎÄ¼şÖĞ¼ÓÔØµØÍ¼
+// ä»äºŒè¿›åˆ¶æ–‡ä»¶ä¸­åŠ è½½åœ°å›¾
 bool    RegionListSetup::Load(const String& path)
 {
     regions_ = LoadBinaryFile<RegionList>(path);
     return !regions_.empty();
 }
 
-// ¸ù¾İÃû³Æ²éÕÒµØÍ¼
+// æ ¹æ®åç§°æŸ¥æ‰¾åœ°å›¾
 const tagRegion*  RegionListSetup::GetRegion(const String& name) const
 {
     auto iter = regions_.find(name);

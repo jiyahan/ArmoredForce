@@ -7,9 +7,9 @@
 
 
 //
-// 接口定义
-//  CenterServer实现以下接口
-//  LoginServer, GameServer使用这些接口
+// 鎺ュ彛瀹氫箟
+//  CenterServer瀹炵幇浠ヤ笅鎺ュ彛
+//  LoginServer, GameServer浣跨敤杩欎簺鎺ュ彛
 //
 
 typedef std::pair<std::string, int>  ServerAddress;
@@ -26,7 +26,7 @@ inline void serialize(SF::Archive& ar, ServerAddress& addr)
 
 RCF_BEGIN(ICenterRpcService, "ICenterRpcService")
 
-    // 获取GameServer地址
+    // 鑾峰彇GameServer鍦板潃
     RCF_METHOD_R0(ServerAddress, GetGameServerAddress)
     
     // 

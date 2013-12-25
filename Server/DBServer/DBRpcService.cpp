@@ -8,14 +8,14 @@ using namespace mysqlpp;
 
 
 
-// 实现用户登录验证
+// 瀹炵幇鐢ㄦ埛鐧诲綍楠岃瘉
 int DBRpcService::QueryLogin(const std::string& user, const std::string& pwd)
 {
     return 0;
 }
 
 
-// 实现用户注册
+// 瀹炵幇鐢ㄦ埛娉ㄥ唽
 int DBRpcService::RegisterUser(const std::string& user, const std::string& pwd)
 {
     ScopedConnection conn(MyConnectionPool::GetInstance());

@@ -2,7 +2,7 @@
 #include "../Utility/Markup.h"
 
 
-// ¶ÁÈ¡ÅäÖÃĞÅÏ¢
+// è¯»å–é…ç½®ä¿¡æ¯
 AppConfig    LoadAppConfig(const std::string& path)
 {
     AppConfig cfg = {};

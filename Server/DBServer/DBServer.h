@@ -6,7 +6,7 @@
 #include "../Utility/Singleton.h"
 
 //
-// Êı¾İ¿â·şÎñÆ÷
+// æ•°æ®åº“æœåŠ¡å™¨
 //
 class DBServer : public Singleton<DBServer>
 {
@@ -14,13 +14,13 @@ public:
     DBServer();
     ~DBServer();
 
-    // ³õÊ¼»¯
+    // åˆå§‹åŒ–
     bool    Init();
 
-    // ÊÍ·Å×ÊÔ´
+    // é‡Šæ”¾èµ„æº
     void    Release();
 
-    // ÔËĞĞ·şÎñÆ÷
+    // è¿è¡ŒæœåŠ¡å™¨
     bool    Run();
 
 private:

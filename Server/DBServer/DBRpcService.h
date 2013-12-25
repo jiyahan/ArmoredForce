@@ -4,14 +4,14 @@
 #include "../RPC/IDBRpcService.h"
 
 
-//IDBRpcService接口实现
+//IDBRpcService鎺ュ彛瀹炵幇
 class DBRpcService : boost::noncopyable
 {
 public:
-    // 实现用户登录验证
+    // 瀹炵幇鐢ㄦ埛鐧诲綍楠岃瘉
     int QueryLogin(const std::string& user, const std::string& pwd);
 
-    // 实现用户登录验证
+    // 瀹炵幇鐢ㄦ埛鐧诲綍楠岃瘉
     int RegisterUser(const std::string& user, const std::string& pwd);
 private:
 };

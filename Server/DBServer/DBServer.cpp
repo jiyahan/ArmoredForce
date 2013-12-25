@@ -20,7 +20,7 @@ DBServer::~DBServer()
 
 bool DBServer::Init()
 {
-    // ¶ÁÈ¡Æô¶¯ÅäÖÃÎÄ¼ş
+    // è¯»å–å¯åŠ¨é…ç½®æ–‡ä»¶
     config_ = LoadAppConfig("db.config.xml");
 
     MyConnectionPool::ConnetionConfig conn_cfg = {};
@@ -35,17 +35,17 @@ bool DBServer::Init()
 
     if (!MyConnectionPool::GetInstance().init(conn_cfg))
     {
-        LOG(ERROR) << "³õÊ¼»¯mysqlÁ¬½Ó´íÎó";
+        LOG(ERROR) << "åˆå§‹åŒ–mysqlè¿æ¥é”™è¯¯";
         return false;
     }
 
-    // ³õÊ¼»¯RPC·şÎñÆ÷
+    // åˆå§‹åŒ–RPCæœåŠ¡å™¨
     RCF::TcpEndpoint endpoint(config_.rpc_host, config_.rpc_port);
     rpc_server_.reset(new RCF::RcfServer(endpoint));
     rpc_server_->bind<IDBRpcService>(rpc_impl_);
     rpc_server_->start();
 
-    LOG(INFO) << "·şÎñÆ÷³õÊ¼»¯³É¹¦.";
+    LOG(INFO) << "æœåŠ¡å™¨åˆå§‹åŒ–æˆåŠŸ.";
     return true;
 }
 

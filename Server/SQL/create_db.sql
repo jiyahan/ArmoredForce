@@ -1,16 +1,16 @@
 delimiter $$
 
-/* ÕÊºÅÊı¾İ¿â */
+/* å¸å·æ•°æ®åº“ */
 CREATE DATABASE IF NOT EXISTS `account_db` $$
 USE `account_db` $$
 
-/* ÕÊºÅ±í */
+/* å¸å·è¡¨ */
 CREATE TABLE `account_info` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `reg_type` tinyint(4) unsigned NOT NULL,
   `account` varchar(45) NOT NULL,
   `password` char(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `diamonds` int(11) NOT NULL COMMENT '×êÊ¯',
+  `diamonds` int(11) NOT NULL COMMENT 'é’»çŸ³',
   PRIMARY KEY (`id`),
   UNIQUE KEY `account_UNIQUE` (`account`),
   UNIQUE KEY `id_UNIQUE` (`id`)
@@ -18,28 +18,28 @@ CREATE TABLE `account_info` (
 
 
 
-/* ÓÎÏ·Êı¾İ¿â */
+/* æ¸¸æˆæ•°æ®åº“ */
 CREATE DATABASE IF NOT EXISTS `game_db` $$
 USE `game_db` $$
 
 delimiter $$
 
-/* ½ÇÉ«ĞÅÏ¢ */
+/* è§’è‰²ä¿¡æ¯ */
 CREATE TABLE `player_info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `level` smallint(5) unsigned zerofill NOT NULL,
-  `exp` bigint(20) unsigned zerofill NOT NULL COMMENT '¾­Ñé',
-  `rank` smallint(5) unsigned zerofill NOT NULL COMMENT '¾üÏÎ',
-  `gold` bigint(20) unsigned zerofill NOT NULL COMMENT '½ğÇ®',
-  `action_point` int(10) unsigned zerofill NOT NULL COMMENT 'ĞĞ¶¯Á¦',
+  `exp` bigint(20) unsigned zerofill NOT NULL COMMENT 'ç»éªŒ',
+  `rank` smallint(5) unsigned zerofill NOT NULL COMMENT 'å†›è¡”',
+  `gold` bigint(20) unsigned zerofill NOT NULL COMMENT 'é‡‘é’±',
+  `action_point` int(10) unsigned zerofill NOT NULL COMMENT 'è¡ŒåŠ¨åŠ›',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 $$
 
-/* ÈÕÖ¾Êı¾İ¿â */ 
+/* æ—¥å¿—æ•°æ®åº“ */ 
 CREATE DATABASE IF NOT EXISTS `log_db` $$
 USE `log_db` $$
 

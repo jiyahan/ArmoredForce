@@ -13,17 +13,17 @@ using namespace std;
 
 void PrintUsage()
 {
-    const char* usage = "Usage: \n\tXml2Bin [--配置类型] [输入文件(xml)] [输出文件(bin)].\n"
-        "\t配置类型\n"
-        "\t\t--monsterlist\t怪物配置\n"
-        "\t\t--officerlist\t军官配置\n"
-        "\t\t--regionlist\t地图配置\n"
-        "\t\t--category\t兵种配置\n"
+    const char* usage = "Usage: \n\tXml2Bin [--閰嶇疆绫诲瀷] [杈撳叆鏂囦欢(xml)] [杈撳嚭鏂囦欢(bin)].\n"
+        "\t閰嶇疆绫诲瀷\n"
+        "\t\t--monsterlist\t鎬墿閰嶇疆\n"
+        "\t\t--officerlist\t鍐涘畼閰嶇疆\n"
+        "\t\t--regionlist\t鍦板浘閰嶇疆\n"
+        "\t\t--category\t鍏电閰嶇疆\n"
         ;
     cout << usage << endl;
 }
 
-// 解析命令
+// 瑙ｆ瀽鍛戒护
 tuple<CommandType, string, string> ParseCommand(int argc, const char* argv[])
 {
     string filename;

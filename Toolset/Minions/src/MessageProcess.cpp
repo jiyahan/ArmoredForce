@@ -15,7 +15,7 @@ using namespace std;
 Minions&    gMinionMgr = Minions::GetInstance();
 
 
-// µÇÂ¼·µ»Ø
+// ç™»å½•è¿”å›ž
 void HandleLoginResponse(CMessage& msg)
 {
     MSGLoginLoginResponse response;
@@ -24,7 +24,7 @@ void HandleLoginResponse(CMessage& msg)
         << " signature: " << response.sign << endl;
 }
 
-// ÑéÖ¤·µ»Ø
+// éªŒè¯è¿”å›ž
 void HandleVerifyResponse(CMessage& msg)
 {
     MSGLoginVersionVerifyResponse response;

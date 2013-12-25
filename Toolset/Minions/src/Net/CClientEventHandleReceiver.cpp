@@ -114,7 +114,7 @@ bool CClientEventHandleReceiver::OnEvent(const tagEvent & eh)
 	case EID_CONNECTION_READY:
 		{
 			printf( "connection[%llu] ready.\n", eh.source );
-			//·¢ËÍÏûÏ¢
+			//å‘é€æ¶ˆæ¯
 			//CMessage msg(ATG_RegistGateServer);
 			//GateWorld::GetInstance()->GetSocketClient()->Send(msg);
 		}

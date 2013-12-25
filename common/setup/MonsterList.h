@@ -7,31 +7,31 @@
 
 namespace setup {
     
-// ¹ÖÎïµôÂäµÀ¾ß
+// æ€ªç‰©æ‰è½é“å…·
 struct tagDropThing
 {
-    String      index;  // ±àºÅ
-    I32         num;    // ÊıÁ¿
-    I32         rate;   // ¼¸ÂÊ
+    String      index;  // ç¼–å·
+    I32         num;    // æ•°é‡
+    I32         rate;   // å‡ ç‡
 };
 
-// ¹ÖÎï,¿¨Æ¬
+// æ€ªç‰©,å¡ç‰‡
 struct tagMonster
 {
-    String          name;               // ¹ÖÎïÃû³Æ
-    String          index;              // ¹ÖÎï±àºÅ
-    String          category;           // ±øÖÖÀàĞÍ 
-    I32             type;               // ¹ÖÎïÀàĞÍ
-    I32             attack;             // ¹¥»÷
-    I32             force;              // ±øÁ¦
-    I32             blast;              // ±©»÷
-    I32             accuracy;           // ¾«×¼
+    String          name;               // æ€ªç‰©åç§°
+    String          index;              // æ€ªç‰©ç¼–å·
+    String          category;           // å…µç§ç±»å‹ 
+    I32             type;               // æ€ªç‰©ç±»å‹
+    I32             attack;             // æ”»å‡»
+    I32             force;              // å…µåŠ›
+    I32             blast;              // æš´å‡»
+    I32             accuracy;           // ç²¾å‡†
 
-    vector<tagDropThing> drop_things;   // µôÂä
+    vector<tagDropThing> drop_things;   // æ‰è½
 };
 
 //
-// ÏàµÈĞÔÅĞ¶Ï
+// ç›¸ç­‰æ€§åˆ¤æ–­
 //
 inline bool operator == (const tagDropThing& lhs, const tagDropThing& rhs)
 {
@@ -52,16 +52,16 @@ inline bool operator == (const tagMonster& lhs, const tagMonster& rhs)
         && lhs.accuracy == rhs.accuracy);
 }
 
-// ËùÓĞµÄ¾ü¹Ù£¬keyÎª±àºÅ
+// æ‰€æœ‰çš„å†›å®˜ï¼Œkeyä¸ºç¼–å·
 typedef std::map<String, tagMonster>     MonsterList;
 
 class MonsterListSetup : public atom::CSingleton<MonsterListSetup>
 {
 public:
-    // ´Ó¶ş½øÖÆÎÄ¼şÖĞ¼ÓÔØËùÓĞµÄ¾ü¹Ù£¬·µ»Øfalse±íÊ¾
+    // ä»äºŒè¿›åˆ¶æ–‡ä»¶ä¸­åŠ è½½æ‰€æœ‰çš„å†›å®˜ï¼Œè¿”å›falseè¡¨ç¤º
     bool    Load(const String& path);
 
-    // ¸ù¾İ±àºÅµÃµ½Ä³¸ö¾ü¹ÙµÄÅäÖÃ,·µ»Ønullptr±íÊ¾Ã»ÓĞ´Ë±àºÅµÄ¾ü¹Ù
+    // æ ¹æ®ç¼–å·å¾—åˆ°æŸä¸ªå†›å®˜çš„é…ç½®,è¿”å›nullptrè¡¨ç¤ºæ²¡æœ‰æ­¤ç¼–å·çš„å†›å®˜
     const tagMonster*   GetMonster(const String& index) const;
 
 private:

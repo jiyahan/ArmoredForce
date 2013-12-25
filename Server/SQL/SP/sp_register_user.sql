@@ -2,7 +2,7 @@ DELIMITER $$
 
 
 /*
- * ½ÇÉ«×¢²á
+ * è§’è‰²æ³¨å†Œ
  */
 USE account_db $$
 DROP PROCEDURE IF EXISTS `account_db`.`sp_register_user` $$
@@ -16,7 +16,7 @@ BEGIN
     DECLARE user_count INT DEFAULT 0;
     SET user_count = (SELECT COUNT(*) FROM account_info WHERE account=name);
     IF user_count > 0 THEN
-        SELECT 1 AS result;     /* ½ÇÉ«ÒÑ´æÔÚ */
+        SELECT 1 AS result;     /* è§’è‰²å·²å­˜åœ¨ */
     END IF;
 
     INSERT INTO account_info(reg_type, account, password, diamonds)

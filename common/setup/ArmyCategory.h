@@ -9,11 +9,11 @@
 namespace setup {
 
 //
-// ±øÖÖ½á¹¹¶¨Òå
+// å…µç§ç»“æ„å®šä¹‰
 //
 struct tagArmyCategory
 {
-    // ±øÖÖ·ÖÎª£º¹¥»÷£¬·ÀÓù£¬¸¨Öú
+    // å…µç§åˆ†ä¸ºï¼šæ”»å‡»ï¼Œé˜²å¾¡ï¼Œè¾…åŠ©
     enum ArmyType 
     {
         ARMY_ATK = 1, 
@@ -21,19 +21,19 @@ struct tagArmyCategory
         ARMY_ASSIST = 3
     }; 
 
-    String      name;           // Ãû³Æ
-    ArmyType    type;           // ÀàĞÍ
-    String      picture_id;     // ±øÖÖÍ¼Æ¬
-    String      animation_id;   // ¶¯»­±àºÅ
-    String      general_skill;  // ÆÕÍ¨¼¼ÄÜ
-    String      active_skill;   // Ö÷¶¯¼¼ÄÜ
-    String      passive_skill;  // ±»¶¯¼¼ÄÜ
-    String      intro;          // ±øÖÖ½éÉÜ
-    String      skill_desc;     // Ö÷¶¯¼¼ÄÜÃèÊö
+    String      name;           // åç§°
+    ArmyType    type;           // ç±»å‹
+    String      picture_id;     // å…µç§å›¾ç‰‡
+    String      animation_id;   // åŠ¨ç”»ç¼–å·
+    String      general_skill;  // æ™®é€šæŠ€èƒ½
+    String      active_skill;   // ä¸»åŠ¨æŠ€èƒ½
+    String      passive_skill;  // è¢«åŠ¨æŠ€èƒ½
+    String      intro;          // å…µç§ä»‹ç»
+    String      skill_desc;     // ä¸»åŠ¨æŠ€èƒ½æè¿°
 };
 
 //
-// ÏàµÈĞÔÅĞ¶Ï
+// ç›¸ç­‰æ€§åˆ¤æ–­
 //
 inline bool operator == (const tagArmyCategory& lhs, const tagArmyCategory& rhs)
 {
@@ -48,21 +48,21 @@ inline bool operator == (const tagArmyCategory& lhs, const tagArmyCategory& rhs)
         && lhs.skill_desc == rhs.skill_desc);
 }
 
-// ËùÓĞ±øÖÖÀàĞÍ¶¨Òå
+// æ‰€æœ‰å…µç§ç±»å‹å®šä¹‰
 typedef std::map<String, tagArmyCategory>     ArmyCategoryList;
 
 
 //////////////////////////////////////////////////////////////////////////
 //
-// ±øÖÖÀàĞÍ¹ÜÀí
+// å…µç§ç±»å‹ç®¡ç†
 //
 class ArmyCategorySetup : public atom::CSingleton<ArmyCategorySetup>
 {
 public:
-    // ´Ó¶ş½øÖÆÎÄ¼şÖĞ¶ÁÈ¡±øÖÖÅäÖÃ
+    // ä»äºŒè¿›åˆ¶æ–‡ä»¶ä¸­è¯»å–å…µç§é…ç½®
     bool    Load(const String& path);
 
-    // ¸ù¾İÃû³Æ²éÕÒ±øÖÖ
+    // æ ¹æ®åç§°æŸ¥æ‰¾å…µç§
     const tagArmyCategory*  GetCategory(const String& name) const;
 
 private:
@@ -72,7 +72,7 @@ private:
 } // namespace setup
 
 
-// ĞòÁĞ»¯Ö§³Ö
+// åºåˆ—åŒ–æ”¯æŒ
 template<typename Archive>
 inline void Serialize(Archive& archive, setup::tagArmyCategory& value, bool isSave)
 {

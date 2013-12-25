@@ -9,7 +9,7 @@
 using namespace std;
 namespace fs = std::tr2::sys;
 
-// ³õÊ¼»¯ÈÕÖ¾
+// åˆå§‹åŒ–æ—¥å¿—
 void InitLogging(int argc, const char* argv[])
 {
     fs::path dir("log");
@@ -18,7 +18,7 @@ void InitLogging(int argc, const char* argv[])
         fs::create_directory(dir);
     }
 
-    // ÉèÖÃÈÕÖ¾Â·¾¶
+    // è®¾ç½®æ—¥å¿—è·¯å¾„
     google::InitGoogleLogging(argv[0]);
 
     FLAGS_log_dir = dir.string();
@@ -26,24 +26,24 @@ void InitLogging(int argc, const char* argv[])
 }
 
 
-// Ö÷Èë¿Ú
+// ä¸»å…¥å£
 int main(int argc, const char* argv[])
 {
     try
     {        
-        // ³õÊ¼»¯ÈÕÖ¾ÅäÖÃ
+        // åˆå§‹åŒ–æ—¥å¿—é…ç½®
         InitLogging(argc, argv);
 
-        // ¶ÁÈ¡»ù´¡ÅäÖÃ
+        // è¯»å–åŸºç¡€é…ç½®
         AppConfig cfg = LoadAppConfig("center.config.xml");
 
-        // ³õÊ¼»¯RPC¿ò¼Ü
+        // åˆå§‹åŒ–RPCæ¡†æ¶
         RCF::RcfInitDeinit rcfInit;
 
-        // ³õÊ¼»¯atom
+        // åˆå§‹åŒ–atom
         AtomAutoInit atomInit(cfg.pool_size, cfg.thread_num);
 
-        // ÔËĞĞ·şÎñÆ÷
+        // è¿è¡ŒæœåŠ¡å™¨
         CenterServer& theApp = CenterServer::GetInstance();
         if (theApp.Init(cfg))
         {

@@ -3,7 +3,7 @@
 #include "../Utility/Markup.h"
 
 
-// ¶ÁÈ¡ÅäÖÃĞÅÏ¢
+// è¯»å–é…ç½®ä¿¡æ¯
 AppConfig    LoadAppConfig(const std::string& path)
 {
     AppConfig cfg = {};
@@ -11,7 +11,7 @@ AppConfig    LoadAppConfig(const std::string& path)
     CHECK(xml.Load(path)) << xml.GetError() << path;
     CHECK(xml.FindElem("config")) << "<config> not found.";
     
-    // Êı¾İ¿âÅäÖÃ
+    // æ•°æ®åº“é…ç½®
     xml.IntoElem();
     if (xml.FindElem("database"))
     {
@@ -34,7 +34,7 @@ AppConfig    LoadAppConfig(const std::string& path)
         cfg.max_idle_time = std::stoi(xml.GetData());
         xml.OutOfElem();
     }
-    // RPC·şÎñÆ÷ÅäÖÃ
+    // RPCæœåŠ¡å™¨é…ç½®
 	xml.ResetMainPos();
     if (xml.FindElem("server"))
     {

@@ -7,106 +7,106 @@
 using namespace atom;
 
 
-//¸ñ×ÓÊı
+//æ ¼å­æ•°
 #define GRID_AMOUNT 6
 
-//½ÇÉ«µÜ×Ó»ù±¾Êı¾İ
+//è§’è‰²å¼Ÿå­åŸºæœ¬æ•°æ®
 struct tagBattleRoleOfficer
 {
-	//Ãû×Ö
+	//åå­—
 	U32 id;
-	//µÈ¼¶
+	//ç­‰çº§
 	U08 level;
-	//Î»ÖÃ
+	//ä½ç½®
 	U32 pos;
 	//hp
 	U32 hp;
 };
 
-//Õ½¶·½á¹û
+//æˆ˜æ–—ç»“æœ
 struct tagBattleResult
 {
-	//0Ê¤Àû1Ê§°Ü2Æ½¾Ö
+	//0èƒœåˆ©1å¤±è´¥2å¹³å±€
 	U08 result;
-	//¹¥·½µôÑª
+	//æ”»æ–¹æ‰è¡€
 	U32	attackerLoseHP;
-	//ÊØ·½µôÑª
+	//å®ˆæ–¹æ‰è¡€
 	U32 defenderLoseHP;
-	//ÆÀ·Ö
+	//è¯„åˆ†
 	U08	score;
 };
 
-//Õ½¶·½±Àø
+//æˆ˜æ–—å¥–åŠ±
 struct tagBattlePrize
 {
-	//½±ÀøÀàĞÍ
+	//å¥–åŠ±ç±»å‹
 	U08 type;
-	//ÀàĞÍ±àºÅ
+	//ç±»å‹ç¼–å·
 	U32	typeId;
-	//ÀàĞÍÊıÁ¿
+	//ç±»å‹æ•°é‡
 	U32	typeNumber;
 };
 
-//±»¹¥»÷Ä¿±êÊı¾İ
+//è¢«æ”»å‡»ç›®æ ‡æ•°æ®
 struct tagBattleObject
 {
-	//±»¹¥»÷Î»ÖÃID
+	//è¢«æ”»å‡»ä½ç½®ID
 	U08 pos;
-	//ÉËº¦Öµ
+	//ä¼¤å®³å€¼
 	U32 loseHP;
-	//Ä¿±êµÜ×ÓÊ£Óàhp
+	//ç›®æ ‡å¼Ÿå­å‰©ä½™hp
 	U32 remainHP;
 };
 
-//Õ½¶·¹ı³Ì
+//æˆ˜æ–—è¿‡ç¨‹
 struct tagBattleStep
 {
-	//·¢¶¯·½1×ó2ÓÒ
+	//å‘åŠ¨æ–¹1å·¦2å³
 	U08 attacker;
-	//Î»ÖÃ±àºÅ
+	//ä½ç½®ç¼–å·
 	U08 pos;
-	//¼¼ÄÜ±àºÅ
+	//æŠ€èƒ½ç¼–å·
 	U32	skill;
-	//ÊÇ·ñ±©»÷0·ñ1ÊÇ
+	//æ˜¯å¦æš´å‡»0å¦1æ˜¯
 	U08	crit;
-	//±»ÉËº¦µÜ×Ó¸öÊı
+	//è¢«ä¼¤å®³å¼Ÿå­ä¸ªæ•°
 	vector<tagBattleObject> objs;
 };
 
-//Õ½¶·»ØºÏ
+//æˆ˜æ–—å›åˆ
 struct tagBattleRound
 {
-	//Õ½¶·¹ı³ÌÁĞ±í
+	//æˆ˜æ–—è¿‡ç¨‹åˆ—è¡¨
 	vector<tagBattleStep> steps;
 };
 
-//½ÇÉ«»ù±¾Êı¾İ
+//è§’è‰²åŸºæœ¬æ•°æ®
 struct tagBattleRole
 {
-	//Ãû×Ö
-	a_string name;
-	//µÈ¼¶
+	//åå­—
+	String name;
+	//ç­‰çº§
 	U08 level;
 	//hp
 	U32 hp;
-	//Í·Ïñ
+	//å¤´åƒ
 	U32 pic;
-	//½ÇÉ«µÜ×ÓÁĞ±í
+	//è§’è‰²å¼Ÿå­åˆ—è¡¨
 	vector<tagBattleRoleOfficer> officers;
 };
 
-//Õ½¶·Êı¾İ
+//æˆ˜æ–—æ•°æ®
 struct tagBattle
 {
-	//¹¥»÷·½
+	//æ”»å‡»æ–¹
 	tagBattleRole attacker;
-	//·ÀÊØ·½
+	//é˜²å®ˆæ–¹
 	tagBattleRole defender;
-	//½á¹û 
+	//ç»“æœ 
 	tagBattleResult result;
-	//½±Àø
+	//å¥–åŠ±
 	vector<tagBattlePrize> prize;
-	//¹ı³Ì
+	//è¿‡ç¨‹
 	vector<tagBattleRound> rounds;
 };
 

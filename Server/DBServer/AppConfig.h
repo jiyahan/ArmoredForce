@@ -7,17 +7,17 @@
 
 struct AppConfig
 {
-    std::string     mysql_host;             // Êı¾İ¿âIP
-    int32_t         mysql_port;             // Êı¾İ¿â¶Ë¿Ú
-    std::string     mysql_user;             // Êı¾İ¿âÓÃ»§Ãû
-    std::string     mysql_pwd;              // µÇÂ¼ÃÜÂë
-    std::string     mysql_default;          // Ä¬ÈÏschema
-    std::string     mysql_charset;          // ´«Êä±àÂë
-    int32_t         connection_pool_size;   // ×î´ó²¢·¢Á¬½ÓÊı
-    int32_t         max_idle_time;          // Á¬½Ó¿ÕÏĞÊ±¼ä
+    std::string     mysql_host;             // æ•°æ®åº“IP
+    int32_t         mysql_port;             // æ•°æ®åº“ç«¯å£
+    std::string     mysql_user;             // æ•°æ®åº“ç”¨æˆ·å
+    std::string     mysql_pwd;              // ç™»å½•å¯†ç 
+    std::string     mysql_default;          // é»˜è®¤schema
+    std::string     mysql_charset;          // ä¼ è¾“ç¼–ç 
+    int32_t         connection_pool_size;   // æœ€å¤§å¹¶å‘è¿æ¥æ•°
+    int32_t         max_idle_time;          // è¿æ¥ç©ºé—²æ—¶é—´
 
-    std::string     rpc_host;           // ¼àÌıµÄIP
-    int32_t         rpc_port;           // ¼àÌıµÄ¶Ë¿Ú
+    std::string     rpc_host;           // ç›‘å¬çš„IP
+    int32_t         rpc_port;           // ç›‘å¬çš„ç«¯å£
 };
 
 

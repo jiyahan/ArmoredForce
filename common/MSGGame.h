@@ -9,7 +9,7 @@ using namespace std;
 using namespace atom;
 
 
-//账号验证
+//璐﹀彿楠岃瘉
 struct MSGAccountAuthorize
 {
 	static const NOVA_MESSAGE_ID msgId=MID_ACCOUNT_AUTHORIZE_REQUEST;
@@ -26,32 +26,32 @@ struct MSGAccountAuthorize
 struct MSGAccountAuthorizeResponse
 {
 	static const NOVA_MESSAGE_ID msgId=MID_ACCOUNT_AUTHORIZE_RESPOND;
-	//0成功1失败
+	//0鎴愬姛1澶辫触
 	bool result;
-	//玩家唯一ID
+	//鐜╁鍞竴ID
 	U64	roleId;
-	//玩家数据
+	//鐜╁鏁版嵁
 	CMemory data;
 	
 };
 
-//战斗pve请求
+//鎴樻枟pve璇锋眰
 struct MSGBattleCombat
 {
 	static const NOVA_MESSAGE_ID msgId=MID_CHARACTER_INSTANCE_COMBAT_REQUEST;	
-	//目标位置
+	//鐩爣浣嶇疆
 	U08 mapId;
-	//目标相对位置
+	//鐩爣鐩稿浣嶇疆
 	U08 posId;
 };
 
-//战斗pve请求返回
+//鎴樻枟pve璇锋眰杩斿洖
 struct MSGBattleCombatResponse
 {
 	static const NOVA_MESSAGE_ID msgId=MID_CHARACTER_INSTANCE_COMBAT_RESPOND;
-	//0成功
+	//0鎴愬姛
 	bool result;
-	//战斗数据
+	//鎴樻枟鏁版嵁
 	CMemory data;
 };
 

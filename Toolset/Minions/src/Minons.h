@@ -26,12 +26,12 @@ public:
     bool    ResetConnection(const std::string& host, U16 port);
 
 private:
-    // ´¦ÀíÏûÏ¢
+    // å¤„ç†æ¶ˆæ¯
     void    ProcessMessage();
     void    RegisterMessageHandler();
 
 private:
     SocketClient    client_;
 
-    HandlerMap  handler_map_; //  ËùÓĞ»Øµ÷º¯Êı
+    HandlerMap  handler_map_; //  æ‰€æœ‰å›è°ƒå‡½æ•°
 };

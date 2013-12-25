@@ -8,19 +8,19 @@
 
 namespace setup {
 
-// Ê¤Àûºó»ñµÃ½±ÀøÅäÖÃ
+// èƒœåˆ©åè·å¾—å¥–åŠ±é…ç½®
 struct tagPrize
 {
-    String     name;       // ½±ÀøÎïÆ·Ãû³Æ
-    String     index;      // ½±ÀøÎïÆ·±àºÅ
-    I32        count;      // ½±ÀøÎïÆ·ÊıÁ¿
+    String     name;       // å¥–åŠ±ç‰©å“åç§°
+    String     index;      // å¥–åŠ±ç‰©å“ç¼–å·
+    I32        count;      // å¥–åŠ±ç‰©å“æ•°é‡
 };
 
 
-// Õ½¶·ÖĞµÄÈı¸ö½×¶ÎÅäÖÃ
+// æˆ˜æ–—ä¸­çš„ä¸‰ä¸ªé˜¶æ®µé…ç½®
 struct tagRegionStage
 {
-    // 6¸öÎ»ÖÃµÄ¿¨Æ¬
+    // 6ä¸ªä½ç½®çš„å¡ç‰‡
     String   pos_1;
     String   pos_2;
     String   pos_3;
@@ -31,21 +31,21 @@ struct tagRegionStage
     std::vector<tagPrize>    prize;
 };
 
-// µØÍ¼ÅäÖÃ
+// åœ°å›¾é…ç½®
 struct tagRegion
 {
-    String      name;       // Ãû³Æ
-    String      index;      // ±àºÅ
+    String      name;       // åç§°
+    String      index;      // ç¼–å·
     I32         type;
-    String      picture;    // ±³¾°Í¼Æ¬
+    String      picture;    // èƒŒæ™¯å›¾ç‰‡
 
-    // Èı¸ö½×¶Î
+    // ä¸‰ä¸ªé˜¶æ®µ
     enum {MAX_STAGE = 3};
     std::array<tagRegionStage, MAX_STAGE>  stages;
 };
 
 //
-// ÏàµÈĞÔÅĞ¶Ï
+// ç›¸ç­‰æ€§åˆ¤æ–­
 //
 inline bool operator == (const setup::tagPrize& lhs, const setup::tagPrize& rhs)
 {
@@ -78,15 +78,15 @@ typedef std::map<String, tagRegion>     RegionList;
 
 //////////////////////////////////////////////////////////////////////////
 //
-// ËùÓĞµØÍ¼ÅäÖÃ
+// æ‰€æœ‰åœ°å›¾é…ç½®
 //
 class RegionListSetup : public atom::CSingleton<RegionListSetup>
 {
 public:
-    // ´Ó¶ş½øÖÆÎÄ¼şÖĞ¼ÓÔØµØÍ¼
+    // ä»äºŒè¿›åˆ¶æ–‡ä»¶ä¸­åŠ è½½åœ°å›¾
     bool    Load(const String& path);
 
-    // ¸ù¾İÃû³Æ²éÕÒµØÍ¼
+    // æ ¹æ®åç§°æŸ¥æ‰¾åœ°å›¾
     const tagRegion*  GetRegion(const String& name) const;
 
 private:

@@ -23,7 +23,7 @@ SocketServer::~SocketServer(void)
 
 bool SocketServer::Start(const string& host, U16 port)
 {
-	//³õÊ¼»¯
+	//åˆå§‹åŒ–
 	CObjectPtr phase = &nest;
 	CObjectPtr space = CInstanceUtility::ObtainInstance(
 		CConnectionScheduler::GetInstance()->GetEventSpace() );
@@ -88,7 +88,7 @@ void SocketServer::GetSocketMessage(CMessageQueueControllerSetBind& messages)
 }
 
 
-//·¢ËÍÏûÏ¢
+//å‘é€æ¶ˆæ¯
 void SocketServer::Send(U64 connector, CMessage& msg)
 {
 	CConnectionScheduler::GetInstance()->Send( connector, &msg );

@@ -5,8 +5,8 @@
 
 namespace setup {
 
-// 从二进制文件读取数据结构
-// 使用方式:
+// 浠庝簩杩涘埗鏂囦欢璇诲彇鏁版嵁缁撴瀯
+// 浣跨敤鏂瑰紡:
 //      auto region = LoadBinaryFile<RegionMap>(path); 
 //      auto category = LoadBinaryFile<ArmyCategoryMap>(path);
 //      auto officer = LoadBinaryFile<OfficerMap>(path);

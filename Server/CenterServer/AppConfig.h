@@ -7,11 +7,11 @@
 
 struct AppConfig
 {
-    std::string     rpc_host;        // ¼àÌıµÄIP
-    int32_t         rpc_port;        // ¼àÌıµÄ¶Ë¿Ú
+    std::string     rpc_host;        // ç›‘å¬çš„IP
+    int32_t         rpc_port;        // ç›‘å¬çš„ç«¯å£
 
-    std::string     rpc_db_host;      // DBServerµØÖ·
-    int32_t         rpc_db_port;      // DBServerµÄ¶Ë¿Ú
+    std::string     rpc_db_host;      // DBServeråœ°å€
+    int32_t         rpc_db_port;      // DBServerçš„ç«¯å£
 
     int32_t         pool_size;
     int32_t         thread_num;
