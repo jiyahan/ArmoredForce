@@ -44,6 +44,35 @@ struct tagRegion
     std::array<tagRegionStage, MAX_STAGE>  stages;
 };
 
+//
+// œ‡µ»–‘≈–∂œ
+//
+inline bool operator == (const setup::tagPrize& lhs, const setup::tagPrize& rhs)
+{
+    return (lhs.name == rhs.name 
+        && lhs.index == rhs.index
+        && lhs.count == rhs.count);
+}
+
+inline bool operator == (const setup::tagRegionStage& lhs, const setup::tagRegionStage& rhs)
+{
+    return (lhs.pos_1 == rhs.pos_1
+        && lhs.pos_2 == rhs.pos_2
+        && lhs.pos_3 == rhs.pos_3
+        && lhs.pos_4 == rhs.pos_4
+        && lhs.pos_5 == rhs.pos_5
+        && lhs.pos_6 == rhs.pos_6
+        && lhs.prize == rhs.prize);
+}
+
+inline bool operator == (const setup::tagRegion& lhs, const setup::tagRegion& rhs)
+{
+    return (lhs.name == rhs.name
+        && lhs.index == rhs.index
+        && lhs.type == rhs.type
+        && lhs.picture == rhs.picture
+        && lhs.stages == rhs.stages);
+}
 
 typedef std::map<String, tagRegion>     RegionList;
 
@@ -96,11 +125,14 @@ inline void Serialize(Archive& archive, setup::tagRegion& value, bool isSave)
     UNREFERENCED_PARAMETER(isSave);
     archive.Bind( value.name );
     archive.Bind( value.index );
+    archive.Bind( value.type );
     archive.Bind( value.picture );
     for (auto& stage : value.stages)
     {
         Serialize(archive, stage, isSave);
     }
 }
+
+
 
 #endif // COMMON_SETUP_REGIONLIST_H

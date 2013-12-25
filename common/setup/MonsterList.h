@@ -30,6 +30,27 @@ struct tagMonster
     vector<tagDropThing> drop_things;   // 掉落
 };
 
+//
+// 相等性判断
+//
+inline bool operator == (const tagDropThing& lhs, const tagDropThing& rhs)
+{
+    return (lhs.index == rhs.index
+        && lhs.num == rhs.num
+        && lhs.rate == rhs.rate);
+}
+
+inline bool operator == (const tagMonster& lhs, const tagMonster& rhs)
+{
+    return (lhs.name == rhs.name
+        && lhs.index == rhs.index
+        && lhs.category == rhs.category
+        && lhs.type == rhs.type
+        && lhs.attack == rhs.attack
+        && lhs.force == rhs.force
+        && lhs.blast == rhs.blast
+        && lhs.accuracy == rhs.accuracy);
+}
 
 // 所有的军官，key为编号
 typedef std::map<String, tagMonster>     MonsterList;

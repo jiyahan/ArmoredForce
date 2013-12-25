@@ -32,6 +32,22 @@ struct tagArmyCategory
     String      skill_desc;     // 主动技能描述
 };
 
+//
+// 相等性判断
+//
+inline bool operator == (const tagArmyCategory& lhs, const tagArmyCategory& rhs)
+{
+    return (lhs.name == rhs.name
+        && lhs.type == rhs.type
+        && lhs.picture_id == rhs.picture_id
+        && lhs.animation_id == rhs.animation_id
+        && lhs.general_skill == rhs.general_skill
+        && lhs.active_skill == rhs.active_skill
+        && lhs.passive_skill == rhs.passive_skill
+        && lhs.intro == rhs.intro
+        && lhs.skill_desc == rhs.skill_desc);
+}
+
 // 所有兵种类型定义
 typedef std::map<String, tagArmyCategory>     ArmyCategoryList;
 

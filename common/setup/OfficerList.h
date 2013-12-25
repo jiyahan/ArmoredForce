@@ -28,7 +28,6 @@ struct tagOfficer
     Quality         quality;            // 品质
     I32             command_force;      // 指挥力
     I32             leadership;         // 领导力
-    I32             base_hp;            // 基础血量
     I32             base_atk;           // 基础攻击
     I32             atk_upgrade;        // 攻击成长
     I32             base_force;         // 基础兵力
@@ -39,6 +38,28 @@ struct tagOfficer
     String          picture_small;      // 小图片
     String          intro;              // 说明文字
 };
+
+//
+// 相等性判断
+//
+inline bool operator == (const tagOfficer& lhs, const tagOfficer& rhs)
+{
+    return (lhs.name == rhs.name 
+        && lhs.index == rhs.index
+        && lhs.category == rhs.category
+        && lhs.quality == rhs.quality
+        && lhs.command_force == rhs.command_force
+        && lhs.leadership == rhs.leadership
+        && lhs.base_atk == rhs.base_atk
+        && lhs.atk_upgrade == rhs.atk_upgrade
+        && lhs.base_force == rhs.base_force
+        && lhs.force_upgrade == rhs.force_upgrade
+        && lhs.max_level == rhs.max_level
+        && lhs.price == rhs.price
+        && lhs.picture_large == rhs.picture_large
+        && lhs.picture_small == rhs.picture_small
+        && lhs.intro == rhs.intro);
+}
 
 
 // 所有的军官，key为编号
@@ -69,7 +90,7 @@ inline void Serialize(Archive& archive, setup::tagOfficer& value, bool isSave)
     archive.Bind( value.category );
     archive.Bind( (I32&)value.quality );
     archive.Bind( value.command_force );
-    archive.Bind( value.base_hp );
+    archive.Bind( value.leadership );
     archive.Bind( value.base_atk );
     archive.Bind( value.atk_upgrade );
     archive.Bind( value.base_force );

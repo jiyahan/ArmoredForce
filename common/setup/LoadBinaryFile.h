@@ -14,7 +14,7 @@ template <typename T>
 T   LoadBinaryFile(const String& path)
 {
     using namespace atom;
-    T value;
+    T value = T();
     CMemory data = CFile::LoadFile(path.c_str());
     if (data.GetLength() > 0)
     {
