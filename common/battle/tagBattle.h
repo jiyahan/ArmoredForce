@@ -7,8 +7,7 @@
 using namespace atom;
 
 
-//格子数
-#define GRID_AMOUNT 6
+
 
 //角色弟子基本数据
 struct tagBattleRoleOfficer

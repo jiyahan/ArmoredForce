@@ -74,6 +74,9 @@ public:
     // 根据编号得到某个军官的配置
     const tagOfficer*   GetOfficer(const a_string& index) const;
 
+    // 获得所有军官列表
+    const OfficerList&  GetOfficerList() const {return officer_list_;}
+
 private:
     OfficerList      officer_list_;
 };

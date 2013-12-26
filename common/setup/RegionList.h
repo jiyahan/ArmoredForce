@@ -20,14 +20,10 @@ struct tagPrize
 // 战斗中的三个阶段配置
 struct tagRegionStage
 {
-    // 6个位置的卡片
-    a_string   pos_1;
-    a_string   pos_2;
-    a_string   pos_3;
-    a_string   pos_4;
-    a_string   pos_5;
-    a_string   pos_6;
+    // 6个怪物
+    std::array<a_string, GRID_AMOUNT>  monsters;
 
+    // 奖励
     std::vector<tagPrize>    prize;
 };
 
@@ -56,12 +52,7 @@ inline bool operator == (const setup::tagPrize& lhs, const setup::tagPrize& rhs)
 
 inline bool operator == (const setup::tagRegionStage& lhs, const setup::tagRegionStage& rhs)
 {
-    return (lhs.pos_1 == rhs.pos_1
-        && lhs.pos_2 == rhs.pos_2
-        && lhs.pos_3 == rhs.pos_3
-        && lhs.pos_4 == rhs.pos_4
-        && lhs.pos_5 == rhs.pos_5
-        && lhs.pos_6 == rhs.pos_6
+    return (lhs.monsters == rhs.monsters
         && lhs.prize == rhs.prize);
 }
 
@@ -109,12 +100,10 @@ template<typename Archive>
 inline void Serialize(Archive& archive, setup::tagRegionStage& value, bool isSave)
 {
     UNREFERENCED_PARAMETER(isSave);
-    archive.Bind( value.pos_1 );
-    archive.Bind( value.pos_2 );
-    archive.Bind( value.pos_3 );
-    archive.Bind( value.pos_4 );
-    archive.Bind( value.pos_5 );
-    archive.Bind( value.pos_6 );
+    for (auto& item : value.monsters)
+    {
+        archive.Bind( item );
+    }
     Serialize(archive, value.prize, isSave);
 }
 

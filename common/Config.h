@@ -32,4 +32,8 @@
 #define atom_allocator  std::allocator
 #endif
 
+
+//ИёзгЪ§
+#define GRID_AMOUNT 6
+
 #endif // COMMON_CONFIG_H
