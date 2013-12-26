@@ -12,7 +12,6 @@ solution "GameServer"
     targetdir "../Run/gameserver"
 	language    "C++"
 	flags       { "No64BitChecks", "StaticRuntime" }
-    uuid "8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942"
 	
 	configuration "debug"
         defines { "DEBUG" }
@@ -36,7 +35,7 @@ solution "GameServer"
 	project "GameServer"
 		kind "ConsoleApp"
         uuid "7C68D073-DD0F-C84B-BBD5-9941309F6D52"
-        buildoptions '/I"..\..\"'
+        buildoptions '/I"../../"'
 		defines 
 		{
             "__GAME_SERVER__",
@@ -73,14 +72,12 @@ solution "GameServer"
         -- 包含目录
 		includedirs 
 		{
-            "../",
             "../3rdParty/",
-            "../Server/Utility/",
             "../3rdParty/atom/",             
 			"../3rdParty/glog/src/windows/",
 			"../3rdParty/RCF/include/",
 			BOOST_DIR,
-		}        
+		}
 		
         -- 库目录
 		libdirs 

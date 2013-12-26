@@ -5,10 +5,13 @@
 #include <RCF/RCF.hpp>
 #include "AppConfig.h"
 #include "Net/SocketServer.h"
-#include "Singleton.h"
+#include "Server/Utility/Singleton.h"
+#include "Server/Utility/Random.h"
 #include "Server/RPC/ICenterRpcService.h"
-
-
+#include "common/setup/ArmyCategory.h"
+#include "common/setup/MonsterList.h"
+#include "common/setup/OfficerList.h"
+#include "common/setup/RegionList.h"
 
 
 typedef std::shared_ptr<RcfClient<ICenterRpcService>>   RpcClientPtr;
@@ -40,6 +43,8 @@ public:
 
     RpcClientPtr    GetClient() { return client_;}
 
+    Random&     GetRandGen() {return rnd_gen_;}
+
 private:
 
     // 处理网络消息
@@ -54,4 +59,6 @@ private:
     RpcClientPtr        client_;
     
     HandlerMap	        msg_handlers_;
+
+    Random              rnd_gen_;   // 随机数生成器 
 };

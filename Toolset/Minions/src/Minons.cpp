@@ -24,7 +24,7 @@ bool Minions::Init()
 {
     handler_map_ = GetHandlerMap();
 
-    if (client_.Start("127.0.0.1", 32450))
+    if (client_.Start("10.226.34.41", 32450))
     {
         MSGLoginVersionVerify verify_request;
         verify_request.major = 10;

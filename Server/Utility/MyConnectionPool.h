@@ -15,8 +15,7 @@
 
 
 class MyConnectionPool
-	: public mysqlpp::ConnectionPool, 
-	  public Singleton<MyConnectionPool>
+	: public mysqlpp::ConnectionPool
 {
 public:
     struct ConnetionConfig

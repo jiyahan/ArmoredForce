@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+    军备配置 
+    
+    name:   名字
+    id:     唯一标识
+    type:   军备类型
+    blast_attack_upgrade:   暴击成长
+    accuracy_upgrade:       精准成长
+    price:  价格
+    intro:  说明
+-->
+<weapon_list>
+   <weapon name="沙漠之鹰" 
+           id="J0001"
+           type="1"
+           blast_attack_upgrade="2"
+           accuracy_upgrade="1"
+           price="1000"
+           intro="九眼桥第一枪"
+   />
+   
+   <weapon name="M4A1卡宾枪" 
+           id="J0002"
+           type="1"
+           blast_attack="2"
+           accuracy="1"
+           price="1000"
+           intro="居家旅行，杀人必备"
+   /> 
+</weapon_list>

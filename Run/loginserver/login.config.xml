@@ -13,7 +13,7 @@
 	</database>
 	
 	<!-- loginserver监听的IP和端口 -->
-	<server host="127.0.0.1" port="32450"/>
+	<server host="10.226.34.41" port="32450"/>
 	
 	<!-- CenterServer的RPC客户端连接 -->
 	<centerserver host="127.0.0.1" port="42200" />

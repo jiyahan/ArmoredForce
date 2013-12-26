@@ -36,4 +36,7 @@
 //格子数
 #define GRID_AMOUNT 6
 
+// 最多32回合
+#define MAX_ROUND   32
+
 #endif // COMMON_CONFIG_H

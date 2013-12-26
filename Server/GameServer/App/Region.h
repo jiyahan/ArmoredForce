@@ -3,6 +3,7 @@
 #include <memory>
 #include <boost/noncopyable.hpp>
 
+
 class Region : private boost::noncopyable
 {
 public:

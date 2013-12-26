@@ -3,12 +3,9 @@
 #include <chrono>
 #include <thread>
 #include "MsgProcess.h"
-#include "ScopeGuard.h"
+#include "Server/Utility/ScopeGuard.h"
 #include "Server/Setup/LoadSetup.h"
-#include "common/setup/ArmyCategory.h"
-#include "common/setup/MonsterList.h"
-#include "common/setup/OfficerList.h"
-#include "common/setup/RegionList.h"
+
 
 using namespace std;
 
@@ -25,10 +22,14 @@ bool GameServer::Init(const AppConfig& cfg)
 {    
     config_ = cfg;
 
-    setup::ArmyCategorySetup::GetInstance()->Load("data/ArmyCategoryList.xml.bin");
-    setup::OfficerListSetup::GetInstance()->Load("data/OfficerList.xml");
-    setup::RegionListSetup::GetInstance()->Load("data/RegionList.xml");
-    setup::MonsterListSetup::GetInstance()->Load("data/MonsterList.xml");
+    setup::ArmyCategorySetup::CreateInstance();
+    setup::OfficerListSetup::CreateInstance();
+    setup::RegionListSetup::CreateInstance();
+    setup::MonsterListSetup::CreateInstance();
+    CHECK(setup::ArmyCategorySetup::GetInstance()->Load("data/ArmyCategory.xml.bin"));
+    CHECK(setup::OfficerListSetup::GetInstance()->Load("data/OfficerList.xml.bin"));
+    CHECK(setup::RegionListSetup::GetInstance()->Load("data/RegionList.xml.bin"));
+    CHECK(setup::MonsterListSetup::GetInstance()->Load("data/MonsterList.xml.bin"));
 
     // 开始网络服务器	
     CHECK(server_.Start(config_.host.c_str(),config_.port))

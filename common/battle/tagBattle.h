@@ -14,6 +14,8 @@ struct tagBattleRoleOfficer
 {
 	//名字
 	a_string id;
+    //当前攻击力
+    U32 attack;
 	//等级
 	U08 level;
 	//位置
@@ -123,7 +125,8 @@ template<class Archive>
 inline void Serialize(Archive & archive, tagBattleRoleOfficer & value, bool isSave)
 {
 	UNREFERENCED_PARAMETER(isSave);
-	archive.Bind( value.id );
+    archive.Bind( value.id );
+	archive.Bind( value.attack );
 	archive.Bind( value.level );
 	archive.Bind(value.pos);
 	archive.Bind(value.hp);

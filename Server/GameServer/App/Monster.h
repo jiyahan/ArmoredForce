@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include <memory>
-
+#include "Skill.h"
 
 class Monster;
 typedef std::shared_ptr<Monster>    MonsterPtr;
@@ -12,8 +12,9 @@ public:
     Monster();
     ~Monster();
 
-    void    Attack(OfficerPtr defender);
-    void    Defense(OfficerPtr attacker);
+    // 攻击某个
+    void    Attack(MonsterPtr defender);
+    void    Defense(SkillPtr skill);
 
 private:
 

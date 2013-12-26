@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 全局配置 -->
+<global_setup>
+   <setup action_restore_interval="" 
+          action_restore_point=""
+          quaility_white_pic=""
+          quaility_blue_pic=""
+          quality_green_pic=""
+          quality_purple_pic=""
+          quality_orange_pic=""
+          officer_training_limit=""
+          
+   />
+</global_setup>

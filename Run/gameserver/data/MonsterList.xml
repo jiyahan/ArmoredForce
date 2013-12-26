@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+    怪物(卡片)配置
+    
+    name:               怪物名字
+    index:              怪物编号
+    category:           怪物兵种    
+    attack:             攻击
+    force:              兵力
+    blast:              暴击
+    accuracy:           精准
+-->
+
+<monster_list>
+    <monster name="太太太贱" 
+             index="M10001"
+             category="小米步枪" 
+             type="1"
+             attack="60"
+             force="600"
+             blast="0" 
+             accuracy="0" >
+        <!-- 掉落道具  --> 
+        <drop_things >
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+        </drop_things>
+    </monster>
+    
+    <monster name="思密达" 
+             index="M10002"
+             category="小米步枪"
+             type="1"
+             attack="65"
+             force="800"
+             blast="6" 
+             accuracy="5" >
+        <!-- 掉落道具  --> 
+        <drop_things >
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+        </drop_things>
+    </monster>    
+    
+    <monster name="急急思密达" 
+             index="M10003"
+             category="小米步枪" 
+             type="1"
+             attack="70"
+             force="900"
+             blast="6" 
+             accuracy="5" >
+        <!-- 掉落道具  --> 
+        <drop_things >
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+        </drop_things>
+    </monster>
+    
+    <monster name="达尔文" 
+             index="M10004"
+             category="小米步枪" 
+             type="1"
+             attack="63"
+             force="900"
+             blast="0" 
+             accuracy="0" >
+        <!-- 掉落道具  --> 
+        <drop_things >
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+        </drop_things>
+    </monster>
+    
+    <monster name="莫尔伯勒公爵" 
+             index="M10005"
+             category="小米步枪" 
+             type="1"
+             attack="63"
+             force="900"
+             blast="0" 
+             accuracy="0" >
+        <!-- 掉落道具  --> 
+        <drop_things >
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+        </drop_things>
+    </monster>
+    
+    <monster name="达寇拉" 
+             index="M10006"
+             category="小米步枪" 
+             type="1"
+             attack="58"
+             force="1000"
+             blast="0" 
+             accuracy="0" >
+        <!-- 掉落道具  --> 
+        <drop_things >
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+        </drop_things>
+    </monster>
+    
+    <monster name="灰太狼" 
+             index="M10007"
+             category="小米步枪" 
+             type="1"
+             attack="40"
+             force="1500"
+             blast="0" 
+             accuracy="0" >
+        <!-- 掉落道具  --> 
+        <drop_things >
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+        </drop_things>
+    </monster>
+    
+    <monster name="乔巴" 
+             index="M10008"
+             category="小米步枪" 
+             type="1"
+             attack="80"
+             force="800"
+             blast="50" 
+             accuracy="50" >
+        <!-- 掉落道具  --> 
+        <drop_things >
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+        </drop_things>
+    </monster>
+    
+    <monster name="霍雷肖·纳尔逊" 
+             index="M10009"
+             category="小米步枪" 
+             type="1"
+             attack="86"
+             force="1100"
+             blast="50" 
+             accuracy="50" >
+        <!-- 掉落道具  --> 
+        <drop_things >
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+        </drop_things>
+    </monster>
+        
+</monster_list>

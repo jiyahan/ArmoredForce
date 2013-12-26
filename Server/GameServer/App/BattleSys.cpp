@@ -1,4 +1,5 @@
 ﻿#include "BattleSys.h"
+#include "common/battle/tagBattle.h"
 
 BattleSys::BattleSys()
 {

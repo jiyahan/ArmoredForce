@@ -12,7 +12,7 @@ struct OfficerCommon
     a_string    category;       // 兵种
     I32         id;             // 编号
     I16         level;          // 等级
-    I16         postion;        // 当前所在位置(1-6)
+    U08         postion;        // 当前所在位置(1-6)
     I32         attack;         // 攻击
     I32         hp;             // 血量(兵力)
     I32         blast;          // 暴击
@@ -20,6 +20,8 @@ struct OfficerCommon
     I32         command_force;  // 指挥力
     I32         leadership;     // 统率力
 };
+
+typedef std::vector<OfficerCommon, atom_allocator<OfficerCommon>>  OfficerCommonList ;
 
 template<class Archive>
 inline void Serialize(Archive& ar, OfficerCommon& value, bool isSave)
