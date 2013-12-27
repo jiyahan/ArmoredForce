@@ -20,7 +20,7 @@ int32_t Officer::GetAttack() const
 }
 
 // 攻击
-void Officer::Attack(OfficerPtr defender)
+void Officer::Attack(Officer& defender)
 {
 }
 

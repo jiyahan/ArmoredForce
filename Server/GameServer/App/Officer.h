@@ -19,6 +19,8 @@ public:
     int32_t     GetHp() const;
     int32_t     GetAttack() const;
 
+    bool    IsDead() const {return GetHp() > 0;}
+
     // 攻击
     void    Attack(Officer& defender);
 

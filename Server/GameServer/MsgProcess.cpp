@@ -73,7 +73,7 @@ static void HandleUserAuth(CMessage& msg)
 	cout << request.device << "\t" << request.deviceType << "\t"
         << request.account << "\t" << request.usrsign << endl;
 
-    RoleCommon role = {"高尔基", 10013, 56, 31, 103450, 2000, 200000, 530};
+    RoleCommon role = {"TomHagen", 10013, 56, 31, 103450, 2000, 200000, 530};
     auto  officer_list = GetMonsterMatrix(false);
 
     MSGAccountAuthorizeResponse response;
@@ -101,7 +101,7 @@ tagBattle InitFightRole(vector<OfficerCommon>& attacker_troop, vector<OfficerCom
              << monster.attack << "\t血量:" << monster.hp << endl;
     }
     battle.attacker.hp = atk_sum;
-    battle.attacker.name = "高尔基";
+    battle.attacker.name = "TomHagen";
     battle.attacker.level = 56;
 
     int def_sum = 0;
