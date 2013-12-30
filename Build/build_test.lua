@@ -39,7 +39,6 @@ solution "Test"
         {
             "GOOGLE_GLOG_DLL_DECL=",
             "GTEST_HAS_TR1_TUPLE=0",
-            "NOT_USE_ATOM_ALLOCATOR",
         }
         
         -- 源代码文件
@@ -47,8 +46,8 @@ solution "Test"
 		{
             "../Server/Utility/*.h",
             "../Server/Utility/*.cpp",
-			"../UnitTest/**.h",
-			"../UnitTest/**.cpp",
+			"../Server/UnitTest/**.h",
+			"../Server/UnitTest/**.cpp",
 		}
         excludes
         {
@@ -57,12 +56,13 @@ solution "Test"
         }     
 
         pchheader "stdafx.h"
-		pchsource "../UnitTest/stdafx.cpp"
+		pchsource "../Server/UnitTest/stdafx.cpp"
         
         -- 包含目录
 		includedirs 
 		{ 			
             "../Server/Utility",
+            "../3rdParty/atom",
             "../3rdParty/gtest/include",
             "../3rdParty/glog/src/windows/",   
             "../3rdParty/mysql++/lib",            
@@ -78,6 +78,7 @@ solution "Test"
 		links 
 		{
 			"libglog",
-            "libgtest",  
+            "libgtest",
+            "libatom",
 		}
         
