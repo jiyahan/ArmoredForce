@@ -70,8 +70,6 @@ private:
     ArmyCategoryList       categories_;
 };
 
-} // namespace setup
-
 
 // 序列化支持
 template<typename Archive>
@@ -88,5 +86,9 @@ inline void Serialize(Archive& archive, setup::tagArmyCategory& value, bool isSa
     archive.Bind( value.intro );
     archive.Bind( value.skill_desc );
 }
+
+} // namespace setup
+
+
 
 #endif // COMMON_SETUP_ARMYCATEGORY_H

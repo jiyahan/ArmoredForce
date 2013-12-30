@@ -93,11 +93,9 @@ private:
     RegionList       regions_;
 };
 
-} // namespace setup
-
 
 template<typename Archive>
-inline void Serialize(Archive& archive, setup::tagPrize& value, bool isSave)
+inline void Serialize(Archive& archive, tagPrize& value, bool isSave)
 {
     UNREFERENCED_PARAMETER(isSave);
     archive.Bind( value.name );
@@ -106,19 +104,19 @@ inline void Serialize(Archive& archive, setup::tagPrize& value, bool isSave)
 }
 
 template<typename Archive>
-inline void Serialize(Archive& archive, setup::tagRegionStage& value, bool isSave)
+inline void Serialize(Archive& archive, tagRegionStage& value, bool isSave)
 {
     UNREFERENCED_PARAMETER(isSave);
     for (int i = 0; i < GRID_AMOUNT; ++i)
     {
         archive.Bind( value.monsters[i] );
     }
-    Serialize(archive, value.prize, isSave);
+    archive.Bind(value.prize);    
 }
 
 
 template<typename Archive>
-inline void Serialize(Archive& archive, setup::tagRegion& value, bool isSave)
+inline void Serialize(Archive& archive, tagRegion& value, bool isSave)
 {
     UNREFERENCED_PARAMETER(isSave);
     archive.Bind( value.name );
@@ -130,6 +128,10 @@ inline void Serialize(Archive& archive, setup::tagRegion& value, bool isSave)
         Serialize(archive, value.stages[i], isSave);
     }
 }
+
+
+} // namespace setup
+
 
 
 

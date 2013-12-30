@@ -71,7 +71,6 @@ private:
     MonsterList      monster_list_;
 };
 
-} // namespace setup
 
 template<typename Archive>
 inline void Serialize(Archive& archive, setup::tagDropThing& value, bool isSave)
@@ -97,5 +96,8 @@ inline void Serialize(Archive& archive, setup::tagMonster& value, bool isSave)
     archive.Bind( value.accuracy );
     archive.Bind( value.drop_things );
 }
+
+} // namespace setup
+
 
 #endif // COMMON_SETUP_MONSTERLIST_H

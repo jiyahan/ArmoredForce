@@ -81,8 +81,6 @@ private:
     OfficerList      officer_list_;
 };
 
-} // namespace setup
-
 
 template<typename Archive>
 inline void Serialize(Archive& archive, setup::tagOfficer& value, bool isSave)
@@ -104,5 +102,9 @@ inline void Serialize(Archive& archive, setup::tagOfficer& value, bool isSave)
     archive.Bind( value.picture_small );
     archive.Bind( value.intro );
 }
+
+} // namespace setup
+
+
 
 #endif // COMMON_SETUP_OFFICERLIST_H
