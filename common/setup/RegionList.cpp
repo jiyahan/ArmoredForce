@@ -14,12 +14,12 @@ bool    RegionListSetup::Load(const a_string& path)
 // 根据名称查找地图
 const tagRegion*  RegionListSetup::GetRegion(const a_string& name) const
 {
-    auto iter = regions_.find(name);
+    RegionList::const_iterator iter = regions_.find(name);
     if (iter != regions_.end())
     {
-        return std::addressof(iter->second);
+        return &(iter->second);
     }
-    return nullptr;
+    return NULL;
 }
 
 } // namespace setup

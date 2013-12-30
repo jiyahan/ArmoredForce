@@ -21,7 +21,7 @@ struct OfficerCommon
     I32         leadership;     // Í³ÂÊÁ¦
 };
 
-typedef std::vector<OfficerCommon, atom_allocator<OfficerCommon>>  OfficerCommonList ;
+typedef std::vector<OfficerCommon, atom_allocator<OfficerCommon> >  OfficerCommonList ;
 
 template<class Archive>
 inline void Serialize(Archive& ar, OfficerCommon& value, bool isSave)

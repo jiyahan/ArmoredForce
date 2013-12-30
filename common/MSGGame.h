@@ -3,7 +3,7 @@
 
 #include "Config.h"
 #include "MESSAGE_ID.h"
-#include "../3rdparty/atom/atom/CAtom.h"
+#include "../3rdParty/atom/atom/CAtom.h"
 
 using namespace std;
 using namespace atom;

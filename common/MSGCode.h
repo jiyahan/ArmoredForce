@@ -1,6 +1,6 @@
 #ifndef CHGAME_MSGCode_H
 #define CHGAME_MSGCode_H
-#include "..\3rdparty\atom\electron\celectron.h"
+#include "../3rdParty/atom/electron/CElectron.h"
 
 //´Ómessage½âÂë
 template <typename T>

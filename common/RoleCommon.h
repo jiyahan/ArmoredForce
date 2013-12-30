@@ -3,7 +3,7 @@
 
 #include "Config.h"
 #include "OfficerCommon.h"
-#include "../3rdparty/atom/atom/catom.h"
+#include "../3rdParty/atom/atom/catom.h"
 
 using namespace atom;
 
@@ -19,6 +19,8 @@ struct RoleCommon
     I32         action_point;   // 行动力
     I32         gold;           // 金钱
     I32         gems;           // 钻石
+    
+    
 };
 
 template<class Archive>
@@ -33,6 +35,7 @@ inline void Serialize(Archive & archive, RoleCommon & value, bool isSave)
     archive.Bind( value.action_point);
     archive.Bind( value.gold);
     archive.Bind( value.gems);
+    //archive.Bind( value.officer_list );
 }
 
 #endif

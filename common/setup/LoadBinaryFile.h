@@ -23,7 +23,11 @@ T   LoadBinaryFile(const a_string& path)
         int version = 0;
         ar >> version >> value;
     }
+#if defined(_MSC_VER) && _MSC_VER > 1600
     return std::move(value);
+#else
+    return value;
+#endif
 }
 
 } // namespace setup

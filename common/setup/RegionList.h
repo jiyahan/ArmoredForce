@@ -3,7 +3,6 @@
 
 #include "../Config.h"
 #include <map>
-#include <array>
 #include "../../3rdParty/atom/atom/CAtom.h"
 
 namespace setup {
@@ -21,7 +20,7 @@ struct tagPrize
 struct tagRegionStage
 {
     // 6¸ö¹ÖÎï
-    std::array<a_string, GRID_AMOUNT>  monsters;
+    a_string  monsters[GRID_AMOUNT];
 
     // ½±Àø
     std::vector<tagPrize>    prize;
@@ -36,8 +35,7 @@ struct tagRegion
     a_string      picture;    // ±³¾°Í¼Æ¬
 
     // Èý¸ö½×¶Î
-    enum {MAX_STAGE = 3};
-    std::array<tagRegionStage, MAX_STAGE>  stages;
+    tagRegionStage  stages[MAX_REGION_STAGE];
 };
 
 //
@@ -52,17 +50,25 @@ inline bool operator == (const setup::tagPrize& lhs, const setup::tagPrize& rhs)
 
 inline bool operator == (const setup::tagRegionStage& lhs, const setup::tagRegionStage& rhs)
 {
-    return (lhs.monsters == rhs.monsters
-        && lhs.prize == rhs.prize);
+    for (int i = 0; i < GRID_AMOUNT; ++i)
+    {
+        if (lhs.monsters[i] != rhs.monsters[i])
+            return false;
+    }
+    return lhs.prize == rhs.prize;
 }
 
 inline bool operator == (const setup::tagRegion& lhs, const setup::tagRegion& rhs)
 {
+    for (int i = 0; i < MAX_REGION_STAGE; ++i)
+    {
+        if (!(lhs.stages[i] == rhs.stages[i]))
+            return false;
+    }
     return (lhs.name == rhs.name
         && lhs.index == rhs.index
         && lhs.type == rhs.type
-        && lhs.picture == rhs.picture
-        && lhs.stages == rhs.stages);
+        && lhs.picture == rhs.picture);
 }
 
 typedef std::map<a_string, tagRegion>     RegionList;
@@ -100,9 +106,9 @@ template<typename Archive>
 inline void Serialize(Archive& archive, setup::tagRegionStage& value, bool isSave)
 {
     UNREFERENCED_PARAMETER(isSave);
-    for (auto& item : value.monsters)
+    for (int i = 0; i < GRID_AMOUNT; ++i)
     {
-        archive.Bind( item );
+        archive.Bind( value.monsters[i] );
     }
     Serialize(archive, value.prize, isSave);
 }
@@ -116,9 +122,9 @@ inline void Serialize(Archive& archive, setup::tagRegion& value, bool isSave)
     archive.Bind( value.index );
     archive.Bind( value.type );
     archive.Bind( value.picture );
-    for (auto& stage : value.stages)
+    for (int i = 0; i < MAX_REGION_STAGE; ++i)
     {
-        Serialize(archive, stage, isSave);
+        Serialize(archive, value.stages[i], isSave);
     }
 }
 

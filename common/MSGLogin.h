@@ -2,7 +2,7 @@
 #define CHGAME_MSGLogin_H
 
 #include "Config.h"
-#include "../3rdparty/atom/electron/CElectron.h"
+#include "../3rdParty/atom/electron/CElectron.h"
 #include "MESSAGE_ID.h"
 
 using namespace std;

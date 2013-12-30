@@ -33,10 +33,12 @@
 #endif
 
 
-//格子数
-#define GRID_AMOUNT 6
 
-// 最多32回合
-#define MAX_ROUND   32
+enum 
+{
+    GRID_AMOUNT = 6,        // 格子数
+    MAX_ROUND = 32,         // 最大回合数
+    MAX_REGION_STAGE = 3,   // 最大阶段
+};
 
 #endif // COMMON_CONFIG_H

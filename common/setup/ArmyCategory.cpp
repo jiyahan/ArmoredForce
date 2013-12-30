@@ -13,12 +13,12 @@ bool  ArmyCategorySetup::Load(const a_string& path)
 // 根据名称查找兵种
 const tagArmyCategory*  ArmyCategorySetup::GetCategory(const a_string& name) const
 {
-    auto iter = categories_.find(name);
+    ArmyCategoryList::const_iterator iter = categories_.find(name);
     if(iter != categories_.end())
     {
-        return std::addressof(iter->second);
+        return &(iter->second);
     }
-    return nullptr;
+    return NULL;
 }
 
 } // namespace setup

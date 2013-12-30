@@ -13,12 +13,12 @@ bool   OfficerListSetup::Load(const a_string& path)
 // 根据编号得到某个军官的配置
 const tagOfficer*   OfficerListSetup::GetOfficer(const a_string& index) const
 {   
-    auto iter = officer_list_.find(index);
+    OfficerList::const_iterator iter = officer_list_.find(index);
     if(iter != officer_list_.end())
     {
-        return std::addressof(iter->second);
+        return &(iter->second);
     }
-    return nullptr;
+    return NULL;
 }
 
 } // namespace setup

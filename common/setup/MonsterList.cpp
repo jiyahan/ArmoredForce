@@ -13,12 +13,12 @@ bool    MonsterListSetup::Load(const a_string& path)
 // 根据编号得到某个军官的配置
 const tagMonster*   MonsterListSetup::GetMonster(const a_string& index) const
 {
-    auto iter = monster_list_.find(index);
+    MonsterList::const_iterator iter = monster_list_.find(index);
     if(iter != monster_list_.end())
     {
-        return std::addressof(iter->second);
+        return &(iter->second);
     }
-    return nullptr;
+    return NULL;
 }
 
 } // namespace setup
