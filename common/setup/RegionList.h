@@ -3,7 +3,10 @@
 
 #include "../Config.h"
 #include <map>
+#include <vector>
 #include "../../3rdParty/atom/atom/CAtom.h"
+
+using atom::a_string;
 
 namespace setup {
 

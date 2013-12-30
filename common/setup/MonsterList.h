@@ -5,6 +5,9 @@
 #include <map>
 #include "../../3rdParty/atom/atom/CAtom.h"
 
+using atom::a_string;
+
+
 namespace setup {
     
 // ¹ÖÎïµôÂäµÀ¾ß
