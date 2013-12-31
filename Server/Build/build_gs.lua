@@ -9,15 +9,15 @@ local BOOST_DIR = os.getenv("BOOST_DIR")
 solution "GameServer"
     configurations { "Release", "Debug" }
     location "GameServer"
-    targetdir "../Run/gameserver"
+    targetdir "../../Run/gameserver"
     language    "C++"
-    flags       { "No64BitChecks", "StaticRuntime" }
+    flags       { "StaticRuntime" }
 
-    configuration "debug"
+    configuration "Debug"
         defines { "DEBUG" }
         flags { "Symbols" }
 
-    configuration "release"
+    configuration "Release"
         defines { "NDEBUG" }
         flags { "Optimize" }
 
@@ -35,7 +35,7 @@ solution "GameServer"
     project "GameServer"
         kind "ConsoleApp"
         uuid "7C68D073-DD0F-C84B-BBD5-9941309F6D52"
-        buildoptions '/I"../../"'
+        buildoptions '/I"../../../"'
         defines
         {
             "__GAME_SERVER__",
@@ -47,42 +47,42 @@ solution "GameServer"
         -- 源代码文件
         files
         {
-            "../common/**.h",
-            "../common/**.cpp",
+            "../../common/**.h",
+            "../../common/**.cpp",
 
-            "../Server/Utility/Markup.h",
-            "../Server/Utility/Markup.cpp",
-            "../Server/Utility/Utility.h",
-            "../Server/Utility/Utility.cpp",
+            "../Utility/Markup.h",
+            "../Utility/Markup.cpp",
+            "../Utility/Utility.h",
+            "../Utility/Utility.cpp",
 
-            "../Server/GameServer/**.h",
-            "../Server/GameServer/**.cpp",
+            "../GameServer/**.h",
+            "../GameServer/**.cpp",
 
-            "../Server/Setup/LoadSetup.h",
-            "../Server/Setup/LoadSetup.cpp",
+            "../Setup/LoadSetup.h",
+            "../Setup/LoadSetup.cpp",
 
-            "../Server/RPC/ICenterRpcService.h",
+            "../RPC/ICenterRpcService.h",
         }
 
         -- 预编译头
         pchheader "stdafx.h"
-        pchsource "../Server/GameServer/stdafx.cpp"
+        pchsource "../GameServer/stdafx.cpp"
 
         -- 包含目录
         includedirs
         {
-            "../Server/Utility",
-            "../3rdParty/",
-            "../3rdParty/atom/",
-            "../3rdParty/glog/src/windows/",
-            "../3rdParty/RCF/include/",
+            "../Utility",
+            "../../3rdParty/",
+            "../../3rdParty/atom/",
+            "../../3rdParty/glog/src/windows/",
+            "../../3rdParty/RCF/include/",
             BOOST_DIR,
         }
 
         -- 库目录
         libdirs
         {
-            "../3rdParty/libs",
+            "../../3rdParty/libs",
             BOOST_DIR .. '/stage/lib',
         }
 

@@ -6,18 +6,21 @@
 local BOOST_DIR = os.getenv("BOOST_DIR")
 
 
+--
 -- unittest和benchmark
+--
 solution "Test"
     configurations { "Release", "Debug" }
     location "Test"
+    targetdir "Test"
     language    "C++"
-    flags       { "No64BitChecks", "StaticRuntime" }
+    flags       { "StaticRuntime" }
 
-    configuration "debug"
+    configuration "Debug"
         defines { "DEBUG" }
         flags { "Symbols" }
 
-    configuration "release"
+    configuration "Release"
         defines { "NDEBUG" }
         flags { "Optimize", "Symbols" }
 
@@ -39,39 +42,41 @@ solution "Test"
         {
             "GOOGLE_GLOG_DLL_DECL=",
             "GTEST_HAS_TR1_TUPLE=0",
+            "GLOG_NO_ABBREVIATED_SEVERITIES",
+            "MYSQLPP_NO_DLL",
         }
 
         -- 源代码文件
         files
         {
-            "../Server/Utility/*.h",
-            "../Server/Utility/*.cpp",
-            "../Server/UnitTest/**.h",
-            "../Server/UnitTest/**.cpp",
+            "../Utility/*.h",
+            "../Utility/*.cpp",
+            "../UnitTest/**.h",
+            "../UnitTest/**.cpp",
         }
         excludes
         {
-            "../Server/Utility/Markup.cpp",
-            "../Server/Utility/MyConnectionPool.cpp",
+            "../Utility/Markup.cpp",
         }
 
         pchheader "stdafx.h"
-        pchsource "../Server/UnitTest/stdafx.cpp"
+        pchsource "../UnitTest/stdafx.cpp"
 
         -- 包含目录
         includedirs
         {
-            "../Server/Utility",
-            "../3rdParty/atom",
-            "../3rdParty/gtest/include",
-            "../3rdParty/glog/src/windows/",
-            "../3rdParty/mysql++/lib",
+            "../Utility",
+            "../../3rdParty/atom",
+            "../../3rdParty/gtest/include",
+            "../../3rdParty/glog/src/windows/",
+            "../../3rdParty/mysql++/lib",
+            "../../3rdParty/libmysql/include",
             BOOST_DIR,
         }
 
         libdirs
         {
-            "../3rdParty/libs",
+            "../../3rdParty/libs",
             BOOST_DIR .. '/stage/lib',
         }
 
@@ -80,5 +85,7 @@ solution "Test"
             "libglog",
             "libgtest",
             "libatom",
+            "libmysql",
+            "libmysqlpp",
         }
 

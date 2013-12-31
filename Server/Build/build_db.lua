@@ -5,19 +5,21 @@
 
 local BOOST_DIR = os.getenv("BOOST_DIR")
 
+--
 -- DBServer解决方案
+--
 solution "DBServer"
     configurations { "Release", "Debug" }
     location "DBServer"
-    targetdir "../Run/dbserver"
+    targetdir "../../Run/dbserver"
     language    "C++"
-    flags       { "No64BitChecks", "StaticRuntime" }
+    flags       { "StaticRuntime" }
 
-    configuration "debug"
+    configuration "Debug"
         defines { "DEBUG" }
         flags { "Symbols" }
 
-    configuration "release"
+    configuration "Release"
         defines { "NDEBUG" }
         flags { "Optimize", "Symbols"}
 
@@ -35,7 +37,7 @@ solution "DBServer"
     project "DBServer"
         kind "ConsoleApp"
         uuid "1EFC1D41-464B-3147-94E8-25FAD0F1E1AA"
-        buildoptions '/I"../../"'
+        buildoptions '/I"../../../"'
         defines
         {
             "__DB_SERVER__",            
@@ -48,34 +50,34 @@ solution "DBServer"
         -- 源代码文件
         files
         {
-            "../Server/DBServer/**.h",
-            "../Server/DBServer/**.cpp",
-            "../Server/Utility/**.h",
-            "../Server/Utility/**.cpp",
-            "../Server/RPC/IDBRpcService.h",
+            "../DBServer/**.h",
+            "../DBServer/**.cpp",
+            "../Utility/**.h",
+            "../Utility/**.cpp",
+            "../RPC/IDBRpcService.h",
         }
 
         -- 预编译头
         pchheader "stdafx.h"
-        pchsource "../Server/DBServer/stdafx.cpp"
+        pchsource "../DBServer/stdafx.cpp"
 
         -- 包含目录
         includedirs
         {
-            "../Server/Utility",
-            "../3rdParty/",
-            "../3rdParty/atom",
-            "../3rdParty/glog/src/windows/",
-            "../3rdParty/libmysql/include",
-            "../3rdParty/mysql++/lib",
-            "../3rdParty/RCF/include",
+            "../Utility",
+            "../../3rdParty/",
+            "../../3rdParty/atom",
+            "../../3rdParty/glog/src/windows/",
+            "../../3rdParty/libmysql/include",
+            "../../3rdParty/mysql++/lib",
+            "../../3rdParty/RCF/include",
             BOOST_DIR,
         }
 
         -- 库目录
         libdirs
         {
-            "../3rdParty/libs",
+            "../../3rdParty/libs",
             BOOST_DIR .. '/stage/lib',
         }
 
