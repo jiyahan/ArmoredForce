@@ -1,23 +1,22 @@
-#include "StdAfx.h"
 #include "MessageProcess.h"
 #include "Minons.h"
 #include <iostream>
-#include <numeric>
-#include "../../common/MESSAGE_ID.h"
-#include "../../common/MSGCode.h"
-#include "../../common/MSGGame.h"
-#include "../../common/MSGLogin.h"
-#include "../../common/RoleCommon.h"
-#include "../../common/update/tagGameServer.h"
-#include "../../common/battle/tagBattle.h"
+#include "common/MESSAGE_ID.h"
+#include "common/MSGCode.h"
+#include "common/MSGGame.h"
+#include "common/MSGLogin.h"
+#include "common/RoleCommon.h"
+#include "common/update/tagGameServer.h"
+#include "common/battle/tagBattle.h"
 
 using namespace std;
-
+using namespace atom;
+using namespace electron;
 
 Minions&    gMinionMgr = Minions::GetInstance();
 
 
-// ç™»å½•è¿”å›ž
+// µÇÂ¼·µ»Ø
 void HandleLoginResponse(CMessage& msg)
 {
     MSGLoginLoginResponse response;
@@ -26,7 +25,7 @@ void HandleLoginResponse(CMessage& msg)
         << " signature: " << response.sign << endl;
 }
 
-// éªŒè¯è¿”å›ž
+// ÑéÖ¤·µ»Ø
 void HandleVerifyResponse(CMessage& msg)
 {
     MSGLoginVersionVerifyResponse response;

@@ -3,35 +3,40 @@
 #include <memory>
 #include <unordered_map>
 #include "Net/SocketClient.h"
-#include "../../Server/Utility/Singleton.h"
+#include "Server/Utility/Singleton.h"
+#include "Config.h"
+
+typedef std::function<void (CMessage&)>         HandlerType;
+typedef std::unordered_map<I32, HandlerType>    HandlerMap;
 
 
-typedef std::function<void (CMessage&)>   HandlerType;
-typedef std::unordered_map<int32_t, HandlerType> HandlerMap;
 
+// Ò»¸ö»úÆ÷ÈË
 class Minions : public Singleton<Minions>
 {
 public:
     Minions();
     ~Minions();
 
-    bool    Init();
+    // ³õÊ¼»¯
+    bool    Init(const Config& cfg);
 
     void    Release();
 
+    // Ö÷Ñ­»·
     bool    Run();
 
     SocketClient&  GetClient() {return client_;}
 
+    // ÖØÖÃÓë·şÎñÆ÷µÄÁ¬½Ó
     bool    ResetConnection(const std::string& host, U16 port);
 
 private:
-    // å¤„ç†æ¶ˆæ¯
+    // ´¦ÀíÏûÏ¢
     void    ProcessMessage();
-    void    RegisterMessageHandler();
 
 private:
+    Config          cfg_;
     SocketClient    client_;
-
-    HandlerMap  handler_map_; //  æ‰€æœ‰å›è°ƒå‡½æ•°
+    HandlerMap      handler_map_;   //  ÏûÏ¢Â·ÓÉ±í
 };

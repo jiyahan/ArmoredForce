@@ -1,11 +1,18 @@
 #pragma once
 
+#include <string>
 
-struct AppConfig
+
+// 配置结构
+struct Config
 {
-    std::string     host;           // LS鐨処P鍦板潃
-    int32_t         port;           // LS绔彛
+    std::string     host;           // LS的IP地址
+    U32             port;           // LS端口
+
+    U32             pool_size;
+    U32             thread_num;
 };
 
 
-AppConfig    LoadAppConfig(const std::string& path);
+// 读取配置
+Config    LoadAppConfig(const std::string& path);

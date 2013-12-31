@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "Minons.h"
 #include <iostream>
 #include <chrono>
@@ -10,7 +9,11 @@
 #include "MessageProcess.h"
 
 using namespace std;
+using namespace atom;
+using namespace electron;
 
+
+//////////////////////////////////////////////////////////////////////////
 
 Minions::Minions()
 {
@@ -20,20 +23,23 @@ Minions::~Minions()
 {
 }
 
-bool Minions::Init()
+
+// 初始化
+bool Minions::Init(const Config& cfg)
 {
+    cfg_ = cfg;
+
     handler_map_ = GetHandlerMap();
 
-    if (client_.Start("10.226.34.41", 32450))
+    // 开始连接server
+    if (client_.Start(cfg_.host, cfg_.port))
     {
-        MSGLoginVersionVerify verify_request;
-        verify_request.major = 10;
-        verify_request.minor = 21;
+        MSGLoginVersionVerify verify_request = {};
         client_.Send(MID_VERSION_VERIFY, verify_request);
     }
     else
     {
-        LOG(ERROR) << "Connection failed.";
+        LOG(ERROR) << "Failed to connect server: " << cfg.host << " :" << cfg.port;
         return false;
     }
     return true;
@@ -49,13 +55,13 @@ bool Minions::Run()
     using namespace std::chrono;
     auto start = high_resolution_clock::now();
 
-    // 澶勭悊缃戠粶娑堟伅
+    // 处理网络消息
     ProcessMessage();
 
     auto elapsed = duration_cast<milliseconds>(high_resolution_clock::now() - start);
     if (elapsed.count() < 1)
     {
-        std::this_thread::sleep_for(milliseconds(1));
+        std::this_thread::sleep_for(milliseconds(10));
     }
     return true;
 }
@@ -71,7 +77,7 @@ void Minions::ProcessMessage()
     client_.GetSocketMessage(messages);
     for (CMessage* pMsg : messages)
     {
-        int32_t commandID = pMsg->GetCommandID();
+        auto commandID = pMsg->GetCommandID();
         cout << "command:" << commandID << ",\tsession id: " << pMsg->GetConnector() << endl;
         auto iter = handler_map_.find(commandID);
         if (iter != handler_map_.end())
@@ -92,5 +98,3 @@ void Minions::ProcessMessage()
         CMessageAllocator::GetInstance()->Released( pMsg );
     }
 }
-
-

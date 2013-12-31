@@ -11,7 +11,7 @@
 
 #ifdef _MSC_VER
 #   if _MSC_VER < 1700
-#   error "椤圭洰浠ｇ爜浣跨敤浜嗛儴鍒咰++11鐗规�э紝闇�瑕佺紪璇戝櫒涓篤isual C++ 2012鎴栨洿楂樼殑鐗堟湰."
+#   error "项目代码使用了部分C++11特性，需要编译器为Visual C++ 2012或更高的版本."
 #   endif
 #endif
 
@@ -21,5 +21,3 @@
 #include <atom/CAtom.h>
 #include <electron/CElectron.h>
 
-using namespace atom;
-using namespace electron;

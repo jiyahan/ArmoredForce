@@ -22,8 +22,8 @@ SocketClient::~SocketClient(void)
 
 
 bool SocketClient::Start(const std::string& host, U16 port)
-{	
-	return RegisterEvent() && Connect(host, port);
+{
+    return RegisterEvent() && Connect(host, port);
 }
 
 bool SocketClient::ResetConnection(const std::string& host, U16 port)
@@ -34,34 +34,34 @@ bool SocketClient::ResetConnection(const std::string& host, U16 port)
 
 void SocketClient::Close()
 {
-	 CConnectionScheduler::GetInstance() -> Close( client_id_ );
+     CConnectionScheduler::GetInstance() -> Close( client_id_ );
 
-	 // decrease message queue's life reference
-	 CInstanceLife::GetInstance()->Decrease( msg_queue_ -> GetName() );
-	 CInstanceUtility::ShutdownInstance( msg_queue_ );
+     // decrease message queue's life reference
+     CInstanceLife::GetInstance()->Decrease( msg_queue_ -> GetName() );
+     CInstanceUtility::ShutdownInstance( msg_queue_ );
 }
 
 
 void SocketClient::Send(CMessage& msg)
 {
-	CConnectionScheduler::GetInstance()->Send( client_id_, & msg );
+    CConnectionScheduler::GetInstance()->Send( client_id_, & msg );
 }
 
 
 void SocketClient::GetSocketMessage(CMessageQueueControllerSetBind &messages)
 { 
-	if( msg_queue_ )
-	{
-		CInterface<IMessageQueueController> segment;
-		if( segment.Mount(msg_queue_, IID_MESSAGE_QUEUE_CONTROLLER) ) 
-		{
-			for( size_t i = 0; i < THREAD_AMOUNT; ++ i ) 
-			{
-				segment->Obtain( i, messages );
-				//segment -> Repose( i, 1000 );
-			}
-		}
-	}
+    if( msg_queue_ )
+    {
+        CInterface<IMessageQueueController> segment;
+        if( segment.Mount(msg_queue_, IID_MESSAGE_QUEUE_CONTROLLER) ) 
+        {
+            for( size_t i = 0; i < THREAD_AMOUNT; ++ i ) 
+            {
+                segment->Obtain( i, messages );
+                //segment -> Repose( i, 1000 );
+            }
+        }
+    }
 }
 
 bool SocketClient::RegisterEvent()

@@ -12,16 +12,16 @@ using namespace electron;
 class SocketClient : private boost::noncopyable
 {
 public:
-	SocketClient(void);
-	~SocketClient(void);
+    SocketClient(void);
+    ~SocketClient(void);
 
-	bool Start(const std::string& host, U16 port);
+    bool Start(const std::string& host, U16 port);
 
     bool ResetConnection(const std::string& host, U16 port);
 
-	void Close();
+    void Close();
 
-	void Send(CMessage& msg);
+    void Send(CMessage& msg);
 
     template <typename T>
     void Send(U32 msgID, const T& data)
@@ -31,7 +31,7 @@ public:
         Send(msg);
     }
 
-	void GetSocketMessage(CMessageQueueControllerSetBind &messages);
+    void GetSocketMessage(CMessageQueueControllerSetBind &messages);
 
 private:
     bool RegisterEvent();

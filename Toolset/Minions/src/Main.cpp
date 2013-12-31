@@ -1,17 +1,27 @@
-#include "StdAfx.h"
 #include <iostream>
 #include <exception>
+#include <filesystem>
 #include <glog/logging.h>
-#include "Minons.h"
 #include "Utility.h"
+#include "Minons.h"
+#include "Config.h"
 
 using namespace std;
+namespace fs = std::tr2::sys;
 
-
-// ÂàùÂßãÂåñÊó•Âøó
+// ≥ı ºªØ»’÷æ
 void InitLogging(int argc, const char* argv[])
 {
+    fs::path dir("log");
+    if (!fs::exists(dir))
+    {
+        fs::create_directory(dir);
+    }
+
     google::InitGoogleLogging(argv[0]);
+
+    FLAGS_log_dir = dir.string();
+    FLAGS_alsologtostderr = true;
 }
 
 
@@ -19,15 +29,22 @@ int main(int argc, const char* argv[])
 {
     try
     {
-        AtomAutoInit init(1024*32, 1);
+        // ≥ı ºªØ»’÷æ 
+        InitLogging(argc, argv);         
 
-        InitLogging(argc, argv);    // ÂàùÂßãÂåñÊó•Âøó      
+        // ∂¡»°≈‰÷√
+        const Config& cfg = LoadAppConfig("minion.config.xml");
 
+        // ≥ı ºªØatom
+        AtomAutoInit init(cfg.pool_size, cfg.thread_num);
+
+        // ‘À––
         Minions&  app = Minions::GetInstance();
-        if (app.Init())
+        if (app.Init(cfg))
         {
             while (app.Run())
                 ;
+            app.Release();
         }
     }
     catch(std::exception& ex)
@@ -36,7 +53,7 @@ int main(int argc, const char* argv[])
     }
     catch(...)
     {
-        LOG(ERROR) << "unexpected exception.\n";
+        LOG(FATAL) << "unexpected exception.\n";
     }
 
     google::ShutdownGoogleLogging();
