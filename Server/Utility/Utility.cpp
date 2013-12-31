@@ -2,7 +2,7 @@
 #include <glog/logging.h>
 #include <atom/CAtom.h>
 #include <electron/CElectron.h>
-#include "Random.h"
+
 
 using atom::CAtom;
 using electron::CElectron;

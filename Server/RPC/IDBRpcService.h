@@ -3,15 +3,15 @@
 #include <RCF/RCF.hpp>
 
 //
-// RPC鎺ュ彛瀹氫箟
-//  DBServer瀹炵幇浠ヤ笅鎺ュ彛
-//  CenterServer浣跨敤杩欎簺鎺ュ彛
+// RPC接口定义
+//  DBServer实现以下接口
+//  CenterServer使用这些接口
 //
 
 RCF_BEGIN(IDBRpcService, "IDBRpcService")    
-    // 鐧诲綍
+    // 登录
     RCF_METHOD_R2(int, QueryLogin, const std::string&, const std::string&)      
 
-    // 娉ㄥ唽
+    // 注册
     RCF_METHOD_R2(int, RegisterUser, const std::string&, const std::string&)
 RCF_END(IDBRpcService)

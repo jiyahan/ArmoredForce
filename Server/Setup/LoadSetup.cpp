@@ -5,7 +5,7 @@
 
 namespace setup {
 
-// è¯»å–å…µç§
+// ¶ÁÈ¡±øÖÖ
 ArmyCategoryList LoadArmyCategoryList(const std::string& file)
 {
     ArmyCategoryList result;
@@ -31,7 +31,7 @@ ArmyCategoryList LoadArmyCategoryList(const std::string& file)
     return std::move(result);
 }
 
-// è¯»å–æ‰€æœ‰å†›å®˜
+// ¶ÁÈ¡ËùÓĞ¾ü¹Ù
 OfficerList  LoadOfficerList(const std::string& file)
 {
     OfficerList result;
@@ -89,7 +89,7 @@ tagRegionStage LoadStage(CMarkup& xml, const string& name)
     return std::move(stage);
 }
 
-// è¯»å–æ‰€æœ‰åœºæ™¯
+// ¶ÁÈ¡ËùÓĞ³¡¾°
 RegionList   LoadRegionList(const std::string& file)
 {
     RegionList regions;
@@ -113,7 +113,7 @@ RegionList   LoadRegionList(const std::string& file)
     return std::move(regions);
 }
 
-// è¯»å–æ‰€æœ‰çš„æ€ªç‰©é…ç½®
+// ¶ÁÈ¡ËùÓĞµÄ¹ÖÎïÅäÖÃ
 MonsterList   LoadMonsterList(const std::string& file)
 {
     MonsterList monsters;
