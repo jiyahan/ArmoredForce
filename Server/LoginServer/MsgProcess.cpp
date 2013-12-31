@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "MsgProcess.h"
 #include <iostream>
 #include <RCF/RCF.hpp>
@@ -12,15 +12,17 @@
 
 using namespace std;
 using namespace mysqlpp;
+using namespace atom;
+using namespace electron;
 
 LoginServer& thisServer = LoginServer::GetInstance();
 
 // 处理角色登录
 void ProcessUserLogin(CMessage& msg)
 {
-	MSGLoginLogin request;
-	msg >> request;
-	cout << request.account << endl << request.password << endl;
+    MSGLoginLogin request;
+    msg >> request;
+    cout << request.account << endl << request.password << endl;
 
     int status = 0;
 
@@ -42,7 +44,7 @@ void ProcessUserLogin(CMessage& msg)
 
     string signatrue = thisServer.GetClient()->GetLoginSignature(request.account.c_str());
 
-    MSGLoginLoginResponse response = {signatrue, status};
+    MSGLoginLoginResponse response = {signatrue.c_str(), status};
     thisServer.GetSocketServer().Send(msg.GetConnector(), MID_LOGIN_LOGINRESPONSE, response);
 }
 
@@ -61,9 +63,9 @@ void ProcessVerifyVersion(CMessage& msg)
     version::tagGameServer game_server;
     game_server.domain.host = addr.first.c_str();
     game_server.domain.port = addr.second;
-    game_server.entity = "雷霆";
+    game_server.entity = "Thunder";
     server_list.push_back(game_server);
-    game_area["一区"] = server_list;
+    game_area["World 1"] = server_list;
 
     MSGLoginVersionVerifyResponse response;
     response.result = 0;

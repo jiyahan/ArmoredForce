@@ -9,6 +9,8 @@
 
 
 using namespace std;
+using namespace atom;
+using namespace electron;
 
 
 LoginServer::LoginServer()
@@ -23,19 +25,19 @@ bool LoginServer::Init(const AppConfig& cfg)
 {
     config_ = cfg;
 
-    // å¼€å§‹ç½‘ç»œæœåŠ¡å™¨	
+    // ¿ªÊ¼ÍøÂç·şÎñÆ÷	
     CHECK(server_.Start(config_.host.c_str(),config_.port))
-        << "åˆå§‹åŒ–TCPæœåŠ¡å™¨å¤±è´¥! IP:" << config_.host << ",ç«¯å£:" << config_.port;
+        << "³õÊ¼»¯TCP·şÎñÆ÷Ê§°Ü! IP:" << config_.host << ",¶Ë¿Ú:" << config_.port;
 
-    LOG(INFO) << "TCPæœåŠ¡å™¨å¼€å§‹ç›‘å¬" << config_.host << ":" << config_.port;
+    LOG(INFO) << "TCP·şÎñÆ÷¿ªÊ¼¼àÌı" << config_.host << ":" << config_.port;
 
     RCF::TcpEndpoint remoteEndPoint(config_.rpc_host, config_.rpc_port);
     client_.reset(new RcfClient<ICenterRpcService>(remoteEndPoint));
 
-    // æ³¨å†Œå®¢æˆ·ç«¯æ¶ˆæ¯å›è°ƒå¤„ç†å‡½æ•°
+    // ×¢²á¿Í»§¶ËÏûÏ¢»Øµ÷´¦Àíº¯Êı
     handler_map_ = GetMsgHandlers();
 
-    LOG(INFO) << "LoginServeråˆå§‹åŒ–æˆåŠŸ";
+    LOG(INFO) << "LoginServer³õÊ¼»¯³É¹¦";
 
     return true;
 }
@@ -50,7 +52,7 @@ bool LoginServer::Run()
     using namespace std::chrono;
     auto start = high_resolution_clock::now();
 
-    // å¤„ç†ç½‘ç»œæ¶ˆæ¯
+    // ´¦ÀíÍøÂçÏûÏ¢
     ProcessMessage();
 
     auto elapsed = duration_cast<milliseconds>(high_resolution_clock::now() - start);
@@ -68,7 +70,7 @@ void LoginServer::Stop()
 }
 
 
-// å¤„ç†ç½‘ç»œæ¶ˆæ¯
+// ´¦ÀíÍøÂçÏûÏ¢
 void LoginServer::ProcessMessage()
 {
     CMessageQueueControllerSetBind messages;

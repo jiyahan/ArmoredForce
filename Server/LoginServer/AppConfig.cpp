@@ -4,7 +4,7 @@
 #include <glog/logging.h>
 
 
-// è¯»å–é…ç½®
+// ¶ÁÈ¡ÅäÖÃ
 AppConfig    LoadAppConfig(const std::string& path)
 {
     AppConfig cfg = {};
@@ -13,7 +13,7 @@ AppConfig    LoadAppConfig(const std::string& path)
     CHECK(xml.Load(path)) << xml.GetError() << path;
     CHECK(xml.FindElem("config")) << "<config> not found.";
        
-    // æ•°æ®åº“é…ç½®
+    // Êı¾İ¿âÅäÖÃ
     xml.IntoElem();
     if (xml.FindElem("database"))
     {

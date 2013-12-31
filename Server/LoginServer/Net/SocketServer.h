@@ -6,22 +6,25 @@
 #include <electron/CElectron.h>
 
 
+using electron::CMessageQueueControllerSetBind;
+using electron::CMessage;
+
 
 class SocketServer : boost::noncopyable
 {
 public:
-	SocketServer(void);	
-	~SocketServer(void);
+    SocketServer(void);	
+    ~SocketServer(void);
 
-	bool Start(const std::string& host, U16 port);
+    bool Start(const std::string& host, U16 port);
 
-	void Close();
+    void Close();
 
-	//è·å–SOCKETMESSAGE
-	void GetSocketMessage(CMessageQueueControllerSetBind& msg);
+    //»ñÈ¡SOCKETMESSAGE
+    void GetSocketMessage(CMessageQueueControllerSetBind& msg);
 
-	//å‘é€æ¶ˆæ¯
-	void Send(U64 connector, CMessage& msg);
+    //·¢ËÍÏûÏ¢
+    void Send(U64 connector, CMessage& msg);
 
     template <typename T>
     void Send(U64 connector, U32 msgid, const T& data)
@@ -31,10 +34,10 @@ public:
         Send(connector, msg);
     }
 
-	void CloseAConnection(U64 connector);
+    void CloseAConnection(U64 connector);
 
 private:
-    U64           listener_;
-    CObjectPtr    msg_queue_;
+    U64                 listener_;
+    atom::CObjectPtr    msg_queue_;
 };
 

@@ -2,7 +2,7 @@
 
 #ifdef _WIN32
 #   ifndef _WIN32_WINNT
-#       define _WIN32_WINNT	    0x0502	// Windows 2003
+#       define _WIN32_WINNT	    _WIN32_WINNT_WS08 	// Windows 2008
 #   endif
 #   ifndef WIN32_LEAN_AND_MEAN
 #       define WIN32_LEAN_AND_MEAN
@@ -11,7 +11,7 @@
 
 #ifdef _MSC_VER
 #   if _MSC_VER < 1700
-#   error "椤圭洰浠ｇ爜浣跨敤浜嗛儴鍒咰++11鐗规�э紝闇�瑕佺紪璇戝櫒涓篤isual C++ 2012鎴栨洿楂樼殑鐗堟湰."
+#   error "项目代码使用了部分C++11特性，需要编译器为Visual C++ 2012或更高的版本."
 #   endif
 #endif
 
@@ -39,7 +39,3 @@
 
 #include <atom/CAtom.h>
 #include <electron/CElectron.h>
-
-using namespace atom;
-using namespace electron;
-
