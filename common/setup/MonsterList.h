@@ -66,6 +66,7 @@ public:
 
     // 根据编号得到某个军官的配置,返回nullptr表示没有此编号的军官
     const tagMonster*   GetMonster(const a_string& index) const;
+    const MonsterList&  GetMonsterList() const {return monster_list_;}
 
 private:
     MonsterList      monster_list_;
