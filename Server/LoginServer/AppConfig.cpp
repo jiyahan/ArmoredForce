@@ -17,24 +17,14 @@ AppConfig    LoadAppConfig(const std::string& path)
     xml.IntoElem();
     if (xml.FindElem("database"))
     {
-        xml.IntoElem();
-        xml.FindElem("host");
-        cfg.mysql_host = xml.GetData();
-        xml.FindElem("port");
-        cfg.mysql_port = std::stoi(xml.GetData());
-        xml.FindElem("user");
-        cfg.mysql_user = xml.GetData();
-        xml.FindElem("pwd");
-        cfg.mysql_pwd = xml.GetData();
-        xml.FindElem("default");
-        cfg.mysql_default = xml.GetData();
-        xml.FindElem("charset");
-        cfg.mysql_charset = xml.GetData();
-        xml.FindElem("conn_pool_size");
-        cfg.connection_pool_size = std::stoi(xml.GetData());
-        xml.FindElem("max_idle_time");
-        cfg.max_idle_time = std::stoi(xml.GetData());
-        xml.OutOfElem();
+        cfg.mysql_host = xml.GetAttrib("host");
+        cfg.mysql_port = std::stoi(xml.GetAttrib("port"));
+        cfg.mysql_user = xml.GetAttrib("user");;
+        cfg.mysql_pwd = xml.GetAttrib("pwd");
+        cfg.mysql_default = xml.GetAttrib("default");
+        cfg.mysql_charset = xml.GetAttrib("charset");
+        cfg.connection_pool_size = std::stoi(xml.GetAttrib("conn_pool_size"));
+        cfg.max_idle_time = std::stoi(xml.GetAttrib("max_idle_time"));
     }
     xml.ResetMainPos();
     if (xml.FindElem("server"))

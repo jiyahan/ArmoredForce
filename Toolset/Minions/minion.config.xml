@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <!-- LS·þÎñÆ÷ÅäÖÃ -->
+    <server host="127.0.0.1" port="31250" />
+    
+    <!-- ¿âÅäÖÃ -->
+    <atom pool_size="10240" thread_num="1"/>
+</config>
