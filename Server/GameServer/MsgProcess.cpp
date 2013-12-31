@@ -2,7 +2,7 @@
 #include "MsgProcess.h"
 #include <algorithm>
 #include <numeric>
-#include "common/battle/tagBattle.h"
+#include "Server/GameServer/App/BattleSys.h"
 #include "common/RoleCommon.h"
 #include "common/MSGCode.h"
 #include "common/MSGGame.h"
@@ -64,27 +64,6 @@ static vector<OfficerCommon>   GetMonsterMatrix(bool reverse)
     return std::move(officers);
 }
 
-
-// 处理角色登录
-static void HandleUserAuth(CMessage& msg)
-{
-	MSGAccountAuthorize request;
-	msg >> request;
-	cout << request.device << "\t" << request.deviceType << "\t"
-        << request.account << "\t" << request.usrsign << endl;
-
-    RoleCommon role = {"TomHagen", 10013, 56, 31, 103450, 2000, 200000, 530};
-    auto  officer_list = GetMonsterMatrix(false);
-
-    MSGAccountAuthorizeResponse response;
-    response.roleId = 1000;
-    
-    CArchive archive;
-    archive << role << officer_list;
-    archive.Clone(response.data);
-
-	thisServer.GetSocketServer().Send(msg.GetConnector(), response);
-}
 
 tagBattle InitFightRole(vector<OfficerCommon>& attacker_troop, vector<OfficerCommon>& defender_troop)
 {
@@ -321,6 +300,27 @@ static void HandleCombatRequest(CMessage& msg)
     ar.Clone(response.data);
     thisServer.GetSocketServer().Send(msg.GetConnector(), response);
 
+}
+
+// 处理角色登录
+static void HandleUserAuth(CMessage& msg)
+{
+    MSGAccountAuthorize request;
+    msg >> request;
+    cout << request.device << "\t" << request.deviceType << "\t"
+        << request.account << "\t" << request.usrsign << endl;
+
+    RoleCommon role = {"TomHagen", 10013, 56, 31, 103450, 2000, 200000, 530};
+    auto  officer_list = GetMonsterMatrix(false);
+
+    MSGAccountAuthorizeResponse response;
+    response.roleId = 1000;
+
+    CArchive archive;
+    archive << role << officer_list;
+    archive.Clone(response.data);
+
+    thisServer.GetSocketServer().Send(msg.GetConnector(), response);
 }
 
 HandlerMap GetHandlerMap()

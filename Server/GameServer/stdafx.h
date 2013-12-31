@@ -2,7 +2,7 @@
 
 #ifdef _WIN32
 #   ifndef _WIN32_WINNT
-#       define _WIN32_WINNT	    0x0502	// Windows 2003
+#       define _WIN32_WINNT	    _WIN32_WINNT_WS08 	// Windows 2008
 #   endif
 #   ifndef WIN32_LEAN_AND_MEAN
 #       define WIN32_LEAN_AND_MEAN
@@ -25,6 +25,3 @@
 
 #include <atom/CAtom.h>
 #include <electron/CElectron.h>
-
-using namespace atom;
-using namespace electron;

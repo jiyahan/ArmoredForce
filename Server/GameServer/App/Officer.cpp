@@ -9,22 +9,52 @@ Officer::~Officer()
 {
 }
 
-int32_t Officer::GetHp() const
+I32 Officer::GetHp() const
 {
-    return property_.hp;
+    return data_.hp;
 }
 
-int32_t Officer::GetAttack() const
+void Officer::SetHp(I32 hp)
 {
-    return property_.accuracy;
+    data_.hp = hp;
+}
+
+I32 Officer::GetAttack() const
+{
+    return data_.accuracy;
+}
+
+I16  Officer::GetPosition() const
+{
+    return data_.postion;
+}
+
+void  Officer::SetPosition(I16 pos)
+{
+    data_.postion = (U08)pos;
 }
 
 // 攻击
-void Officer::Attack(Officer& defender)
+tagAttackResult Officer::Attack(Officer& defender)
 {
+    if (IsDead())
+    {
+        tagAttackPower atk = {};
+        atk.damage = GetAttack();
+        return defender.Defense(atk);
+    }
+    return tagAttackResult();
 }
 
 // 防御
-void  Officer::Defense(const tagAttackPower& atk)
+tagAttackResult  Officer::Defense(const tagAttackPower& atk)
 {
+    tagAttackResult result = {};
+    if (!IsDead())
+    {
+        I32 damage = min(GetHp(), atk.damage);
+        SetHp(damage);
+        result.damage = damage;
+    }
+    return result;
 }

@@ -1,12 +1,7 @@
 ﻿#pragma once
 
-#include <memory>
-#include "Skill.h"
 #include "common/OfficerCommon.h"
-
-
-class Officer;
-typedef std::shared_ptr<Officer>    OfficerPtr;
+#include "Skill.h"
 
 
 // 军官
@@ -16,21 +11,27 @@ public:
     Officer();
     ~Officer();
 
-    int32_t     GetHp() const;
-    int32_t     GetAttack() const;
-
+    // 兵力(血量)
+    I32     GetHp() const;
+    void    SetHp(I32 hp);
     bool    IsDead() const {return GetHp() > 0;}
 
-    // 攻击
-    void    Attack(Officer& defender);
+    // 攻击力
+    I32     GetAttack() const;
+
+    I16     GetPosition() const ;
+    void    SetPosition(I16 pos);
+    
+    // 攻击对方，返回伤害
+    tagAttackResult     Attack(Officer& defender);
 
     // 防御
-    void    Defense(const tagAttackPower& atk);
+    tagAttackResult     Defense(const tagAttackPower& atk);
 
 private:
-    OfficerCommon           property_;          // 基础属性
-    SkillPtr                current_skill_;     // 当前技能
-    std::vector<SkillPtr>   skill_list_;        // 技能列表
+    OfficerCommon           data_;          // 基础属性
+    //SkillPtr                current_skill_;     // 当前技能
+    //std::vector<SkillPtr>   skill_list_;        // 技能列表
 };
 
 
