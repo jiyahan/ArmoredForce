@@ -39,12 +39,12 @@ void DoTransform(Fn loader, T*, const string& infile, const string& outfile)
 {
     auto v = loader(infile);
     WriteMemoryToFile(v, outfile);
-    auto v2 = setup::LoadBinaryFile<T>(outfile);
+    auto v2 = setup::LoadBinaryFile<T>(outfile.c_str());
     CHECK(v == v2) << "\nfile: "<< infile;
         
 }
 
-void RunTransform(CommandType cmd, const std::string& infile, const std::string& outfile)
+void RunTransform(CommandType cmd, const string& infile, const string& outfile)
 {    
     switch (cmd)         
     {

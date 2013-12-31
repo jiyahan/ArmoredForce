@@ -5,5 +5,5 @@
 #endif
 #include <Windows.h>
 
-
+#include <glog/logging.h>
 #include <atom/CAtom.h>
