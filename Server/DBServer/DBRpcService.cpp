@@ -1,24 +1,23 @@
-#include "StdAfx.h"
 #include "DBRpcService.h"
-#include "../Utility/MyConnectionPool.h"
-
+#include "MyConnectionPool.h"
+#include "DBServer.h"
 
 using namespace std;
 using namespace mysqlpp;
 
 
 
-// 瀹炵幇鐢ㄦ埛鐧诲綍楠岃瘉
+// 实现用户登录验证
 int DBRpcService::QueryLogin(const std::string& user, const std::string& pwd)
 {
     return 0;
 }
 
 
-// 瀹炵幇鐢ㄦ埛娉ㄥ唽
+// 实现用户注册
 int DBRpcService::RegisterUser(const std::string& user, const std::string& pwd)
 {
-    ScopedConnection conn(MyConnectionPool::GetInstance());
+    ScopedConnection conn(DBServer::GetInstance().GetConnectionPool());
     Query query = conn->query("call sp_reg_user %0q, %1q");
     query.parse();
     SimpleResult result = query.execute(user, pwd);

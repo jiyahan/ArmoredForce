@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "DBServer.h"
 #include <iostream>
 #include <exception>
@@ -8,7 +7,7 @@
 using namespace std;
 namespace fs = std::tr2::sys;
 
-// åˆå§‹åŒ–æ—¥å¿—
+// ³õÊ¼»¯ÈÕÖ¾
 void InitLogging(int argc, const char* argv[])
 {
     fs::path dir("log");
@@ -17,7 +16,7 @@ void InitLogging(int argc, const char* argv[])
         fs::create_directory(dir);
     }
 
-    // è®¾ç½®æ—¥å¿—è·¯å¾„
+    // ÉèÖÃÈÕÖ¾Â·¾¶
     google::InitGoogleLogging(argv[0]);
 
     FLAGS_log_dir = dir.string();
@@ -25,13 +24,13 @@ void InitLogging(int argc, const char* argv[])
 }
 
 
-// ä¸»å…¥å£
+// Ö÷Èë¿Ú
 int main(int argc, const char* argv[])
 {
     try
     {
-        InitLogging(argc, argv);    // åˆå§‹åŒ–æ—¥å¿—        
-        RCF::RcfInitDeinit rcfInit; // åˆå§‹åŒ–RPCæ¡†æ¶
+        InitLogging(argc, argv);    // ³õÊ¼»¯ÈÕÖ¾        
+        RCF::RcfInitDeinit rcfInit; // ³õÊ¼»¯RPC¿ò¼Ü
 
         DBServer& theApp = DBServer::GetInstance();
         if (theApp.Init())

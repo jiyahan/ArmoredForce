@@ -1,17 +1,17 @@
 #pragma once
 
 #include <boost/noncopyable.hpp>
-#include "../RPC/IDBRpcService.h"
+#include "Server/RPC/IDBRpcService.h"
 
 
-//IDBRpcService鎺ュ彛瀹炵幇
+//IDBRpcService接口实现
 class DBRpcService : boost::noncopyable
 {
 public:
-    // 瀹炵幇鐢ㄦ埛鐧诲綍楠岃瘉
+    // 实现用户登录验证
     int QueryLogin(const std::string& user, const std::string& pwd);
 
-    // 瀹炵幇鐢ㄦ埛鐧诲綍楠岃瘉
+    // 实现用户登录验证
     int RegisterUser(const std::string& user, const std::string& pwd);
 private:
 };

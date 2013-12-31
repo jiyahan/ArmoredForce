@@ -1,13 +1,10 @@
-#include "StdAfx.h"
 #include "DBServer.h"
 #include <iostream>
 #include <chrono>
 #include <thread>
-#include "../Utility/MyConnectionPool.h"
 
 
 using namespace std;
-
 
 
 DBServer::DBServer()
@@ -20,7 +17,7 @@ DBServer::~DBServer()
 
 bool DBServer::Init()
 {
-    // ËØªÂèñÂêØÂä®ÈÖçÁΩÆÊñá‰ª∂
+    // ∂¡»°∆Ù∂Ø≈‰÷√Œƒº˛
     config_ = LoadAppConfig("db.config.xml");
 
     MyConnectionPool::ConnetionConfig conn_cfg = {};
@@ -33,19 +30,19 @@ bool DBServer::Init()
     conn_cfg.max_pool_size = config_.connection_pool_size;
     conn_cfg.max_idle_time = config_.max_idle_time;
 
-    if (!MyConnectionPool::GetInstance().init(conn_cfg))
+    if (!conn_pool_.init(conn_cfg))
     {
-        LOG(ERROR) << "ÂàùÂßãÂåñmysqlËøûÊé•ÈîôËØØ";
+        LOG(ERROR) << "≥ı ºªØmysql¡¨Ω”¥ÌŒÛ";
         return false;
     }
 
-    // ÂàùÂßãÂåñRPCÊúçÂä°Âô®
+    // ≥ı ºªØRPC∑˛ŒÒ∆˜
     RCF::TcpEndpoint endpoint(config_.rpc_host, config_.rpc_port);
     rpc_server_.reset(new RCF::RcfServer(endpoint));
     rpc_server_->bind<IDBRpcService>(rpc_impl_);
     rpc_server_->start();
 
-    LOG(INFO) << "ÊúçÂä°Âô®ÂàùÂßãÂåñÊàêÂäü.";
+    LOG(INFO) << "∑˛ŒÒ∆˜≥ı ºªØ≥…π¶.";
     return true;
 }
 

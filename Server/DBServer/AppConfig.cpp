@@ -1,9 +1,8 @@
-#include "StdAfx.h"
 #include "AppConfig.h"
-#include "../Utility/Markup.h"
+#include "Markup.h"
 
 
-// è¯»å–é…ç½®ä¿¡æ¯
+// ¶ÁÈ¡ÅäÖÃĞÅÏ¢
 AppConfig    LoadAppConfig(const std::string& path)
 {
     AppConfig cfg = {};
@@ -11,7 +10,7 @@ AppConfig    LoadAppConfig(const std::string& path)
     CHECK(xml.Load(path)) << xml.GetError() << path;
     CHECK(xml.FindElem("config")) << "<config> not found.";
     
-    // æ•°æ®åº“é…ç½®
+    // Êı¾İ¿âÅäÖÃ
     xml.IntoElem();
     if (xml.FindElem("database"))
     {
@@ -34,7 +33,7 @@ AppConfig    LoadAppConfig(const std::string& path)
         cfg.max_idle_time = std::stoi(xml.GetData());
         xml.OutOfElem();
     }
-    // RPCæœåŠ¡å™¨é…ç½®
+    // RPC·şÎñÆ÷ÅäÖÃ
 	xml.ResetMainPos();
     if (xml.FindElem("server"))
     {

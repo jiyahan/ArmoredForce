@@ -3,10 +3,11 @@
 #include <RCF/RCF.hpp>
 #include "AppConfig.h"
 #include "DBRpcService.h"
-#include "../Utility/Singleton.h"
+#include "Singleton.h"
+#include "MyConnectionPool.h"
 
 //
-// æ•°æ®åº“æœåŠ¡å™¨
+// Êı¾İ¿â·şÎñÆ÷
 //
 class DBServer : public Singleton<DBServer>
 {
@@ -14,18 +15,20 @@ public:
     DBServer();
     ~DBServer();
 
-    // åˆå§‹åŒ–
+    // ³õÊ¼»¯
     bool    Init();
 
-    // é‡Šæ”¾èµ„æº
+    // ÊÍ·Å×ÊÔ´
     void    Release();
 
-    // è¿è¡ŒæœåŠ¡å™¨
+    // ÔËĞĞ·şÎñÆ÷
     bool    Run();
+
+    MyConnectionPool&   GetConnectionPool() {return conn_pool_;}
 
 private:
     AppConfig           config_;
-    
+    MyConnectionPool    conn_pool_;
     DBRpcService        rpc_impl_;
     std::shared_ptr<RCF::RcfServer>     rpc_server_;
 };
