@@ -8,7 +8,7 @@
 
 
 //
-// ä¸­å¿ƒæœåŠ¡å™¨
+// ÖĞĞÄ·şÎñÆ÷
 //
 class CenterServer : public Singleton<CenterServer>
 {
@@ -16,20 +16,20 @@ public:
     CenterServer();
     ~CenterServer();
 
-    //åˆå§‹åŒ–
+    //³õÊ¼»¯
     bool    Init(const AppConfig& cfg);
 
-    // é‡Šæ”¾èµ„æº
+    // ÊÍ·Å×ÊÔ´
     void    Release();
 
-    // è¿è¡ŒæœåŠ¡å™¨
+    // ÔËĞĞ·şÎñÆ÷
     bool    Run();
 
-    // åœæ­¢æœåŠ¡å™¨
+    // Í£Ö¹·şÎñÆ÷
     void    Stop();
 
 private:
-    AppConfig           config_;        // é…ç½®
+    AppConfig           config_;        // ÅäÖÃ
     CenterRpcService    rpc_impl_;
     std::shared_ptr<RCF::RcfServer>     rpc_server_;
 };
