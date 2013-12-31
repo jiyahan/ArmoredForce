@@ -16,7 +16,7 @@ MyConnectionPool::~MyConnectionPool()
     clear();
 }
 
-// åˆå§‹åŒ–è¿æ¥å‚æ•°
+// ³õÊ¼»¯Á¬½Ó²ÎÊı
 bool MyConnectionPool::init(const ConnetionConfig& cfg)
 {
     config_ = cfg;
@@ -26,7 +26,7 @@ bool MyConnectionPool::init(const ConnetionConfig& cfg)
 }
 
 
-// è·å–ä¸€ä¸ªæ–°è¿æ¥
+// »ñÈ¡Ò»¸öĞÂÁ¬½Ó
 Connection* MyConnectionPool::grab()
 {
     if (conns_in_use_ == config_.max_pool_size)
@@ -40,14 +40,14 @@ Connection* MyConnectionPool::grab()
     }
 }
 
-// å½’è¿˜è¿æ¥å¯¹è±¡
+// ¹é»¹Á¬½Ó¶ÔÏó
 void MyConnectionPool::release(const mysqlpp::Connection* p)
 {
     ConnectionPool::release(p);
     --conns_in_use_;
 }
 
-// åˆ›å»ºä¸€ä¸ªæ–°è¿æ¥
+// ´´½¨Ò»¸öĞÂÁ¬½Ó
 Connection*  MyConnectionPool::create()
 {
     Connection* result = NULL;

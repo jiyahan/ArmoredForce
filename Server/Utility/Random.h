@@ -12,15 +12,17 @@
 #include <cstdint>
 
 //
-// éšæœºæ•°ç”Ÿæˆå™¨:
-//      std::linear_congruential_engineï¼Œçº¿æ€§åŒä½™æ³•
-//      std::mersenne_twister_engineï¼Œæ¢…æ£®æ—‹è½¬æ³•
-//      std::substract_with_carry_engineï¼Œæ»åFibonacci
+// Ëæ»úÊıÉú³ÉÆ÷:
+//      std::linear_congruential_engine£¬ÏßĞÔÍ¬Óà·¨
+//      std::mersenne_twister_engine£¬Ã·É­Ğı×ª·¨
+//      std::substract_with_carry_engine£¬ÖÍºóFibonacci
 // 
-//åˆ†å¸ƒç±»å‹
-//      std::uniform_int_distributionï¼Œ æ•´æ•°å‡åŒ€åˆ†å¸ƒ
-//      std::uniform_real_distributionï¼Œæµ®ç‚¹æ•°å‡åŒ€åˆ†å¸ƒ
+//·Ö²¼ÀàĞÍ
+//      std::uniform_int_distribution£¬ ÕûÊı¾ùÔÈ·Ö²¼
+//      std::uniform_real_distribution£¬¸¡µãÊı¾ùÔÈ·Ö²¼
 // 
+
+// Ã¿¸öÏß³ÌÊ¹ÓÃÒ»¸öRandom¶ÔÏó²úÉúËæ»úÊı
 class Random 
 {
 public:
