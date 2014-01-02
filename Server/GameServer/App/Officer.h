@@ -1,26 +1,34 @@
 ﻿#pragma once
 
+#include <memory>
+#include <boost/noncopyable.hpp>
+#include "common/setup/MonsterList.h"
+#include "common/setup/OfficerList.h"
 #include "common/OfficerCommon.h"
 #include "Skill.h"
 
 
+class Officer;
+typedef std::shared_ptr<Officer>    OfficerPtr;
+
 // 军官
-class Officer
+class Officer : boost::noncopyable
 {
 public:
-    Officer();
+    explicit Officer(const setup::tagOfficer& officer);
+    explicit Officer(const setup::tagMonster& monster);
     ~Officer();
 
     // 兵力(血量)
     I32     GetHp() const;
     void    SetHp(I32 hp);
-    bool    IsDead() const {return GetHp() > 0;}
+    bool    IsDead() const {return GetHp() <= 0;}
 
     // 攻击力
     I32     GetAttack() const;
 
-    I16     GetPosition() const ;
-    void    SetPosition(I16 pos);
+    U08     GetPosition() const ;
+    void    SetPosition(U08 pos);
     
     // 攻击对方，返回伤害
     tagAttackResult     Attack(Officer& defender);

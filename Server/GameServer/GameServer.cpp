@@ -40,7 +40,6 @@ bool GameServer::Init(const AppConfig& cfg)
 
     RCF::TcpEndpoint remoteEndPoint(config_.rpc_center_host, config_.rpc_center_port);
     client_.reset(new RcfClient<ICenterRpcService>(remoteEndPoint));
-    SCOPE_FAIL{cout << "OK";};
     bool status = client_->RegisterGameServer(config_.host, config_.port);
 
     // 注册客户端消息回调处理函数

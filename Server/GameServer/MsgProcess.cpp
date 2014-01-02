@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <numeric>
 #include "Server/GameServer/App/BattleSys.h"
+#include "Server/GameServer/App/Troop.h"
 #include "common/RoleCommon.h"
 #include "common/MSGCode.h"
 #include "common/MSGGame.h"
@@ -12,11 +13,6 @@ using namespace std;
 
 GameServer& thisServer = GameServer::GetInstance();
 
-I32 GetUniqueID()
-{
-    static I32 current_id = 2000;
-    return current_id++;
-}
 
 static vector<OfficerCommon>   GetMonsterMatrix(bool reverse)
 {    
@@ -24,10 +20,10 @@ static vector<OfficerCommon>   GetMonsterMatrix(bool reverse)
     
     auto fn = [&](const setup::tagMonster& item, int count)
     {
-        OfficerCommon officer = {};
+        OfficerCommon officer;
         officer.name = item.name;
         officer.category = item.category;
-        officer.id = GetUniqueID();
+        //officer.id = GetUniqueID();
         officer.level = 1;
         officer.postion = count;
         officer.hp = item.force;
@@ -285,6 +281,14 @@ tagBattle MockFight()
     return std::move(battle);
 }
 
+tagBattle MockFight2()
+{    
+    TroopPtr troop = Troop::CreateFromRegion("极乐世界", 1);
+    TroopPtr troop2 = Troop::CreateFromRegion("极乐世界", 2);
+    tagBattle battle = BattleSys::GetInstance().StartFight(troop, troop2);
+    return std::move(battle);
+}
+
 static void HandleCombatRequest(CMessage& msg)
 {
     MSGBattleCombat request;
@@ -310,7 +314,15 @@ static void HandleUserAuth(CMessage& msg)
     cout << request.device << "\t" << request.deviceType << "\t"
         << request.account << "\t" << request.usrsign << endl;
 
-    RoleCommon role = {"TomHagen", 10013, 56, 31, 103450, 2000, 200000, 530};
+    RoleCommon role;
+    role.name = "TomHagen";
+    role.id = 10013;
+    role.level = 56;
+    role.title = 13;
+    role.exp = 103450;
+    role.action_point = 790;
+    role.gold = 200000; 
+    role.gold = 530;
     auto  officer_list = GetMonsterMatrix(false);
 
     MSGAccountAuthorizeResponse response;
@@ -325,7 +337,7 @@ static void HandleUserAuth(CMessage& msg)
 
 HandlerMap GetHandlerMap()
 {
-    //MockFight();
+    MockFight2();
 
     HandlerMap handlers;
     handlers[MID_ACCOUNT_AUTHORIZE_REQUEST] = HandleUserAuth;

@@ -12,35 +12,38 @@ enum eTroopType
     TROOP_DEFENDER = 2,     // 防守方，右下角
 };
 
+class Troop;
+typedef std::shared_ptr<Troop>    TroopPtr;
 
 // 部队
 class Troop
 {
 public:
     // 阵型
-    typedef std::array<Officer, GRID_AMOUNT>     Formation; 
+    typedef std::array<OfficerPtr, GRID_AMOUNT>     Formation; 
 
 public:
-    Troop();
+    explicit Troop(const Formation& formation);
     ~Troop();
 
     void        SetType(eTroopType type) {type_ = type;}
     eTroopType  GetType() const {return type_;}
 
     // 获取某一位置的军官，位置范围[1-6]
-    Officer*    GetOfficer(I16 pos);
+    OfficerPtr  GetOfficer(U08 pos);
     
     // 从部队里取一个攻击单位
-    I16         GetNextAttacker();
+    U08         GetNextAttacker();
 
     // 从部队里取一个防守单位
-    I16         GetNextDefender(I16 attacker_pos);
+    U08         GetNextDefender(U08 attacker_pos);
+
+    // 从地图中生成一只队伍
+    static TroopPtr  CreateFromRegion(const std::string& region_name, U32 stage);
 
 private:
     eTroopType      type_;
     Formation       formation_;         // 阵型 
-    I16             last_attacker_;     // 上次攻击的位置
-    I16             last_defender_;     // 上次防御的位置
+    U08             last_attacker_;     // 上次攻击的位置
+    U08             last_defender_;     // 上次防御的位置
 };
-
-typedef std::shared_ptr<Troop>    TroopPtr;

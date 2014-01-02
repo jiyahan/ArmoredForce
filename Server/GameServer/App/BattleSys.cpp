@@ -13,10 +13,10 @@ BattleSys::~BattleSys()
 
 tagBattle   BattleSys::StartFight(TroopPtr attack_troop, TroopPtr defend_troop)
 {
-    tagBattle battle;
-    for (int i = 0; i < MAX_ROUND; ++i)
+    tagBattle battle = {};
+    for (auto i = 0; i < MAX_ROUND; ++i)
     {
-        LOG(INFO) << "第" << i << "回合开始...";
+        LOG(INFO) << "第" << i+1 << "回合开始...";
 
         tagBattleRound round;
 
@@ -30,21 +30,25 @@ tagBattle   BattleSys::StartFight(TroopPtr attack_troop, TroopPtr defend_troop)
         {
             break;
         }
+        battle.rounds.emplace_back(round);
     }
     return std::move(battle);
 }
 
 // 一个回合，攻击方防守方
-bool BattleSys::StartRound(TroopPtr attack_troop, TroopPtr defend_troop, tagBattleRound& round)
+eBattleResult BattleSys::StartRound(TroopPtr attack_troop, TroopPtr defend_troop, tagBattleRound& round)
 {    
-    for (int i = 0; i < GRID_AMOUNT; ++i)
+    for (auto i = 0; i < GRID_AMOUNT; ++i)
     {
-        I16 attacker_pos = attack_troop->GetNextAttacker();
+        // 从攻击方挑一个位置
+        auto attacker_pos = attack_troop->GetNextAttacker();
         if (attacker_pos == 0)
         {
             break;
         }
-        I16 defender_pos = defend_troop->GetNextDefender(attacker_pos);
+
+        // 从防守方挑一个位置
+        auto defender_pos = defend_troop->GetNextDefender(attacker_pos);
         if (defender_pos == 0)
         {
             break;

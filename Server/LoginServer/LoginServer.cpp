@@ -58,7 +58,7 @@ bool LoginServer::Run()
     auto elapsed = duration_cast<milliseconds>(high_resolution_clock::now() - start);
     if (elapsed.count() < 1)
     {
-        this_thread::sleep_for(milliseconds(1));
+        this_thread::sleep_for(milliseconds(10));
     }
 
     return true;
