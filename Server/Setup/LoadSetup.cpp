@@ -107,7 +107,7 @@ RegionList   LoadRegionList(const std::string& file)
         region.stages[0] = LoadStage(xml, "stage_1");
         region.stages[1] = LoadStage(xml, "stage_2");
         region.stages[2] = LoadStage(xml, "stage_3");
-        regions[region.index] = region;
+        regions[region.name] = region;
         xml.OutOfElem();
     }
     return std::move(regions);
