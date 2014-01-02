@@ -26,9 +26,10 @@ solution "CenterServer"
     configuration "vs*"
         defines
         {
+            "_USING_V110_SDK71_",
             "_CRT_SECURE_NO_WARNINGS",
         }
-        buildoptions "-Zm200 /FI\"stdafx.h\""
+        buildoptions "-Zm200 /FI\"stdafx.h\" /wd\"4996\""
 
     configuration "gmake"
         linkoptions "-lpthread -ldl"

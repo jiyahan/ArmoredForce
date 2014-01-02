@@ -26,6 +26,7 @@ solution "DenpendLibs"
 	configuration "vs*"
 		defines 
         { 
+            "_USING_V110_SDK71_",
             "_CRT_SECURE_NO_WARNINGS",
             "WIN32_LEAN_AND_MEAN",
         }
