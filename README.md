@@ -1,6 +1,6 @@
 Thirsty
 =======
-卡牌游戏
+You must be thirsty.    <Life of Pi>
 
 
 
