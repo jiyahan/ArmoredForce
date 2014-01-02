@@ -10,7 +10,7 @@ struct OfficerCommon
 {
     a_string    name;           // 名称
     a_string    category;       // 兵种
-    I32         id;             // 编号
+    a_string    id;             // 唯一编号
     I16         level;          // 等级
     U08         postion;        // 当前所在位置(1-6)
     I32         attack;         // 攻击
@@ -19,6 +19,18 @@ struct OfficerCommon
     I32         accuracy;       // 精准 
     I32         command_force;  // 指挥力
     I32         leadership;     // 统率力
+
+    OfficerCommon()
+    {
+        level = 0;
+        postion = 0;
+        attack = 0;
+        hp = 0;
+        blast = 0;
+        accuracy = 0;
+        command_force = 0;
+        leadership = 0;
+    }
 };
 
 typedef std::vector<OfficerCommon, atom_allocator<OfficerCommon> >  OfficerCommonList ;

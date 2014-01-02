@@ -20,7 +20,16 @@ struct RoleCommon
     I32         gold;           // ½ðÇ®
     I32         gems;           // ×êÊ¯
     
-    
+    RoleCommon()
+    {
+        id = 0;
+        level = 0;
+        title = 0;
+        exp = 0;
+        action_point = 0;
+        gold = 0;
+        gems = 0;
+    }
 };
 
 template<class Archive>
