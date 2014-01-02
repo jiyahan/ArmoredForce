@@ -8,6 +8,7 @@
 #pragma once
 
 #include <cstdio>
+#include <string>
 #include <boost/noncopyable.hpp>
 
 
@@ -19,3 +20,6 @@ public:
 
     ~AtomAutoInit();
 };
+
+
+std::string     GetUniqueID();
