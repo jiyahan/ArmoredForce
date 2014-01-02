@@ -18,6 +18,8 @@ struct tagDropThing
     I32         rate;   // 几率
 };
 
+typedef std::vector<tagDropThing>   DropThingList;
+
 // 怪物,卡片
 struct tagMonster
 {
@@ -30,7 +32,7 @@ struct tagMonster
     I32             blast;              // 暴击
     I32             accuracy;           // 精准
 
-    vector<tagDropThing> drop_things;   // 掉落
+    DropThingList   drop_things;        // 掉落
 };
 
 //
@@ -66,7 +68,12 @@ public:
 
     // 根据编号得到某个军官的配置,返回nullptr表示没有此编号的军官
     const tagMonster*   GetMonster(const a_string& index) const;
+
+    // 获取所有怪物
     const MonsterList&  GetMonsterList() const {return monster_list_;}
+
+    // 获取指定怪物的的掉落
+    const DropThingList* GetDropThing(const a_string& index)const;
 
 private:
     MonsterList      monster_list_;

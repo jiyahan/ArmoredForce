@@ -74,6 +74,7 @@ inline bool operator == (const setup::tagRegion& lhs, const setup::tagRegion& rh
         && lhs.picture == rhs.picture);
 }
 
+// key为地图名称
 typedef std::map<a_string, tagRegion>     RegionList;
 
 //////////////////////////////////////////////////////////////////////////
@@ -87,7 +88,7 @@ public:
     bool    Load(const a_string& path);
 
     // 根据名称查找地图
-    const tagRegion*  GetRegion(const a_string& name) const;
+    const tagRegion*    GetRegion(const a_string& name) const;
 
 private:
     RegionList       regions_;

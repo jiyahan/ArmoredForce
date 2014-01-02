@@ -1,6 +1,7 @@
 #include "MonsterList.h"
 #include "LoadBinaryFile.h"
 
+
 namespace setup {
 
 // 从二进制文件中加载所有的军官
@@ -19,6 +20,12 @@ const tagMonster*   MonsterListSetup::GetMonster(const a_string& index) const
         return &(iter->second);
     }
     return NULL;
+}
+
+const DropThingList*  MonsterListSetup::GetDropThing(const a_string& index) const
+{
+    const tagMonster* monster = GetMonster(index);
+    return (monster ? &monster->drop_things : NULL);
 }
 
 } // namespace setup
