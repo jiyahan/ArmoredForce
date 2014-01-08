@@ -11,6 +11,7 @@ solution "GameServer"
     location "GameServer"
     targetdir "../../Run/gameserver"
     language    "C++"
+    platforms { "x32", "x64" }
     flags       { "StaticRuntime" }
 
     configuration "Debug"
@@ -41,8 +42,10 @@ solution "GameServer"
         {
             "__GAME_SERVER__",
             "MARKUP_STL",
+            "RCF_USE_BOOST_ASIO",
             "GOOGLE_GLOG_DLL_DECL=",
             "GLOG_NO_ABBREVIATED_SEVERITIES",
+            "NOT_USE_ATOM_ALLOCATOR",
         }
 
         -- 源代码文件

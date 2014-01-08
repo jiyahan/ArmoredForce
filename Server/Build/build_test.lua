@@ -14,6 +14,7 @@ solution "Test"
     location "Test"
     targetdir "Test"
     language    "C++"
+    platforms { "x32", "x64" }
     flags       { "StaticRuntime" }
 
     configuration "Debug"
@@ -45,6 +46,7 @@ solution "Test"
             "GTEST_HAS_TR1_TUPLE=0",
             "GLOG_NO_ABBREVIATED_SEVERITIES",
             "MYSQLPP_NO_DLL",
+            "NOT_USE_ATOM_ALLOCATOR",
         }
 
         -- 源代码文件
