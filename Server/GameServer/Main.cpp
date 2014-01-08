@@ -18,7 +18,7 @@ void InitLogging(int argc, const char* argv[])
     {
         fs::create_directory(dir);
     }
-
+    
     // 设置日志路径
     google::InitGoogleLogging(argv[0]);
 

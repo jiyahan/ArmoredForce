@@ -1,7 +1,7 @@
 #pragma once
 
+#include <cstdint>
 #include <string>
-#include <utility>
 #include <RCF/RCF.hpp>
 #include <SF/string.hpp>
 
@@ -12,27 +12,16 @@
 //  LoginServer, GameServer使用这些接口
 //
 
-typedef std::pair<std::string, int>  ServerAddress;
-
-namespace SF {
-
-inline void serialize(SF::Archive& ar, ServerAddress& addr)
-{
-    ar & addr.first & addr.second;
-}
-
-} // namespace SF
-
 
 RCF_BEGIN(ICenterRpcService, "ICenterRpcService")
 
     // 获取GameServer地址
-    RCF_METHOD_R0(ServerAddress, GetGameServerAddress)
+    RCF_METHOD_R2(bool, GetGameServerAddress, std::string&, int16_t&)
     
-    // 
+    // 登录验证码
     RCF_METHOD_R1(std::string, GetLoginSignature, const std::string&)
 
-    // 
-    RCF_METHOD_R2(bool, RegisterGameServer, const std::string&, int)
+    // 注册GameServer
+    RCF_METHOD_R2(bool, RegisterGameServer, const std::string&, int16_t)
     
 RCF_END(ICenterRpcService)

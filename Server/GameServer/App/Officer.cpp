@@ -29,30 +29,7 @@ Officer::~Officer()
 {
 }
 
-I32 Officer::GetHp() const
-{
-    return data_.hp;
-}
 
-void Officer::SetHp(I32 hp)
-{
-    data_.hp = hp;
-}
-
-I32 Officer::GetAttack() const
-{
-    return data_.attack;
-}
-
-U08  Officer::GetPosition() const
-{
-    return data_.postion;
-}
-
-void  Officer::SetPosition(U08 pos)
-{
-    data_.postion = pos;
-}
 
 // 攻击
 tagAttackResult Officer::Attack(Officer& defender)

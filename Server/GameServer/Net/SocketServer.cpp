@@ -83,7 +83,7 @@ void SocketServer::GetSocketMessage(CMessageQueueControllerSetBind& messages)
         CInterface<IMessageQueueController> segment;
         if( segment.Mount(msg_queue_, IID_MESSAGE_QUEUE_CONTROLLER) ) 
         {
-            for( size_t i = 0; i < LISTEN_THREAD_NUM; ++ i ) 
+            for( auto i = 0; i < LISTEN_THREAD_NUM; ++ i ) 
             {
                 segment->Obtain( i, messages );
                 //segment -> Repose( i, 1000 );

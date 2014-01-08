@@ -56,13 +56,15 @@ void ProcessVerifyVersion(CMessage& msg)
     cout << request.major << "\t" << request.minor << endl;
 
     // rpc调用
-    ServerAddress addr = thisServer.GetClient()->GetGameServerAddress();
+    string host;
+    I16 port = 0;
+    bool ok = thisServer.GetClient()->GetGameServerAddress(host, port);
 
     version::GameServerArea game_area;
     version::GameServerList server_list;
     version::tagGameServer game_server;
-    game_server.domain.host = addr.first.c_str();
-    game_server.domain.port = addr.second;
+    game_server.domain.host = host.c_str();
+    game_server.domain.port = port;
     game_server.entity = "Thunder";
     server_list.push_back(game_server);
     game_area["World 1"] = server_list;
@@ -72,7 +74,7 @@ void ProcessVerifyVersion(CMessage& msg)
         
     CArchive archive;
     archive << game_area;
-    archive.Clone(response.server_area);   
+    archive.Clone(response.server_area);
     
     thisServer.GetSocketServer().Send(msg.GetConnector(), MID_VERSION_VERIFYRESPONSE, response);
 }
