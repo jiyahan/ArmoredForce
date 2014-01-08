@@ -19,5 +19,15 @@
 *.ilk
 *.scc
 
+*.pdb
+*.obj
+*.idb
+*.sdf
+*.ib_pdb_index
+
+*.bin
+*.zip
+
 Debug/
 Release/
+log/
