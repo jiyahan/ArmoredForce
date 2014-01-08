@@ -4,6 +4,7 @@
 #include "Config.h"
 #include "../3rdParty/atom/atom/CAtom.h"
 
+using namespace atom;
 
 // 军官基本属性
 struct OfficerCommon
