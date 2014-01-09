@@ -1,13 +1,15 @@
 ﻿#include "Officer.h"
 #include "Utility.h"
-
+#include "common/setup/MonsterList.h"
+#include "common/setup/OfficerList.h"
 
 //////////////////////////////////////////////////////////////////////////
 Officer::Officer(const setup::tagOfficer& officer)
+    : is_monster_(false)
 {
     data_.name = officer.name;
     data_.category = officer.category;
-    data_.id = GetUniqueID().c_str();
+    data_.id = CreateUniqueID();
     data_.hp = officer.base_force;
     data_.attack = officer.base_atk;
     data_.command_force = officer.command_force;
@@ -16,10 +18,11 @@ Officer::Officer(const setup::tagOfficer& officer)
 }
 
 Officer::Officer(const setup::tagMonster& monster)
+    : is_monster_(true)
 {
     data_.name = monster.name;
     data_.category = monster.category;
-    data_.id = GetUniqueID().c_str();
+    data_.id = CreateUniqueID();
     data_.hp = monster.force;
     data_.attack = monster.attack;
     data_.level = 1;
@@ -49,7 +52,7 @@ tagAttackResult  Officer::Defense(const tagAttackPower& atk)
     tagAttackResult result = {};
     if (!IsDead())
     {
-        I32 damage = min(GetHp(), atk.damage);
+        int32_t damage = min(GetHp(), atk.damage);
         SetHp(GetHp() - damage);
         result.damage = damage;
     }

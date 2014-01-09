@@ -11,7 +11,7 @@
 using namespace std;
 
 
-_INITIALIZE_EASYLOGGINGPP;
+_INITIALIZE_EASYLOGGINGPP
 
 
 // 初始化日志

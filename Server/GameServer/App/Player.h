@@ -15,13 +15,13 @@ public:
     ~Player();
 
     const a_string& GetName() {return property_.name;}
-    I32     GetID() const {return property_.id;}
-    I16     GetLevel() const {return property_.level;}
-    I16     GetTitle() const {return property_.title;}
-    I32     GetExp() const {return property_.exp;}
-    I32     GetActionPoint() const {return property_.action_point;}
-    I32     GetGoldCoin() const {return property_.gold;}
-    I32     GetGemsNum() const {return property_.gems;}
+    int32_t     GetID() const {return property_.id;}
+    int16_t     GetLevel() const {return property_.level;}
+    int16_t     GetTitle() const {return property_.title;}
+    int32_t     GetExp() const {return property_.exp;}
+    int32_t     GetActionPoint() const {return property_.action_point;}
+    int32_t     GetGoldCoin() const {return property_.gold;}
+    int32_t     GetGemsNum() const {return property_.gems;}
 
 private:
     RoleCommon                  property_;      // 基础属性 
