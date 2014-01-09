@@ -2,10 +2,9 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
-#include <glog/logging.h>
-#include "../../common/MSGLogin.h"
-#include "../../common/MSGCode.h"
-#include "../../common/MSGGame.h"
+#include "common/MSGLogin.h"
+#include "common/MSGCode.h"
+#include "common/MSGGame.h"
 #include "MessageProcess.h"
 
 using namespace std;
@@ -34,12 +33,13 @@ bool Minions::Init(const Config& cfg)
     // 开始连接server
     if (client_.Start(cfg_.host, cfg_.port))
     {
+        LOG(INFO) << "连接服务器成功, 发送登录请求...";
         MSGLoginVersionVerify verify_request = {};
         client_.Send(MID_VERSION_VERIFY, verify_request);
     }
     else
     {
-        LOG(ERROR) << "Failed to connect server: " << cfg.host << " :" << cfg.port;
+        LOG(ERROR) << "连接服务器失败, " << cfg.host << ":" << cfg.port;
         return false;
     }
     return true;
@@ -77,8 +77,7 @@ void Minions::ProcessMessage()
     client_.GetSocketMessage(messages);
     for (CMessage* pMsg : messages)
     {
-        auto commandID = pMsg->GetCommandID();
-        cout << "command:" << commandID << ",\tsession id: " << pMsg->GetConnector() << endl;
+        auto commandID = pMsg->GetCommandID();        
         auto iter = handler_map_.find(commandID);
         if (iter != handler_map_.end())
         {
@@ -88,12 +87,13 @@ void Minions::ProcessMessage()
             }
             catch(std::exception& ex)
             {
-                cout << ex.what() << endl;
+                LOG(ERROR) << ex.what();
             }
         }
         else
         {
-            cout << "invalid command.\n";
+            LOG(WARNING) << "invalid command, " << commandID 
+                << " from " << pMsg->GetConnector();
         }
         CMessageAllocator::GetInstance()->Released( pMsg );
     }

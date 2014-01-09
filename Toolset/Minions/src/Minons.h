@@ -1,14 +1,10 @@
 #pragma once
 
 #include <memory>
-#include <unordered_map>
 #include "Net/SocketClient.h"
 #include "Server/Utility/Singleton.h"
 #include "Config.h"
-
-typedef std::function<void (CMessage&)>         HandlerType;
-typedef std::unordered_map<I32, HandlerType>    HandlerMap;
-
+#include "MessageProcess.h"
 
 
 // 一个机器人
@@ -40,3 +36,8 @@ private:
     SocketClient    client_;
     HandlerMap      handler_map_;   //  消息路由表
 };
+
+inline Minions&  GetMinions()
+{
+    return Minions::GetInstance();
+}

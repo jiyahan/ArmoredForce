@@ -13,8 +13,6 @@ using namespace std;
 using namespace atom;
 using namespace electron;
 
-Minions&    gMinionMgr = Minions::GetInstance();
-
 
 // µÇÂ¼·µ»Ø
 void HandleLoginResponse(CMessage& msg)
@@ -40,7 +38,7 @@ void HandleVerifyResponse(CMessage& msg)
     tagDomain domain;    
     for(const auto& item : game_area)
     {
-        cout << item.first;
+        cout << item.first << "\t";
         for (const auto& server : item.second)
         {
             domain = server.domain;
@@ -49,14 +47,18 @@ void HandleVerifyResponse(CMessage& msg)
         }
     }
 
-    if (gMinionMgr.ResetConnection(domain.host.c_str(), domain.port))
+    if (GetMinions().ResetConnection(domain.host.c_str(), domain.port))
     {
         MSGAccountAuthorize auth_request;
         auth_request.device = "iOS";
         auth_request.deviceType = "iPad air";
         auth_request.account = "johnnie";
         auth_request.usrsign = "hello,kitty";
-        gMinionMgr.GetClient().Send(MID_ACCOUNT_AUTHORIZE_REQUEST, auth_request);
+        GetMinions().GetClient().Send(MID_ACCOUNT_AUTHORIZE_REQUEST, auth_request);
+    }
+    else
+    {
+        LOG(ERROR) << "Á¬½ÓGameServerÊ§°Ü, " << domain.host << ":" << domain.port;
     }
 }
 
@@ -77,7 +79,7 @@ void HandleAuthResponse(CMessage& msg)
     MSGBattleCombat request;
     request.mapId = 1;
     request.posId = 1;
-    gMinionMgr.GetClient().Send(request.msgId, request);
+    GetMinions().GetClient().Send(request.msgId, request);
 }
 
 void HandleCombatResponse(CMessage& msg)

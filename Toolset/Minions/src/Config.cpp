@@ -22,6 +22,11 @@ Config  LoadAppConfig(const std::string& path)
         cfg.pool_size = std::stoi(xml.GetAttrib("pool_size"));
         cfg.thread_num = std::stoi(xml.GetAttrib("thread_num"));
     }
-
-    return cfg;
+    xml.ResetMainPos();
+    if (xml.FindElem("log"))
+    {
+        cfg.log_config_file = xml.GetAttrib("config_file");
+        cfg.log_dir = xml.GetAttrib("dir");
+    }
+    return std::move(cfg);
 }

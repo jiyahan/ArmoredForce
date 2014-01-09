@@ -24,7 +24,7 @@ solution "Minions"
         { 
             "_CRT_SECURE_NO_WARNINGS",
         }
-        buildoptions "-Zm200 /FI\"stdafx.h\""
+        buildoptions "-Zm200 /FI\"stdafx.h\" /wd\"4996\"" 
 
     project "Minions"
         kind "ConsoleApp"

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <config>
-    <!-- LS·þÎñÆ÷ÅäÖÃ -->
-    <server host="127.0.0.1" port="31250" />
+    <!-- LSæœåŠ¡å™¨é…ç½® -->
+    <server host="127.0.0.1" port="32450" />
     
-    <!-- ¿âÅäÖÃ -->
+    <!-- åº“é…ç½® -->
     <atom pool_size="10240" thread_num="1"/>
+    
+    <!-- æ—¥å¿—é…ç½® -->
+    <log config_file="default-logger.conf" dir="logs" />   
 </config>

@@ -6,11 +6,14 @@
 // 配置结构
 struct Config
 {
-    std::string     host;           // LS的IP地址
-    U32             port;           // LS端口
+    std::string     host;           // LoginServer的IP地址
+    int32_t         port;           // LoginServer端口
 
-    U32             pool_size;
-    U32             thread_num;
+    int32_t         pool_size;
+    int32_t         thread_num;
+
+    std::string     log_config_file;    // 日志配置
+    std::string     log_dir;            // 日志目录
 };
 
 
