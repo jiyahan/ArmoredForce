@@ -1,7 +1,6 @@
 #include "LoadSetup.h"
-#include <glog/logging.h>
-#include "../Utility/Markup.h"
-
+#include <Markup.h>
+#include <easylogging++.h>
 
 namespace setup {
 

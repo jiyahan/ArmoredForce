@@ -1,5 +1,5 @@
 #include "Utility.h"
-#include <glog/logging.h>
+#include "easylogging++.h"
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include <boost/uuid/random_generator.hpp>
@@ -7,8 +7,8 @@
 #include <electron/CElectron.h>
 
 
-using atom::CAtom;
-using electron::CElectron;
+using namespace atom;
+using namespace electron;
 
 
 std::string  GetUniqueID()

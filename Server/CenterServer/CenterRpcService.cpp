@@ -1,6 +1,5 @@
 #include "CenterRpcService.h"
-#include <glog/logging.h>
-
+#include <easylogging++.h>
 
 using namespace std;
 

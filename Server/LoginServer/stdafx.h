@@ -1,12 +1,11 @@
 #pragma once
 
 #ifdef _WIN32
-#   ifndef _WIN32_WINNT
-#       define _WIN32_WINNT	    _WIN32_WINNT_WS08 	// Windows 2008
-#   endif
 #   ifndef WIN32_LEAN_AND_MEAN
 #       define WIN32_LEAN_AND_MEAN
 #   endif
+#   include <WinSDKVer.h>
+#   include <SDKDDKVer.h>
 #endif
 
 #ifdef _MSC_VER
@@ -18,23 +17,18 @@
 
 #include <cstdint>
 
-#ifndef MARKUP_STL
-#define MARKUP_STL
-#endif
-
-#ifndef GLOG_NO_ABBREVIATED_SEVERITIES
-#define GLOG_NO_ABBREVIATED_SEVERITIES
-#endif
-#include <glog/logging.h>
-
 //#define RCF_USE_ZLIB
 //#define RCF_USE_OPENSSL
 //#define RCF_USE_PROTOBUF
 #include <RCF/RCF.hpp>
 
-#ifndef MYSQLPP_NO_DLL
-#define MYSQLPP_NO_DLL
-#endif
+#define _ELPP_THREAD_SAFE
+#define _ELPP_STL_LOGGING
+#define _ELPP_LOG_STD_ARRAY
+#define _ELPP_LOG_UNORDERED_MAP
+#define _ELPP_LOG_UNORDERED_SET
+#include <easylogging++.h>
+
 #include <mysql++.h>
 
 #include <atom/CAtom.h>

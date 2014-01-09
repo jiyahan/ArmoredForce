@@ -1,13 +1,12 @@
-﻿#include "stdafx.h"
-#include "MsgProcess.h"
+﻿#include "MsgProcess.h"
 #include <iostream>
 #include <RCF/RCF.hpp>
+#include <easylogging++.h>
 #include "LoginServer.h"
 #include "../Utility/MyConnectionPool.h"
-#include "../../common/MSGLogin.h"
-#include "../../common/MSGCode.h"
-#include "../../common/update/tagGameServer.h"
-
+#include "common/MSGLogin.h"
+#include "common/MSGCode.h"
+#include "common/update/tagGameServer.h"
 
 
 using namespace std;
@@ -15,7 +14,9 @@ using namespace mysqlpp;
 using namespace atom;
 using namespace electron;
 
-LoginServer& thisServer = LoginServer::GetInstance();
+
+
+
 
 // 处理角色登录
 void ProcessUserLogin(CMessage& msg)
@@ -42,10 +43,10 @@ void ProcessUserLogin(CMessage& msg)
         cout << ex.what() << endl;
     }
 
-    string signatrue = thisServer.GetClient()->GetLoginSignature(request.account.c_str());
+    string signatrue = GetRpcClientPtr()->GetLoginSignature(request.account.c_str());
 
     MSGLoginLoginResponse response = {signatrue.c_str(), status};
-    thisServer.GetSocketServer().Send(msg.GetConnector(), MID_LOGIN_LOGINRESPONSE, response);
+    GetTCPServer().Send(msg.GetConnector(), MID_LOGIN_LOGINRESPONSE, response);
 }
 
 
@@ -58,7 +59,7 @@ void ProcessVerifyVersion(CMessage& msg)
     // rpc调用
     string host;
     I16 port = 0;
-    bool ok = thisServer.GetClient()->GetGameServerAddress(host, port);
+    bool ok = GetRpcClientPtr()->GetGameServerAddress(host, port);
 
     version::GameServerArea game_area;
     version::GameServerList server_list;
@@ -76,7 +77,7 @@ void ProcessVerifyVersion(CMessage& msg)
     archive << game_area;
     archive.Clone(response.server_area);
     
-    thisServer.GetSocketServer().Send(msg.GetConnector(), MID_VERSION_VERIFYRESPONSE, response);
+    GetTCPServer().Send(msg.GetConnector(), MID_VERSION_VERIFYRESPONSE, response);
 }
 
 

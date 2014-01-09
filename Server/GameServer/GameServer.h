@@ -1,22 +1,20 @@
 #pragma once
 
 #include <memory>
-#include <unordered_map>
 #include <RCF/RCF.hpp>
 #include "AppConfig.h"
 #include "Net/SocketServer.h"
 #include "Server/Utility/Singleton.h"
 #include "Server/Utility/Random.h"
 #include "Server/RPC/ICenterRpcService.h"
+#include "MsgProcess.h"
 #include "common/setup/ArmyCategory.h"
 #include "common/setup/MonsterList.h"
 #include "common/setup/OfficerList.h"
 #include "common/setup/RegionList.h"
 
-
 typedef std::shared_ptr<RcfClient<ICenterRpcService>>   RpcClientPtr;
-typedef std::function<void (CMessage&)>		HandlerType;
-typedef std::unordered_map<int32_t, HandlerType>    HandlerMap;
+
 
 //
 // 游戏服
@@ -62,3 +60,23 @@ private:
 
     Random              rnd_gen_;   // 随机数生成器 
 };
+
+inline GameServer& GetServer()
+{
+    return GameServer::GetInstance();
+}
+
+inline RpcClientPtr GetRpcClientPtr()
+{
+    return GetServer().GetClient();
+}
+
+inline SocketServer& GetTCPServer()
+{
+    return GetServer().GetSocketServer();
+}
+
+inline uint32_t  Random(uint32_t max)
+{
+    return GetServer().GetRandGen().Uniform(max);
+}

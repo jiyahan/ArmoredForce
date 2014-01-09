@@ -4,7 +4,6 @@
 #include <string>
 
 
-
 struct AppConfig
 {
     std::string     rpc_host;        // 监听的IP
@@ -15,6 +14,9 @@ struct AppConfig
 
     int32_t         pool_size;
     int32_t         thread_num;
+
+    std::string     log_config_file;    // 日志配置
+    std::string     log_dir;            // 日志目录 
 };
 
 

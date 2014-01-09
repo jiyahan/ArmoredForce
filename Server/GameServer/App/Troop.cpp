@@ -83,7 +83,7 @@ TroopPtr Troop::CreateFromRegion(const std::string& region_name, U32 stage)
         auto monster = setup::MonsterListSetup::GetInstance()->GetMonster(index);
         if (!monster)
         {
-            LOG_IF(ERROR, !monster) << "monster of index: " << index << "not found.";
+            LOG(ERROR) << "monster of index: " << index << "not found.";
             return nullptr;
         }
         formation[i] = std::make_shared<Officer>(*monster);

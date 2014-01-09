@@ -3,8 +3,6 @@
 #include <cstdint>
 #include <string>
 
-
-
 struct AppConfig
 {
     std::string     host;           // 监听的IP地址
@@ -15,6 +13,9 @@ struct AppConfig
 
     std::string     rpc_center_host;    // CenterServer的IP
     int32_t         rpc_center_port;    // CenterServer的端口
+
+    std::string     log_config_file;    // 日志配置
+    std::string     log_dir;            // 日志目录 
 };
 
 

@@ -1,29 +1,28 @@
 #include "stdafx.h"
 #include "LoginServer.h"
 #include <filesystem>
-#include <glog/logging.h>
+#include <easylogging++.h>
 #include <RCF/RCF.hpp>
 #include "Utility.h"
 #include "AppConfig.h"
 
 
 using namespace std;
-namespace fs = std::tr2::sys;
 
-// 初始化日志
-void InitLogging(int argc, const char* argv[])
+
+_INITIALIZE_EASYLOGGINGPP
+
+    // 初始化日志
+void InitLogging(const string& conf_file, const string& dir)
 {
-    fs::path dir("log");
-    if (!fs::exists(dir))
+    namespace fs = std::tr2::sys;
+    fs::path path(dir);
+    if (!fs::exists(path))
     {
-        fs::create_directory(dir);
+        fs::create_directory(path);
     }
-
-    // 设置日志路径
-    google::InitGoogleLogging(argv[0]);
-
-    FLAGS_log_dir = dir.string();
-    FLAGS_alsologtostderr = true;
+    el::Configurations conf(conf_file);
+    el::Loggers::reconfigureAllLoggers(conf);
 }
 
 
@@ -32,10 +31,10 @@ int main(int argc, const char* argv[])
 {
     try
     {
-        // 初始化日志
-        InitLogging(argc, argv);
-
         AppConfig cfg = LoadAppConfig("login.config.xml");
+
+        // 初始化日志
+        InitLogging(cfg.log_config_file, cfg.log_dir);        
 
         // 初始化RPC框架
         RCF::RcfInitDeinit rcfInit;
@@ -54,14 +53,12 @@ int main(int argc, const char* argv[])
     }
     catch(std::exception& ex)
     {
-        LOG(ERROR) << ex.what();
+        LOG(FATAL) << ex.what();
     }
     catch(...)
     {
-        LOG(ERROR) << "unexpected exception.\n";
+        LOG(FATAL) << "unexpected exception.\n";
     }
-
-    google::ShutdownGoogleLogging();
 
     return 0;
 }

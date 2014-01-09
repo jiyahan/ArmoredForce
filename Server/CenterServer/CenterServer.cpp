@@ -2,9 +2,7 @@
 #include <thread>
 #include <chrono>
 #include <RCF/RCF.hpp>
-#include <glog/logging.h>
-
-
+#include <easylogging++.h>
 
 using namespace std;
 

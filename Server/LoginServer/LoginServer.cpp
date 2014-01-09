@@ -1,10 +1,9 @@
-#include "stdafx.h"
 #include "LoginServer.h"
 #include <chrono>
 #include <thread>
-#include <glog/logging.h>
+#include <easylogging++.h>
 #include <RCF/RCF.hpp>
-#include "../RPC/ICenterRpcService.h"
+#include "Server/RPC/ICenterRpcService.h"
 #include "MsgProcess.h"
 
 

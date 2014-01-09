@@ -1,7 +1,6 @@
 #include "MyConnectionPool.h"
-#include <glog/logging.h>
 #include "ScopeGuard.h"
-
+#include "easylogging++.h"
 
 using namespace mysqlpp;
 

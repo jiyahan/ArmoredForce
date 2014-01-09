@@ -16,8 +16,11 @@ struct AppConfig
     int32_t         connection_pool_size;   // 最大并发连接数
     int32_t         max_idle_time;          // 连接空闲时间
 
-    std::string     rpc_host;           // 监听的IP
-    int32_t         rpc_port;           // 监听的端口
+    std::string     rpc_host;               // 监听的IP
+    int32_t         rpc_port;               // 监听的端口
+
+    std::string     log_config_file;        // 日志配置
+    std::string     log_dir;                // 日志目录 
 };
 
 

@@ -1,20 +1,16 @@
 #pragma once
 
-#include <unordered_map>
-#include "../Utility/Singleton.h"
-#include "../RPC/ICenterRpcService.h"
-#include "Net/SocketServer.h"
+#include <memory>
+#include "Singleton.h"
 #include "AppConfig.h"
+#include "Server/RPC/ICenterRpcService.h"
+#include "Net/SocketServer.h"
+#include "MsgProcess.h"
 
 
 
 typedef std::shared_ptr<RcfClient<ICenterRpcService>>   RpcClientPtr;
-typedef std::function<void (CMessage&)>                 HandlerType;
-typedef std::unordered_map<int32_t, HandlerType>        HandlerMap;
 
-//
-// 登录服
-//
 class LoginServer : public Singleton<LoginServer>
 {
 public:
@@ -45,10 +41,30 @@ private:
 
 
 private:
-    AppConfig           config_;        // 配置
-    SocketServer        server_;        // TCP服务器
+    // 配置信息
+    AppConfig           config_;
 
+    // TCP服务器
+    SocketServer        server_;
+
+    // RPC客户端
     RpcClientPtr        client_;
 
-    HandlerMap          handler_map_; //  所有回调函数
+    // 消息路由表
+    HandlerMap          handler_map_;
 };
+
+inline LoginServer& GetServer()
+{
+    return LoginServer::GetInstance();
+}
+
+inline RpcClientPtr GetRpcClientPtr()
+{
+    return GetServer().GetClient();
+}
+
+inline SocketServer& GetTCPServer()
+{
+    return GetServer().GetSocketServer();
+}

@@ -1,8 +1,6 @@
-#include "stdafx.h"
 #include "AppConfig.h"
 #include "Markup.h"
-#include <glog/logging.h>
-
+#include <easylogging++.h>
 
 // ∂¡»°≈‰÷√
 AppConfig    LoadAppConfig(const std::string& path)
@@ -43,6 +41,12 @@ AppConfig    LoadAppConfig(const std::string& path)
     {
         cfg.rpc_host = xml.GetAttrib("host");
         cfg.rpc_port = std::stoi(xml.GetAttrib("port"));
-    } 
-    return cfg;
+    }
+    xml.ResetMainPos();
+    if (xml.FindElem("log"))
+    {
+        cfg.log_config_file = xml.GetAttrib("config_file");
+        cfg.log_dir = xml.GetAttrib("dir");
+    }
+    return std::move(cfg);
 }

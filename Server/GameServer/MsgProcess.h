@@ -1,8 +1,12 @@
-
 #pragma once
 
-#include "GameServer.h"
+#include <functional>
+#include <unordered_map>
 
 
-// 消息处理函数表
-HandlerMap  GetHandlerMap();
+typedef std::function<void (electron::CMessage&)>	HandlerType;
+typedef std::unordered_map<int32_t, HandlerType>    HandlerMap;
+
+
+// 消息路由表
+HandlerMap      GetHandlerMap();

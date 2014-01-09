@@ -1,7 +1,8 @@
-#include "stdafx.h"
 #include "MsgProcess.h"
 #include <algorithm>
 #include <numeric>
+#include <easylogging++.h>
+#include "GameServer.h"
 #include "Server/GameServer/App/BattleSys.h"
 #include "Server/GameServer/App/Troop.h"
 #include "common/RoleCommon.h"
@@ -10,8 +11,8 @@
 
 
 using namespace std;
-
-GameServer& thisServer = GameServer::GetInstance();
+using namespace atom;
+using namespace electron;
 
 
 static vector<OfficerCommon>   GetMonsterMatrix(bool reverse)
@@ -275,7 +276,7 @@ tagBattle MockFight()
     battle.result.result = result;
     battle.result.attackerLoseHP = attack_lose;
     battle.result.defenderLoseHP = defense_lose;
-    battle.result.score = thisServer.GetRandGen().Uniform(50);
+    battle.result.score = Random(50);
     if (result == 0)
         battle.result.score += 50;
     return std::move(battle);
@@ -302,7 +303,7 @@ static void HandleCombatRequest(CMessage& msg)
     CArchive ar;
     ar << battle;
     ar.Clone(response.data);
-    thisServer.GetSocketServer().Send(msg.GetConnector(), response);
+    GetTCPServer().Send(msg.GetConnector(), response);
 
 }
 
@@ -332,12 +333,13 @@ static void HandleUserAuth(CMessage& msg)
     archive << role << officer_list;
     archive.Clone(response.data);
 
-    thisServer.GetSocketServer().Send(msg.GetConnector(), response);
+    GetTCPServer().Send(msg.GetConnector(), response);
 }
+
 
 HandlerMap GetHandlerMap()
 {
-    MockFight2();
+    //MockFight2();
 
     HandlerMap handlers;
     handlers[MID_ACCOUNT_AUTHORIZE_REQUEST] = HandleUserAuth;

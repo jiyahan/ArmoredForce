@@ -15,10 +15,9 @@ DBServer::~DBServer()
 {
 }
 
-bool DBServer::Init()
+bool DBServer::Init(const AppConfig& cfg)
 {
-    // 读取启动配置文件
-    config_ = LoadAppConfig("db.config.xml");
+    config_ = cfg;
 
     MyConnectionPool::ConnetionConfig conn_cfg = {};
     conn_cfg.host = config_.mysql_host;
