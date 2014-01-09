@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <config>
-	<!-- mysql数据库相关配置 -->
-	<database 
+    <!-- MySQL数据库相关配置 -->
+    <database 
         host="localhost"
         port="3306"
         user="root"
@@ -11,14 +11,16 @@
         conn_pool_size="8"
         max_idle_time="5"
         />
-	
-	<!-- loginserver监听的IP和端口 -->
-	<server host="127.0.0.1" port="32450"/>
-	
-	<!-- CenterServer的RPC客户端连接 -->
-	<centerserver host="127.0.0.1" port="42200" />
+    
+    <!-- LoginServer监听的IP和端口 -->
+    <server host="127.0.0.1" port="32450"/>
+    
+    <!-- CenterServer的RPC客户端连接 -->
+    <centerserver host="127.0.0.1" port="42200" />
 
-	<!-- 配置池大小和线程数量 -->
-	<atom pool_size="10485760" thread_num="1" />
-	
+    <!-- 配置池大小和线程数量 -->
+    <atom pool_size="10485760" thread_num="1" />
+    
+    <!-- 日志配置 -->
+    <log config_file="default-logger.conf" dir="logs" />        
 </config>

@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
-	<!-- mysql数据库相关配置 -->
-	<database>
-		<host>localhost</host>				<!-- 数据库主机IP地址 -->
-		<port>3306 </port>					<!-- 数据库端口 -->		
-		<user>root</user>					<!-- 帐户名 -->
-		<pwd>holyshit</pwd>					<!-- 密码 -->
-		<default>account_db</default>			<!-- 默认数据库 -->
-		<charset>gbk</charset>				<!-- 传输编码格式 -->
-		<conn_pool_size>8</conn_pool_size>	<!-- 连接池大小 -->
-		<max_idle_time>5</max_idle_time>	<!-- 连接空闲时间(秒) -->
-	</database>
-	
-	<!-- rpc服务器配置 -->
-	<server host="127.0.0.1" port="42100" />
-	
+    <!-- MySQL数据库相关配置 -->
+    <database 
+        host="localhost"
+        port="3306"
+        user="root"
+        pwd ="holyshit"
+        default="account_db"
+        charset="gbk"
+        conn_pool_size="8"
+        max_idle_time="5"
+        />
+    
+    <!-- RPC服务器配置 -->
+    <server host="127.0.0.1" port="42100" />
+    
+    <!-- 日志配置 -->
+    <log config_file="default-logger.conf" dir="logs" />    
 </config>
