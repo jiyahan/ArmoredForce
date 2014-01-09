@@ -27,7 +27,7 @@ solution "DBServer"
     configuration "vs*"
         defines
         {
-            "_USING_V110_SDK71_",
+            "WIN32_LEAN_AND_MEAN",
             "_CRT_SECURE_NO_WARNINGS",
         }
         buildoptions "-Zm200 /FI\"stdafx.h\" /wd\"4996\""
@@ -45,8 +45,6 @@ solution "DBServer"
             "__DB_SERVER__",            
             "MARKUP_STL",
             "RCF_USE_BOOST_ASIO",
-            "GOOGLE_GLOG_DLL_DECL=",
-            "GLOG_NO_ABBREVIATED_SEVERITIES",
             "MYSQLPP_NO_DLL",
             "NOT_USE_ATOM_ALLOCATOR",
         }
@@ -56,9 +54,17 @@ solution "DBServer"
         {
             "../DBServer/**.h",
             "../DBServer/**.cpp",
-            "../Utility/**.h",
-            "../Utility/**.cpp",
+            
             "../RPC/IDBRpcService.h",
+            
+            "../Utility/Markup.h",
+            "../Utility/Markup.cpp",
+            "../Utility/MyConnectionPool.h",
+            "../Utility/MyConnectionPool.cpp",
+            "../Utility/Utility.h",
+            "../Utility/Utility.cpp",
+            "../Utility/Singleton.h",
+            "../Utility/ScopeGuard.h",
         }
 
         -- 预编译头
@@ -90,6 +96,5 @@ solution "DBServer"
             "libmysql",
             "libmysqlpp",
             "librcf",
-            "libglog",
             "libatom",
         }

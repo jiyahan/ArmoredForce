@@ -5,7 +5,6 @@
 
 local BOOST_DIR = os.getenv("BOOST_DIR")
 
-
 --
 -- unittest和benchmark
 --
@@ -28,7 +27,7 @@ solution "Test"
     configuration "vs*"
         defines
         {
-            "_USING_V110_SDK71_",
+            "WIN32_LEAN_AND_MEAN",
             "_CRT_SECURE_NO_WARNINGS",
         }
         buildoptions "-Zm200 /FI\"stdafx.h\" /wd\"4996\""
@@ -42,9 +41,7 @@ solution "Test"
         uuid "3C53977F-705F-7746-9DB1-AD248EE761F0"
         defines
         {
-            "GOOGLE_GLOG_DLL_DECL=",
             "GTEST_HAS_TR1_TUPLE=0",
-            "GLOG_NO_ABBREVIATED_SEVERITIES",
             "MYSQLPP_NO_DLL",
             "NOT_USE_ATOM_ALLOCATOR",
         }
@@ -85,10 +82,7 @@ solution "Test"
 
         links
         {
-            "libglog",
             "libgtest",
             "libatom",
-            "libmysql",
-            "libmysqlpp",
         }
 

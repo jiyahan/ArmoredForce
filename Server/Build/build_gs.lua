@@ -25,7 +25,7 @@ solution "GameServer"
     configuration "vs*"
         defines
         {
-            "_USING_V110_SDK71_",
+            "WIN32_LEAN_AND_MEAN",
             "_CRT_SECURE_NO_WARNINGS",
         }
         buildoptions "-Zm200 /FI\"stdafx.h\" /wd\"4996\""
@@ -43,8 +43,6 @@ solution "GameServer"
             "__GAME_SERVER__",
             "MARKUP_STL",
             "RCF_USE_BOOST_ASIO",
-            "GOOGLE_GLOG_DLL_DECL=",
-            "GLOG_NO_ABBREVIATED_SEVERITIES",
             "NOT_USE_ATOM_ALLOCATOR",
         }
 
@@ -94,5 +92,4 @@ solution "GameServer"
         {
             "libAtom",
             "librcf",
-            "libglog",
         }
