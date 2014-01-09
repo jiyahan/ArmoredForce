@@ -21,5 +21,12 @@ public:
     ~AtomAutoInit();
 };
 
+// 生成一个UUID
+std::string     CreateUniqueID();
 
-std::string     GetUniqueID();
+
+#ifndef NOT_USE_ATOM_ALLOCATOR
+#define AS2Std(s)  as2std((s).c_str())
+#else
+#define AS2Std(s)   (s)
+#endif

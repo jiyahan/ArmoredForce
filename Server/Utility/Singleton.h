@@ -2,7 +2,7 @@
  * @file    Singleton.h
  * @author  ichenq@gmail.com
  * @date    Nov 29, 2013
- * @breif   基于std::call_once的多线程单件
+ * @breif   基于std::call_once的单件
  *
  */
 

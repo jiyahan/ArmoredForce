@@ -11,7 +11,7 @@ using namespace atom;
 using namespace electron;
 
 
-std::string  GetUniqueID()
+std::string  CreateUniqueID()
 {
     using namespace boost::uuids;
     return std::move(to_string(random_generator()()));
