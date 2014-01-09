@@ -24,8 +24,7 @@ solution "DenpendencyLibs"
 
     configuration "vs*"
         defines 
-        { 
-            "_USING_V110_SDK71_",
+        {
             "_CRT_SECURE_NO_WARNINGS",
             "WIN32_LEAN_AND_MEAN",
         }
@@ -106,36 +105,7 @@ solution "DenpendencyLibs"
         {
             "gtest",
             "gtest/include",
-        }
-        
-    -- glog
-    project "libglog"
-        kind "StaticLib"
-        uuid "17B9249C-63B6-564C-89EF-BE3288E483F8"
-        defines {"GOOGLE_GLOG_DLL_DECL= "}
-        files
-        {
-            "glog/src/logging.cc",
-            "glog/src/raw_logging.cc",
-            "glog/src/utilities.cc",
-            "glog/src/vlog_is_on.cc",
-            "glog/src/windows/port.cc",
-            "glog/src/utilities.h",
-            "glog/src/base/googleinit.h",
-            "glog/src/base/commandlineflags.h",
-            "glog/src/base/mutex.h",
-            "glog/src/windows/port.h",
-            "glog/src/windows/config.h",
-            "glog/src/windows/glog/logging.h",
-            "glog/src/windows/glog/log_severity.h",
-            "glog/src/windows/glog/raw_logging.h",
-            "glog/src/windows/glog/stl_logging.h",
-            "glog/src/windows/glog/vlog_is_on.h",
-        }
-        includedirs
-        {
-            "glog/src/windows",
-        }
+        }        
         
     -- Lua
     project "liblua"
