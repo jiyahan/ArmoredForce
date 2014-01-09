@@ -17,7 +17,7 @@ bool WriteMemoryToFile(const T& value, const string& path)
 {
     CMemory data;
     CArchive ar;
-    int version = 1;
+    int32_t version = 1;
     ar << version << value;
     ar.Clone(data);
 
