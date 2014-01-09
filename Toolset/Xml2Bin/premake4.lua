@@ -30,12 +30,12 @@ solution "Xml2Bin"
     project "Xml2Bin"
         kind "ConsoleApp"
         uuid "3C53977F-705F-7746-9DB1-AD248EE761F0"
+        buildoptions '/I"../../"'
         defines
         {
-            "MARKUP_STL",
-            "GOOGLE_GLOG_DLL_DECL=",
-            "GLOG_NO_ABBREVIATED_SEVERITIES",
+            "MARKUP_STL",                       
             "GTEST_HAS_TR1_TUPLE=0",
+            "NOT_USE_ATOM_ALLOCATOR",
         }
         
         -- 源代码文件
@@ -71,6 +71,7 @@ solution "Xml2Bin"
         libdirs 
         { 
             "../../3rdParty/libs", 
+            BOOST_DIR .. '/stage/lib',
         }
         
         links 

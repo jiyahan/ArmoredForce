@@ -1,9 +1,10 @@
 #include "command.h"
 #include <iostream>
 #include <atom/CAtom.h>
-#include <glog/logging.h>
-#include "../../Server/Setup/LoadSetup.h"
-#include "../../common/setup/LoadBinaryFile.h"
+#include <easylogging++.h>
+#include "Server/Setup/LoadSetup.h"
+#include "common/setup/LoadBinaryFile.h"
+
 
 using namespace std;
 using namespace atom;

@@ -5,17 +5,17 @@
 
 enum CommandType 
 {
-    CmdError,           // 閿欒
-    CmdMonsterList,     // 杞崲鎬墿鍒楄〃
-    CmdOfficerList,     // 鍐涘畼鍒楄〃
-    CmdArmyCategory,    // 鍏电鍒楄〃 
-    CmdRegionList,      // 杞崲鍦板浘鍒楄〃
-    CmdWeaponList,      // 杞崲鍐涘鍒楄〃
-    CmdGlobalSetup,     // 杞崲鍏ㄥ眬閰嶇疆
+    CmdError,           // 错误
+    CmdMonsterList,     // 转换怪物列表
+    CmdOfficerList,     // 军官列表
+    CmdArmyCategory,    // 兵种列表 
+    CmdRegionList,      // 转换地图列表
+    CmdWeaponList,      // 转换军备列表
+    CmdGlobalSetup,     // 转换全局配置
 };
 
 
-// 鎵ц杞崲
+// 执行转换
 void RunTransform(CommandType cmd, 
                   const std::string& file, 
                   const std::string& outfile);
