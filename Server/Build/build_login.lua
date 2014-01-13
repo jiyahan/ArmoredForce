@@ -27,8 +27,7 @@ solution "LoginServer"
     configuration "vs*"
         defines
         {
-            "WIN32_LEAN_AND_MEAN",
-            "_CRT_SECURE_NO_WARNINGS",
+            "WIN32_LEAN_AND_MEAN",            
         }
         buildoptions "-Zm200 /FI\"stdafx.h\" /wd\"4996\""
 
@@ -84,6 +83,7 @@ solution "LoginServer"
             "../../3rdParty/glog/src/windows/",
             "../../3rdParty/libmysql/include/",
             "../../3rdParty/mysql++/lib/",
+            "../../3rdParty/openssl/include/",
             BOOST_DIR,
         }
 
@@ -100,4 +100,5 @@ solution "LoginServer"
             "libAtom",
             "libmysqlpp",
             "libmysql",
+            "libeay32",
         }

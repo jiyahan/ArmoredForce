@@ -26,7 +26,6 @@ solution "GameServer"
         defines
         {
             "WIN32_LEAN_AND_MEAN",
-            "_CRT_SECURE_NO_WARNINGS",
         }
         buildoptions "-Zm200 /FI\"stdafx.h\" /wd\"4996\""
 
