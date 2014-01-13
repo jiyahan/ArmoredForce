@@ -6,15 +6,19 @@ USE `account_db` $$
 
 /* 帐号表 */
 CREATE TABLE `account_info` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `reg_type` tinyint(4) unsigned NOT NULL,
-  `account` varchar(45) NOT NULL,
-  `password` char(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `diamonds` int(11) NOT NULL COMMENT '钻石',
-  PRIMARY KEY (`id`),
+  `index` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `account` varchar(32) NOT NULL,
+  `reg_type` tinyint(4) NOT NULL,
+  `reg_time` datetime NOT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `password` char(32) NOT NULL COMMENT 'PBKDF2',
+  `salt` char(8) NOT NULL,
+  `last_login_date` datetime NOT NULL,
+  `last_login_ip` varchar(40) NOT NULL,
+  PRIMARY KEY (`index`),
   UNIQUE KEY `account_UNIQUE` (`account`),
-  UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8$$
+  UNIQUE KEY `index_UNIQUE` (`index`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 
@@ -22,7 +26,6 @@ CREATE TABLE `account_info` (
 CREATE DATABASE IF NOT EXISTS `game_db` $$
 USE `game_db` $$
 
-delimiter $$
 
 /* 角色信息 */
 CREATE TABLE `player_info` (
@@ -32,7 +35,8 @@ CREATE TABLE `player_info` (
   `exp` bigint(20) unsigned zerofill NOT NULL COMMENT '经验',
   `rank` smallint(5) unsigned zerofill NOT NULL COMMENT '军衔',
   `gold` bigint(20) unsigned zerofill NOT NULL COMMENT '金钱',
-  `action_point` int(10) unsigned zerofill NOT NULL COMMENT '行动力',
+  `action_point` int(11) unsigned zerofill NOT NULL COMMENT '行动力',
+  `gems` int(11) unsigned zerofill NOT NULL COMMENT '钻石',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
@@ -43,4 +47,4 @@ $$
 CREATE DATABASE IF NOT EXISTS `log_db` $$
 USE `log_db` $$
 
-
+delimiter ;
