@@ -55,7 +55,7 @@ namespace electron
         public:
 
             //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
-            CMessage(U16 command = MID_UNKNOW); 
+            explicit CMessage(U16 command = MID_UNKNOW); 
 
 
 
