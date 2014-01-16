@@ -17,7 +17,7 @@ std::string  CreateUniqueID()
     return std::move(to_string(random_generator()()));
 }
 
-AtomAutoInit::AtomAutoInit(int pool_size, int thread_num)
+AtomAutoInit::AtomAutoInit(int32_t pool_size, int32_t thread_num)
 {
     CAtom::Presetup();
     CElectron::Presetup();
