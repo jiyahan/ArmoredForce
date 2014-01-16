@@ -12,6 +12,8 @@ using namespace atom;
 using namespace electron;
 
 
+
+//////////////////////////////////////////////////////////////////////////
 LoginServer::LoginServer()
 {
 }
@@ -24,14 +26,26 @@ bool LoginServer::Init(const AppConfig& cfg)
 {
     config_ = cfg;
 
+    MyConnectionPool::ConnetionConfig conn_cfg = {};
+    conn_cfg.host = cfg.mysql_host;
+    conn_cfg.port = cfg.mysql_port;
+    conn_cfg.user = cfg.mysql_user;
+    conn_cfg.pwd = cfg.mysql_pwd;
+    conn_cfg.db = cfg.mysql_default;
+    conn_cfg.charset = cfg.mysql_charset;
+    conn_cfg.max_pool_size = cfg.connection_pool_size;
+    conn_cfg.max_idle_time = cfg.max_idle_time;
+
+    conn_pool_ = make_shared<MyConnectionPool>(conn_cfg);
+
     // 开始网络服务器	
-    CHECK(server_.Start(config_.host.c_str(),config_.port))
+    CHECK(server_.Start(config_.host, config_.port))
         << "初始化TCP服务器失败! IP:" << config_.host << ",端口:" << config_.port;
 
     LOG(INFO) << "TCP服务器开始监听" << config_.host << ":" << config_.port;
 
     RCF::TcpEndpoint remoteEndPoint(config_.rpc_host, config_.rpc_port);
-    client_.reset(new RcfClient<ICenterRpcService>(remoteEndPoint));
+    client_ = make_shared<RcfClient<ICenterRpcService>>(remoteEndPoint);
 
     // 注册客户端消息回调处理函数
     handler_map_ = GetMsgHandlers();

@@ -20,6 +20,12 @@ enum NOVA_MESSAGE_ID
 	//版本验证返回
 	MID_VERSION_VERIFYRESPONSE,
 
+    // 注册
+    MID_LOGIN_REGISTER,
+
+    // 注册返回
+    MID_LOGIN_REGISTER_RESPONSE,
+
 	//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 	MID_ACCOUNT_AUTHORIZE_RESPOND,
 

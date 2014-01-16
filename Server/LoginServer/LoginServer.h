@@ -6,10 +6,12 @@
 #include "Server/RPC/ICenterRpcService.h"
 #include "Net/SocketServer.h"
 #include "MsgProcess.h"
-
+#include "MyConnectionPool.h"
+#include "pbkdf2.h"
 
 
 typedef std::shared_ptr<RcfClient<ICenterRpcService>>   RpcClientPtr;
+ 
 
 class LoginServer : public Singleton<LoginServer>
 {
@@ -35,6 +37,10 @@ public:
 
     RpcClientPtr    GetClient() {return client_;}
 
+    MyConnectionPoolPtr GetConnectionPool() {return conn_pool_;}
+
+    PBKDF2&         GetPBKDF2() {return pbkdf2_;}
+
 private:
     // 处理消息
     void    ProcessMessage();
@@ -52,6 +58,10 @@ private:
 
     // 消息路由表
     HandlerMap          handler_map_;
+
+    MyConnectionPoolPtr conn_pool_;
+
+    PBKDF2              pbkdf2_;
 };
 
 inline LoginServer& GetServer()
@@ -67,4 +77,9 @@ inline RpcClientPtr GetRpcClientPtr()
 inline SocketServer& GetTCPServer()
 {
     return GetServer().GetSocketServer();
+}
+
+inline MyConnectionPoolPtr GetConnectionPoolPtr()
+{
+    return GetServer().GetConnectionPool();
 }

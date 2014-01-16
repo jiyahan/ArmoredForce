@@ -1,5 +1,6 @@
 ﻿#include "MsgProcess.h"
 #include <iostream>
+#include <future>
 #include <RCF/RCF.hpp>
 #include <easylogging++.h>
 #include "LoginServer.h"
@@ -15,7 +16,38 @@ using namespace atom;
 using namespace electron;
 
 
+string GetPeerAddress(uint64_t connector)
+{
+    return "127.0.0.1";
+}
 
+void ProcessRegister(CMessage& msg)
+{
+    MSGLoginRegist request;
+    msg >> request;
+    LOG(INFO) << request.account << ", " << request.email;
+
+    string salt = GetServer().GetPBKDF2().CreateSalt();
+    string pwd = GetServer().GetPBKDF2().CreateStrongPassword(request.password, salt);
+    string reg_ip = GetPeerAddress(msg.GetConnector());
+    int32_t reg_type = 0;
+    try
+    {
+        ScopedConnection conn(*GetConnectionPoolPtr());
+        Query query = conn->query("call sp_register_user(%0q, %1q, %2q, %3q, %4q, %5q)");
+        StoreQueryResult result = query.store(request.account, reg_type, reg_ip, 
+            request.email, pwd, salt);
+        if (!result.empty() && !result[0].empty())
+        {
+            int32_t status = static_cast<int32_t>(result[0][0]);
+        }
+    }
+    catch(mysqlpp::Exception& ex)
+    {
+        cout << ex.what() << endl;
+    }
+
+}
 
 
 // 处理角色登录
@@ -23,10 +55,9 @@ void ProcessUserLogin(CMessage& msg)
 {
     MSGLoginLogin request;
     msg >> request;
-    cout << request.account << endl << request.password << endl;
-
-    int status = 0;
-
+    LOG(INFO) << request.account << endl << request.password << endl;
+    
+    int32_t status = 0;
     // 调用存储过程sp_user_login获得登录结果
     try
     {
@@ -35,7 +66,7 @@ void ProcessUserLogin(CMessage& msg)
         //StoreQueryResult result = query.store(request.account.c_str(), request.password.c_str());    
         //if (!result.empty() && !result[0].empty())
         {
-            //status = static_cast<int>(result[0][0]);
+            //status = static_cast<int32_t>(result[0][0]);
         }
     }
     catch(mysqlpp::Exception& ex)
@@ -59,7 +90,7 @@ void ProcessVerifyVersion(CMessage& msg)
     // rpc调用
     string host;
     I16 port = 0;
-    bool ok = GetRpcClientPtr()->GetGameServerAddress(host, port);
+    //bool ok = GetRpcClientPtr()->GetGameServerAddress(host, port);
 
     version::GameServerArea game_area;
     version::GameServerList server_list;
@@ -86,5 +117,7 @@ HandlerMap GetMsgHandlers()
     HandlerMap handlers;
     handlers[MID_LOGIN_LOGIN] = ProcessUserLogin;
     handlers[MID_VERSION_VERIFY] = ProcessVerifyVersion;
+    handlers[MID_LOGIN_REGISTER] = ProcessRegister;
+    
     return std::move(handlers);
 }

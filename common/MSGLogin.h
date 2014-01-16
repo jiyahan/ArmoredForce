@@ -46,14 +46,14 @@ struct 	MSGLoginLoginResponse
 //创建角色
 struct 	MSGLoginCreate
 {
-	int areaId;
+	I32 areaId;
 	a_string account;
 };
 
 //创建角色返回
 struct 	MSGLoginCreateResponse
 {
-	int areaId;
+	I32 areaId;
 	a_string account;
 	//0成功1失败
 	I08 result;
@@ -64,8 +64,8 @@ struct 	MSGLoginCreateResponse
 struct MSGLoginVersionVerify
 {
 	static const NOVA_MESSAGE_ID msgId=MID_VERSION_VERIFY;
-	int major;
-	int minor;
+	I32 major;
+	I32 minor;
 };
 
 //版本验证返回
@@ -90,6 +90,13 @@ inline void Serialize(Archive & archive, MSGLoginRegist & value, bool isSave)
 	archive.Bind(value.email);
 }
 
+template<class Archive>
+inline void Serialize(Archive & archive, MSGLoginRegistResponse & value, bool isSave)
+{
+    UNREFERENCED_PARAMETER(isSave);
+    archive.Bind( value.account );
+    archive.Bind( value.result );    
+}
 
 template<class Archive>
 inline void Serialize(Archive & archive, MSGLoginLogin & value, bool isSave)

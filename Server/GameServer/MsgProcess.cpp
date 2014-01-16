@@ -122,7 +122,7 @@ static void HandleUserAuth(CMessage& msg)
 
 HandlerMap GetHandlerMap()
 {
-    MockFight2();
+    //MockFight2();
 
     HandlerMap handlers;
     handlers[MID_ACCOUNT_AUTHORIZE_REQUEST] = HandleUserAuth;
