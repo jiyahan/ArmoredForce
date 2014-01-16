@@ -1,30 +1,33 @@
+-- ----------------------------------------------------------------------------
+-- sp_register_user.sql
+-- Jan 14, 2014 
+-- 角色注册存储过程
+-- ----------------------------------------------------------------------------
+
+DROP PROCEDURE IF EXISTS `sp_register_user`;
+
 DELIMITER $$
+USE `account_db`$$
 
-
-/*
- * 角色注册
- */
-USE account_db $$
-DROP PROCEDURE IF EXISTS `account_db`.`sp_register_user` $$
-CREATE PROCEDURE `account_db`.`sp_register_user` 
-(
-    IN type tinyint,
-    IN name varchar(32),
-    IN passwd char(32)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_register_user`(
+    IN `account` varchar(32),
+    IN `reg_type` tinyint(4),
+    IN `reg_ip` varchar(40),
+    IN `pwd` char(64),
+    IN `salt` char(16),
+    IN `email` varchar(45)
 )
 BEGIN
-    DECLARE user_count INT DEFAULT 0;
-    SET user_count = (SELECT COUNT(*) FROM account_info WHERE account=name);
-    IF user_count > 0 THEN
-        SELECT 1 AS result;     /* 角色已存在 */
+	DECLARE is_exist INT(11) DEFAULT 0 ;
+    SET is_exist = (SELECT COUNT(*) FROM account_info WHERE account=`account`) ;
+    IF is_exist > 0 THEN
+        SELECT 1 AS result;    
     END IF;
 
-    INSERT INTO account_info(reg_type, account, password, diamonds)
-        VALUES(type, name, passwd, 0);
-
-    SELECT 0 AS result;
-END 
-$$
+    INSERT INTO account_info(account, reg_type, reg_time, reg_ip, passwd, salt, email)
+        VALUES(`account`, `reg_type`, now(), `reg_ip`, `pwd`, `salt`, `email`);
+    SELECT 0 AS result; 
+END$$
 
 DELIMITER ;
 
