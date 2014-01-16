@@ -41,3 +41,8 @@ inline Minions&  GetMinions()
 {
     return Minions::GetInstance();
 }
+
+inline SocketClient& GetTCPClient()
+{
+    return GetMinions().GetClient();
+}

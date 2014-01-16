@@ -14,6 +14,14 @@ using namespace atom;
 using namespace electron;
 
 
+void RequestRegister()
+{
+    MSGLoginRegist reg = {"johnnie", "123456", "johne@gove.cn"};
+    GetTCPClient().Send(MID_LOGIN_REGISTER, reg);
+}
+
+//////////////////////////////////////////////////////////////////////////
+
 // 登录返回
 void HandleLoginResponse(CMessage& msg)
 {
@@ -21,6 +29,13 @@ void HandleLoginResponse(CMessage& msg)
     msg >> response;
     cout << "result: " << (int)response.result 
         << " signature: " << response.sign << endl;
+}
+
+void HandleRegisterResponse(CMessage& msg)
+{
+    MSGLoginRegistResponse response;
+    msg >> response;
+    cout << "result: " << (int)response.result << endl;
 }
 
 // 验证返回
@@ -47,6 +62,9 @@ void HandleVerifyResponse(CMessage& msg)
         }
     }
 
+    RequestRegister();
+
+#if 0
     if (GetMinions().ResetConnection(domain.host.c_str(), domain.port))
     {
         MSGAccountAuthorize auth_request;
@@ -60,6 +78,7 @@ void HandleVerifyResponse(CMessage& msg)
     {
         LOG(ERROR) << "连接GameServer失败, " << domain.host << ":" << domain.port;
     }
+#endif
 }
 
 void HandleAuthResponse(CMessage& msg)
@@ -98,6 +117,7 @@ HandlerMap    GetHandlerMap()
 {
     HandlerMap handlers;
     handlers[MID_LOGIN_LOGINRESPONSE] = HandleLoginResponse;
+    handlers[MID_LOGIN_REGISTER_RESPONSE] = HandleRegisterResponse;
     handlers[MID_VERSION_VERIFYRESPONSE] = HandleVerifyResponse;
     handlers[MID_ACCOUNT_AUTHORIZE_RESPOND] = HandleAuthResponse;;
     handlers[MID_CHARACTER_INSTANCE_COMBAT_RESPOND] = HandleCombatResponse;
