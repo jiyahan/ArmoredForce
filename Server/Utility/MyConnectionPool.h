@@ -1,6 +1,6 @@
 /**
  *	@file	MyConnectionPool.h
- *	@author	ichenq@gmail.com
+ *	@author	chenqiang01@7aurora.com
  *	@date	Dec 17, 2013
  *  @brief	MySQL连接池
  */
@@ -8,9 +8,9 @@
 #pragma once
 
 #include <string>
+#include <memory>
 #include <atomic>
 #include <mysql++.h>
-#include "Singleton.h"
 
 
 
@@ -31,11 +31,8 @@ public:
     };
 
 public:
-	MyConnectionPool();
+	explicit MyConnectionPool(const ConnetionConfig& cfg);
 	~MyConnectionPool();
-
-    // 初始化配置
-    bool init(const ConnetionConfig& cfg);
 	
     // 获取一个新连接
     mysqlpp::Connection* 	grab();
@@ -44,15 +41,20 @@ public:
     void release(const mysqlpp::Connection* p);
 
 private:
+    // 初始化连接
+    bool init();
+
     // 创建新连接
 	mysqlpp::Connection* 	create();
 
     // 释放连接
 	void 					destroy(mysqlpp::Connection* cp);
 
-	unsigned int 			max_idle_time();
+	unsigned int32_t 			max_idle_time();
 	
 private:	
 	std::atomic<int32_t> 	conns_in_use_;      // 当前的连接数量
     ConnetionConfig         config_;            // 连接配置
 };
+
+typedef std::shared_ptr<MyConnectionPool>   MyConnectionPoolPtr;

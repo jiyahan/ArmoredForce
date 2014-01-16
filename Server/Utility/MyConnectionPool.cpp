@@ -5,9 +5,10 @@
 using namespace mysqlpp;
 
 
-MyConnectionPool::MyConnectionPool()
+MyConnectionPool::MyConnectionPool(const ConnetionConfig& cfg)
+    : config_(cfg), conns_in_use_(0)
 {
-    conns_in_use_ = 0;
+    init();
 }
 
 MyConnectionPool::~MyConnectionPool()
@@ -15,10 +16,9 @@ MyConnectionPool::~MyConnectionPool()
     clear();
 }
 
-// 初始化连接参数
-bool MyConnectionPool::init(const ConnetionConfig& cfg)
+// 初始化连接
+bool MyConnectionPool::init()
 {
-    config_ = cfg;
     Connection* p = create();
     SCOPE_EXIT { destroy(p); };
     return (p != NULL);
@@ -76,7 +76,7 @@ void MyConnectionPool::destroy(Connection* cp)
     delete cp;
 }
 
-unsigned int    MyConnectionPool::max_idle_time()
+unsigned int32_t    MyConnectionPool::max_idle_time()
 {
     return config_.max_idle_time;
 }
