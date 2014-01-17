@@ -17,7 +17,7 @@
              index="M10001"
              category="小米步枪" 
              type="1"
-             attack="60"
+             attack="160"
              force="600"
              blast="0" 
              accuracy="0" >
@@ -34,7 +34,7 @@
              index="M10002"
              category="小米步枪"
              type="1"
-             attack="65"
+             attack="165"
              force="800"
              blast="6" 
              accuracy="5" >
@@ -51,7 +51,7 @@
              index="M10003"
              category="小米步枪" 
              type="1"
-             attack="70"
+             attack="170"
              force="900"
              blast="6" 
              accuracy="5" >
@@ -68,7 +68,7 @@
              index="M10004"
              category="小米步枪" 
              type="1"
-             attack="63"
+             attack="163"
              force="900"
              blast="0" 
              accuracy="0" >
@@ -85,7 +85,7 @@
              index="M10005"
              category="小米步枪" 
              type="1"
-             attack="63"
+             attack="163"
              force="900"
              blast="0" 
              accuracy="0" >
@@ -102,7 +102,7 @@
              index="M10006"
              category="小米步枪" 
              type="1"
-             attack="58"
+             attack="158"
              force="1000"
              blast="0" 
              accuracy="0" >
@@ -119,7 +119,7 @@
              index="M10007"
              category="小米步枪" 
              type="1"
-             attack="40"
+             attack="140"
              force="1500"
              blast="0" 
              accuracy="0" >
@@ -136,7 +136,7 @@
              index="M10008"
              category="小米步枪" 
              type="1"
-             attack="80"
+             attack="180"
              force="800"
              blast="50" 
              accuracy="50" >
@@ -153,7 +153,7 @@
              index="M10009"
              category="小米步枪" 
              type="1"
-             attack="86"
+             attack="186"
              force="1100"
              blast="50" 
              accuracy="50" >
@@ -165,5 +165,54 @@
             <drop index="GOODS001" num="1" rate="10" />
         </drop_things>
     </monster>
-        
+
+    <monster name="阿森纳" 
+             index="M10010"
+             category="小米步枪" 
+             type="1"
+             attack="156"
+             force="1080"
+             blast="50" 
+             accuracy="50" >
+        <!-- 掉落道具  --> 
+        <drop_things >
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+        </drop_things>
+    </monster> 
+    <monster name="阿布拉多" 
+             index="M10011"
+             category="小米步枪" 
+             type="1"
+             attack="164"
+             force="1010"
+             blast="50" 
+             accuracy="50" >
+        <!-- 掉落道具  --> 
+        <drop_things >
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+        </drop_things>
+    </monster>  
+    
+    <monster name="阿联酋" 
+         index="M10012"
+         category="小米步枪" 
+         type="1"
+         attack="172"
+         force="990"
+         blast="50" 
+         accuracy="50" >
+        <!-- 掉落道具  --> 
+        <drop_things >
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+            <drop index="GOODS001" num="1" rate="10" />
+        </drop_things>
+    </monster>  
 </monster_list>

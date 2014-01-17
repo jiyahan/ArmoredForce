@@ -8,7 +8,7 @@
 #pragma once
 
 #include <lua.hpp>
-#incude <string>
+#include <string>
 #include <boost/noncopyable.hpp>
 
 
@@ -56,7 +56,7 @@ public:
     int IsNone(int index) const         {return lua_isnone(state_, index);}
     int IsNoneOrNil(int index) const    {return lua_isnoneornil(state_, index);}
     int Type(int index) const           {return lua_type(state_, index);}
-    const char* TypeName(int type)      {return lua_typename(state_, type);}
+    std::string TypeName(int type)      {return lua_typename(state_, type);}
 
     int LoadFile(const char* filename)  {return luaL_loadfile(state_, filename);}
     int DoFile(const char* filename)    {return luaL_dofile(state_, filename);}
@@ -67,8 +67,7 @@ public:
 	// garbage-collection function and options
 	//
 	int GC(int what, int data) {return lua_gc(state_, what, data);}
-
-    void Error(const char* fmt, ...)    {luaL_error(fmt, __VA_ARGS__ );}
+    
 
     operator lua_State*() {return state_;}
     lua_State* GetCState() {return state_;}

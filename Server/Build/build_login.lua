@@ -58,6 +58,9 @@ solution "LoginServer"
 
             "../LoginServer/**.h",
             "../LoginServer/**.cpp",
+            
+            "../Script/*.h",
+            "../Script/*.cpp",
 
             "../Utility/MyConnectionPool.h",
             "../Utility/MyConnectionPool.cpp",
@@ -65,6 +68,8 @@ solution "LoginServer"
             "../Utility/Markup.cpp",
             "../Utility/Utility.h",
             "../Utility/Utility.cpp",
+            "../Utility/pbkdf2.h",
+            "../Utility/pbkdf2.cpp",
 
             "../RPC/ICenterRpcService.h",
         }
@@ -84,6 +89,7 @@ solution "LoginServer"
             "../../3rdParty/libmysql/include/",
             "../../3rdParty/mysql++/lib/",
             "../../3rdParty/openssl/include/",
+            "../../3rdParty/lua/src/",
             BOOST_DIR,
         }
 
@@ -101,4 +107,5 @@ solution "LoginServer"
             "libmysqlpp",
             "libmysql",
             "libeay32",
+            "liblua",
         }

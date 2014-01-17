@@ -47,6 +47,9 @@ solution "Minions"
             "../../common/**.h",
             "../../common/**.cpp",
             
+            "../../Server/Script/message.h",
+            "../../Server/Script/message.cpp",
+            
             "../../Server/Utility/Markup.h",
             "../../Server/Utility/Markup.cpp",
             "../../Server/Utility/Utility.h",
@@ -62,7 +65,7 @@ solution "Minions"
         { 
             "../../Server/Utility",
             "../../3rdParty/atom",
-            "../../3rdParty/glog/src/windows/",
+            "../../3rdParty/lua/src",
             BOOST_DIR,
         }
         
@@ -74,6 +77,6 @@ solution "Minions"
         links 
         {
             "libatom",
-            "libglog",
+            "liblua",
         }
         
