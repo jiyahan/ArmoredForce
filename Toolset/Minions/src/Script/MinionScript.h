@@ -8,5 +8,11 @@
 #pragma once
 
 struct lua_State;
+namespace electron {class CMessage;}
 
-bool minon_init(lua_State* L);
+
+//
+bool MinionInit(lua_State* L);
+
+//
+void MinionSend(int32_t id, electron::CMessage* msg);

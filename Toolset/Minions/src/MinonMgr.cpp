@@ -33,7 +33,7 @@ bool MinionMgr::Init()
 {
     vm_.OpenLibs();
 
-    minon_init(vm_.GetState());
+    MinionInit(vm_.GetState());
     
     if (!vm_.DoFile("Minion.lua"))
     {
