@@ -12,15 +12,15 @@ solution "DenpendencyLibs"
     language "C++"
     platforms { "x32", "x64" }
     configurations { "Debug", "Release" }
-    flags { "No64BitChecks", "StaticRuntime" }
+    flags { "StaticRuntime" }
     
     configuration "Debug"
-        defines { "DEBUG" }
+        defines { "DEBUG", "_DEBUG" }
         flags { "Symbols" }
 
     configuration "Release"
         defines { "NDEBUG" }
-        flags { "Optimize", "StaticRuntime", }
+        flags { "Symbols", "Optimize"}
 
     configuration "vs*"
         defines 
@@ -61,6 +61,7 @@ solution "DenpendencyLibs"
     project "libAtom"
         kind "StaticLib"
         uuid "95269177-9BA3-1B42-98F3-8A901CA1B415"
+        buildoptions "-Zm200 /FI\"pch.h\" "
         files
         {
             "atom/atom/**.cpp",
@@ -68,7 +69,15 @@ solution "DenpendencyLibs"
             "atom/electron/**.c",
             "atom/electron/**.cpp",
             "atom/electron/**.h",
+            "atom/pch.cpp",
         }
+        includedirs 
+        {
+        }
+        
+        -- minilzo.c文件需要单独设置为不使用预编译头
+        pchheader "pch.h"
+        pchsource "atom/pch.cpp"
         
     -- RCF
     project "librcf"
@@ -126,6 +135,7 @@ solution "DenpendencyLibs"
         {
             "lua/src/lua.c",
             "lua/src/luac.c",
+            "lua/src/print.c",
         }
         includedirs 
         {
