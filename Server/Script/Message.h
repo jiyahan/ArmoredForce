@@ -15,10 +15,13 @@
 #include <cstdint>
 #include <functional>
 
-typedef std::function<void (int32_t)>  sender_type;
+struct lua_State;
+namespace electron {class CMessage;}
+
+typedef std::function<void (int32_t, electron::CMessage*)>  SenderType;
 
 // ≥ı ºªØ
-void    message_init(sender_type sender);
+void    MessageInit(lua_State* L, SenderType sender);
 
 // 
-bool    dispatch_message(CMessage* msg);
+bool    DispatchMessage(electron::CMessage* msg);

@@ -15,7 +15,7 @@
 
 
 class MyConnectionPool
-	: public mysqlpp::ConnectionPool
+    : public mysqlpp::ConnectionPool
 {
 public:
     struct ConnetionConfig
@@ -31,9 +31,9 @@ public:
     };
 
 public:
-	explicit MyConnectionPool(const ConnetionConfig& cfg);
-	~MyConnectionPool();
-	
+    explicit MyConnectionPool(const ConnetionConfig& cfg);
+    ~MyConnectionPool();
+    
     // 获取一个新连接
     mysqlpp::Connection* 	grab();
 
@@ -45,15 +45,15 @@ private:
     bool init();
 
     // 创建新连接
-	mysqlpp::Connection* 	create();
+    mysqlpp::Connection* 	create();
 
     // 释放连接
-	void 					destroy(mysqlpp::Connection* cp);
+    void 					destroy(mysqlpp::Connection* cp);
 
-	unsigned int32_t 			max_idle_time();
-	
+    unsigned int 			max_idle_time();
+    
 private:	
-	std::atomic<int32_t> 	conns_in_use_;      // 当前的连接数量
+    std::atomic<int32_t> 	conns_in_use_;      // 当前的连接数量
     ConnetionConfig         config_;            // 连接配置
 };
 

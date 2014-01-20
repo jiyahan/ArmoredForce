@@ -76,7 +76,7 @@ void MyConnectionPool::destroy(Connection* cp)
     delete cp;
 }
 
-unsigned int32_t    MyConnectionPool::max_idle_time()
+unsigned int    MyConnectionPool::max_idle_time()
 {
     return config_.max_idle_time;
 }

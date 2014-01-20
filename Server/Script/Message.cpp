@@ -14,7 +14,10 @@ using namespace electron;
 
 #define check_message(L)    ((CMessage**)luaL_checkudata(L, 1, MSG_META_HANDLE))
 
-static sender_type  global_sender;
+namespace {
+
+    static SenderType  global_sender;
+}
 
 static int8_t to_char(lua_State* L, int32_t index)
 {
@@ -132,7 +135,7 @@ static bool check_tokens(char ch)
 
 //////////////////////////////////////////////////////////////////////////
 
-static int32_t message_new(lua_State* L)
+static int32_t new_message(lua_State* L)
 {
     int32_t arg = lua_gettop(L);
     if (arg  < 1)
@@ -155,6 +158,7 @@ static int32_t message_gc(lua_State* L)
     CMessage** msg = check_message(L);
     if (*msg)
     {
+        delete *msg;
         *msg = NULL;
     }
     return 0;
@@ -170,9 +174,9 @@ static int32_t message_tostring(lua_State* L)
 static int32_t message_send(lua_State* L)
 {
     int32_t arg = lua_gettop(L);
-    CMessage** MSG = check_message(L);
+    CMessage** msg = check_message(L);
     int32_t peer = luaL_checkinteger(L, 1);
-    global_sender(peer);
+    global_sender(peer, *msg);
     return 0;
 }
 
@@ -225,16 +229,16 @@ static int32_t message_size(lua_State* L)
     CInterface<IImportable> import;
     if( import.Mount(*msg, IID_IMPORTABLE) ) 
     {
-        lua_pushinteger(import->Available());
+        lua_pushnumber(L, static_cast<lua_Number>(import->Available()));
         return 1;
     }
     return 0;
 }
 
 //////////////////////////////////////////////////////////////////////////
-static void   make_mt(lua_State *L) 
+static void make_meta(lua_State *L) 
 {
-    luaL_Reg lib[] = 
+    static const luaL_Reg meta_lib[] = 
     {
         { "pack", message_pack },
         { "unpack", message_unpack },
@@ -244,11 +248,20 @@ static void   make_mt(lua_State *L)
         { NULL, NULL },
     };
 
-    luaL_newlib(L,lib);
+    luaL_newmetatable(L, MSG_META_HANDLE);  /* create metatable for file handles */
+    lua_pushvalue(L, -1);                   /* push metatable */
+    lua_setfield(L, -2, "__index");         /* metatable.__index = metatable */
+    luaL_register(L, NULL, meta_lib);       /* add file methods to new metatable */
 }
 
-
-void message_init(sender_type sender)
+void MessageInit(lua_State* L, SenderType sender)
 {
     global_sender = sender;
+    make_meta(L);
+    lua_register(L, "new_message", new_message);
+}
+
+bool DispatchMessage(electron::CMessage* msg)
+{
+    return true;
 }

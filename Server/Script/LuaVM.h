@@ -2,7 +2,7 @@
  *  @file   LuaState.h
  *  @author 
  *  @date   Jan 16, 2014
- *  @brief  A lightweight lua_State wrapper.
+ *  @brief  Lua virtual machine, a lightweight lua_State wrapper.
  */
 
 #pragma once
@@ -12,19 +12,22 @@
 #include <boost/noncopyable.hpp>
 
 
-class LuaState : boost::noncopyable
+class LuaVM : boost::noncopyable
 {
 public:
-    LuaState();
-    LuaState(lua_State* L);
-    ~LuaState();
+    LuaVM();
+    explicit LuaVM(lua_State* L);
+    virtual ~LuaVM();
 
-    lua_CFunction AtPanic(lua_CFunction f) {return lua_atpanic(state_, f);}
-    void OpenLibs();
+    int OnError();
+    
+    lua_State* GetState()       {return state_;}
+    void OpenLibs()             {luaL_openlibs(state_);}
 
+    int GetTop() const              {return lua_gettop(state_);}
+    void SetTop(int index)          {return lua_settop(state_, index);}
 
-    int GetTop() const          {return lua_gettop(state_);}
-    void SetTop(int index);     {return lua_settop(state_);}
+    void GetGlobal(const char* key) {lua_getglobal(state_, key);}
 
     void Push(bool v)               {lua_pushboolean(state_, v);}
     void Push(int8_t v)             {lua_pushinteger(state_, v);}
@@ -33,14 +36,12 @@ public:
     void Push(uint16_t v)           {lua_pushinteger(state_, v);}
     void Push(int32_t v)            {lua_pushinteger(state_, v);}
     void Push(uint32_t v)           {lua_pushinteger(state_, v);}
-    void Push(int64_t v)            {lua_pushnumber(state_, v);}
-    void Push(uint64_t v)           {lua_pushnumber(state_, v);}
+    void Push(int64_t v)            {lua_pushnumber(state_, static_cast<lua_Number>(v));}
+    void Push(uint64_t v)           {lua_pushnumber(state_, static_cast<lua_Number>(v));}
     void Push(float v)              {lua_pushnumber(state_, v);}
     void Push(double v)             {lua_pushnumber(state_, v);}
-    void Push(const char* s)        {lua_pushnumber(state_, s);}
-    void Push(const void* v)        {lua_pushlightuserdata(state_, v);}
-    void Push(const lua_CFunction f){lua_pushcclosure(state_, f);}
-    
+    void Push(const char* s)        {lua_pushstring(state_, s);}
+    void Push(void* v)              {lua_pushlightuserdata(state_, v);}    
 
     // access functions (stack -> C)
     int IsNumber(int index) const       {return lua_isnumber(state_, index);}
@@ -58,22 +59,20 @@ public:
     int Type(int index) const           {return lua_type(state_, index);}
     std::string TypeName(int type)      {return lua_typename(state_, type);}
 
-    int LoadFile(const char* filename)  {return luaL_loadfile(state_, filename);}
-    int DoFile(const char* filename)    {return luaL_dofile(state_, filename);}
-    int LoadString(const char* str)     {return luaL_loadstring(state_, str);}
-    int DoString(const char* str)       {return luaL_dostring(state_, str);}
+    lua_CFunction AtPanic(lua_CFunction f) {return lua_atpanic(state_, f);}
 
-    //
-	// garbage-collection function and options
-	//
-	int GC(int what, int data) {return lua_gc(state_, what, data);}
+    bool LoadFile(const char* filename);
+    bool DoFile(const char* filename);
+    bool LoadString(const std::string& s);
+    bool DoString(const std::string& s);
+
+    bool Call(int params = 0, int results = LUA_MULTRET);
+    bool Call(const char* func, const char* fmt = NULL, ...);
     
-
-    operator lua_State*() {return state_;}
-    lua_State* GetCState() {return state_;}
+	// garbage collection
+	int PerformGC(bool full = false);        
 
 private:
-    
-
-    lua_State*   state_;
+    bool        owner_;
+    lua_State*  state_;
 };

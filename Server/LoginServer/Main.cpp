@@ -26,7 +26,16 @@ void InitLogging(const string& conf_file, const string& dir)
 }
 
 
-// 主入口
+//
+// 慎用全局Class变量(和单件模式)
+// 1, 原则：为了让资源(内存，文件等)更可控，资源的分配应该在进入main后进行，
+//          资源的释放应该在main退出之前完成
+//          
+// 2，原理:
+//      C++未定义全局变量的顺序，Class类型的全局变量会在main函数之前分配资源(构造函数)，
+//      并在在main函数之后释放资源(析构函数)
+//      多线程安全的单件模式一般都会在main之前执行初始化
+//
 int main(int argc, const char* argv[])
 {
     try
