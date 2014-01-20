@@ -2,7 +2,7 @@
 #include <exception>
 #include <filesystem>
 #include "Utility.h"
-#include "Minons.h"
+#include "MinonMgr.h"
 #include "Config.h"
 
 using namespace std;
@@ -39,13 +39,12 @@ int main(int argc, const char* argv[])
         AtomAutoInit init(cfg.pool_size, cfg.thread_num);
 
         // ÔËÐÐ
-        Minions&  app = Minions::GetInstance();
-        if (app.Init(cfg))
+        if (CreateMinionMgr(cfg))
         {
-            while (app.Run())
+            while (GetMinionMgr().Run())
                 ;
-            app.Release();
         }
+        DestroyMinionMgr();
     }
     catch(std::exception& ex)
     {

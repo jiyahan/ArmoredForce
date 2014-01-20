@@ -12,6 +12,7 @@ using namespace electron;
 
 
 SocketClient::SocketClient(void)
+    : client_id_(0)
 {
 }
 

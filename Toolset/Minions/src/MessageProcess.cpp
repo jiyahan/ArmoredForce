@@ -1,5 +1,5 @@
 #include "MessageProcess.h"
-#include "Minons.h"
+#include "MinonMgr.h"
 #include <iostream>
 #include "common/MESSAGE_ID.h"
 #include "common/MSGCode.h"
@@ -17,7 +17,7 @@ using namespace electron;
 void RequestRegister()
 {
     MSGLoginRegist reg = {"johnnie", "123456", "johne@gove.cn"};
-    GetTCPClient().Send(MID_LOGIN_REGISTER, reg);
+    //GetTCPClient().Send(MID_LOGIN_REGISTER, reg);
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -98,7 +98,7 @@ void HandleAuthResponse(CMessage& msg)
     MSGBattleCombat request;
     request.mapId = 1;
     request.posId = 1;
-    GetMinions().GetClient().Send(request.msgId, request);
+    //GetMinions().GetClient().Send(request.msgId, request);
 }
 
 void HandleCombatResponse(CMessage& msg)

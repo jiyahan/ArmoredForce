@@ -11,12 +11,6 @@ Config  LoadAppConfig(const std::string& path)
     CHECK(xml.FindElem("config")) << "<config> not found.";
        
     xml.IntoElem();
-    if (xml.FindElem("server"))
-    {
-        cfg.host = xml.GetAttrib("host");
-        cfg.port = std::stoi(xml.GetAttrib("port"));
-    }
-    xml.ResetMainPos();
     if (xml.FindElem("atom"))
     {
         cfg.pool_size = std::stoi(xml.GetAttrib("pool_size"));

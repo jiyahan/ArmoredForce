@@ -47,8 +47,10 @@ solution "Minions"
             "../../common/**.h",
             "../../common/**.cpp",
             
-            "../../Server/Script/message.h",
-            "../../Server/Script/message.cpp",
+            "../../Server/Script/Message.h",
+            "../../Server/Script/Message.cpp",
+            "../../Server/Script/LuaVM.h",
+            "../../Server/Script/LuaVM.cpp",
             
             "../../Server/Utility/Markup.h",
             "../../Server/Utility/Markup.cpp",

@@ -6,9 +6,6 @@
 // 配置结构
 struct Config
 {
-    std::string     host;           // LoginServer的IP地址
-    int32_t         port;           // LoginServer端口
-
     int32_t         pool_size;
     int32_t         thread_num;
 
