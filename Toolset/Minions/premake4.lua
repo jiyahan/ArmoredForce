@@ -5,7 +5,6 @@
 
 local BOOST_DIR = os.getenv('BOOST_DIR')
 
--- 机器人程序
 solution "Minions"
     configurations { "Release", "Debug" }
     language    "C++"
@@ -23,62 +22,71 @@ solution "Minions"
         defines 
         { 
             "_CRT_SECURE_NO_WARNINGS",
+            "_WIN32_WINNT=0x0502",
         }
-        buildoptions "-Zm200 /FI\"stdafx.h\" /wd\"4996\"" 
+        
 
     project "Minions"
         kind "ConsoleApp"
-        uuid "0A9699F1-69F2-40E6-AEB9-A81CB4AF2CE2"
-        buildoptions '/I"../../"'
+        uuid "FCB57495-BF77-44E3-9D5B-152CF5ADF10C"
+        buildoptions "-Zm200 /FI\"pch.h\" /wd\"4996\"" 
         defines
         {
-            "MARKUP_STL",
-            "GOOGLE_GLOG_DLL_DECL=",
-            "GLOG_NO_ABBREVIATED_SEVERITIES",
-            "GTEST_HAS_TR1_TUPLE=0",
         }
         
         -- 源代码文件
         files
         {
             "src/**.h",
-            "src/**.cpp",      
+            "src/**.cpp",
             
-            "../../common/**.h",
-            "../../common/**.cpp",
-            
-            "../../Server/Script/Message.h",
-            "../../Server/Script/Message.cpp",
-            "../../Server/Script/LuaVM.h",
-            "../../Server/Script/LuaVM.cpp",
-            
-            "../../Server/Utility/Markup.h",
-            "../../Server/Utility/Markup.cpp",
-            "../../Server/Utility/Utility.h",
-            "../../Server/Utility/Utility.cpp",
-           
+            "../../Server/Utility/easylogging++.h",
         }
 
-        pchheader "stdafx.h"
-        pchsource "src/stdafx.cpp"
+        pchheader "pch.h"
+        pchsource "src/pch.cpp"
         
         -- 包含目录
         includedirs 
-        { 
-            "../../Server/Utility",
-            "../../3rdParty/atom",
-            "../../3rdParty/lua/src",
+        {
+            "../../3rdParty/lua/src/",
+            "../../Server/Utility/",
             BOOST_DIR,
         }
         
         libdirs 
         { 
-            "../../3rdParty/libs", 
+            BOOST_DIR .. '/stage/lib',
         }
         
         links 
         {
-            "libatom",
             "liblua",
+            "ws2_32",
+            "mswsock",
+        }
+    
+    -- Lua
+    project "liblua"
+        kind "StaticLib"
+        uuid "80B63F61-585A-49CC-B70F-71E13B1D1D9C"
+        language "C"
+        defines
+        {
         }
         
+        files
+        {
+            "../../3rdParty/lua/src/*.h",
+            "../../3rdParty/lua/src/*.c",
+        }
+        excludes 
+        {
+            "../../3rdParty/lua/src/lua.c",
+            "../../3rdParty/lua/src/luac.c",
+            "../../3rdParty/lua/src/print.c",
+        }
+        includedirs 
+        {
+            "../../3rdParty/lua/src/",
+        }           
