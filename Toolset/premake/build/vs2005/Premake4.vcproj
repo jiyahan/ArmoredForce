@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="Premake4"
-	ProjectGUID="{D654AECF-E2AA-9AD4-A0BD-8F0DCD1F11B8}"
+	ProjectGUID="{30903A5B-29A4-0735-D991-CAF9337A861B}"
 	RootNamespace="Premake4"
 	Keyword="Win32Proj"
 	>
@@ -41,7 +41,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="1"
 				AdditionalIncludeDirectories="..\..\src\host\lua-5.1.4\src"
-				PreprocessorDefinitions="NDEBUG;_CRT_SECURE_NO_WARNINGS"
+				PreprocessorDefinitions="NDEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE"
 				StringPooling="true"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
@@ -57,7 +57,7 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG;_CRT_SECURE_NO_WARNINGS"
+				PreprocessorDefinitions="NDEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE"
 				AdditionalIncludeDirectories="..\..\src\host\lua-5.1.4\src"
 			/>
 			<Tool
@@ -65,6 +65,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="ole32.lib"
 				OutputFile="$(OutDir)\premake4.exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories=""
@@ -126,7 +127,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\src\host\lua-5.1.4\src"
-				PreprocessorDefinitions="_DEBUG;_CRT_SECURE_NO_WARNINGS"
+				PreprocessorDefinitions="_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
@@ -143,7 +144,7 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG;_CRT_SECURE_NO_WARNINGS"
+				PreprocessorDefinitions="_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE"
 				AdditionalIncludeDirectories="..\..\src\host\lua-5.1.4\src"
 			/>
 			<Tool
@@ -151,6 +152,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="ole32.lib"
 				OutputFile="$(OutDir)\premake4.exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories=""
@@ -189,6 +191,26 @@
 	<References>
 	</References>
 	<Files>
+		<File
+			RelativePath="..\..\BUILD.txt"
+			>
+		</File>
+		<File
+			RelativePath="..\..\CHANGES.txt"
+			>
+		</File>
+		<File
+			RelativePath="..\..\LICENSE.txt"
+			>
+		</File>
+		<File
+			RelativePath="..\..\README.txt"
+			>
+		</File>
+		<File
+			RelativePath="..\..\premake4.lua"
+			>
+		</File>
 		<Filter
 			Name="scripts"
 			Filter=""
@@ -206,6 +228,14 @@
 			Name="src"
 			Filter=""
 			>
+			<File
+				RelativePath="..\..\src\_manifest.lua"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\_premake_main.lua"
+				>
+			</File>
 			<Filter
 				Name="actions"
 				Filter=""
@@ -332,11 +362,23 @@
 						>
 					</File>
 					<File
-						RelativePath="..\..\src\actions\vstudio\vs2010_vcxproxj.lua"
+						RelativePath="..\..\src\actions\vstudio\vs200x_vcproj_user.lua"
 						>
 					</File>
 					<File
-						RelativePath="..\..\src\actions\vstudio\vs_generic_solution.lua"
+						RelativePath="..\..\src\actions\vstudio\vs2010_vcxproj.lua"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\actions\vstudio\vs2010_vcxproj_filters.lua"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\actions\vstudio\vs2012.lua"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\actions\vstudio\vs2013.lua"
 						>
 					</File>
 				</Filter>
@@ -346,6 +388,10 @@
 					>
 					<File
 						RelativePath="..\..\src\actions\xcode\_xcode.lua"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\actions\xcode\xcode4_workspace.lua"
 						>
 					</File>
 					<File
@@ -371,11 +417,15 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\src\base\bake.lua"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\base\cmdline.lua"
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\base\configs.lua"
+					RelativePath="..\..\src\base\config.lua"
 					>
 				</File>
 				<File
@@ -432,27 +482,6 @@
 				</File>
 			</Filter>
 			<Filter
-				Name="tools"
-				Filter=""
-				>
-				<File
-					RelativePath="..\..\src\tools\dotnet.lua"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\tools\gcc.lua"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\tools\msc.lua"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\tools\ow.lua"
-					>
-				</File>
-			</Filter>
-			<Filter
 				Name="host"
 				Filter=""
 				>
@@ -465,7 +494,15 @@
 						Filter=""
 						>
 						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\lapi.c"
+							>
+						</File>
+						<File
 							RelativePath="..\..\src\host\lua-5.1.4\src\lapi.h"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\lauxlib.c"
 							>
 						</File>
 						<File
@@ -473,7 +510,23 @@
 							>
 						</File>
 						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\lbaselib.c"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\lcode.c"
+							>
+						</File>
+						<File
 							RelativePath="..\..\src\host\lua-5.1.4\src\lcode.h"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\ldblib.c"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\ldebug.c"
 							>
 						</File>
 						<File
@@ -481,7 +534,19 @@
 							>
 						</File>
 						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\ldo.c"
+							>
+						</File>
+						<File
 							RelativePath="..\..\src\host\lua-5.1.4\src\ldo.h"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\ldump.c"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\lfunc.c"
 							>
 						</File>
 						<File
@@ -489,7 +554,23 @@
 							>
 						</File>
 						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\lgc.c"
+							>
+						</File>
+						<File
 							RelativePath="..\..\src\host\lua-5.1.4\src\lgc.h"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\linit.c"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\liolib.c"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\llex.c"
 							>
 						</File>
 						<File
@@ -501,7 +582,23 @@
 							>
 						</File>
 						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\lmathlib.c"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\lmem.c"
+							>
+						</File>
+						<File
 							RelativePath="..\..\src\host\lua-5.1.4\src\lmem.h"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\loadlib.c"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\lobject.c"
 							>
 						</File>
 						<File
@@ -509,7 +606,19 @@
 							>
 						</File>
 						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\lopcodes.c"
+							>
+						</File>
+						<File
 							RelativePath="..\..\src\host\lua-5.1.4\src\lopcodes.h"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\loslib.c"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\lparser.c"
 							>
 						</File>
 						<File
@@ -517,7 +626,15 @@
 							>
 						</File>
 						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\lstate.c"
+							>
+						</File>
+						<File
 							RelativePath="..\..\src\host\lua-5.1.4\src\lstate.h"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\lstring.c"
 							>
 						</File>
 						<File
@@ -525,7 +642,23 @@
 							>
 						</File>
 						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\lstrlib.c"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\ltable.c"
+							>
+						</File>
+						<File
 							RelativePath="..\..\src\host\lua-5.1.4\src\ltable.h"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\ltablib.c"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\ltm.c"
 							>
 						</File>
 						<File
@@ -545,123 +678,11 @@
 							>
 						</File>
 						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\lundump.h"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\lvm.h"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\lzio.h"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\lapi.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\lauxlib.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\lbaselib.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\lcode.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\ldblib.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\ldebug.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\ldo.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\ldump.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\lfunc.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\lgc.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\linit.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\liolib.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\llex.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\lmathlib.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\lmem.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\loadlib.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\lobject.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\lopcodes.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\loslib.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\lparser.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\lstate.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\lstring.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\lstrlib.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\ltable.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\ltablib.c"
-							>
-						</File>
-						<File
-							RelativePath="..\..\src\host\lua-5.1.4\src\ltm.c"
-							>
-						</File>
-						<File
 							RelativePath="..\..\src\host\lua-5.1.4\src\lundump.c"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\lundump.h"
 							>
 						</File>
 						<File
@@ -669,15 +690,19 @@
 							>
 						</File>
 						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\lvm.h"
+							>
+						</File>
+						<File
 							RelativePath="..\..\src\host\lua-5.1.4\src\lzio.c"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\host\lua-5.1.4\src\lzio.h"
 							>
 						</File>
 					</Filter>
 				</Filter>
-				<File
-					RelativePath="..\..\src\host\premake.h"
-					>
-				</File>
 				<File
 					RelativePath="..\..\src\host\os_chdir.c"
 					>
@@ -688,6 +713,14 @@
 				</File>
 				<File
 					RelativePath="..\..\src\host\os_getcwd.c"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\host\os_getversion.c"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\host\os_is64bit.c"
 					>
 				</File>
 				<File
@@ -715,6 +748,10 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\src\host\os_stat.c"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\host\os_uuid.c"
 					>
 				</File>
@@ -727,6 +764,14 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\src\host\premake.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\host\premake_main.c"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\host\scripts.c"
 					>
 				</File>
@@ -735,14 +780,31 @@
 					>
 				</File>
 			</Filter>
-			<File
-				RelativePath="..\..\src\_manifest.lua"
+			<Filter
+				Name="tools"
+				Filter=""
 				>
-			</File>
-			<File
-				RelativePath="..\..\src\_premake_main.lua"
-				>
-			</File>
+				<File
+					RelativePath="..\..\src\tools\dotnet.lua"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\tools\gcc.lua"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\tools\msc.lua"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\tools\ow.lua"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\tools\snc.lua"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="tests"
@@ -753,6 +815,32 @@
 				Filter=""
 				>
 				<Filter
+					Name="codeblocks"
+					Filter=""
+					>
+					<File
+						RelativePath="..\..\tests\actions\codeblocks\codeblocks_files.lua"
+						>
+					</File>
+					<File
+						RelativePath="..\..\tests\actions\codeblocks\environment_variables.lua"
+						>
+					</File>
+					<File
+						RelativePath="..\..\tests\actions\codeblocks\test_filters.lua"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="codelite"
+					Filter=""
+					>
+					<File
+						RelativePath="..\..\tests\actions\codelite\codelite_files.lua"
+						>
+					</File>
+				</Filter>
+				<Filter
 					Name="make"
 					Filter=""
 					>
@@ -761,18 +849,89 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\tests\actions\make\test_make_linking.lua"
+						>
+					</File>
+					<File
 						RelativePath="..\..\tests\actions\make\test_make_pch.lua"
 						>
 					</File>
+					<File
+						RelativePath="..\..\tests\actions\make\test_makesettings.lua"
+						>
+					</File>
+					<File
+						RelativePath="..\..\tests\actions\make\test_wiidev.lua"
+						>
+					</File>
 				</Filter>
+				<File
+					RelativePath="..\..\tests\actions\test_clean.lua"
+					>
+				</File>
 				<Filter
 					Name="vstudio"
 					Filter=""
 					>
-					<File
-						RelativePath="..\..\tests\actions\vstudio\test_vs2005_csproj.lua"
+					<Filter
+						Name="cs2002"
+						Filter=""
 						>
-					</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\cs2002\test_files.lua"
+							>
+						</File>
+					</Filter>
+					<Filter
+						Name="cs2005"
+						Filter=""
+						>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\cs2005\projectelement.lua"
+							>
+						</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\cs2005\projectsettings.lua"
+							>
+						</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\cs2005\propertygroup.lua"
+							>
+						</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\cs2005\test_files.lua"
+							>
+						</File>
+					</Filter>
+					<Filter
+						Name="sln2005"
+						Filter=""
+						>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\sln2005\dependencies.lua"
+							>
+						</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\sln2005\header.lua"
+							>
+						</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\sln2005\layout.lua"
+							>
+						</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\sln2005\platforms.lua"
+							>
+						</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\sln2005\projectplatforms.lua"
+							>
+						</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\sln2005\projects.lua"
+							>
+						</File>
+					</Filter>
 					<File
 						RelativePath="..\..\tests\actions\vstudio\test_vs200x_vcproj.lua"
 						>
@@ -782,15 +941,7 @@
 						>
 					</File>
 					<File
-						RelativePath="..\..\tests\actions\vstudio\test_vs2010_filters.lua"
-						>
-					</File>
-					<File
 						RelativePath="..\..\tests\actions\vstudio\test_vs2010_flags.lua"
-						>
-					</File>
-					<File
-						RelativePath="..\..\tests\actions\vstudio\test_vs2010_links.lua"
 						>
 					</File>
 					<File
@@ -801,11 +952,97 @@
 						RelativePath="..\..\tests\actions\vstudio\test_vs2010_vcxproj.lua"
 						>
 					</File>
+					<Filter
+						Name="vc200x"
+						Filter=""
+						>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\vc200x\debugdir.lua"
+							>
+						</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\vc200x\header.lua"
+							>
+						</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\vc200x\test_files.lua"
+							>
+						</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\vc200x\test_filters.lua"
+							>
+						</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\vc200x\test_mfc.lua"
+							>
+						</File>
+					</Filter>
+					<Filter
+						Name="vc2010"
+						Filter=""
+						>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\vc2010\test_config_props.lua"
+							>
+						</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\vc2010\test_debugdir.lua"
+							>
+						</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\vc2010\test_files.lua"
+							>
+						</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\vc2010\test_filters.lua"
+							>
+						</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\vc2010\test_header.lua"
+							>
+						</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\vc2010\test_link_settings.lua"
+							>
+						</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\vc2010\test_links.lua"
+							>
+						</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\vc2010\test_mfc.lua"
+							>
+						</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\vc2010\test_output_props.lua"
+							>
+						</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\vc2010\test_pch.lua"
+							>
+						</File>
+						<File
+							RelativePath="..\..\tests\actions\vstudio\vc2010\test_project_refs.lua"
+							>
+						</File>
+					</Filter>
 				</Filter>
 				<Filter
 					Name="xcode"
 					Filter=""
 					>
+					<File
+						RelativePath="..\..\tests\actions\xcode\test_file_references.lua"
+						>
+					</File>
+					<File
+						RelativePath="..\..\tests\actions\xcode\test_xcode4_project.lua"
+						>
+					</File>
+					<File
+						RelativePath="..\..\tests\actions\xcode\test_xcode4_workspace.lua"
+						>
+					</File>
 					<File
 						RelativePath="..\..\tests\actions\xcode\test_xcode_common.lua"
 						>
@@ -819,8 +1056,13 @@
 						>
 					</File>
 				</Filter>
+			</Filter>
+			<Filter
+				Name="baking"
+				Filter=""
+				>
 				<File
-					RelativePath="..\..\tests\actions\test_clean.lua"
+					RelativePath="..\..\tests\baking\test_merging.lua"
 					>
 				</File>
 			</Filter>
@@ -845,11 +1087,23 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\tests\base\test_config_bug.lua"
+					>
+				</File>
+				<File
+					RelativePath="..\..\tests\base\test_location.lua"
+					>
+				</File>
+				<File
 					RelativePath="..\..\tests\base\test_os.lua"
 					>
 				</File>
 				<File
 					RelativePath="..\..\tests\base\test_path.lua"
+					>
+				</File>
+				<File
+					RelativePath="..\..\tests\base\test_premake_command.lua"
 					>
 				</File>
 				<File
@@ -878,12 +1132,21 @@
 				RelativePath="..\..\tests\premake4.lua"
 				>
 			</File>
+			<Filter
+				Name="project"
+				Filter=""
+				>
+				<File
+					RelativePath="..\..\tests\project\test_eachfile.lua"
+					>
+				</File>
+				<File
+					RelativePath="..\..\tests\project\test_vpaths.lua"
+					>
+				</File>
+			</Filter>
 			<File
 				RelativePath="..\..\tests\test_dofile.lua"
-				>
-			</File>
-			<File
-				RelativePath="..\..\tests\test_gcc.lua"
 				>
 			</File>
 			<File
@@ -931,42 +1194,19 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\tests\test_vs2005_sln.lua"
-				>
-			</File>
-			<File
-				RelativePath="..\..\tests\test_vs2008_sln.lua"
-				>
-			</File>
-			<File
-				RelativePath="..\..\tests\test_vs2010_sln.lua"
-				>
-			</File>
-			<File
 				RelativePath="..\..\tests\testfx.lua"
 				>
 			</File>
+			<Filter
+				Name="tools"
+				Filter=""
+				>
+				<File
+					RelativePath="..\..\tests\tools\test_gcc.lua"
+					>
+				</File>
+			</Filter>
 		</Filter>
-		<File
-			RelativePath="..\..\BUILD.txt"
-			>
-		</File>
-		<File
-			RelativePath="..\..\CHANGES.txt"
-			>
-		</File>
-		<File
-			RelativePath="..\..\LICENSE.txt"
-			>
-		</File>
-		<File
-			RelativePath="..\..\README.txt"
-			>
-		</File>
-		<File
-			RelativePath="..\..\premake4.lua"
-			>
-		</File>
 	</Files>
 	<Globals>
 	</Globals>

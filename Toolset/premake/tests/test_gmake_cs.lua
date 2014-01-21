@@ -25,8 +25,7 @@
 	end
 
 	local function prepare()
-		io.capture()
-		premake.buildconfigs()
+		premake.bake.buildconfigs()
 	end
 	
 

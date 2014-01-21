@@ -1,10 +1,8 @@
 --
 -- _vstudio.lua
 -- Define the Visual Studio 200x actions.
--- Copyright (c) 2008-2010 Jason Perkins and the Premake project
+-- Copyright (c) 2008-2011 Jason Perkins and the Premake project
 --
-
-	_VS = { }  -- deprecated, will remove eventually
 
 	premake.vstudio = { }
 	local vstudio = premake.vstudio
@@ -15,23 +13,25 @@
 -- Studio specific "any" and "mixed" to make solution generation easier.
 --
 
-	premake.vstudio_platforms = { 
-		any     = "Any CPU", 
-		mixed   = "Mixed Platforms", 
+	vstudio.platforms = {
+		any     = "Any CPU",
+		mixed   = "Mixed Platforms",
 		Native  = "Win32",
-		x32     = "Win32", 
+		x86     = "x86",
+		x32     = "Win32",
 		x64     = "x64",
 		PS3     = "PS3",
 		Xbox360 = "Xbox 360",
 	}
 
-	
+
 
 --
 -- Returns the architecture identifier for a project.
+-- Used by the solutions.
 --
 
-	function _VS.arch(prj)
+	function vstudio.arch(prj)
 		if (prj.language == "C#") then
 			if (_ACTION < "vs2005") then
 				return ".NET"
@@ -42,110 +42,94 @@
 			return "Win32"
 		end
 	end
-	
-	
 
---
--- Return the version-specific text for a boolean value.
--- (this should probably go in vs200x_vcproj.lua)
---
-
-	function _VS.bool(value)
-		if (_ACTION < "vs2005") then
-			return iif(value, "TRUE", "FALSE")
-		else
-			return iif(value, "true", "false")
-		end
-	end
 
 
 --
 -- Process the solution's list of configurations and platforms, creates a list
 -- of build configuration/platform pairs in a Visual Studio compatible format.
 --
--- @param sln
---    The solution containing the configuration and platform lists.
--- @param with_pseudo
---    If true, Visual Studio's "Any CPU" and "Mixed Platforms" platforms will
---    be added for .NET and mixed mode solutions.
---
 
---
--- Process the solution's list of configurations and platforms, creates a list
--- of build configuration/platform pairs in a Visual Studio compatible format.
---
--- @param sln
---    The solution containing the configuration and platform lists.
---
-
-	function premake.vstudio_buildconfigs(sln)
+	function vstudio.buildconfigs(sln)
 		local cfgs = { }
-		
-		local platforms = premake.filterplatforms(sln, premake.vstudio_platforms, "Native")
 
-		-- .NET projects add "Any CPU", mixed mode solutions add "Mixed Platforms"
+		local platforms = premake.filterplatforms(sln, vstudio.platforms, "Native")
+
+		-- Figure out what's in this solution
 		local hascpp    = premake.hascppproject(sln)
 		local hasdotnet = premake.hasdotnetproject(sln)
-		if hasdotnet then
+
+		-- "Mixed Platform" solutions are generally those containing both
+		-- C/C++ and .NET projects. Starting in VS2010, all .NET solutions
+		-- also contain the Mixed Platform option.
+		if hasdotnet and (_ACTION > "vs2008" or hascpp) then
+			table.insert(platforms, 1, "mixed")
+		end
+
+		-- "Any CPU" is added to solutions with .NET projects. Starting in
+		-- VS2010, only pure .NET solutions get this option.
+		if hasdotnet and (_ACTION < "vs2010" or not hascpp) then
 			table.insert(platforms, 1, "any")
 		end
-		if hasdotnet and hascpp then
-			table.insert(platforms, 2, "mixed")
+
+		-- In Visual Studio 2010, pure .NET solutions replace the Win32 platform
+		-- with x86. In mixed mode solution, x86 is used in addition to Win32.
+		if _ACTION > "vs2008" then
+			local platforms2010 = { }
+			for _, platform in ipairs(platforms) do
+				if vstudio.platforms[platform] == "Win32" then
+					if hascpp then
+						table.insert(platforms2010, platform)
+					end
+					if hasdotnet then
+						table.insert(platforms2010, "x86")
+					end
+				else
+					table.insert(platforms2010, platform)
+				end
+			end
+			platforms = platforms2010
 		end
-		
+
+
 		for _, buildcfg in ipairs(sln.configurations) do
 			for _, platform in ipairs(platforms) do
 				local entry = { }
 				entry.src_buildcfg = buildcfg
 				entry.src_platform = platform
-				
+
 				-- PS3 is funky and needs special handling; it's more of a build
-				-- configuration than a platform from Visual Studio's point of view				
-				if platform ~= "PS3" then
+				-- configuration than a platform from Visual Studio's point of view.
+				-- This has been fixed in VS2010 as it now truly supports 3rd party
+				-- platforms, so only do this fixup when not in VS2010
+				if platform ~= "PS3" or _ACTION > "vs2008" then
 					entry.buildcfg = buildcfg
-					entry.platform = premake.vstudio_platforms[platform]
+					entry.platform = vstudio.platforms[platform]
 				else
 					entry.buildcfg = platform .. " " .. buildcfg
 					entry.platform = "Win32"
 				end
-				
+
 				-- create a name the way VS likes it
 				entry.name = entry.buildcfg .. "|" .. entry.platform
-				
+
 				-- flag the "fake" platforms added for .NET
 				entry.isreal = (platform ~= "any" and platform ~= "mixed")
-				
+
 				table.insert(cfgs, entry)
 			end
 		end
-		
+
 		return cfgs
 	end
-	
 
 
---
--- Return a configuration type index.
--- (this should probably go in vs200x_vcproj.lua)
---
-
-	function _VS.cfgtype(cfg)
-		if (cfg.kind == "SharedLib") then
-			return 2
-		elseif (cfg.kind == "StaticLib") then
-			return 4
-		else
-			return 1
-		end
-	end
-	
-	
 
 --
 -- Clean Visual Studio files
 --
 
-	function premake.vstudio.cleansolution(sln)
+	function vstudio.cleansolution(sln)
 		premake.clean.file(sln, "%%.sln")
 		premake.clean.file(sln, "%%.suo")
 		premake.clean.file(sln, "%%.ncb")
@@ -153,8 +137,8 @@
 		premake.clean.file(sln, "%%.userprefs")
 		premake.clean.file(sln, "%%.usertasks")
 	end
-	
-	function premake.vstudio.cleanproject(prj)
+
+	function vstudio.cleanproject(prj)
 		local fname = premake.project.getfilename(prj, "%%")
 
 		os.remove(fname .. ".vcproj")
@@ -171,85 +155,12 @@
 		os.remove(fname .. ".sdf")
 	end
 
-	function premake.vstudio.cleantarget(name)
+	function vstudio.cleantarget(name)
 		os.remove(name .. ".pdb")
 		os.remove(name .. ".idb")
 		os.remove(name .. ".ilk")
 		os.remove(name .. ".vshost.exe")
 		os.remove(name .. ".exe.manifest")
-	end
-	
-	
-
---
--- Write out entries for the files element; called from premake.walksources().
--- (this should probably go in vs200x_vcproj.lua)
---
-
-	local function output(indent, value)
-		-- io.write(indent .. value .. "\r\n")
-		_p(indent .. value)
-	end
-	
-	local function attrib(indent, name, value)
-		-- io.write(indent .. "\t" .. name .. '="' .. value .. '"\r\n')
-		_p(indent .. "\t" .. name .. '="' .. value .. '"')
-	end
-	
-	function _VS.files(prj, fname, state, nestlevel)
-		local indent = string.rep("\t", nestlevel + 2)
-		
-		if (state == "GroupStart") then
-			output(indent, "<Filter")
-			attrib(indent, "Name", path.getname(fname))
-			attrib(indent, "Filter", "")
-			output(indent, "\t>")
-
-		elseif (state == "GroupEnd") then
-			output(indent, "</Filter>")
-
-		else
-			output(indent, "<File")
-			attrib(indent, "RelativePath", path.translate(fname, "\\"))
-			output(indent, "\t>")
-			if (not prj.flags.NoPCH and prj.pchsource == fname) then
-				for _, cfginfo in ipairs(prj.solution.vstudio_configs) do
-					if cfginfo.isreal then
-						local cfg = premake.getconfig(prj, cfginfo.src_buildcfg, cfginfo.src_platform)
-						output(indent, "\t<FileConfiguration")
-						attrib(indent, "\tName", cfginfo.name)
-						output(indent, "\t\t>")
-						output(indent, "\t\t<Tool")
-						attrib(indent, "\t\tName", iif(cfg.system == "Xbox360", "VCCLX360CompilerTool", "VCCLCompilerTool"))
-						attrib(indent, "\t\tUsePrecompiledHeader", "1")
-						output(indent, "\t\t/>")
-						output(indent, "\t</FileConfiguration>")
-					end
-				end
-			end
-			output(indent, "</File>")
-		end
-	end
-	
-	
-	
---
--- Return the optimization code.
--- (this should probably go in vs200x_vcproj.lua)
---
-
-	function _VS.optimization(cfg)
-		local result = 0
-		for _, value in ipairs(cfg.flags) do
-			if (value == "Optimize") then
-				result = 3
-			elseif (value == "OptimizeSize") then
-				result = 1
-			elseif (value == "OptimizeSpeed") then
-				result = 2
-			end
-		end
-		return result
 	end
 
 
@@ -258,28 +169,25 @@
 -- Assemble the project file name.
 --
 
-	function _VS.projectfile(prj)
-		local extension
-		if (prj.language == "C#") then
-			extension = ".csproj"
-		elseif (_ACTION == "vs2010"  and prj.language == "C++" )then
-			extension = ".vcxproj"
-		elseif (_ACTION == "vs2010"  and prj.language == "C" )then
-			extension = ".vcxproj"
+	function vstudio.projectfile(prj)
+		local pattern
+		if prj.language == "C#" then
+			pattern = "%%.csproj"
 		else
-			extension = ".vcproj"
+			pattern = iif(_ACTION > "vs2008", "%%.vcxproj", "%%.vcproj")
 		end
 
-		local fname = path.join(prj.location, prj.name)
-		return fname..extension
+		local fname = premake.project.getbasename(prj.name, pattern)
+		fname = path.join(prj.location, fname)
+		return fname
 	end
-	
+
 
 --
 -- Returns the Visual Studio tool ID for a given project type.
 --
 
-	function _VS.tool(prj)
+	function vstudio.tool(prj)
 		if (prj.language == "C#") then
 			return "FAE04EC0-301F-11D3-BF4B-00C04F79EFBC"
 		else
@@ -289,7 +197,7 @@
 
 
 --
--- Register the Visual Studio command line actions
+-- Register Visual Studio 2002
 --
 
 	newaction {
@@ -297,33 +205,41 @@
 		shortname       = "Visual Studio 2002",
 		description     = "Generate Microsoft Visual Studio 2002 project files",
 		os              = "windows",
-		
+
 		valid_kinds     = { "ConsoleApp", "WindowedApp", "StaticLib", "SharedLib" },
-		
+
 		valid_languages = { "C", "C++", "C#" },
-		
+
 		valid_tools     = {
 			cc     = { "msc"   },
 			dotnet = { "msnet" },
 		},
 
 		onsolution = function(sln)
-			premake.generate(sln, "%%.sln", premake.vs2002_solution)
+			premake.generate(sln, "%%.sln", vstudio.sln2002.generate)
 		end,
-		
+
 		onproject = function(prj)
 			if premake.isdotnetproject(prj) then
-				premake.generate(prj, "%%.csproj", premake.vs2002_csproj)
-				premake.generate(prj, "%%.csproj.user", premake.vs2002_csproj_user)
+				premake.generate(prj, "%%.csproj", vstudio.cs2002.generate)
+				premake.generate(prj, "%%.csproj.user", vstudio.cs2002.generate_user)
 			else
-				premake.generate(prj, "%%.vcproj", premake.vs200x_vcproj)
+				premake.generate(prj, "%%.vcproj", vstudio.vc200x.generate)
+				premake.generate(prj, "%%.vcproj.user", vstudio.vc200x.generate_user)
 			end
 		end,
-		
+
 		oncleansolution = premake.vstudio.cleansolution,
 		oncleanproject  = premake.vstudio.cleanproject,
-		oncleantarget   = premake.vstudio.cleantarget
+		oncleantarget   = premake.vstudio.cleantarget,
+
+		vstudio = {}
 	}
+
+
+--
+-- Register Visual Studio 2003
+--
 
 	newaction {
 		trigger         = "vs2003",
@@ -332,31 +248,39 @@
 		os              = "windows",
 
 		valid_kinds     = { "ConsoleApp", "WindowedApp", "StaticLib", "SharedLib" },
-		
+
 		valid_languages = { "C", "C++", "C#" },
-		
+
 		valid_tools     = {
 			cc     = { "msc"   },
 			dotnet = { "msnet" },
 		},
 
 		onsolution = function(sln)
-			premake.generate(sln, "%%.sln", premake.vs2003_solution)
+			premake.generate(sln, "%%.sln", vstudio.sln2003.generate)
 		end,
-		
+
 		onproject = function(prj)
 			if premake.isdotnetproject(prj) then
-				premake.generate(prj, "%%.csproj", premake.vs2002_csproj)
-				premake.generate(prj, "%%.csproj.user", premake.vs2002_csproj_user)
+				premake.generate(prj, "%%.csproj", vstudio.cs2002.generate)
+				premake.generate(prj, "%%.csproj.user", vstudio.cs2002.generate_user)
 			else
-				premake.generate(prj, "%%.vcproj", premake.vs200x_vcproj)
+				premake.generate(prj, "%%.vcproj", vstudio.vc200x.generate)
+				premake.generate(prj, "%%.vcproj.user", vstudio.vc200x.generate_user)
 			end
 		end,
-		
+
 		oncleansolution = premake.vstudio.cleansolution,
 		oncleanproject  = premake.vstudio.cleanproject,
-		oncleantarget   = premake.vstudio.cleantarget
+		oncleantarget   = premake.vstudio.cleantarget,
+
+		vstudio = {}
 	}
+
+
+--
+-- Register Visual Studio 2005
+--
 
 	newaction {
 		trigger         = "vs2005",
@@ -365,31 +289,41 @@
 		os              = "windows",
 
 		valid_kinds     = { "ConsoleApp", "WindowedApp", "StaticLib", "SharedLib" },
-		
+
 		valid_languages = { "C", "C++", "C#" },
-		
+
 		valid_tools     = {
 			cc     = { "msc"   },
 			dotnet = { "msnet" },
 		},
 
 		onsolution = function(sln)
-			premake.generate(sln, "%%.sln", premake.vs2005_solution)
+			premake.generate(sln, "%%.sln", vstudio.sln2005.generate)
 		end,
-		
+
 		onproject = function(prj)
 			if premake.isdotnetproject(prj) then
-				premake.generate(prj, "%%.csproj", premake.vs2005_csproj)
-				premake.generate(prj, "%%.csproj.user", premake.vs2005_csproj_user)
+				premake.generate(prj, "%%.csproj", vstudio.cs2005.generate)
+				premake.generate(prj, "%%.csproj.user", vstudio.cs2005.generate_user)
 			else
-				premake.generate(prj, "%%.vcproj", premake.vs200x_vcproj)
+				premake.generate(prj, "%%.vcproj", vstudio.vc200x.generate)
+				premake.generate(prj, "%%.vcproj.user", vstudio.vc200x.generate_user)
 			end
 		end,
-		
-		oncleansolution = premake.vstudio.cleansolution,
-		oncleanproject  = premake.vstudio.cleanproject,
-		oncleantarget   = premake.vstudio.cleantarget
+
+		oncleansolution = vstudio.cleansolution,
+		oncleanproject  = vstudio.cleanproject,
+		oncleantarget   = vstudio.cleantarget,
+
+		vstudio = {
+			productVersion  = "8.0.50727",
+			solutionVersion = "9",
+		}
 	}
+
+--
+-- Register Visual Studio 2008
+--
 
 	newaction {
 		trigger         = "vs2008",
@@ -398,61 +332,83 @@
 		os              = "windows",
 
 		valid_kinds     = { "ConsoleApp", "WindowedApp", "StaticLib", "SharedLib" },
-		
+
 		valid_languages = { "C", "C++", "C#" },
-		
+
 		valid_tools     = {
 			cc     = { "msc"   },
 			dotnet = { "msnet" },
 		},
 
 		onsolution = function(sln)
-			premake.generate(sln, "%%.sln", premake.vs2005_solution)
+			premake.generate(sln, "%%.sln", vstudio.sln2005.generate)
 		end,
-		
+
 		onproject = function(prj)
 			if premake.isdotnetproject(prj) then
-				premake.generate(prj, "%%.csproj", premake.vs2005_csproj)
-				premake.generate(prj, "%%.csproj.user", premake.vs2005_csproj_user)
+				premake.generate(prj, "%%.csproj", vstudio.cs2005.generate)
+				premake.generate(prj, "%%.csproj.user", vstudio.cs2005.generate_user)
 			else
-				premake.generate(prj, "%%.vcproj", premake.vs200x_vcproj)
+				premake.generate(prj, "%%.vcproj", vstudio.vc200x.generate)
+				premake.generate(prj, "%%.vcproj.user", vstudio.vc200x.generate_user)
 			end
 		end,
-		
-		oncleansolution = premake.vstudio.cleansolution,
-		oncleanproject  = premake.vstudio.cleanproject,
-		oncleantarget   = premake.vstudio.cleantarget
+
+		oncleansolution = vstudio.cleansolution,
+		oncleanproject  = vstudio.cleanproject,
+		oncleantarget   = vstudio.cleantarget,
+
+		vstudio = {
+			productVersion  = "9.0.21022",
+			solutionVersion = "10",
+			toolsVersion    = "3.5",
+		}
 	}
 
-		
-	newaction 
+
+--
+-- Register Visual Studio 2010
+--
+
+	newaction
 	{
 		trigger         = "vs2010",
 		shortname       = "Visual Studio 2010",
-		description     = "Generate Visual Studio 2010 project files (experimental)",
+		description     = "Generate Microsoft Visual Studio 2010 project files",
 		os              = "windows",
 
 		valid_kinds     = { "ConsoleApp", "WindowedApp", "StaticLib", "SharedLib" },
-		
-		valid_languages = { "C++","C"},
-		
+
+		valid_languages = { "C", "C++", "C#"},
+
 		valid_tools     = {
 			cc     = { "msc"   },
-			--dotnet = { "msnet" },
+			dotnet = { "msnet" },
 		},
 
 		onsolution = function(sln)
-			premake.generate(sln, "%%.sln", premake.vs_generic_solution)
+			premake.generate(sln, "%%.sln", vstudio.sln2005.generate)
 		end,
-		
+
 		onproject = function(prj)
+			if premake.isdotnetproject(prj) then
+				premake.generate(prj, "%%.csproj", vstudio.cs2005.generate)
+				premake.generate(prj, "%%.csproj.user", vstudio.cs2005.generate_user)
+			else
 			premake.generate(prj, "%%.vcxproj", premake.vs2010_vcxproj)
 			premake.generate(prj, "%%.vcxproj.user", premake.vs2010_vcxproj_user)
-			premake.generate(prj, "%%.vcxproj.filters", premake.vs2010_vcxproj_filters)
+			premake.generate(prj, "%%.vcxproj.filters", vstudio.vc2010.generate_filters)
+			end
 		end,
-		
 
 		oncleansolution = premake.vstudio.cleansolution,
 		oncleanproject  = premake.vstudio.cleanproject,
-		oncleantarget   = premake.vstudio.cleantarget
+		oncleantarget   = premake.vstudio.cleantarget,
+
+		vstudio = {
+			productVersion  = "8.0.30703",
+			solutionVersion = "11",
+			targetFramework = "4.0",
+			toolsVersion    = "4.0",
+		}
 	}

@@ -1,14 +1,51 @@
 --
 -- codelite_project.lua
 -- Generate a CodeLite C/C++ project file.
--- Copyright (c) 2009 Jason Perkins and the Premake project
+-- Copyright (c) 2009, 2011 Jason Perkins and the Premake project
 --
 
-	function premake.codelite_project(prj)
+	local codelite = premake.codelite
+	local tree = premake.tree
+
+
+--
+-- Write out a list of the source code files in the project.
+--
+
+	function codelite.files(prj)
+		local tr = premake.project.buildsourcetree(prj)
+		tree.traverse(tr, {
+			
+			-- folders are handled at the internal nodes
+			onbranchenter = function(node, depth)
+				_p(depth, '<VirtualDirectory Name="%s">', node.name)
+			end,
+
+			onbranchexit = function(node, depth)
+				_p(depth, '</VirtualDirectory>')
+			end,
+
+			-- source files are handled at the leaves
+			onleaf = function(node, depth)
+				_p(depth, '<File Name="%s"/>', node.cfg.name)
+			end,
+			
+		}, true, 1)
+	end
+	
+
+--
+-- The main function: write out the project file.
+--
+
+	function premake.codelite.project(prj)
+		io.indent = "  "
+		
 		_p('<?xml version="1.0" encoding="utf-8"?>')
 		_p('<CodeLite_Project Name="%s">', premake.esc(prj.name))
-		
-		premake.walksources(prj, premake.codelite_files)
+
+		-- Write out the list of source code files in the project
+		codelite.files(prj)
 
 		local types = { 
 			ConsoleApp  = "Executable", 
@@ -28,16 +65,17 @@
 
 		for _, platform in ipairs(platforms) do
 			for cfg in premake.eachconfig(prj, platform) do
-				local name = premake.esc(cfg.longname)
+				local name = premake.esc(cfg.longname):gsub("|","_")
 				local compiler = iif(cfg.language == "C", "gcc", "g++")
 				_p('    <Configuration Name="%s" CompilerType="gnu %s" DebuggerType="GNU gdb debugger" Type="%s">', name, compiler, types[cfg.kind])
 			
 				local fname  = premake.esc(cfg.buildtarget.fullpath)
 				local objdir = premake.esc(cfg.objectsdir)
 				local runcmd = cfg.buildtarget.name
-				local rundir = cfg.buildtarget.directory
+				local rundir = cfg.debugdir or cfg.buildtarget.directory
+				local runargs = table.concat(cfg.debugargs, " ")
 				local pause  = iif(cfg.kind == "WindowedApp", "no", "yes")
-				_p('      <General OutputFile="%s" IntermediateDirectory="%s" Command="./%s" CommandArguments="" WorkingDirectory="%s" PauseExecWhenProcTerminates="%s"/>', fname, objdir, runcmd, rundir, pause)
+				_p('      <General OutputFile="%s" IntermediateDirectory="%s" Command="./%s" CommandArguments="%s" WorkingDirectory="%s" PauseExecWhenProcTerminates="%s"/>', fname, objdir, runcmd, runargs, rundir, pause)
 				
 				-- begin compiler block --
 				local flags = premake.esc(table.join(premake.gcc.getcflags(cfg), premake.gcc.getcxxflags(cfg), cfg.buildoptions))
@@ -113,7 +151,7 @@
 
 		for _, platform in ipairs(platforms) do
 			for cfg in premake.eachconfig(prj, platform) do
-				_p('  <Dependencies name="%s">', cfg.longname)
+				_p('  <Dependencies name="%s">', cfg.longname:gsub("|","_"))
 				for _,dep in ipairs(premake.getdependencies(prj)) do
 					_p('    <Project Name="%s"/>', dep.name)
 				end
@@ -123,24 +161,3 @@
 		
 		_p('</CodeLite_Project>')
 	end
-
-
-
---
--- Write out entries for the files element; called from premake.walksources().
---
-
-	function premake.codelite_files(prj, fname, state, nestlevel)
-		local indent = string.rep("  ", nestlevel + 1)
-		
-		if (state == "GroupStart") then
-			io.write(indent .. '<VirtualDirectory Name="' .. path.getname(fname) .. '">\n')
-		elseif (state == "GroupEnd") then
-			io.write(indent .. '</VirtualDirectory>\n')
-		else
-			io.write(indent .. '<File Name="' .. fname .. '"/>\n')
-		end
-	end
-	
-
-

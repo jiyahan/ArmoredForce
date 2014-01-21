@@ -1,7 +1,7 @@
 --
 -- tests/actions/xcode/test_xcode_project.lua
 -- Automated test suite for Xcode project generation.
--- Copyright (c) 2009-2010 Jason Perkins and the Premake project
+-- Copyright (c) 2009-2011 Jason Perkins and the Premake project
 --
 
 	T.xcode3_project = { }
@@ -16,15 +16,15 @@
 
 	local sln, tr
 	function suite.setup()
-		premake.action.set("xcode3")
+		_OS = "macosx"
+		_ACTION = "xcode3"
 		io.eol = "\n"
 		xcode.used_ids = { } -- reset the list of generated IDs
 		sln = test.createsolution()
 	end
 
 	local function prepare()
-		io.capture()
-		premake.buildconfigs()
+		premake.bake.buildconfigs()
 		xcode.preparesolution(sln)
 		local prj = premake.solution.getproject(sln, 1)
 		tr = xcode.buildprjtree(prj)
@@ -78,6 +78,19 @@
 		test.capture [[
 /* Begin PBXBuildFile section */
 		[Cocoa.framework:build] /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = [Cocoa.framework] /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+		]]
+	end
+
+	function suite.PBXBuildFile_IgnoresVpaths()
+		files { "source.h", "source.c", "source.cpp", "Info.plist" }
+		vpaths { ["Source Files"] = { "**.c", "**.cpp" } }
+		prepare()
+		xcode.PBXBuildFile(tr)
+		test.capture [[
+/* Begin PBXBuildFile section */
+		[source.c:build] /* source.c in Sources */ = {isa = PBXBuildFile; fileRef = [source.c] /* source.c */; };
+		[source.cpp:build] /* source.cpp in Sources */ = {isa = PBXBuildFile; fileRef = [source.cpp] /* source.cpp */; };
 /* End PBXBuildFile section */
 		]]
 	end
@@ -144,6 +157,7 @@
 		]]
 	end
 
+
 	function suite.PBXFileReference_ListsXibCorrectly()
 		files { "English.lproj/MainMenu.xib", "French.lproj/MainMenu.xib" }
 		prepare()
@@ -176,6 +190,32 @@
 /* Begin PBXFileReference section */
 		[Cocoa.framework] /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Cocoa.framework"; path = "/System/Library/Frameworks/Cocoa.framework"; sourceTree = "<absolute>"; };
 		]]
+	end
+	
+	
+	function suite.PBXFileReference_leavesFrameworkLocationsAsIsWhenSupplied_pathIsSetToInput()
+		local inputFrameWork = 'somedir/Foo.framework'
+		links(inputFrameWork)
+		prepare()
+		
+		io.capture()
+		xcode.PBXFileReference(tr)
+		local buffer = io.endcapture()
+
+		test.string_contains(buffer,'path = "'..inputFrameWork..'"')
+	end
+	
+	
+	function suite.PBXFileReference_relativeFrameworkPathSupplied_callsError()
+		local inputFrameWork = '../somedir/Foo.framework'
+		links(inputFrameWork)
+		prepare()
+		local error_called = false
+		local old_error = error
+		error = function( ... )error_called = true end
+		xcode.PBXFileReference(tr)
+		error = old_error
+		test.istrue(error_called)
 	end
 
 	function suite.PBXFileReference_ListsIconFiles()
@@ -210,6 +250,18 @@
 /* Begin PBXFileReference section */
 		[libMyProject-d.dylib:product] /* libMyProject-d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = "libMyProject-d.dylib"; path = "libMyProject-d.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+		]]
+	end
+
+
+	function suite.PBXFileReference_UsesFullPath_WhenParentIsVirtual()
+		files { "src/source.c" }
+		vpaths { ["Source Files"] = "**.c" }
+		prepare()
+		xcode.PBXFileReference(tr)
+		test.capture [[
+/* Begin PBXFileReference section */
+		[source.c] /* source.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "source.c"; path = "src/source.c"; sourceTree = "<group>"; };
 		]]
 	end
 
@@ -333,7 +385,7 @@
 				[premake] /* premake */,
 			);
 			name = "include";
-			path = include;
+			path = "include";
 			sourceTree = "<group>";
 		};
 		[premake] /* premake */ = {
@@ -342,13 +394,20 @@
 				[source.h] /* source.h */,
 			);
 			name = "premake";
-			path = premake;
+			path = "premake";
 			sourceTree = "<group>";
 		};
 		]]
 	end
 
 
+	function suite.PBXGroup_pathHasPlusPlus_PathIsQuoted()
+		files { "RequiresQuoting++/h.h" }
+		prepare()
+		xcode.PBXGroup(tr)
+		test.string_contains( io.endcapture(),'path = "RequiresQuoting%+%+";' )
+	end
+	
 	function suite.PBXGroup_SortsFiles()
 		files { "test.h", "source.h", "source.cpp" }
 		prepare()
@@ -429,6 +488,34 @@
 				[Cocoa.framework] /* Cocoa.framework */,
 			);
 			name = "Frameworks";
+			sourceTree = "<group>";
+		};
+		]]
+	end
+
+
+	function suite.PBXGroup_OnVpaths()
+		files { "include/premake/source.h" }
+		vpaths { ["Headers"] = "**.h" }
+		prepare()
+		xcode.PBXGroup(tr)
+		test.capture [[
+/* Begin PBXGroup section */
+		[MyProject] /* MyProject */ = {
+			isa = PBXGroup;
+			children = (
+				[Headers] /* Headers */,
+				[Products] /* Products */,
+			);
+			name = "MyProject";
+			sourceTree = "<group>";
+		};
+		[Headers] /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				[source.h] /* source.h */,
+			);
+			name = "Headers";
 			sourceTree = "<group>";
 		};
 		]]
@@ -570,7 +657,7 @@
 		08FB7793FE84155DC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "MyProject" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 1;
 			mainGroup = [MyProject] /* MyProject */;
 			projectDirPath = "";
@@ -873,8 +960,33 @@
 		]]
 	end
 
+
+	function suite.XCBuildConfigurationTarget_OnTargetExtension()
+		kind "SharedLib"
+		targetextension ".xyz"
+		prepare()
+		xcode.XCBuildConfiguration_Target(tr, tr.products.children[1], tr.configs[1])
+		test.capture [[
+		[libMyProject.xyz:Debug] /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_EXTENSION = xyz;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = "MyProject";
+			};
+			name = "Debug";
+		};
+		]]
+	end
+
+
 	function suite.XCBuildConfigurationTarget_OnInfoPlist()
-		files { "MyProject-Info.plist" }
+		files { "../../MyProject-Info.plist" }
 		prepare()
 		xcode.XCBuildConfiguration_Target(tr, tr.products.children[1], tr.configs[1])
 		test.capture [[
@@ -885,7 +997,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
-				INFOPLIST_FILE = "MyProject-Info.plist";
+				INFOPLIST_FILE = "../../MyProject-Info.plist";
 				INSTALL_PATH = /usr/local/bin;
 				PRODUCT_NAME = "MyProject";
 			};
@@ -993,11 +1105,11 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Debug";
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1017,11 +1129,11 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Debug";
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1041,11 +1153,11 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Debug";
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1065,11 +1177,11 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Debug";
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
 			};
 			name = "Debug";
@@ -1091,11 +1203,11 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Debug";
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
 				SYMROOT = "bin";
 			};
 			name = "Debug";
@@ -1120,11 +1232,11 @@
 					"_DEBUG",
 					"DEBUG",
 				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Debug";
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1144,6 +1256,7 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -1152,7 +1265,6 @@
 				);
 				OBJROOT = "obj/Debug";
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1172,6 +1284,7 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Debug";
@@ -1180,7 +1293,6 @@
 					"build option 1",
 					"build option 2",
 				);
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1200,6 +1312,7 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Debug";
@@ -1207,7 +1320,6 @@
 				OTHER_LDFLAGS = (
 					"-lldap",
 				);
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1226,6 +1338,7 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Debug";
@@ -1234,7 +1347,6 @@
 					"link option 1",
 					"link option 2",
 				);
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1254,11 +1366,11 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Debug";
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
 				WARNING_CFLAGS = "-Wall";
 			};
 			name = "Debug";
@@ -1279,12 +1391,12 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Debug";
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1304,6 +1416,7 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Debug";
@@ -1311,7 +1424,6 @@
 				OTHER_CFLAGS = (
 					"-ffast-math",
 				);
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1331,6 +1443,7 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Debug";
@@ -1338,7 +1451,6 @@
 				OTHER_CFLAGS = (
 					"-ffloat-store",
 				);
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1359,11 +1471,11 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Debug";
-				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = "Debug";
 		};
@@ -1385,11 +1497,11 @@
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Debug";
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1409,6 +1521,7 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Debug";
@@ -1416,7 +1529,6 @@
 				OTHER_CFLAGS = (
 					"-fomit-frame-pointer",
 				);
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1437,11 +1549,11 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Debug";
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1462,11 +1574,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Debug";
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1488,11 +1600,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Debug";
-				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = "Debug";
 		};
@@ -1512,6 +1624,7 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LIBRARY_SEARCH_PATHS = (
@@ -1520,7 +1633,6 @@
 				);
 				OBJROOT = "obj/Debug";
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1542,11 +1654,11 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyProject_Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Debug";
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1566,11 +1678,11 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Universal/Debug";
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1590,11 +1702,11 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Universal32/Debug";
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1614,11 +1726,11 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Universal64/Debug";
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1638,11 +1750,11 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Debug";
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1662,11 +1774,11 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/x32/Debug";
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1686,11 +1798,11 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/x64/Debug";
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
 			};
 			name = "Debug";
 		};
@@ -1709,11 +1821,11 @@
 				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = "obj/Universal32/Debug";
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
 			};
 			name = "Debug 32-bit Universal";
 		};
@@ -1813,3 +1925,38 @@
 /* End XCConfigurationList section */
 		]]
 	end
+
+function suite.defaultVisibility_settingIsFound()
+	prepare()
+	xcode.XCBuildConfiguration(tr)
+	local buffer = io.endcapture()
+
+	test.string_contains(buffer,'GCC_SYMBOLS_PRIVATE_EXTERN')
+end
+
+
+function suite.defaultVisibilitySetting_setToNo()
+	prepare()
+	xcode.XCBuildConfiguration(tr)
+	local buffer = io.endcapture()
+	
+	test.string_contains(buffer,'GCC_SYMBOLS_PRIVATE_EXTERN = NO;')
+end
+
+function suite.releaseBuild_onlyDefaultArch_equalsNo()
+	flags { "Optimize" }
+	prepare()
+	xcode.XCBuildConfiguration_Project(tr, tr.configs[2])
+	local buffer = io.endcapture()
+	
+	test.string_contains(buffer,'ONLY_ACTIVE_ARCH = NO;')
+end
+
+function suite.debugBuild_onlyDefaultArch_equalsYes()
+	flags { "Symbols" }
+	prepare()
+	xcode.XCBuildConfiguration_Project(tr, tr.configs[1])
+	local buffer = io.endcapture()
+	
+	test.string_contains(buffer,'ONLY_ACTIVE_ARCH = YES;')
+end

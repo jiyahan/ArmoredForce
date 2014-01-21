@@ -1,7 +1,7 @@
 /**
  * \file   premake.h
  * \brief  Program-wide constants and definitions.
- * \author Copyright (c) 2002-2008 Jason Perkins and the Premake project
+ * \author Copyright (c) 2002-2011 Jason Perkins and the Premake project
  */
 
 #define lua_c
@@ -15,7 +15,7 @@
 #if defined(__linux__)
 #define PLATFORM_LINUX    (1)
 #define PLATFORM_STRING   "linux"
-#elif defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__)
+#elif defined(__FreeBSD__) || defined(__FreeBSD_kernel__) || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__DragonFly__)
 #define PLATFORM_BSD      (1)
 #define PLATFORM_STRING   "bsd"
 #elif defined(__APPLE__) && defined(__MACH__)
@@ -24,8 +24,11 @@
 #elif defined(__sun__) && defined(__svr4__)
 #define PLATFORM_SOLARIS  (1)
 #define PLATFORM_STRING   "solaris"
+#elif defined(__HAIKU__)
+#define PLATFORM_HAIKU    (1)
+#define PLATFORM_STRING   "haiku"
 #else
-#define PLATFORM_WINDOWS  (1) 
+#define PLATFORM_WINDOWS  (1)
 #define PLATFORM_STRING   "windows"
 #endif
 
@@ -52,6 +55,8 @@ int path_isabsolute(lua_State* L);
 int os_chdir(lua_State* L);
 int os_copyfile(lua_State* L);
 int os_getcwd(lua_State* L);
+int os_getversion(lua_State* L);
+int os_is64bit(lua_State* L);
 int os_isdir(lua_State* L);
 int os_isfile(lua_State* L);
 int os_matchdone(lua_State* L);
@@ -62,6 +67,13 @@ int os_matchstart(lua_State* L);
 int os_mkdir(lua_State* L);
 int os_pathsearch(lua_State* L);
 int os_rmdir(lua_State* L);
+int os_stat(lua_State* L);
 int os_uuid(lua_State* L);
 int string_endswith(lua_State* L);
+
+
+/* Engine interface */
+int premake_init(lua_State* L);
+int premake_locate(lua_State* L, const char* argv0);
+int premake_execute(lua_State* L, int argc, const char** argv);
 

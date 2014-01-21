@@ -30,6 +30,19 @@
 		test.isequal(expected, path.getabsolute("a/b/c/"))
 	end
 	
+	function suite.getabsolute_OnLeadingEnvVar()
+		test.isequal("$(HOME)/user", path.getabsolute("$(HOME)/user"))
+	end
+	
+	function suite.getabsolute_OnMultipleEnvVar()		
+		test.isequal("$(HOME)/$(USER)", path.getabsolute("$(HOME)/$(USER)"))
+	end
+	
+	function suite.getabsolute_OnTrailingEnvVar()
+		local expected = path.translate(os.getcwd(), "/") .. "/home/$(USER)"
+		test.isequal(expected, path.getabsolute("home/$(USER)"))
+	end
+	
 	
 --
 -- path.getbasename() tests
@@ -91,6 +104,19 @@
 	function suite.getextension_OnMultipleDots()
 		test.isequal(".txt", path.getextension("filename.mod.txt"))
 	end
+	
+	function suite.getextension_OnLeadingNumeric()
+		test.isequal(".7z", path.getextension("filename.7z"))
+	end
+	
+	function suite.getextension_OnUnderscore()
+		test.isequal(".a_c", path.getextension("filename.a_c"))
+	end
+	
+	function suite.getextension_OnHyphen()
+		test.isequal(".a-c", path.getextension("filename.a-c"))
+	end
+
 
 
 --
@@ -156,21 +182,45 @@
 --
 
 	function suite.join_OnValidParts()
-		test.isequal("leading/trailing", path.join("leading", "trailing"))
+		test.isequal("p1/p2", path.join("p1", "p2"))
 	end
 	
 	function suite.join_OnAbsoluteUnixPath()
-		test.isequal("/trailing", path.join("leading", "/trailing"))
+		test.isequal("/p2", path.join("p1", "/p2"))
 	end
 	
 	function suite.join_OnAbsoluteWindowsPath()
-		test.isequal("C:/trailing", path.join("leading", "C:/trailing"))
+		test.isequal("C:/p2", path.join("p1", "C:/p2"))
 	end
 
 	function suite.join_OnCurrentDirectory()
-		test.isequal("trailing", path.join(".", "trailing"))
+		test.isequal("p2", path.join(".", "p2"))
 	end
 	
+	function suite.join_OnNilSecondPart()
+		test.isequal("p1", path.join("p1", nil))
+	end
+	
+	function suite.join_onMoreThanTwoParts()
+		test.isequal("p1/p2/p3", path.join("p1", "p2", "p3"))
+	end
+
+	function suite.join_removesExtraInternalSlashes()
+		test.isequal("p1/p2", path.join("p1/", "p2"))
+	end
+
+	function suite.join_removesTrailingSlash()
+		test.isequal("p1/p2", path.join("p1", "p2/"))
+	end
+
+	function suite.join_ignoresNilParts()
+		test.isequal("p2", path.join(nil, "p2", nil))
+	end
+
+	function suite.join_ignoresEmptyParts()
+		test.isequal("p2", path.join("", "p2", ""))
+	end
+
 
 --
 -- path.rebase() tests

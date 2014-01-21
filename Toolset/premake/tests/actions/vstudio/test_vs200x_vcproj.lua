@@ -1,12 +1,12 @@
 --
 -- tests/test_vs200x_vcproj.lua
 -- Automated test suite for Visual Studio 2002-2008 C/C++ project generation.
--- Copyright (c) 2009 Jason Perkins and the Premake project
+-- Copyright (c) 2009-2013 Jason Perkins and the Premake project
 --
 
 	T.vs200x_vcproj = { }
 	local suite = T.vs200x_vcproj
-	local vcproj = premake.vstudio.vcproj
+	local vc200x = premake.vstudio.vc200x
 	
 
 --
@@ -32,9 +32,8 @@
 	end
 
 	local function prepare()
-		io.capture()
-		premake.buildconfigs()
-		sln.vstudio_configs = premake.vstudio_buildconfigs(sln)
+		premake.bake.buildconfigs()
+		sln.vstudio_configs = premake.vstudio.buildconfigs(sln)
 
 		local cfg = premake.getconfig(sln.projects[2])
 		cfg.name = prj.name
@@ -49,7 +48,7 @@
 
 	function suite.BasicLayout()
 		prepare()
-		premake.vs200x_vcproj(prj)
+		vc200x.generate(prj)
 		test.capture [[
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
@@ -237,27 +236,6 @@
 
 
 --
--- Test the <Configuration> element
---
-
-	function suite.Configuration_OnMFCFlag()
-		flags { "MFC" }
-		prepare()
-		vcproj.Configuration("Debug|Win32", premake.getconfig(prj, "Debug"))
-		test.capture [[
-		<Configuration
-			Name="Debug|Win32"
-			OutputDirectory="."
-			IntermediateDirectory="obj\Debug\MyProject"
-			ConfigurationType="1"
-			UseOfMFC="2"
-			CharacterSet="2"
-			>
-		]]
-	end
-
-
---
 -- Test multiple platforms
 --
 
@@ -265,7 +243,7 @@
 		platforms { "x32", "x64" }
 		prepare()
 
-		premake.vs200x_vcproj(prj)
+		vc200x.generate(prj)
 		local result = io.endcapture()		
 		test.istrue(result:find '<Configuration\r\n\t\t\tName="Debug|Win32"\r\n')
 		test.istrue(result:find '<Configuration\r\n\t\t\tName="Release|Win32"\r\n')
@@ -282,7 +260,7 @@
 	function suite.PlatformsList_OnX64()
 		platforms { "Native", "x64" }
 		prepare()
-		premake.vs200x_vcproj_platforms(prj)
+		vc200x.Platforms(prj)
 		test.capture [[
 	<Platforms>
 		<Platform
@@ -304,7 +282,7 @@
 	function suite.PlatformsList_OnXbox360()
 		platforms { "Native", "Xbox360" }
 		prepare()
-		premake.vs200x_vcproj_platforms(prj)
+		vc200x.Platforms(prj)
 		test.capture [[
 	<Platforms>
 		<Platform
@@ -320,7 +298,7 @@
 	function suite.CompilerBlock_OnXbox360()
 		platforms { "Xbox360" }
 		prepare()
-		premake.vs200x_vcproj_VCCLCompilerTool(premake.getconfig(prj, "Debug", "Xbox360"))
+		vc200x.VCCLCompilerTool(premake.getconfig(prj, "Debug", "Xbox360"))
 		test.capture [[
 			<Tool
 				Name="VCCLX360CompilerTool"
@@ -345,7 +323,7 @@
 	function suite.PlatformsList_OnPS3()
 		platforms { "Native", "PS3" }
 		prepare()
-		premake.vs200x_vcproj_platforms(prj)
+		vc200x.Platforms(prj)
 		test.capture [[
 	<Platforms>
 		<Platform
@@ -361,11 +339,12 @@
 		includedirs { "include/pkg1", "include/pkg2" }
 		defines { "DEFINE1", "DEFINE2" }
 		prepare()
-		premake.vs200x_vcproj_VCCLCompilerTool_GCC(premake.getconfig(prj, "Debug", "PS3"))
+		vc200x.VCCLCompilerTool_PS3(premake.getconfig(prj, "Debug", "PS3"))
 		test.capture [[
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="-g"
+				UsePrecompiledHeader="0"
+				AdditionalOptions=""
 				AdditionalIncludeDirectories="include\pkg1;include\pkg2"
 				PreprocessorDefinitions="DEFINE1;DEFINE2"
 				ProgramDataBaseFileName="$(OutDir)\MyProject.pdb"
@@ -378,7 +357,7 @@
 	function suite.LinkerBlock_OnPS3ConsoleApp()
 		platforms { "PS3" }
 		prepare()
-		premake.vs200x_vcproj_VCLinkerTool_GCC(premake.getconfig(prj, "Debug", "PS3"))
+		vc200x.VCLinkerTool_PS3(premake.getconfig(prj, "Debug", "PS3"))
 		test.capture [[
 			<Tool
 				Name="VCLinkerTool"
@@ -398,7 +377,7 @@
 		platforms { "PS3" }
 		kind "StaticLib"
 		prepare()
-		premake.vs200x_vcproj_VCLinkerTool_GCC(premake.getconfig(prj, "Debug", "PS3"))
+		vc200x.VCLinkerTool_PS3(premake.getconfig(prj, "Debug", "PS3"))
 		test.capture [[
 			<Tool
 				Name="VCLibrarianTool"
@@ -415,7 +394,7 @@
 		language "C++"
 		kind "SharedLib"
 		prepare()
-		premake.vs200x_vcproj_VCLinkerTool_GCC(premake.getconfig(prj, "Debug", "PS3"))
+		vc200x.VCLinkerTool_PS3(premake.getconfig(prj, "Debug", "PS3"))
 
 		test.capture [[
 			<Tool
@@ -441,7 +420,7 @@
 	function suite.VCManifestTool_OnNoManifests()
 		files { "hello.c", "goodbye.c" }
 		prepare()
-		premake.vs200x_vcproj_VCManifestTool(premake.getconfig(prj, "Debug"))
+		vc200x.VCManifestTool(premake.getconfig(prj, "Debug"))
 		test.capture [[
 			<Tool
 				Name="VCManifestTool"
@@ -453,7 +432,7 @@
 	function suite.VCManifestTool_OnNoManifests()
 		files { "hello.c", "project1.manifest", "goodbye.c", "project2.manifest" }
 		prepare()
-		premake.vs200x_vcproj_VCManifestTool(premake.getconfig(prj, "Debug"))
+		vc200x.VCManifestTool(premake.getconfig(prj, "Debug"))
 		test.capture [[
 			<Tool
 				Name="VCManifestTool"
@@ -464,14 +443,18 @@
 
 
 --
--- Test precompiled header handling
+-- Test precompiled header handling; the header should be treated as
+-- a plain string value, with no path manipulation applied, since it
+-- needs to match the value of the #include statement used in the
+-- project code.
 --
 
 	function suite.CompilerBlock_OnPCH()
-		pchheader "source/common.h"
+		location "build/MyProject"
+		pchheader "include/common.h"
 		pchsource "source/common.cpp"
 		prepare()
-		premake.vs200x_vcproj_VCCLCompilerTool(premake.getconfig(prj, "Debug"))
+		vc200x.VCCLCompilerTool(premake.getconfig(prj, "Debug"))
 		test.capture [[
 			<Tool
 				Name="VCCLCompilerTool"
@@ -480,72 +463,12 @@
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="2"
-				PrecompiledHeaderThrough="common.h"
+				PrecompiledHeaderThrough="include/common.h"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
 				ProgramDataBaseFileName="$(OutDir)\MyProject.pdb"
 				DebugInformationFormat="0"
 			/>
-		]]
-	end
-
-	function suite.Files_OnPCH_OnWindows()
-		files { "afxwin.cpp" }
-		pchsource "afxwin.cpp"
-		prepare()
-		_VS.files(prj, "afxwin.cpp", "Item", 1)
-		test.capture [[
-			<File
-				RelativePath="afxwin.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-			</File>
-		]]
-	end
-	
-	function suite.Files_OnPCH_OnXbox360()
-		files { "afxwin.cpp" }
-		pchsource "afxwin.cpp"
-		platforms { "Xbox360" }
-		prepare()
-		sln.vstudio_configs = premake.vstudio_buildconfigs(sln)
-		_VS.files(prj, "afxwin.cpp", "Item", 1)
-		test.capture [[
-			<File
-				RelativePath="afxwin.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Xbox 360"
-					>
-					<Tool
-						Name="VCCLX360CompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Xbox 360"
-					>
-					<Tool
-						Name="VCCLX360CompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-			</File>
 		]]
 	end
 
@@ -557,7 +480,7 @@
 	function suite.CompilerBlock_OnFpFast()
 		flags { "FloatFast" }
 		prepare()
-		premake.vs200x_vcproj_VCCLCompilerTool(premake.getconfig(prj, "Debug"))
+		vc200x.VCCLCompilerTool(premake.getconfig(prj, "Debug"))
 		test.capture [[
 			<Tool
 				Name="VCCLCompilerTool"
@@ -578,7 +501,7 @@
 	function suite.CompilerBlock_OnFpStrict()
 		flags { "FloatStrict" }
 		prepare()
-		premake.vs200x_vcproj_VCCLCompilerTool(premake.getconfig(prj, "Debug"))
+		vc200x.VCCLCompilerTool(premake.getconfig(prj, "Debug"))
 		test.capture [[
 			<Tool
 				Name="VCCLCompilerTool"
@@ -604,7 +527,7 @@
 	function suite.CompilerBlock_OnTargetName()
 		targetname "foob"
 		prepare()
-		premake.vs200x_vcproj_VCCLCompilerTool(premake.getconfig(prj, "Debug"))
+		vc200x.VCCLCompilerTool(premake.getconfig(prj, "Debug"))
 		test.capture [[
 			<Tool
 				Name="VCCLCompilerTool"
@@ -629,7 +552,7 @@
 	function suite.CompilerBlock_OnNoMinimalRebuild()
 		flags { "Symbols", "NoMinimalRebuild" }
 		prepare()
-		premake.vs200x_vcproj_VCCLCompilerTool(premake.getconfig(prj, "Debug"))
+		vc200x.VCCLCompilerTool(premake.getconfig(prj, "Debug"))
 		test.capture [[
 			<Tool
 				Name="VCCLCompilerTool"
@@ -654,7 +577,7 @@
 	function suite.CompilerBlock_RuntimeLibrary_IsDebug_OnSymbolsNoOptimize()
 		flags { "Symbols" }
 		prepare()
-		premake.vs200x_vcproj_VCCLCompilerTool(premake.getconfig(prj, "Debug"))
+		vc200x.VCCLCompilerTool(premake.getconfig(prj, "Debug"))
 		test.capture [[
 			<Tool
 				Name="VCCLCompilerTool"
@@ -675,7 +598,7 @@
 	function suite.CompilerBlock_RuntimeLibrary_IsRelease_OnOptimize()
 		flags { "Symbols", "Optimize" }
 		prepare()
-		premake.vs200x_vcproj_VCCLCompilerTool(premake.getconfig(prj, "Debug"))
+		vc200x.VCCLCompilerTool(premake.getconfig(prj, "Debug"))
 		test.capture [[
 			<Tool
 				Name="VCCLCompilerTool"
@@ -701,7 +624,7 @@
 		language "C"
 		flags { "Symbols" }
 		prepare()
-		premake.vs200x_vcproj_VCCLCompilerTool(premake.getconfig(prj, "Debug"))
+		vc200x.VCCLCompilerTool(premake.getconfig(prj, "Debug"))
 		test.capture [[
 			<Tool
 				Name="VCCLCompilerTool"
@@ -718,4 +641,47 @@
 				CompileAs="1"
 			/>
 		]]
+	end
+	
+	
+	function suite.noLinkIncrementalFlag_valueEqualsOne()
+		flags { "NoIncrementalLink" }
+		prepare()
+		vc200x.VCLinkerTool(premake.getconfig(prj, "Debug"))
+		local result = io.endcapture()		
+		test.string_contains(result,'LinkIncremental="1"')
+	end
+
+	function suite.staticLib_platformX64_MachineX64SetInAdditionalOptions()
+		local sln1 = solution "sol"
+		configurations { "foo" }
+		platforms {'x64'}
+
+		local prj1 = project "prj"
+		language 'C++'
+		kind 'StaticLib'
+
+		premake.bake.buildconfigs()
+		sln1.vstudio_configs = premake.vstudio.buildconfigs(sln1)
+		prj1= premake.getconfig(sln1.projects[1])
+		vc200x.generate(prj1)
+		local result = io.endcapture()		
+		test.string_contains(result,'AdditionalOptions="/MACHINE:X64"')
+	end
+
+	function suite.staticLib_platformX32_MachineX86SetInAdditionalOptions()
+		local sln1 = solution "sol"
+		configurations { "foo" }
+		platforms {'x32'}
+
+		local prj1 = project "prj"
+		language 'C++'
+		kind 'StaticLib'
+
+		premake.bake.buildconfigs()
+		sln1.vstudio_configs = premake.vstudio.buildconfigs(sln1)
+		prj1= premake.getconfig(sln1.projects[1])
+		vc200x.generate(prj1)
+		local result = io.endcapture()		
+		test.string_contains(result,'AdditionalOptions="/MACHINE:X86"')
 	end

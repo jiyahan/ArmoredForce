@@ -1,7 +1,7 @@
 --
 -- xcode_common.lua
 -- Functions to generate the different sections of an Xcode project.
--- Copyright (c) 2009-2010 Jason Perkins and the Premake project
+-- Copyright (c) 2009-2011 Jason Perkins and the Premake project
 --
 
 	local xcode = premake.xcode
@@ -32,6 +32,8 @@
 			[".nib"] = "Resources",
 			[".xib"] = "Resources",
 			[".icns"] = "Resources",
+			[".bmp"] = "Resources",
+			[".wav"] = "Resources",
 		}
 		return categories[path.getextension(node.name)]
 	end
@@ -85,6 +87,8 @@
 			[".strings"]   = "text.plist.strings",
 			[".xib"]       = "file.xib",
 			[".icns"]      = "image.icns",
+			[".bmp"]       = "image.bmp",
+			[".wav"]       = "audio.wav",
 		}
 		return types[path.getextension(node.path)] or "text"
 	end
@@ -224,7 +228,8 @@
 		if #list > 0 then
 			_p(4,'%s = (', tag)
 			for _, item in ipairs(list) do
-				_p(5, '"%s",', item)
+				local escaped_item = item:gsub("\"", "\\\"")
+				_p(5, '"%s",', escaped_item)
 			end
 			_p(4,');')
 		end
@@ -313,16 +318,48 @@
 				else
 					local pth, src
 					if xcode.isframework(node.path) then
-						-- I need to figure out how to locate frameworks; this is just to get something working
-						pth = "/System/Library/Frameworks/" .. node.path
-						src = "absolute"
+						--respect user supplied paths
+						-- look for special variable-starting paths for different sources
+						local nodePath = node.path
+						local _, matchEnd, variable = string.find(nodePath, "^%$%((.+)%)/")
+						if variable then
+							-- by skipping the last '/' we support the same absolute/relative
+							-- paths as before
+							nodePath = string.sub(nodePath, matchEnd + 1)
+						end
+						if string.find(nodePath,'/')  then
+							if string.find(nodePath,'^%.')then
+								error('relative paths are not currently supported for frameworks')
+							end
+							pth = nodePath
+						else
+							pth = "/System/Library/Frameworks/" .. nodePath
+						end
+						-- if it starts with a variable, use that as the src instead
+						if variable then
+							src = variable
+							-- if we are using a different source tree, it has to be relative
+							-- to that source tree, so get rid of any leading '/'
+							if string.find(pth, '^/') then
+								pth = string.sub(pth, 2)
+							end
+						else
+							src = "<absolute>"
+						end
 					else
 						-- something else; probably a source code file
-						pth = tree.getlocalpath(node)
-						src = "group"
+						src = "<group>"
+
+						-- if the parent node is virtual, it won't have a local path
+						-- of its own; need to use full relative path from project
+						if node.parent.isvpath then
+							pth = node.cfg.name
+						else
+							pth = tree.getlocalpath(node)
+						end
 					end
 					
-					_p(2,'%s /* %s */ = {isa = PBXFileReference; lastKnownFileType = %s; name = "%s"; path = "%s"; sourceTree = "<%s>"; };',
+					_p(2,'%s /* %s */ = {isa = PBXFileReference; lastKnownFileType = %s; name = "%s"; path = "%s"; sourceTree = "%s"; };',
 						node.id, node.name, xcode.getfiletype(node), node.name, pth, src)
 				end
 			end
@@ -390,12 +427,12 @@
 					_p(3,'name = Products;')
 				else
 					_p(3,'name = "%s";', node.name)
-					if node.path then
+					if node.path and not node.isvpath then
 						local p = node.path
 						if node.parent.path then
 							p = path.getrelative(node.parent.path, node.path)
 						end
-						_p(3,'path = %s;', p)
+						_p(3,'path = "%s";', p)
 					end
 				end
 				
@@ -414,20 +451,37 @@
 		for _, node in ipairs(tr.products.children) do
 			local name = tr.project.name
 			
+			-- This function checks whether there are build commands of a specific
+			-- type to be executed; they will be generated correctly, but the project
+			-- commands will not contain any per-configuration commands, so the logic
+			-- has to be extended a bit to account for that.
+			local function hasBuildCommands(which)
+				-- standard check...this is what existed before
+				if #tr.project[which] > 0 then
+					return true
+				end
+				-- what if there are no project-level commands? check configs...
+				for _, cfg in ipairs(tr.configs) do
+					if #cfg[which] > 0 then
+						return true
+					end
+				end
+			end
+			
 			_p(2,'%s /* %s */ = {', node.targetid, name)
 			_p(3,'isa = PBXNativeTarget;')
 			_p(3,'buildConfigurationList = %s /* Build configuration list for PBXNativeTarget "%s" */;', node.cfgsection, name)
 			_p(3,'buildPhases = (')
-			if #tr.project.prebuildcommands > 0 then
+			if hasBuildCommands('prebuildcommands') then
 				_p(4,'9607AE1010C857E500CD1376 /* Prebuild */,')
 			end
 			_p(4,'%s /* Resources */,', node.resstageid)
 			_p(4,'%s /* Sources */,', node.sourcesid)
-			if #tr.project.prelinkcommands > 0 then
+			if hasBuildCommands('prelinkcommands') then
 				_p(4,'9607AE3510C85E7E00CD1376 /* Prelink */,')
 			end
 			_p(4,'%s /* Frameworks */,', node.fxstageid)
-			if #tr.project.postbuildcommands > 0 then
+			if hasBuildCommands('postbuildcommands') then
 				_p(4,'9607AE3710C85E8F00CD1376 /* Postbuild */,')
 			end
 			_p(3,');')
@@ -467,7 +521,7 @@
 		_p(2,'08FB7793FE84155DC02AAC07 /* Project object */ = {')
 		_p(3,'isa = PBXProject;')
 		_p(3,'buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "%s" */;', tr.name)
-		_p(3,'compatibilityVersion = "Xcode 3.1";')
+		_p(3,'compatibilityVersion = "Xcode 3.2";')
 		_p(3,'hasScannedForEncodings = 1;')
 		_p(3,'mainGroup = %s /* %s */;', tr.id, tr.name)
 		_p(3,'projectDirPath = "";')
@@ -669,6 +723,12 @@
 			_p(4,'EXECUTABLE_PREFIX = %s;', cfg.buildtarget.prefix)
 		end
 		
+		if cfg.targetextension then
+			local ext = cfg.targetextension
+			ext = iif(ext:startswith("."), ext:sub(2), ext)
+			_p(4,'EXECUTABLE_EXTENSION = %s;', ext)
+		end
+
 		local outdir = path.getdirectory(cfg.buildtarget.bundlepath)
 		if outdir ~= "." then
 			_p(4,'CONFIGURATION_BUILD_DIR = %s;', outdir)
@@ -678,7 +738,7 @@
 		_p(4,'GCC_MODEL_TUNING = G5;')
 
 		if tr.infoplist then
-			_p(4,'INFOPLIST_FILE = "%s";', tr.infoplist.path)
+			_p(4,'INFOPLIST_FILE = "%s";', tr.infoplist.cfg.name)
 		end
 
 		installpaths = {
@@ -734,7 +794,7 @@
 			_p(4,'GCC_ENABLE_CPP_RTTI = NO;')
 		end
 		
-		if cfg.flags.Symbols and not cfg.flags.NoEditAndContinue then
+		if _ACTION ~= "xcode4" and cfg.flags.Symbols and not cfg.flags.NoEditAndContinue then
 			_p(4,'GCC_ENABLE_FIX_AND_CONTINUE = YES;')
 		end
 		
@@ -757,6 +817,8 @@
 		
 		xcode.printlist(cfg.defines, 'GCC_PREPROCESSOR_DEFINITIONS')
 
+		_p(4,'GCC_SYMBOLS_PRIVATE_EXTERN = NO;')
+		
 		if cfg.flags.FatalWarnings then
 			_p(4,'GCC_TREAT_WARNINGS_AS_ERRORS = YES;')
 		end
@@ -768,7 +830,8 @@
 		xcode.printlist(cfg.libdirs, 'LIBRARY_SEARCH_PATHS')
 		
 		_p(4,'OBJROOT = "%s";', cfg.objectsdir)
-		_p(4,'ONLY_ACTIVE_ARCH = NO;')
+
+		_p(4,'ONLY_ACTIVE_ARCH = %s;',iif(premake.config.isdebugbuild(cfg),'YES','NO'))
 		
 		-- build list of "other" C/C++ flags
 		local checks = {
@@ -796,8 +859,6 @@
 		end
 		flags = table.join(flags, cfg.linkoptions)
 		xcode.printlist(flags, 'OTHER_LDFLAGS')
-		
-		_p(4,'PREBINDING = NO;')
 		
 		if cfg.flags.StaticRuntime then
 			_p(4,'STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;')

@@ -1,27 +1,29 @@
 --
 -- Premake 4.x build configuration script
--- 
+--
 
 --
 -- Define the project. Put the release configuration first so it will be the
--- default when folks build using the makefile. That way they don't have to 
+-- default when folks build using the makefile. That way they don't have to
 -- worry about the /scripts argument and all that.
 --
 
 	solution "Premake4"
 		configurations { "Release", "Debug" }
 		location ( _OPTIONS["to"] )
-	
+
 	project "Premake4"
 		targetname  "premake4"
 		language    "C"
 		kind        "ConsoleApp"
-		flags       { "No64BitChecks", "ExtraWarnings", "StaticRuntime" }	
+		flags       { "No64BitChecks", "ExtraWarnings", "StaticRuntime" }
 		includedirs { "src/host/lua-5.1.4/src" }
 
-		files 
+		files
 		{
-			"*.txt", "**.lua", "src/**.h", "src/**.c",
+			"*.txt", "**.lua",
+			"src/**.h", "src/**.c",
+			"src/host/scripts.c"
 		}
 
 		excludes
@@ -33,12 +35,12 @@
 			"src/host/lua-5.1.4/**.lua",
 			"src/host/lua-5.1.4/etc/*.c"
 		}
-			
+
 		configuration "Debug"
 			targetdir   "bin/debug"
 			defines     "_DEBUG"
 			flags       { "Symbols" }
-			
+
 		configuration "Release"
 			targetdir   "bin/release"
 			defines     "NDEBUG"
@@ -47,20 +49,28 @@
 		configuration "vs*"
 			defines     { "_CRT_SECURE_NO_WARNINGS" }
 
-		configuration "linux"
+		configuration "vs2005"
+			defines	{"_CRT_SECURE_NO_DEPRECATE" }
+
+		configuration "windows"
+			links { "ole32" }
+
+		configuration "linux or bsd"
 			defines     { "LUA_USE_POSIX", "LUA_USE_DLOPEN" }
-			links       { "m", "dl" } 
-			
+			links       { "m" }
+			linkoptions { "-rdynamic" }
+
+		configuration "linux"
+			links       { "dl" }
+
 		configuration "macosx"
 			defines     { "LUA_USE_MACOSX" }
-			
-		configuration { "macosx", "gmake" }
-			buildoptions { "-mmacosx-version-min=10.1" }
-			linkoptions { "-lstdc++-static", "-mmacosx-version-min=10.1" }
+			links       { "CoreServices.framework" }
 
-		configuration { "not windows", "not solaris" }
-			linkoptions { "-rdynamic" }
-			
+		configuration { "macosx", "gmake" }
+			buildoptions { "-mmacosx-version-min=10.4" }
+			linkoptions  { "-mmacosx-version-min=10.4" }
+
 		configuration { "solaris" }
 			linkoptions { "-Wl,--export-dynamic" }
 
@@ -74,8 +84,8 @@
 		os.rmdir("bin")
 		os.rmdir("build")
 	end
-	
-	
+
+
 
 --
 -- Use the --to=path option to control where the project files get generated. I use
@@ -92,13 +102,13 @@
 
 
 --
--- Use the embed action to convert all of the Lua scripts into C strings, which 
+-- Use the embed action to convert all of the Lua scripts into C strings, which
 -- can then be built into the executable. Always embed the scripts before creating
 -- a release build.
 --
 
 	dofile("scripts/embed.lua")
-	
+
 	newaction {
 		trigger     = "embed",
 		description = "Embed scripts in scripts.c; required before release builds",
@@ -113,7 +123,7 @@
 
 
 	dofile("scripts/release.lua")
-	
+
 	newaction {
 		trigger     = "release",
 		description = "Prepare a new release (incomplete)",

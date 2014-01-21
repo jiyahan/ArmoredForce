@@ -8,11 +8,5 @@
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="Premake4" ConfigName="Debug"/>
     </WorkspaceConfiguration>
-    <WorkspaceConfiguration Name="Release|Universal32" Selected="yes">
-      <Project Name="Premake4" ConfigName="Release|Universal32"/>
-    </WorkspaceConfiguration>
-    <WorkspaceConfiguration Name="Debug|Universal32" Selected="yes">
-      <Project Name="Premake4" ConfigName="Debug|Universal32"/>
-    </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

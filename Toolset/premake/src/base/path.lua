@@ -17,7 +17,7 @@
 		
 		-- if the directory is already absolute I don't need to do anything
 		local result = iif (path.isabsolute(p), nil, os.getcwd())
-		
+
 		-- split up the supplied relative path and tackle it bit by bit
 		for n, part in ipairs(p:explode("/", true)) do
 			if (part == "" and n == 1) then
@@ -25,7 +25,13 @@
 			elseif (part == "..") then
 				result = path.getdirectory(result)
 			elseif (part ~= ".") then
-				result = path.join(result, part)
+				-- Environment variables embedded in the path need to be treated
+				-- as relative paths; path.join() makes them absolute
+				if (part:startswith("$") and n > 1) then
+					result = result .. "/" .. part
+				else
+					result = path.join(result, part)
+				end
 			end
 		end
 		
@@ -191,6 +197,13 @@
 		local ext = path.getextension(fname):lower()
 		return table.contains(extensions, ext)
 	end
+	
+	function path.iscppheader(fname)
+		local extensions = { ".h", ".hh", ".hpp", ".hxx" }
+		local ext = path.getextension(fname):lower()
+		return table.contains(extensions, ext)
+	end
+
 
 
 --
@@ -203,35 +216,42 @@
 		local ext = path.getextension(fname):lower()
 		return table.contains(extensions, ext)
 	end
-	
-	
+
 	
 --
--- Join two pieces of a path together into a single path.
+-- Join one or more pieces of a path together into a single path.
+-- 
+-- @param ...
+--    One or more path strings.
+-- @return
+--    The joined path.
 --
 
-	function path.join(leading, trailing)
-		leading = leading or ""
-		
-		if (not trailing) then
-			return leading
+	function path.join(...)
+		local numargs = select("#", ...)
+		if numargs == 0 then
+			return "";
 		end
 		
-		if (path.isabsolute(trailing)) then
-			return trailing
-		end
-
-		if (leading == ".") then
-			leading = ""
+		local allparts = {}
+		for i = numargs, 1, -1 do
+			local part = select(i, ...)
+			if part and #part > 0 and part ~= "." then
+				-- trim off trailing slashes
+				while part:endswith("/") do
+					part = part:sub(1, -2)
+				end
+				
+				table.insert(allparts, 1, part)
+				if path.isabsolute(part) then
+					break
+				end
+			end
 		end
 		
-		if (leading:len() > 0 and not leading:endswith("/")) then
-			leading = leading .. "/"
-		end
-		
-		return leading .. trailing
+		return table.concat(allparts, "/")
 	end
-	
+
 
 --
 -- Takes a path which is relative to one location and makes it relative

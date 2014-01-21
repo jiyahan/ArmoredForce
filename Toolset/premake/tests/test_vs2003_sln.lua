@@ -5,13 +5,15 @@
 --
 
 	T.vs2003_sln = { }
+	local suite = T.vs2003_sln
+	local sln2003 = premake.vstudio.sln2003
 
 --
 -- Configure a solution for testing
 --
 
 	local sln
-	function T.vs2003_sln.setup()
+	function suite.setup()
 		_ACTION = "vs2003"
 
 		sln = solution "MySolution"
@@ -23,7 +25,7 @@
 		kind "ConsoleApp"
 		uuid "AE61726D-187C-E440-BD07-2556188A6565"
 		
-		premake.buildconfigs()
+		premake.bake.buildconfigs()
 	end
 	
 
@@ -32,9 +34,8 @@
 -- Make sure I've got the basic layout correct
 --
 	
-	function T.vs2003_sln.BasicLayout()
-		io.capture()
-		premake.vs2003_solution(sln)
+	function suite.BasicLayout()
+		sln2003.generate(sln)
 		test.capture [[
 Microsoft Visual Studio Solution File, Format Version 8.00
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyProject", "MyProject.vcproj", "{AE61726D-187C-E440-BD07-2556188A6565}"
