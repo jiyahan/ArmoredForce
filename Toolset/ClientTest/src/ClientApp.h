@@ -17,6 +17,8 @@ public:
     explicit ClientApp(const Config& cfg);
     ~ClientApp();
 
+    bool Init();
+
     // Ö÷Ñ­»·
     bool    Run();
 

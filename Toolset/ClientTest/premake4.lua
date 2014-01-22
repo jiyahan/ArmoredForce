@@ -24,13 +24,13 @@ solution "ClientTest"
         defines 
         { 
             "_CRT_SECURE_NO_WARNINGS",
-        }
-        buildoptions "-Zm200 /FI\"stdafx.h\" /wd\"4996\"" 
+        }        
 
     project "ClientTest"
         kind "ConsoleApp"
         uuid "0A9699F1-69F2-40E6-AEB9-A81CB4AF2CE2"
-        buildoptions '/I"../../"'
+        buildoptions "" 
+        buildoptions '/I"../../" -Zm200 /FI"stdafx.h" /wd"4996" '
         defines
         {
             "MARKUP_STL",
@@ -52,7 +52,7 @@ solution "ClientTest"
             "../../Server/Utility/Markup.cpp",
             "../../Server/Utility/Utility.h",
             "../../Server/Utility/Utility.cpp",
-           
+            "../../Server/Utility/easylogging.h",
         }
 
         pchheader "stdafx.h"

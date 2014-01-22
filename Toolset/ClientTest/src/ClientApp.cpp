@@ -13,6 +13,14 @@ using namespace electron;
 ClientApp::ClientApp(const Config& cfg)
     : cfg_(cfg)
 {
+}
+
+ClientApp::~ClientApp()
+{
+}
+
+bool ClientApp::Init()
+{
     handler_map_ = GetHandlerMap();
 
     // 开始连接server
@@ -22,12 +30,10 @@ ClientApp::ClientApp(const Config& cfg)
     }
     else
     {
-        LOG(ERROR) << "连接服务器失败, " << cfg.host << ":" << cfg.port;
+        LOG(ERROR) << "连接服务器失败, " << cfg_.host << ":" << cfg_.port;
+        return false;
     }
-}
-
-ClientApp::~ClientApp()
-{
+    return true;
 }
 
 bool ClientApp::Run()
@@ -94,15 +100,8 @@ ClientApp&  GetClientApp()
 
 bool CreateClientApp(const Config& cfg)
 {
-    try
-    {
-        global_app.reset(new ClientApp(cfg));
-    }
-    catch(std::bad_alloc&)
-    {
-        return false;
-    }
-    return true;
+    global_app.reset(new ClientApp(cfg));
+    return global_app->Init();
 }
 
 void DestroyClientApp()
