@@ -1,13 +1,8 @@
 #include "CUtf8Charset.h"
-//Begin section for file CUtf8Charset.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CUtf8Charset.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CUtf8Charset::IsUtf8(const char * string) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( string )
 	{
@@ -118,10 +113,8 @@ bool atom::CUtf8Charset::IsUtf8(const char * string)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 size_t atom::CUtf8Charset::Utf8Length(const char * string)
 {
-    //TODO Auto-generated method stub
 	size_t result = 0;
 	if( string )
 	{
@@ -231,10 +224,8 @@ size_t atom::CUtf8Charset::Utf8Length(const char * string)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 size_t atom::CUtf8Charset::Utf8Section(const char * string, CU08Array & section)
 {
-    //TODO Auto-generated method stub
 	size_t result = 0;
 	if( string )
 	{

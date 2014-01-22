@@ -7,13 +7,9 @@
 #include "../enumeration/EVENT_ID.h"
 #include "../enumeration/MESSAGE_ID.h"
 #include "../enumeration/INTERFACE_ID.h"
-//Begin section for file CConnectorStubFrame.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CConnectorStubFrame.cpp
 const static U64 header_length = sizeof(U32) + sizeof(U32) + sizeof(U16);
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 electron::CConnectorStubFrame::CConnectorStubFrame() : 
 nest(NULL),
 #ifdef _SHIPPING_
@@ -21,20 +17,15 @@ cast(NULL),
 #endif
 length(0),record(0),lasted(0),entity(0)
 {
-    //TODO Auto-generated method stub
     frames.reserve( 32 );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 electron::CConnectorStubFrame::~CConnectorStubFrame() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void electron::CConnectorStubFrame::OnSendFrame() 
 {
-    //TODO Auto-generated method stub
     if( locker.Increase() != 1 ) {
         locker.Decrease(); return;
     }
@@ -90,10 +81,8 @@ void electron::CConnectorStubFrame::OnSendFrame()
     export_region.Leave();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool electron::CConnectorStubFrame::PreReadFrame(tagFrame & frame) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     if( frame.memory )
     {
@@ -129,10 +118,8 @@ bool electron::CConnectorStubFrame::PreReadFrame(tagFrame & frame)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool electron::CConnectorStubFrame::PreSendFrame(tagFrame & frame) 
 {
-    //TODO Auto-generated method stub
     static TLS_DECLARE lzo_align_t 
         workset[( LZO1X_MEM_COMPRESS + ( sizeof(lzo_align_t) - 1 ) ) / sizeof(lzo_align_t)];
 
@@ -191,10 +178,8 @@ bool electron::CConnectorStubFrame::PreSendFrame(tagFrame & frame)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int electron::CConnectorStubFrame::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -214,10 +199,8 @@ int electron::CConnectorStubFrame::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int electron::CConnectorStubFrame::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -237,10 +220,8 @@ int electron::CConnectorStubFrame::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int electron::CConnectorStubFrame::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -260,10 +241,8 @@ int electron::CConnectorStubFrame::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 IInterface * electron::CConnectorStubFrame::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -271,10 +250,8 @@ IInterface * electron::CConnectorStubFrame::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void electron::CConnectorStubFrame::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		nest = value;
@@ -284,10 +261,8 @@ void electron::CConnectorStubFrame::SetNest(IInterface * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool electron::CConnectorStubFrame::Open(U64 connector, U64 queuename) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     if( !nest || !connector || !queuename ) return result;
 
@@ -329,10 +304,8 @@ bool electron::CConnectorStubFrame::Open(U64 connector, U64 queuename)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool electron::CConnectorStubFrame::Shut() 
 {
-    //TODO Auto-generated method stub
     frames_region.Enter();
     frames.clear();
     frames_region.Leave();
@@ -362,10 +335,8 @@ bool electron::CConnectorStubFrame::Shut()
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool electron::CConnectorStubFrame::Read(U64 time) 
 {
-    //TODO Auto-generated method stub
     CMemory prior; U16 checksum(0); 
     bool splited(false), succeed(false);
     U64 original_length(0), compress_length(0); 
@@ -509,10 +480,8 @@ bool electron::CConnectorStubFrame::Read(U64 time)
     return splited;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool electron::CConnectorStubFrame::Send(CMessage * message) 
 {
-    //TODO Auto-generated method stub
     if( !message ) return false;
 
     bool result = false;
@@ -538,10 +507,8 @@ bool electron::CConnectorStubFrame::Send(CMessage * message)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U64 electron::CConnectorStubFrame::LastReceive() 
 {
-    //TODO Auto-generated method stub
     CCriticalSectionScope scope( import_region );
     return lasted;
 }

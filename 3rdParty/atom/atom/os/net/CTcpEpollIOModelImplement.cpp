@@ -16,34 +16,25 @@
 #include "../../enumeration/EVENT_ID.h"
 #include "../../enumeration/INTERFACE_ID.h"
 #include "../../enumeration/OBJECT_ID.h"
-//Begin section for file CTcpEpollIOModelImplement.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CTcpEpollIOModelImplement.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpEpollIOModelImplement::CTcpEpollIOModelImplement() : 
 nest(NULL)
 #ifdef __linux
 ,amount(1),active(false)
 #endif
 {
-    //TODO Auto-generated method stub
 	#ifdef __linux
 	memset( epolls, 0, sizeof(epolls) );
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpEpollIOModelImplement::~CTcpEpollIOModelImplement() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpEpollIOModelImplement::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -63,10 +54,8 @@ int atom::CTcpEpollIOModelImplement::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpEpollIOModelImplement::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -86,10 +75,8 @@ int atom::CTcpEpollIOModelImplement::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpEpollIOModelImplement::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -109,10 +96,8 @@ int atom::CTcpEpollIOModelImplement::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CTcpEpollIOModelImplement::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -120,10 +105,8 @@ atom::IInterface * atom::CTcpEpollIOModelImplement::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpEpollIOModelImplement::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		nest = value;
@@ -133,10 +116,8 @@ void atom::CTcpEpollIOModelImplement::SetNest(IInterface * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 SOCKET atom::CTcpEpollIOModelImplement::Create() 
 {
-    //TODO Auto-generated method stub
 	#ifdef __linux
 	
 	SOCKET result = socket( AF_INET, SOCK_STREAM, 0 );
@@ -159,10 +140,8 @@ SOCKET atom::CTcpEpollIOModelImplement::Create()
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpEpollIOModelImplement::Remove(SOCKET hs) 
 {
-    //TODO Auto-generated method stub
 	#ifdef __linux
 	if( hs != INVALID_SOCKET ) close( hs );
 	#else
@@ -170,10 +149,8 @@ void atom::CTcpEpollIOModelImplement::Remove(SOCKET hs)
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpEpollIOModelImplement::Attach(U64 name) 
 {
-    //TODO Auto-generated method stub
 	#ifdef __linux
 	if( !name ) return false;
 	bool result = false;
@@ -225,10 +202,8 @@ bool atom::CTcpEpollIOModelImplement::Attach(U64 name)
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpEpollIOModelImplement::Detach(U64 name) 
 {
-    //TODO Auto-generated method stub
 	#ifdef __linux
 
 	bool result = false;
@@ -265,10 +240,8 @@ bool atom::CTcpEpollIOModelImplement::Detach(U64 name)
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CObjectPtr atom::CTcpEpollIOModelImplement::Obtain(U64 name) 
 {
-    //TODO Auto-generated method stub
 	CObjectPtr result;
 	#ifdef __linux
 	if( name )
@@ -284,10 +257,8 @@ atom::CObjectPtr atom::CTcpEpollIOModelImplement::Obtain(U64 name)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpEpollIOModelImplement::Initiate() 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 
 	#ifdef __linux
@@ -306,10 +277,8 @@ bool atom::CTcpEpollIOModelImplement::Initiate()
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpEpollIOModelImplement::Shutdown() 
 {
-    //TODO Auto-generated method stub
 	#ifdef __linux
 	for( U32 i = 0; i < amount; ++ i ) {
 		if( epolls[i] == 0 || epolls[i] == -1 ) continue;
@@ -322,10 +291,8 @@ bool atom::CTcpEpollIOModelImplement::Shutdown()
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpEpollIOModelImplement::Listen(U64 name, const tagDomain & domain) 
 {
-    //TODO Auto-generated method stub
 	#ifdef __linux
 
 	bool result = false;
@@ -371,10 +338,8 @@ bool atom::CTcpEpollIOModelImplement::Listen(U64 name, const tagDomain & domain)
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpEpollIOModelImplement::Connect(U64 name, const tagDomain & domain) 
 {
-    //TODO Auto-generated method stub
 	#ifdef __linux
 
 	bool result = false;
@@ -419,10 +384,8 @@ bool atom::CTcpEpollIOModelImplement::Connect(U64 name, const tagDomain & domain
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpEpollIOModelImplement::Send(U64 name, CMemory & data, size_t offset, size_t length) 
 {
-    //TODO Auto-generated method stub
 	#ifdef __linux
 	
 	// 该函数由逻辑线程或者流控制线程主动调用，如果发送完毕，则正常结束，如果调用
@@ -503,10 +466,8 @@ bool atom::CTcpEpollIOModelImplement::Send(U64 name, CMemory & data, size_t offs
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpEpollIOModelImplement::Receive(U64 name) 
 {
-    //TODO Auto-generated method stub
 	UNREFERENCED_PARAMETER(name);
 	#ifdef __linux
 	return true;
@@ -515,10 +476,8 @@ bool atom::CTcpEpollIOModelImplement::Receive(U64 name)
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpEpollIOModelImplement::Accept(U64 name) 
 {
-    //TODO Auto-generated method stub
 	UNREFERENCED_PARAMETER(name);
 	#ifdef __linux
 	return true;
@@ -527,10 +486,8 @@ bool atom::CTcpEpollIOModelImplement::Accept(U64 name)
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 I32 atom::CTcpEpollIOModelImplement::OnProcess(U32 index) 
 {
-    //TODO Auto-generated method stub
 	#ifdef __linux
 
 	if( index >= MAX_EPOLL_THREAD ) return -1;
@@ -599,10 +556,8 @@ I32 atom::CTcpEpollIOModelImplement::OnProcess(U32 index)
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U32 atom::CTcpEpollIOModelImplement::GetAmount() 
 {
-    //TODO Auto-generated method stub
 	#ifdef __linux
 	return amount;
 	#else
@@ -610,10 +565,8 @@ U32 atom::CTcpEpollIOModelImplement::GetAmount()
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpEpollIOModelImplement::PreShutdown() 
 {
-    //TODO Auto-generated method stub
 	#ifdef __linux
 	CInterface<IInstanceContainer> segment;
 	if( segment.Mount(this, IID_INSTANCE_CONTAINER) )
@@ -639,10 +592,8 @@ void atom::CTcpEpollIOModelImplement::PreShutdown()
 
 #ifdef __linux
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpEpollIOModelImplement::OnAccept(CObjectPtr & object) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( object )
 	{
@@ -676,10 +627,8 @@ bool atom::CTcpEpollIOModelImplement::OnAccept(CObjectPtr & object)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpEpollIOModelImplement::OnReceive(CObjectPtr & object) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( object )
 	{
@@ -733,10 +682,8 @@ bool atom::CTcpEpollIOModelImplement::OnReceive(CObjectPtr & object)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpEpollIOModelImplement::OnSend(CObjectPtr & object) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( object && amount && amount < MAX_EPOLL_THREAD )
 	{
@@ -769,10 +716,8 @@ bool atom::CTcpEpollIOModelImplement::OnSend(CObjectPtr & object)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpEpollIOModelImplement::Report(CObjectPtr & connector, U32 eid) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( connector )
 	{

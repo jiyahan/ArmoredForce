@@ -9,12 +9,8 @@
 #include "../../enumeration/EVENT_ID.h"
 #include "../../enumeration/INTERFACE_ID.h"
 #include "../../enumeration/OBJECT_ID.h"
-//Begin section for file CTcpListenerController.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CTcpListenerController.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpListenerController::CTcpListenerController() : 
 nest(NULL),
 #ifdef _SHIPPING_
@@ -22,19 +18,14 @@ cast(NULL),
 #endif
 active(false),iomold(0),socket(INVALID_SOCKET)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpListenerController::~CTcpListenerController() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpListenerController::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -54,10 +45,8 @@ int atom::CTcpListenerController::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpListenerController::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -77,10 +66,8 @@ int atom::CTcpListenerController::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpListenerController::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -100,10 +87,8 @@ int atom::CTcpListenerController::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CTcpListenerController::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -111,10 +96,8 @@ atom::IInterface * atom::CTcpListenerController::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpListenerController::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		nest = value;
@@ -124,10 +107,8 @@ void atom::CTcpListenerController::SetNest(IInterface * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpListenerController::Open(const char * host, U16 port, U32 mold) 
 {
-    //TODO Auto-generated method stub
 	// if argument is not valid, return false;
 	if( !nest || !host || !port || !mold ) {
 		return false;
@@ -187,10 +168,8 @@ bool atom::CTcpListenerController::Open(const char * host, U16 port, U32 mold)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpListenerController::Shut() 
 {
-    //TODO Auto-generated method stub
 	CCriticalSectionScope scope( region );
 	if( active )
 	{
@@ -215,50 +194,38 @@ void atom::CTcpListenerController::Shut()
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpListenerController::GetActive() 
 {
-    //TODO Auto-generated method stub
 	CCriticalSectionScope scope( region );
 	return active;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 SOCKET atom::CTcpListenerController::GetSocket() 
 {
-    //TODO Auto-generated method stub
 	CCriticalSectionScope scope( region );
 	return socket;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U32 atom::CTcpListenerController::GetIOMold() 
 {
-    //TODO Auto-generated method stub
 	CCriticalSectionScope scope( region );
 	return iomold;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::a_string atom::CTcpListenerController::GetSelfAddress() 
 {
-    //TODO Auto-generated method stub
 	CCriticalSectionScope scope( region );
 	return domain.host;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U16 atom::CTcpListenerController::GetSelfPort() 
 {
-    //TODO Auto-generated method stub
 	CCriticalSectionScope scope( region );
 	return domain.port;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U64 atom::CTcpListenerController::Accept(SOCKET hs) 
 {
-    //TODO Auto-generated method stub
 	if( hs == INVALID_SOCKET ) {
 		return 0;
 	}
@@ -301,9 +268,7 @@ U64 atom::CTcpListenerController::Accept(SOCKET hs)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpListenerController::Update() 
 {
-    //TODO Auto-generated method stub
 	// not use rightnow
 }

@@ -3,28 +3,19 @@
 #include "../interface/IInstanceContainer.h"
 #include "../enumeration/INTERFACE_ID.h"
 #include "../utility/tool/CInterface.h"
-//Begin section for file CMaintainerLife.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CMaintainerLife.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CMaintainerLife::CMaintainerLife() : 
 nest(NULL)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CMaintainerLife::~CMaintainerLife() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CMaintainerLife::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -37,10 +28,8 @@ int atom::CMaintainerLife::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CMaintainerLife::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -53,10 +42,8 @@ int atom::CMaintainerLife::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CMaintainerLife::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -69,10 +56,8 @@ int atom::CMaintainerLife::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CMaintainerLife::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -80,17 +65,13 @@ atom::IInterface * atom::CMaintainerLife::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CMaintainerLife::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) nest = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CMaintainerLife::Initiate() 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	CInterface<IThreadControl> segment_1;
 	if( segment_1.Mount(this, IID_THREAD_CONTROL) ) {
@@ -99,10 +80,8 @@ bool atom::CMaintainerLife::Initiate()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CMaintainerLife::Shutdown() 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	CInterface<IThreadControl> segment_1;
 	if( segment_1.Mount(this, IID_THREAD_CONTROL) ) {

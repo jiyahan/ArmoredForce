@@ -1,11 +1,7 @@
 #include "CImportStream.h"
 #include "../../utility/tool/CCriticalSectionScope.h"
-//Begin section for file CImportStream.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CImportStream.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CImportStream::CImportStream() : 
 nest(NULL),
 #ifdef _SHIPPING_
@@ -13,20 +9,15 @@ cast(NULL),
 #endif
 site(0),wide(0)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CImportStream::~CImportStream() 
 {
-    //TODO Auto-generated method stub
     Close();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CImportStream::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -46,10 +37,8 @@ int atom::CImportStream::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CImportStream::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -69,10 +58,8 @@ int atom::CImportStream::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CImportStream::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -92,10 +79,8 @@ int atom::CImportStream::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CImportStream::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -103,10 +88,8 @@ atom::IInterface * atom::CImportStream::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CImportStream::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		nest = value;
@@ -116,19 +99,15 @@ void atom::CImportStream::SetNest(IInterface * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 char atom::CImportStream::Read() 
 {
-    //TODO Auto-generated method stub
     char result = 0;
     Read( & result, sizeof(char) );
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U64 atom::CImportStream::Read(void * buffer, U64 counts) 
 {
-    //TODO Auto-generated method stub
     U64 copied = 0;
     if( buffer && counts )
     {
@@ -186,52 +165,40 @@ U64 atom::CImportStream::Read(void * buffer, U64 counts)
     return copied;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U64 atom::CImportStream::Read(void * value, U64 offset, U64 length) 
 {
-    //TODO Auto-generated method stub
     return Read( reinterpret_cast<char*>(value) + offset, length );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CImportStream::Close() 
 {
-    //TODO Auto-generated method stub
     Reset();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U64 atom::CImportStream::Available() 
 {
-    //TODO Auto-generated method stub
     U64 result = 0;
     CCriticalSectionScope scope( clog );
     if( site < wide ) result = wide - site;
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CImportStream::Mark(U64 offset) 
 {
-    //TODO Auto-generated method stub
     CCriticalSectionScope scope( clog );
     site = atom_min( wide, offset );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CImportStream::Reset() 
 {
-    //TODO Auto-generated method stub
     CCriticalSectionScope scope( clog );
     site = 0;
     wide = 0;
     data.clear();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 I64 atom::CImportStream::Skip(I64 bytes) 
 {
-    //TODO Auto-generated method stub
     CCriticalSectionScope scope( clog );
     I64 offset = static_cast<I64>( site ) + bytes;
 
@@ -243,10 +210,8 @@ I64 atom::CImportStream::Skip(I64 bytes)
     return okey;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CImportStream::Truncate() 
 {
-    //TODO Auto-generated method stub
     CCriticalSectionScope scope( clog );
     if( wide && site )
     {
@@ -276,10 +241,8 @@ void atom::CImportStream::Truncate()
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CImportStream::Assign(CMemory & value) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     result = value.GetLength() > 0;
     if( result )
@@ -291,10 +254,8 @@ bool atom::CImportStream::Assign(CMemory & value)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CImportStream::Swap(CMemory & out) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     CCriticalSectionScope scope( clog );
         

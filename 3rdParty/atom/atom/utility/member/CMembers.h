@@ -1,8 +1,5 @@
 #ifndef CMEMBERS_H
 #define CMEMBERS_H
-//Begin section for file CMembers.h
-//TODO: Add definitions that you want preserved
-//End section for file CMembers.h
 #include "../../interface/IInterface.h"
 #include "../../os/callstack/CCallStack.h"
 #include "../../log/CLog.h"
@@ -21,44 +18,34 @@ namespace atom
 
 
 
-    //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
     class CMembers : public IInterface
     {
 
-        //Begin section for atom::CMembers
-        //TODO: Add attributes that you want preserved
-        //End section for atom::CMembers
 
         private:
 			//µ±Í·×´Ì¬
 			int m_state;
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             CStream stream;
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             CExportableWrapper exportable;
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             CImportableWrapper importable;
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             CImportArchive import_archive;
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             CExportArchive export_archive;
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             CMembersBind member;
 
 
@@ -66,10 +53,8 @@ namespace atom
 
         public:
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline CMembers()
             {
-                //TODO Auto-generated method stub
                 stream        .SetNest( this );
                 importable    .SetNest( this );
                 exportable    .SetNest( this );
@@ -82,18 +67,14 @@ namespace atom
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline virtual ~CMembers()
             {
-                //TODO Auto-generated method stub
             }
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline virtual IInterface * QueryInterface(U32 iid)
             {
-                //TODO Auto-generated method stub
                 IInterface * result = NULL;
                 switch( iid )
                 {
@@ -112,10 +93,8 @@ namespace atom
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline void Clear()
             {
-                //TODO Auto-generated method stub
                 stream.Reset();
                 member.clear();
             }
@@ -143,11 +122,9 @@ namespace atom
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 			template<class T>
             inline bool Attach(const char * name, T & value) 
             {
-                //TODO Auto-generated method stub
 				bool result = false;
 				if( name )
 				{
@@ -174,11 +151,9 @@ namespace atom
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 			template<class T>
             inline bool Detach(const char * name, T & value)
             {
-                //TODO Auto-generated method stub
 				bool result = false;
 				if( name )
 				{
@@ -205,11 +180,9 @@ namespace atom
 
 
 
-			//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 			template<class A>
 			inline void Serialize(A & ar, bool save)
 			{
-				//TODO Auto-generated method stub
                 UNREFERENCED_PARAMETER( save );
 				ar.Bind( member );
 			}

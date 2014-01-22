@@ -1,28 +1,19 @@
 #include "CInstanceContainable.h"
 #include "../../utility/stl/stl_extend.h"
 #include "../../utility/tool/CCriticalSectionScope.h"
-//Begin section for file CInstanceContainable.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CInstanceContainable.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CInstanceContainable::CInstanceContainable() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CInstanceContainable::~CInstanceContainable() 
 {
-    //TODO Auto-generated method stub
     RemoveAll();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CInstanceContainable::Insert(CObjectPtr & instance) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     if( instance )
     {
@@ -38,10 +29,8 @@ bool atom::CInstanceContainable::Insert(CObjectPtr & instance)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CObjectPtr atom::CInstanceContainable::Obtain(U64 instance_name) 
 {
-    //TODO Auto-generated method stub
     CObjectPtr result;
     if( instance_name )
     {
@@ -56,20 +45,16 @@ atom::CObjectPtr atom::CInstanceContainable::Obtain(U64 instance_name)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CInstanceContainable::Obtain(CU64Array & out) 
 {
-    //TODO Auto-generated method stub
     CCriticalSectionScope scope( clog );
     out.reserve( instances.size() + out.size() );
     std::transform( instances.begin(), instances.end(), 
         back_inserter(out), atom::select1st<CInstanceContainableBind::value_type>() );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CInstanceContainable::Inside(U64 instance_name) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     if( instance_name )
     {
@@ -79,18 +64,14 @@ bool atom::CInstanceContainable::Inside(U64 instance_name)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U64 atom::CInstanceContainable::Amount() 
 {
-    //TODO Auto-generated method stub
     CCriticalSectionScope scope( clog );
     return static_cast<U64>( instances.size() );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CInstanceContainable::Remove(U64 instance_name) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
 	if( instance_name )
 	{
@@ -105,10 +86,8 @@ bool atom::CInstanceContainable::Remove(U64 instance_name)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CInstanceContainable::RemoveAll() 
 {
-    //TODO Auto-generated method stub
     CCriticalSectionScope scope( clog );
     instances.clear();
 }

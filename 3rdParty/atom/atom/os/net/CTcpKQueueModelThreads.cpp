@@ -3,28 +3,19 @@
 #include "../../utility/tool/CInterface.h"
 #include "../../utility/tool/CInstanceUtility.h"
 #include "../../enumeration/INTERFACE_ID.h"
-//Begin section for file CTcpKQueueModelThreads.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CTcpKQueueModelThreads.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpKQueueModelThreads::CTcpKQueueModelThreads() : 
 nest(NULL),amount(1)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpKQueueModelThreads::~CTcpKQueueModelThreads() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpKQueueModelThreads::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -37,10 +28,8 @@ int atom::CTcpKQueueModelThreads::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpKQueueModelThreads::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -53,10 +42,8 @@ int atom::CTcpKQueueModelThreads::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpKQueueModelThreads::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -69,10 +56,8 @@ int atom::CTcpKQueueModelThreads::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CTcpKQueueModelThreads::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -80,17 +65,13 @@ atom::IInterface * atom::CTcpKQueueModelThreads::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpKQueueModelThreads::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) nest = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpKQueueModelThreads::OnBegin() 
 {
-    //TODO Auto-generated method stub
 	#ifdef __APPLE__
     CObjectPtr object = 
         CInstanceUtility::MakeObject( nest );
@@ -116,10 +97,8 @@ bool atom::CTcpKQueueModelThreads::OnBegin()
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpKQueueModelThreads::OnClose() 
 {
-    //TODO Auto-generated method stub
 	#ifdef __APPLE__
     CObjectPtr object;
     for( size_t i = 0; i < amount; ++ i )
@@ -133,45 +112,33 @@ bool atom::CTcpKQueueModelThreads::OnClose()
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpKQueueModelThreads::OnAwake() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpKQueueModelThreads::OnBegin(U32 index) 
 {
-    //TODO Auto-generated method stub
 	UNREFERENCED_PARAMETER( index );
     return false;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpKQueueModelThreads::OnClose(U32 index) 
 {
-    //TODO Auto-generated method stub
 	UNREFERENCED_PARAMETER( index );
     return false;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpKQueueModelThreads::OnAwake(U32 index) 
 {
-    //TODO Auto-generated method stub
 	UNREFERENCED_PARAMETER( index );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpKQueueModelThreads::SetThreadAmount(U32 value) 
 {
-    //TODO Auto-generated method stub
 	UNREFERENCED_PARAMETER( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U32 atom::CTcpKQueueModelThreads::GetThreadAmount() 
 {
-    //TODO Auto-generated method stub
 	return amount;
 }

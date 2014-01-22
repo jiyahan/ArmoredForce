@@ -5,15 +5,10 @@
 #include "../../interface/IReferencedObject.h"
 #include "../../interface/IInstanceLife.h"
 #include "../../enumeration/INTERFACE_ID.h"
-//Begin section for file CInstanceUtility.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CInstanceUtility.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CObjectPtr atom::CInstanceUtility::CreateInstance(U32 type)
 {
-    //TODO Auto-generated method stub
 	CObjectPtr result;
     if( type )
     {
@@ -25,17 +20,13 @@ atom::CObjectPtr atom::CInstanceUtility::CreateInstance(U32 type)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CObjectPtr atom::CInstanceUtility::ObtainInstance(U64 name)
 {
-    //TODO Auto-generated method stub
 	return CInstanceFactory::GetInstance() -> Inquire( name );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CInstanceUtility::InitiateInstance(CObjectPtr & value)
 {
-    //TODO Auto-generated method stub
 	bool result = false;
     if( value )
     {
@@ -54,10 +45,8 @@ bool atom::CInstanceUtility::InitiateInstance(CObjectPtr & value)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CInstanceUtility::ShutdownInstance(CObjectPtr & value)
 {
-    //TODO Auto-generated method stub
 	bool result = false;
     if( value )
     {
@@ -69,10 +58,8 @@ bool atom::CInstanceUtility::ShutdownInstance(CObjectPtr & value)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U64 atom::CInstanceUtility::GetInstanceName(IInterface * value) 
 {
-    //TODO Auto-generated method stub
 	U64 result = 0;
 	if( value )
 	{
@@ -85,10 +72,8 @@ U64 atom::CInstanceUtility::GetInstanceName(IInterface * value)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U32 atom::CInstanceUtility::GetInstanceType(IInterface * value) 
 {
-    //TODO Auto-generated method stub
 	U32 result = 0;
 	if( value )
 	{
@@ -101,10 +86,8 @@ U32 atom::CInstanceUtility::GetInstanceType(IInterface * value)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 const char * atom::CInstanceUtility::GetInstanceDesc(IInterface * value) 
 {
-    //TODO Auto-generated method stub
 	const char * result = NULL;
 	if( value )
 	{
@@ -117,10 +100,8 @@ const char * atom::CInstanceUtility::GetInstanceDesc(IInterface * value)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CObjectPtr atom::CInstanceUtility::MakeObject(IInterface * nest)
 {
-    //TODO Auto-generated method stub
     CObjectPtr result;
     if( nest )
     {

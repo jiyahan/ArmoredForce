@@ -5,27 +5,18 @@
 #include "../../interface/IInstanceLifeNotifyReceiver.h"
 #include "../../interface/IInstanceContainer.h"
 #include "../../enumeration/INTERFACE_ID.h"
-//Begin section for file CInstanceLifeWakeReference.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CInstanceLifeWakeReference.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CInstanceLifeWakeReference::CInstanceLifeWakeReference() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CInstanceLifeWakeReference::~CInstanceLifeWakeReference() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CInstanceLifeWakeReference::Insert(U64 instance, CObjectPtr & receiver) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     if( instance )
     {
@@ -56,10 +47,8 @@ bool atom::CInstanceLifeWakeReference::Insert(U64 instance, CObjectPtr & receive
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CInstanceLifeWakeReference::Remove(U64 instance, CObjectPtr & receiver) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     if( instance )
     {
@@ -98,10 +87,8 @@ bool atom::CInstanceLifeWakeReference::Remove(U64 instance, CObjectPtr & receive
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CInstanceLifeWakeReference::Increase(U64 instance) 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( instance )
     {
@@ -116,10 +103,8 @@ int atom::CInstanceLifeWakeReference::Increase(U64 instance)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CInstanceLifeWakeReference::Decrease(U64 instance) 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( instance )
     {
@@ -134,10 +119,8 @@ int atom::CInstanceLifeWakeReference::Decrease(U64 instance)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CInstanceLifeWakeReference::Clear(CObjectPtr & receiver) 
 {
-    //TODO Auto-generated method stub
     CCriticalSectionScope scope( section );
 	if( receiver )
 	{
@@ -154,10 +137,8 @@ void atom::CInstanceLifeWakeReference::Clear(CObjectPtr & receiver)
     instances.clear();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CInstanceLifeWakeReference::GetReference(U64 instance) 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( instance )
     {
@@ -172,10 +153,8 @@ int atom::CInstanceLifeWakeReference::GetReference(U64 instance)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CInstanceLifeWakeReference::GetInstances(CU64Array & indices) 
 {
-    //TODO Auto-generated method stub
     CCriticalSectionScope scope( section );
     std::transform( instances.begin(), 
 		instances.end(), back_inserter(indices), 

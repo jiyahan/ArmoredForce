@@ -1,8 +1,5 @@
 #ifndef CATOM_H
 #define CATOM_H
-//Begin section for file CAtom.h
-//TODO: Add definitions that you want preserved
-//End section for file CAtom.h
 #include "Common.h"
 
 // 系统相关
@@ -178,18 +175,13 @@ namespace atom
 
 
 
-    //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
     class CAtom
     {
 
-        //Begin section for atom::CAtom
-        //TODO: Add attributes that you want preserved
-        //End section for atom::CAtom
 
         private:
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             static bool active;
 
 
@@ -197,27 +189,22 @@ namespace atom
 
         public:
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             static void Presetup(); 
 
 			
 			
-			//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             static bool Initiate(size_t memory_pool); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             static bool Shutdown(); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             static void Destruct(); 
 
 			
 			
-			//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             static bool IsActive(); 
 
 

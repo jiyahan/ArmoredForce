@@ -4,28 +4,19 @@
 #include "../../interface/IInstanceContainer.h"
 #include "../../enumeration/INTERFACE_ID.h"
 #include "../../utility/tool/CInterface.h"
-//Begin section for file CTcpSelectModelLife.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CTcpSelectModelLife.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpSelectModelLife::CTcpSelectModelLife() : 
 nest(NULL)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpSelectModelLife::~CTcpSelectModelLife() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpSelectModelLife::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -38,10 +29,8 @@ int atom::CTcpSelectModelLife::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpSelectModelLife::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -54,10 +43,8 @@ int atom::CTcpSelectModelLife::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpSelectModelLife::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -70,10 +57,8 @@ int atom::CTcpSelectModelLife::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CTcpSelectModelLife::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -81,17 +66,13 @@ atom::IInterface * atom::CTcpSelectModelLife::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpSelectModelLife::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) nest = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpSelectModelLife::Initiate() 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	CInterface<ITcpSelectIOModel> segment_1;
 	if( segment_1.Mount(this, IID_TCP_SELECT_IO_MODEL) ) {
@@ -105,10 +86,8 @@ bool atom::CTcpSelectModelLife::Initiate()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpSelectModelLife::Shutdown() 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	CInterface<IThreadControl> segment_1;
 	if( segment_1.Mount(this, IID_THREAD_CONTROL) ) {

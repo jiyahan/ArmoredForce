@@ -6,31 +6,22 @@
 #include "../../interface/IExportStream.h"
 #include "../../enumeration/INTERFACE_ID.h"
 #include "../../utility/tool/CInterface.h"
-//Begin section for file CTcpConnectorLife.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CTcpConnectorLife.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpConnectorLife::CTcpConnectorLife() : 
 nest(NULL)
 #ifdef _SHIPPING_
 ,cast(NULL)
 #endif
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpConnectorLife::~CTcpConnectorLife() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpConnectorLife::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -50,10 +41,8 @@ int atom::CTcpConnectorLife::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpConnectorLife::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -73,10 +62,8 @@ int atom::CTcpConnectorLife::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpConnectorLife::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -96,10 +83,8 @@ int atom::CTcpConnectorLife::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CTcpConnectorLife::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -107,10 +92,8 @@ atom::IInterface * atom::CTcpConnectorLife::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpConnectorLife::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		nest = value;
@@ -120,17 +103,13 @@ void atom::CTcpConnectorLife::SetNest(IInterface * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpConnectorLife::Initiate() 
 {
-    //TODO Auto-generated method stub
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpConnectorLife::Shutdown() 
 {
-    //TODO Auto-generated method stub
 	CInterface<ITcpConnectorController> segment_1;
 	if( segment_1.Mount(this, IID_TCP_CONNECTOR_CONTROLLER) ) {
 		segment_1 -> Shut();

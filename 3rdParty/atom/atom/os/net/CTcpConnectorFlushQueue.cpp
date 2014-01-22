@@ -1,37 +1,26 @@
 #include "CTcpConnectorFlushQueue.h"
 #include "../../utility/tool/CCriticalSectionScope.h"
-//Begin section for file CTcpConnectorFlushQueue.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CTcpConnectorFlushQueue.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpConnectorFlushQueue::CTcpConnectorFlushQueue() : 
 length(0),offset(0)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpConnectorFlushQueue::~CTcpConnectorFlushQueue() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpConnectorFlushQueue::Clear() 
 {
-    //TODO Auto-generated method stub
     CCriticalSectionScope scope( section );
 	queued.clear();
 	length = 0;
 	offset = 0;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpConnectorFlushQueue::IsEmpty() 
 {
-    //TODO Auto-generated method stub
 	section.Enter();
 	bool result( length == 0 );
 	section.Leave();
@@ -39,10 +28,8 @@ bool atom::CTcpConnectorFlushQueue::IsEmpty()
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpConnectorFlushQueue::Append(CMemory & data) 
 {
-    //TODO Auto-generated method stub
     size_t value( data.GetLength() );
 	if( value )
 	{
@@ -52,10 +39,8 @@ void atom::CTcpConnectorFlushQueue::Append(CMemory & data)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpConnectorFlushQueue::Obtain(CMemory & output, size_t & locate) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	section.Enter();
 	if( !queued.empty() )
@@ -68,18 +53,14 @@ bool atom::CTcpConnectorFlushQueue::Obtain(CMemory & output, size_t & locate)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 size_t atom::CTcpConnectorFlushQueue::Length() 
 {
-    //TODO Auto-generated method stub
     CCriticalSectionScope scope( section );
 	return length; 
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpConnectorFlushQueue::Change(CTcpConnectorFlushQueueBind & value) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     if( !value.empty() )
     {
@@ -103,10 +84,8 @@ bool atom::CTcpConnectorFlushQueue::Change(CTcpConnectorFlushQueueBind & value)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpConnectorFlushQueue::IncreaseOffset(size_t value) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	section.Enter();
 	if( !queued.empty() )

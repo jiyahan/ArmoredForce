@@ -6,31 +6,22 @@
 #include "../../interface/ITcpConnectionController.h"
 #include "../../enumeration/EVENT_ID.h"
 #include "../../enumeration/INTERFACE_ID.h"
-//Begin section for file CTcpConnectorEventEmitter.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CTcpConnectorEventEmitter.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpConnectorEventEmitter::CTcpConnectorEventEmitter() : 
 nest(NULL)
 #ifdef _SHIPPING_
 ,cast(NULL)
 #endif
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpConnectorEventEmitter::~CTcpConnectorEventEmitter() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpConnectorEventEmitter::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -50,10 +41,8 @@ int atom::CTcpConnectorEventEmitter::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpConnectorEventEmitter::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -73,10 +62,8 @@ int atom::CTcpConnectorEventEmitter::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpConnectorEventEmitter::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -96,10 +83,8 @@ int atom::CTcpConnectorEventEmitter::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CTcpConnectorEventEmitter::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -107,10 +92,8 @@ atom::IInterface * atom::CTcpConnectorEventEmitter::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpConnectorEventEmitter::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		nest = value;
@@ -120,18 +103,14 @@ void atom::CTcpConnectorEventEmitter::SetNest(IInterface * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpConnectorEventEmitter::Attach(U64 object) 
 {
-    //TODO Auto-generated method stub
 	CObjectPtr instance = CInstanceFactory::GetInstance() -> Inquire( object );
 	return Attach( instance );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpConnectorEventEmitter::Attach(CObjectPtr & object) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	CCriticalSectionScope scope( section );
 	if( object && node == NULL ) {
@@ -139,18 +118,14 @@ bool atom::CTcpConnectorEventEmitter::Attach(CObjectPtr & object)
 	}
     return result;
 }
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpConnectorEventEmitter::Detach() 
 {
-    //TODO Auto-generated method stub
 	CCriticalSectionScope scope( section );
     node = NULL;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpConnectorEventEmitter::Report(const tagEvent & value) 
 {
-    //TODO Auto-generated method stub
 	bool result = false; 
 	section.Enter();
 	if( node )
@@ -174,10 +149,8 @@ bool atom::CTcpConnectorEventEmitter::Report(const tagEvent & value)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpConnectorEventEmitter::Report(const char * target, const tagEvent & value) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( target )
 	{

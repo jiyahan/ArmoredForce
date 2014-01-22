@@ -7,30 +7,21 @@
 #include "../../os/file/CFile.h"
 #include "../../enumeration/OBJECT_ID.h"
 #include "../../enumeration/INTERFACE_ID.h"
-//Begin section for file CXmlDocumentNode.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CXmlDocumentNode.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CXmlDocumentNode::CXmlDocumentNode() : 
 nest(NULL),self(NULL)
 {
-    //TODO Auto-generated method stub
 	self = new rapidxml::xml_document<>;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CXmlDocumentNode::~CXmlDocumentNode() 
 {
-    //TODO Auto-generated method stub
 	Shutdown();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CDefinedXmlNode * atom::CXmlDocumentNode::Search(CDefinedXmlNode * parent, const char * tag_name, bool recursive) 
 {
-    //TODO Auto-generated method stub
 	CDefinedXmlNode * result = NULL;
 	if( parent && tag_name )
 	{
@@ -49,10 +40,8 @@ atom::CDefinedXmlNode * atom::CXmlDocumentNode::Search(CDefinedXmlNode * parent,
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CXmlDocumentNode::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -65,10 +54,8 @@ int atom::CXmlDocumentNode::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CXmlDocumentNode::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -81,10 +68,8 @@ int atom::CXmlDocumentNode::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CXmlDocumentNode::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -97,10 +82,8 @@ int atom::CXmlDocumentNode::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CXmlDocumentNode::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -108,26 +91,20 @@ atom::IInterface * atom::CXmlDocumentNode::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CXmlDocumentNode::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) nest = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CXmlDocumentNode::Initiate(U64 parent, CDefinedXmlNode * object) 
 {
-    //TODO Auto-generated method stub
 	UNREFERENCED_PARAMETER( parent );
 	UNREFERENCED_PARAMETER( object );
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CXmlDocumentNode::Shutdown() 
 {
-    //TODO Auto-generated method stub
 	if( self )
 	{
 		rapidxml::xml_document<>*
@@ -136,10 +113,8 @@ void atom::CXmlDocumentNode::Shutdown()
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CXmlDocumentNode::Append(const char * tag_name) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( self && tag_name )
 	{
@@ -158,10 +133,8 @@ bool atom::CXmlDocumentNode::Append(const char * tag_name)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CXmlDocumentNode::Append(const char * tag_name, CXmlElementPtr & output) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( self && tag_name )
 	{
@@ -184,10 +157,8 @@ bool atom::CXmlDocumentNode::Append(const char * tag_name, CXmlElementPtr & outp
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CXmlDocumentNode::Remove(CXmlElementPtr & child) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( self && child )
 	{
@@ -206,10 +177,8 @@ bool atom::CXmlDocumentNode::Remove(CXmlElementPtr & child)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CXmlElementPtr atom::CXmlDocumentNode::Search(const char * tag_name, bool recursive) 
 {
-    //TODO Auto-generated method stub
 	CXmlElementPtr result;
 	if( nest && self && tag_name )
 	{
@@ -225,10 +194,8 @@ atom::CXmlElementPtr atom::CXmlDocumentNode::Search(const char * tag_name, bool 
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CXmlElementPtr atom::CXmlDocumentNode::Next(const char * tag_name) 
 {
-    //TODO Auto-generated method stub
 	CXmlElementPtr result;
 	if( tag_name && self )
 	{
@@ -245,17 +212,13 @@ atom::CXmlElementPtr atom::CXmlDocumentNode::Next(const char * tag_name)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CDefinedXmlNode * atom::CXmlDocumentNode::Node() 
 {
-    //TODO Auto-generated method stub
 	return self;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 const char * atom::CXmlDocumentNode::GetName() 
 {
-    //TODO Auto-generated method stub
 	char* result = NULL;
 	if( self )
 	{
@@ -264,10 +227,8 @@ const char * atom::CXmlDocumentNode::GetName()
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 const char * atom::CXmlDocumentNode::GetText() 
 {
-    //TODO Auto-generated method stub
 	char* result = NULL;
 	if( self )
 	{
@@ -276,10 +237,8 @@ const char * atom::CXmlDocumentNode::GetText()
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CXmlDocumentNode::SetText(const char * value) 
 {
-    //TODO Auto-generated method stub
 	if( self && value )
 	{
 		rapidxml::xml_document<>* doc = self -> document();
@@ -310,10 +269,8 @@ void atom::CXmlDocumentNode::SetText(const char * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 const char * atom::CXmlDocumentNode::StrAttribute(const char * name) 
 {
-    //TODO Auto-generated method stub
     static char null_str[] = "";
 	
     char * result = null_str;
@@ -328,10 +285,8 @@ const char * atom::CXmlDocumentNode::StrAttribute(const char * name)
 	return result; 
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 I64 atom::CXmlDocumentNode::IntAttribute(const char * name) 
 {
-    //TODO Auto-generated method stub
 	I64 result = 0;
 	if( self && name )
 	{
@@ -351,10 +306,8 @@ I64 atom::CXmlDocumentNode::IntAttribute(const char * name)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 double atom::CXmlDocumentNode::FltAttribute(const char * name) 
 {
-    //TODO Auto-generated method stub
 	double result = 0.0;
 	if( self && name )
 	{
@@ -367,10 +320,8 @@ double atom::CXmlDocumentNode::FltAttribute(const char * name)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CXmlDocumentNode::SetAttribute(const char * name, const char * data) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( self && name && data )
 	{
@@ -396,28 +347,22 @@ bool atom::CXmlDocumentNode::SetAttribute(const char * name, const char * data)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CXmlDocumentNode::SetAttribute(const char * name, I64 value) 
 {
-    //TODO Auto-generated method stub
 	char buffer[64];
 	sprintf( buffer, "%lli", value );
 	return SetAttribute( name, buffer );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CXmlDocumentNode::SetAttribute(const char * name, double value) 
 {
-    //TODO Auto-generated method stub
 	char buffer[64];
 	sprintf( buffer, "%f", value );
 	return SetAttribute( name, buffer );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CXmlDocumentNode::Load(const char * name) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( name )
 	{
@@ -448,10 +393,8 @@ bool atom::CXmlDocumentNode::Load(const char * name)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CXmlDocumentNode::Load(CMemory & data) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( self && data && data.GetLength() )
 	{
@@ -479,10 +422,8 @@ bool atom::CXmlDocumentNode::Load(CMemory & data)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CXmlDocumentNode::Save(const char * name) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( name )
 	{
@@ -507,10 +448,8 @@ bool atom::CXmlDocumentNode::Save(const char * name)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CXmlDocumentNode::Save(CMemory & data) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( self )
 	{
@@ -531,10 +470,8 @@ bool atom::CXmlDocumentNode::Save(CMemory & data)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CXmlDocumentNode::SetDeclaration(const char * version, const char * encoding) 
 {
-    //TODO Auto-generated method stub
 	if( self && version && encoding )
 	{
 		rapidxml::xml_document<>* doc = self -> document();

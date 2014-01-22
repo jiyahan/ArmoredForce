@@ -5,28 +5,19 @@
 #include "../../interface/IInstanceAliasContainer.h"
 #include "../../enumeration/INTERFACE_ID.h"
 #include "../../utility/tool/CInterface.h"
-//Begin section for file CTcpIocpModelLife.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CTcpIocpModelLife.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpIocpModelLife::CTcpIocpModelLife() : 
 nest(NULL)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpIocpModelLife::~CTcpIocpModelLife() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpIocpModelLife::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -39,10 +30,8 @@ int atom::CTcpIocpModelLife::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpIocpModelLife::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -55,10 +44,8 @@ int atom::CTcpIocpModelLife::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpIocpModelLife::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -71,10 +58,8 @@ int atom::CTcpIocpModelLife::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CTcpIocpModelLife::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -82,17 +67,13 @@ atom::IInterface * atom::CTcpIocpModelLife::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpIocpModelLife::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) nest = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpModelLife::Initiate() 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	CInterface<ITcpIocpIOModel> segment_1;
 	if( segment_1.Mount(this, IID_TCP_IOCP_IO_MODEL) ) {
@@ -106,10 +87,8 @@ bool atom::CTcpIocpModelLife::Initiate()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpModelLife::Shutdown() 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	CInterface<ITcpIocpIOModel> segment_0;
 	if( segment_0.Mount(this, IID_TCP_IOCP_IO_MODEL) ) {

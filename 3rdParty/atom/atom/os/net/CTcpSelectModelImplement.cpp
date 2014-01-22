@@ -13,16 +13,12 @@
 #include "../../enumeration/EVENT_ID.h"
 #include "../../enumeration/INTERFACE_ID.h"
 #include "../../enumeration/OBJECT_ID.h"
-//Begin section for file CTcpSelectModelImplement.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CTcpSelectModelImplement.cpp
 #ifdef _WIN32
 #pragma warning( disable : 4127 ) // macro FD_SET rise this warning
 #endif
 
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpSelectModelImplement::CTcpSelectModelImplement() : 
 nest(NULL),
 #ifdef _SHIPPING_
@@ -30,19 +26,14 @@ cast(NULL),
 #endif
 active(false),client_update(false),server_update(false)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpSelectModelImplement::~CTcpSelectModelImplement() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpSelectModelImplement::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -62,10 +53,8 @@ int atom::CTcpSelectModelImplement::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpSelectModelImplement::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -85,10 +74,8 @@ int atom::CTcpSelectModelImplement::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpSelectModelImplement::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -108,10 +95,8 @@ int atom::CTcpSelectModelImplement::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CTcpSelectModelImplement::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -119,10 +104,8 @@ atom::IInterface * atom::CTcpSelectModelImplement::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpSelectModelImplement::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		nest = value;
@@ -132,17 +115,13 @@ void atom::CTcpSelectModelImplement::SetNest(IInterface * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 SOCKET atom::CTcpSelectModelImplement::Create() 
 {
-    //TODO Auto-generated method stub
 	return socket( AF_INET, SOCK_STREAM, 0 );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpSelectModelImplement::Remove(SOCKET hs) 
 {
-    //TODO Auto-generated method stub
     if( hs != INVALID_SOCKET ) 
 	{
 		#ifdef _WIN32
@@ -159,10 +138,8 @@ void atom::CTcpSelectModelImplement::Remove(SOCKET hs)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpSelectModelImplement::Attach(U64 name) 
 {
-    //TODO Auto-generated method stub
 	if( !name ) return false;
 	bool result = false;
 
@@ -185,10 +162,8 @@ bool atom::CTcpSelectModelImplement::Attach(U64 name)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpSelectModelImplement::Detach(U64 name) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( name )
 	{
@@ -234,10 +209,8 @@ bool atom::CTcpSelectModelImplement::Detach(U64 name)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CObjectPtr atom::CTcpSelectModelImplement::Obtain(U64 name) 
 {
-    //TODO Auto-generated method stub
 	CObjectPtr result;
 	if( name )
 	{
@@ -249,17 +222,13 @@ atom::CObjectPtr atom::CTcpSelectModelImplement::Obtain(U64 name)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpSelectModelImplement::Initiate() 
 {
-    //TODO Auto-generated method stub
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpSelectModelImplement::Shutdown() 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	CInterface<IInstanceContainer> segment;
 	if( segment.Mount(this, IID_INSTANCE_CONTAINER) )
@@ -282,10 +251,8 @@ bool atom::CTcpSelectModelImplement::Shutdown()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpSelectModelImplement::Listen(U64 name, const tagDomain & domain) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( name && domain.host.length() && domain.port )
 	{
@@ -339,10 +306,8 @@ bool atom::CTcpSelectModelImplement::Listen(U64 name, const tagDomain & domain)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpSelectModelImplement::Connect(U64 name, const tagDomain & domain) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( name && domain.host.length() && domain.port )
 	{
@@ -391,10 +356,8 @@ bool atom::CTcpSelectModelImplement::Connect(U64 name, const tagDomain & domain)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpSelectModelImplement::Send(U64 name, CMemory & data, size_t offset, size_t length) 
 {
-    //TODO Auto-generated method stub
 	if( name == 0 || length == 0 || data.GetLength() < offset + length ) {
 		return false;
 	}
@@ -427,33 +390,25 @@ bool atom::CTcpSelectModelImplement::Send(U64 name, CMemory & data, size_t offse
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpSelectModelImplement::Receive(U64 name) 
 {
-    //TODO Auto-generated method stub
 	UNREFERENCED_PARAMETER(name);
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpSelectModelImplement::Accept(U64 name) 
 {
-    //TODO Auto-generated method stub
 	UNREFERENCED_PARAMETER(name);
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpSelectModelImplement::SetActive(bool value)
 {
-    //TODO Auto-generated method stub
 	active = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 I32 atom::CTcpSelectModelImplement::OnProcess() 
 {
-    //TODO Auto-generated method stub
 	typedef vector<SOCKET, atom_allocator<SOCKET> > CSocketArray;
 	
 	// select模型是单线程模式，仅适合数据量不大的情况，比较适合客户端。兼容性较好；
@@ -642,10 +597,8 @@ I32 atom::CTcpSelectModelImplement::OnProcess()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CObjectPtr atom::CTcpSelectModelImplement::ObtainBySocket(SOCKET hs) 
 {
-    //TODO Auto-generated method stub
 	CObjectPtr result;
 	if( hs != INVALID_SOCKET )
 	{
@@ -681,10 +634,8 @@ atom::CObjectPtr atom::CTcpSelectModelImplement::ObtainBySocket(SOCKET hs)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpSelectModelImplement::OnAccept(SOCKET socket) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( socket != INVALID_SOCKET )
 	{
@@ -720,10 +671,8 @@ bool atom::CTcpSelectModelImplement::OnAccept(SOCKET socket)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpSelectModelImplement::OnSend(const tagTcpSelectOperation & op) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( op.socket != INVALID_SOCKET )
 	{
@@ -770,10 +719,8 @@ bool atom::CTcpSelectModelImplement::OnSend(const tagTcpSelectOperation & op)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpSelectModelImplement::OnReceive(SOCKET socket) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( socket != INVALID_SOCKET )
 	{
@@ -831,10 +778,8 @@ bool atom::CTcpSelectModelImplement::OnReceive(SOCKET socket)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpSelectModelImplement::Report(CObjectPtr & connector, U32 eid)
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( connector )
 	{

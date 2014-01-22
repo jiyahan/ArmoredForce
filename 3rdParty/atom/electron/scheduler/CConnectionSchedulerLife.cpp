@@ -1,31 +1,22 @@
 #include "CConnectionSchedulerLife.h"
 #include "../interface/IConnectionSchedulerController.h"
 #include "../enumeration/INTERFACE_ID.h"
-//Begin section for file CConnectionSchedulerLife.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CConnectionSchedulerLife.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 electron::CConnectionSchedulerLife::CConnectionSchedulerLife() : 
 nest(NULL)
 #ifdef _SHIPPING_
 ,cast(NULL)
 #endif
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 electron::CConnectionSchedulerLife::~CConnectionSchedulerLife() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int electron::CConnectionSchedulerLife::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -45,10 +36,8 @@ int electron::CConnectionSchedulerLife::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int electron::CConnectionSchedulerLife::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -68,10 +57,8 @@ int electron::CConnectionSchedulerLife::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int electron::CConnectionSchedulerLife::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -91,10 +78,8 @@ int electron::CConnectionSchedulerLife::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 IInterface * electron::CConnectionSchedulerLife::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -102,10 +87,8 @@ IInterface * electron::CConnectionSchedulerLife::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void electron::CConnectionSchedulerLife::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		nest = value;
@@ -115,10 +98,8 @@ void electron::CConnectionSchedulerLife::SetNest(IInterface * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool electron::CConnectionSchedulerLife::Initiate() 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     CInterface<IConnectionSchedulerController> segment_1;
     if( segment_1.Mount(this, IID_CONNECTION_SCHEDULER_CONTROLLER) ) {
@@ -132,10 +113,8 @@ bool electron::CConnectionSchedulerLife::Initiate()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool electron::CConnectionSchedulerLife::Shutdown() 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     CInterface<IThreadControl> segment_1;
     if( segment_1.Mount(this, IID_THREAD_CONTROL) ) {

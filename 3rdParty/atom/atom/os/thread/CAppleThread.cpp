@@ -1,7 +1,4 @@
 #include "CAppleThread.h"
-//Begin section for file CAppleThread.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CAppleThread.cpp
 
 
 #ifdef __APPLE__
@@ -24,43 +21,33 @@ void * _AppleEntry(void * argument)
 #endif
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CAppleThread::CAppleThread(const char * name) :
 #ifdef __APPLE__
 handle(0), 
 #endif
 signal("thread")
 {
-    //TODO Auto-generated method stub
     if( name ) thread = name;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CAppleThread::~CAppleThread() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 const char * atom::CAppleThread::GetName() 
 {
-    //TODO Auto-generated method stub
     return thread.c_str();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CAppleThread::CloseNotify() 
 {
-    //TODO Auto-generated method stub
     #ifdef __APPLE__
     signal.Awake();
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CAppleThread::Begin(U08 priority) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
 
     #ifdef __APPLE__
@@ -120,10 +107,8 @@ bool atom::CAppleThread::Begin(U08 priority)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CAppleThread::Close(U64 timeout) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
 
     #ifdef __APPLE__
@@ -146,31 +131,23 @@ bool atom::CAppleThread::Close(U64 timeout)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CAppleThread::OnThreadBegin() 
 {
-    //TODO Auto-generated method stub
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CAppleThread::OnThreadClose() 
 {
-    //TODO Auto-generated method stub
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U32 atom::CAppleThread::Run() 
 {
-    //TODO Auto-generated method stub
 	return 0;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CAppleThread::Sleep(U64 milisecond) 
 {
-    //TODO Auto-generated method stub
     #ifdef __APPLE__
     usleep( static_cast<useconds_t>(milisecond * 1000) );
     #else
@@ -178,10 +155,8 @@ void atom::CAppleThread::Sleep(U64 milisecond)
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U64 atom::CAppleThread::GetCurrentThreadID() 
 {
-    //TODO Auto-generated method stub
     #ifdef __APPLE__
     return reinterpret_cast<U64>( pthread_self() );
     #else

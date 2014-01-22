@@ -1,14 +1,9 @@
 #include "CCallStack.h"
-//Begin section for file CCallStack.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CCallStack.cpp
 
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CCallStack::Initiate() 
 {
-    //TODO Auto-generated method stub
     bool result = true;
 
 	#if defined(_WIN32)
@@ -26,10 +21,8 @@ bool atom::CCallStack::Initiate()
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CCallStack::Shutdown() 
 {
-    //TODO Auto-generated method stub
 	#if defined(_WIN32)
     if( FALSE ==
         SymCleanup( GetCurrentProcess() ) )
@@ -42,10 +35,8 @@ void atom::CCallStack::Shutdown()
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CCallStack::RecordCallStack(a_string & stack) 
 {
-    //TODO Auto-generated method stub
     UNREFERENCED_PARAMETER( stack );
 
 	#if defined(_WIN32)

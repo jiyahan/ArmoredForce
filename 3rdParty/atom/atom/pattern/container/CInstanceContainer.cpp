@@ -2,52 +2,39 @@
 #include "../../utility/tool/CInterface.h"
 #include "../../interface/IInstanceContainerListener.h"
 #include "../../enumeration/INTERFACE_ID.h"
-//Begin section for file CInstanceContainer.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CInstanceContainer.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CInstanceContainer::CInstanceContainer() : 
 nest(NULL)
 #ifdef _SHIPPING_
 ,cast(NULL)
 #endif
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CInstanceContainer::~CInstanceContainer() 
 {
-    //TODO Auto-generated method stub
     RemoveAll();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CInstanceContainer::OnInsertInstance(CObjectPtr & instance) 
 {
-    //TODO Auto-generated method stub
     CInterface<IInstanceContainerListener> listener;
     if( listener.Mount(this, IID_INSTANCE_CONTAINER_LISTENER) ) {
         listener -> OnInsertInstance( instance ); 
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CInstanceContainer::OnRemoveInstance(CObjectPtr & instance) 
 {
-    //TODO Auto-generated method stub
     CInterface<IInstanceContainerListener> listener;
     if( listener.Mount(this, IID_INSTANCE_CONTAINER_LISTENER) ) {
         listener -> OnRemoveInstance( instance ); 
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CInstanceContainer::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -67,10 +54,8 @@ int atom::CInstanceContainer::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CInstanceContainer::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -90,10 +75,8 @@ int atom::CInstanceContainer::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CInstanceContainer::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -113,10 +96,8 @@ int atom::CInstanceContainer::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CInstanceContainer::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -124,10 +105,8 @@ atom::IInterface * atom::CInstanceContainer::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CInstanceContainer::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		nest = value;
@@ -137,10 +116,8 @@ void atom::CInstanceContainer::SetNest(IInterface * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CInstanceContainer::Insert(CObjectPtr & instance) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
 	if( instance )
 	{
@@ -154,35 +131,27 @@ bool atom::CInstanceContainer::Insert(CObjectPtr & instance)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CObjectPtr atom::CInstanceContainer::Obtain(U64 instance_name) 
 {
-    //TODO Auto-generated method stub
     size_t offset = instance_name % CONTAINER_QUEUE;
     return instances[offset].Obtain( instance_name );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CInstanceContainer::Obtain(CU64Array & out) 
 {
-    //TODO Auto-generated method stub
     for( size_t i = 0; i < CONTAINER_QUEUE; ++ i ) {
         instances[i].Obtain( out );
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CInstanceContainer::Inside(U64 instance_name) 
 {
-    //TODO Auto-generated method stub
     size_t offset = instance_name % CONTAINER_QUEUE;
     return instances[offset].Inside( instance_name );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U64 atom::CInstanceContainer::Amount() 
 {
-    //TODO Auto-generated method stub
     U64 result = 0;
     for( size_t i = 0; i < CONTAINER_QUEUE; ++ i ) {
         result += instances[i].Amount();
@@ -190,10 +159,8 @@ U64 atom::CInstanceContainer::Amount()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CInstanceContainer::Remove(U64 instance_name) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     if( instance_name )
     {
@@ -214,10 +181,8 @@ bool atom::CInstanceContainer::Remove(U64 instance_name)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CInstanceContainer::RemoveAll() 
 {
-    //TODO Auto-generated method stub
     CU64Array names; Obtain( names );
     for( size_t i = 0, j = names.size(); i < j; ++ i ) {
     	Remove( names[i] );

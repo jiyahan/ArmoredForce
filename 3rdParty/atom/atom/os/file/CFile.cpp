@@ -3,15 +3,10 @@
 #include "../../utility/charset/CUtf8Charset.h"
 #include "../../utility/tool/CInterface.h"
 #include "../../enumeration/INTERFACE_ID.h"
-//Begin section for file CFile.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CFile.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CFile::CFile(const char * name) 
 {
-    //TODO Auto-generated method stub
     stream.SetNest( this );
     if( name ) 
 	{
@@ -37,10 +32,8 @@ atom::CFile::CFile(const char * name)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CFile::CFile(const wchar_t * name) 
 {
-    //TODO Auto-generated method stub
     stream.SetNest( this );
     if( name ) 
 	{
@@ -54,17 +47,13 @@ atom::CFile::CFile(const wchar_t * name)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CFile::~CFile() 
 {
-    //TODO Auto-generated method stub
     stream.Close();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CFile::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     switch( iid )
     {
@@ -76,45 +65,33 @@ atom::IInterface * atom::CFile::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CFile::Open() 
 {
-    //TODO Auto-generated method stub
     return stream.Open();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CFile::Mark(U64 position) 
 {
-    //TODO Auto-generated method stub
     stream.Mark( position );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CFile::Close() 
 {
-    //TODO Auto-generated method stub
     stream.Close();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U64 atom::CFile::Length() 
 {
-    //TODO Auto-generated method stub
     return stream.Length();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CFile::IsReadOnly()
 {
-    //TODO Auto-generated method stub
     return stream.IsReadOnly();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CFile::Erase(const char * file) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     if( file ) 
 	{
@@ -141,10 +118,8 @@ bool atom::CFile::Erase(const char * file)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CFile::Erase(const wchar_t * file) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     if( file ) 
 	{
@@ -159,10 +134,8 @@ bool atom::CFile::Erase(const wchar_t * file)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CMemory atom::CFile::LoadFile(const char * name) 
 {
-    //TODO Auto-generated method stub
     CMemory result;
 
     CFile file( name );
@@ -176,10 +149,8 @@ atom::CMemory atom::CFile::LoadFile(const char * name)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CMemory atom::CFile::LoadFile(const wchar_t * name) 
 {
-    //TODO Auto-generated method stub
     CMemory result;
 
     CFile file( name );

@@ -1,8 +1,5 @@
 #ifndef CELECTRON_H
 #define CELECTRON_H
-//Begin section for file CElectron.h
-//TODO: Add definitions that you want preserved
-//End section for file CElectron.h
 #include "Common.h"
 #include "allocator/CElectronAllocator.h"
 #include "scheduler/CConnectionScheduler.h"
@@ -34,18 +31,13 @@ namespace electron
 
 
 
-    //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
     class CElectron
     {
 
-        //Begin section for electron::CElectron
-        //TODO: Add attributes that you want preserved
-        //End section for electron::CElectron
 
         private:
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             static bool active;
 
 
@@ -53,27 +45,22 @@ namespace electron
 
         public:
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             static void Presetup(); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             static bool Initiate(U32 thread_amount = 1); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             static bool Shutdown(); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             static void Destruct(); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             static bool IsActive(); 
 
 

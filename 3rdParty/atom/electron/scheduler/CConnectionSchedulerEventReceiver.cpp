@@ -1,31 +1,22 @@
 #include "CConnectionSchedulerEventReceiver.h"
 #include "../interface/IConnectionSchedulerController.h"
 #include "../enumeration/INTERFACE_ID.h"
-//Begin section for file CConnectionSchedulerEventReceiver.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CConnectionSchedulerEventReceiver.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 electron::CConnectionSchedulerEventReceiver::CConnectionSchedulerEventReceiver() : 
 nest(NULL)
 #ifdef _SHIPPING_
 ,cast(NULL)
 #endif
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 electron::CConnectionSchedulerEventReceiver::~CConnectionSchedulerEventReceiver() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int electron::CConnectionSchedulerEventReceiver::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -45,10 +36,8 @@ int electron::CConnectionSchedulerEventReceiver::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int electron::CConnectionSchedulerEventReceiver::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -68,10 +57,8 @@ int electron::CConnectionSchedulerEventReceiver::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int electron::CConnectionSchedulerEventReceiver::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -91,10 +78,8 @@ int electron::CConnectionSchedulerEventReceiver::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 IInterface * electron::CConnectionSchedulerEventReceiver::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -102,10 +87,8 @@ IInterface * electron::CConnectionSchedulerEventReceiver::QueryInterface(U32 iid
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void electron::CConnectionSchedulerEventReceiver::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		nest = value;
@@ -115,10 +98,8 @@ void electron::CConnectionSchedulerEventReceiver::SetNest(IInterface * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool electron::CConnectionSchedulerEventReceiver::OnEvent(const tagEvent & value) 
 {
-    //TODO Auto-generated method stub
     bool result = true;
 	switch( value.handle )
 	{

@@ -2,15 +2,10 @@
 #include "../character/CCharacter.h"
 #include "../file/CFile.h"
 #include "../../utility/charset/CUtf8Charset.h"
-//Begin section for file CAppleDirectory.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CAppleDirectory.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CAppleDirectory::CAppleDirectory(const char * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		// mac os only support utf-8 format file system.
@@ -22,26 +17,20 @@ atom::CAppleDirectory::CAppleDirectory(const char * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CAppleDirectory::CAppleDirectory(const wchar_t * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) {
 		// mac os only support utf-8 format file system.
 		path = CCharacter::UnicodeToUtf8( value );
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CAppleDirectory::~CAppleDirectory() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CAppleDirectory::EnumFiles(const char * directory, CStringArray & files, bool sub_directory, bool absolute_path) 
 {
-    //TODO Auto-generated method stub
     #ifdef __APPLE__
     if( directory )
     {
@@ -99,10 +88,8 @@ void atom::CAppleDirectory::EnumFiles(const char * directory, CStringArray & fil
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CAppleDirectory::EnumFiles(const char * directory, CWStringArray & files, bool sub_directory, bool absolute_path) 
 {
-    //TODO Auto-generated method stub
     #ifdef __APPLE__
     if( directory )
     {
@@ -159,10 +146,8 @@ void atom::CAppleDirectory::EnumFiles(const char * directory, CWStringArray & fi
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CAppleDirectory::EnumDirectories(const char * directory, CStringArray & files, bool sub_directory, bool absolute_path) 
 {
-    //TODO Auto-generated method stub
     #ifdef __APPLE__
     if( directory )
     {
@@ -211,10 +196,8 @@ void atom::CAppleDirectory::EnumDirectories(const char * directory, CStringArray
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CAppleDirectory::EnumDirectories(const char * directory, CWStringArray & files, bool sub_directory, bool absolute_path) 
 {
-    //TODO Auto-generated method stub
     #ifdef __APPLE__
     if( directory )
     {
@@ -262,38 +245,28 @@ void atom::CAppleDirectory::EnumDirectories(const char * directory, CWStringArra
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CAppleDirectory::EnumFiles(CStringArray & files, bool sub_directory, bool absolute_path) 
 {
-    //TODO Auto-generated method stub
     EnumFiles( path.c_str(), files, sub_directory, absolute_path );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CAppleDirectory::EnumFiles(CWStringArray & files, bool sub_directory, bool absolute_path) 
 {
-    //TODO Auto-generated method stub
     EnumFiles( path.c_str(), files, sub_directory, absolute_path );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CAppleDirectory::EnumDirectories(CStringArray & files, bool sub_directory, bool absolute_path) 
 {
-    //TODO Auto-generated method stub
     EnumDirectories( path.c_str(), files, sub_directory, absolute_path );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CAppleDirectory::EnumDirectories(CWStringArray & files, bool sub_directory, bool absolute_path) 
 {
-    //TODO Auto-generated method stub
     EnumDirectories( path.c_str(), files, sub_directory, absolute_path );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CAppleDirectory::CreateDirectory() 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     #ifdef __APPLE__
     result = mkdir( path.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH ) == 0;
@@ -301,10 +274,8 @@ bool atom::CAppleDirectory::CreateDirectory()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CAppleDirectory::RemoveDirectory(bool withfile) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     
     #ifdef __APPLE__

@@ -1,25 +1,18 @@
 #include "CAppleSignal.h"
-//Begin section for file CAppleSignal.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CAppleSignal.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CAppleSignal::CAppleSignal() : 
 state(false)
 {
-    //TODO Auto-generated method stub
     #ifdef __APPLE__
     pthread_mutex_init( & region, NULL );
     pthread_cond_init ( & signal, NULL );
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CAppleSignal::CAppleSignal(const char * name) : 
 state(false)
 {
-    //TODO Auto-generated method stub
     UNREFERENCED_PARAMETER(name);
 
     #ifdef __APPLE__
@@ -28,20 +21,16 @@ state(false)
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CAppleSignal::~CAppleSignal() 
 {
-    //TODO Auto-generated method stub
     #ifdef __APPLE__
     pthread_cond_destroy ( & signal );
     pthread_mutex_destroy( & region );
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CAppleSignal::Reset() 
 {
-    //TODO Auto-generated method stub
     #ifdef __APPLE__
     pthread_mutex_lock  ( & region );   state = false;
     pthread_mutex_unlock( & region );
@@ -49,10 +38,8 @@ bool atom::CAppleSignal::Reset()
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CAppleSignal::Awake() 
 {
-    //TODO Auto-generated method stub
     #ifdef __APPLE__
     pthread_mutex_lock    ( & region ); state = true;
     pthread_mutex_unlock  ( & region );
@@ -61,10 +48,8 @@ bool atom::CAppleSignal::Awake()
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CAppleSignal::Await(U64 timeout) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
 
     #ifdef __APPLE__

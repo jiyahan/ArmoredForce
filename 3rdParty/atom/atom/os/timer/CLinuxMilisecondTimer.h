@@ -1,8 +1,5 @@
 #ifndef CLINUXMILISECONDTIMER_H
 #define CLINUXMILISECONDTIMER_H
-//Begin section for file CLinuxMilisecondTimer.h
-//TODO: Add definitions that you want preserved
-//End section for file CLinuxMilisecondTimer.h
 #include "../../Common.h"
 
 
@@ -12,19 +9,14 @@ namespace atom
 
 
 
-    //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
     class CLinuxMilisecondTimer
     {
 
-        //Begin section for atom::CLinuxMilisecondTimer
-        //TODO: Add attributes that you want preserved
-        //End section for atom::CLinuxMilisecondTimer
 
         private:
 
 
             #ifdef __linux
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             timeval timestamp;
             #endif
 
@@ -33,10 +25,8 @@ namespace atom
 
         public:
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline CLinuxMilisecondTimer()
             {
-                //TODO Auto-generated method stub
                 #ifdef __linux
                 timestamp.tv_sec  = 0;
                 timestamp.tv_usec = 0;
@@ -45,18 +35,14 @@ namespace atom
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline ~CLinuxMilisecondTimer()
             {
-                //TODO Auto-generated method stub
             }
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline bool Record()
             {
-                //TODO Auto-generated method stub
                 #ifdef __linux
                 gettimeofday( &timestamp, NULL );
                 #endif
@@ -65,10 +51,8 @@ namespace atom
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline U64 GetElapsedTime()
             {
-                //TODO Auto-generated method stub
                 U64 result = 0;
         
                 #ifdef __linux
@@ -85,10 +69,8 @@ namespace atom
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline U64 GetElapsedTimeAndRecord()
             {
-                //TODO Auto-generated method stub
                 U64 result = 0;
         
                 #ifdef __linux
@@ -107,10 +89,8 @@ namespace atom
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline static U64 Now()
             {
-                //TODO Auto-generated method stub
                 U64 result = 0;
         
                 #ifdef __linux

@@ -5,28 +5,19 @@
 #include "../../enumeration/INTERFACE_ID.h"
 #include "../../utility/tool/CInterface.h"
 #include "../../utility/tool/CInstanceUtility.h"
-//Begin section for file CInstanceLifeEntry.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CInstanceLifeEntry.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CInstanceLifeEntry::CInstanceLifeEntry() : 
 nest(NULL)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CInstanceLifeEntry::~CInstanceLifeEntry() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CInstanceLifeEntry::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -39,10 +30,8 @@ int atom::CInstanceLifeEntry::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CInstanceLifeEntry::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -55,10 +44,8 @@ int atom::CInstanceLifeEntry::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CInstanceLifeEntry::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -71,10 +58,8 @@ int atom::CInstanceLifeEntry::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CInstanceLifeEntry::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -82,17 +67,13 @@ atom::IInterface * atom::CInstanceLifeEntry::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CInstanceLifeEntry::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) nest = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CInstanceLifeEntry::Initiate() 
 {
-    //TODO Auto-generated method stub
 	CObjectPtr object = 
         CInstanceUtility::MakeObject( nest );
     if( object ) {
@@ -112,10 +93,8 @@ bool atom::CInstanceLifeEntry::Initiate()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CInstanceLifeEntry::Shutdown() 
 {
-    //TODO Auto-generated method stub
 	CObjectPtr object = 
         CInstanceUtility::MakeObject( nest );
     if( object ) {

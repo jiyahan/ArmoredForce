@@ -1,8 +1,5 @@
 #ifndef CREFERENCE_H
 #define CREFERENCE_H
-//Begin section for file CReference.h
-//TODO: Add definitions that you want preserved
-//End section for file CReference.h
 #include "../../Common.h"
 
 
@@ -19,12 +16,10 @@ namespace atom
 
 
             #ifdef _WIN32
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             volatile long counter;
 			#endif
 
             #if defined(__linux) || defined(__APPLE__)
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             volatile int  counter;
 			#endif
 
@@ -35,20 +30,17 @@ namespace atom
 
             inline CReference() : counter(0)
             {
-                //TODO Auto-generated method stub
             }
 
 
 
             inline ~CReference()
             {
-                //TODO Auto-generated method stub
             }
 
 
             inline void Assign(int value)
             {
-                //TODO Auto-generated method stub
                 #ifdef _WIN32
                 InterlockedExchange( & counter, value );
                 #endif
@@ -62,7 +54,6 @@ namespace atom
 
             inline int Increase()
             {
-                //TODO Auto-generated method stub
                 #ifdef _WIN32
                 return InterlockedIncrement( & counter );
                 #endif
@@ -76,7 +67,6 @@ namespace atom
 
             inline int Decrease()
             {
-                //TODO Auto-generated method stub
                 #ifdef _WIN32
                 return InterlockedDecrement( & counter );
                 #endif
@@ -90,7 +80,6 @@ namespace atom
 
             inline int GetReference()
             {
-                //TODO Auto-generated method stub
                 #ifdef _WIN32
                 return InterlockedCompareExchange ( & counter, 0, 0 );
                 #endif

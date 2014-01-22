@@ -1,8 +1,5 @@
 #ifndef CMESSAGEALLOCATORSINGLETONBIND_H
 #define CMESSAGEALLOCATORSINGLETONBIND_H
-//Begin section for file CMessageAllocatorSingletonBind.h
-//TODO: Add definitions that you want preserved
-//End section for file CMessageAllocatorSingletonBind.h
 #include "../Common.h"
 
 

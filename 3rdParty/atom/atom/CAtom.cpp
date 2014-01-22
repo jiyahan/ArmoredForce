@@ -1,16 +1,10 @@
 #include "CAtom.h"
-//Begin section for file CAtom.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CAtom.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CAtom::active = false;
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CAtom::Presetup() 
 {
-    //TODO Auto-generated method stub
 	if( active == false )
 	{
         #if defined(__APPLE__) || defined(__linux)
@@ -35,10 +29,8 @@ void atom::CAtom::Presetup()
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CAtom::Initiate(size_t memory_pool) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     if( active == false )
     {
@@ -80,10 +72,8 @@ bool atom::CAtom::Initiate(size_t memory_pool)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CAtom::Shutdown() 
 {
-    //TODO Auto-generated method stub
     if( active )
     {
 		CTcpNetworkService::GetInstance() -> Shutdown();
@@ -105,10 +95,8 @@ bool atom::CAtom::Shutdown()
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CAtom::Destruct() 
 {
-    //TODO Auto-generated method stub
 	if( active == false )
 	{
 		// Detach allocator
@@ -128,9 +116,7 @@ void atom::CAtom::Destruct()
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CAtom::IsActive() 
 {
-    //TODO Auto-generated method stub
     return active;
 }

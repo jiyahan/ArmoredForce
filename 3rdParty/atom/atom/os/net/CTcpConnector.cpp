@@ -1,14 +1,9 @@
 #include "CTcpConnector.h"
 #include "../../enumeration/INTERFACE_ID.h"
-//Begin section for file CTcpConnector.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CTcpConnector.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpConnector::CTcpConnector()
 {
-    //TODO Auto-generated method stub
 	controller   .SetNest( this );
 	emitter      .SetNest( this );
 	flush        .SetNest( this );
@@ -17,24 +12,18 @@ atom::CTcpConnector::CTcpConnector()
 	export_stream.SetNest( this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpConnector::~CTcpConnector() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 const char * atom::CTcpConnector::ToString() 
 {
-    //TODO Auto-generated method stub
 	static char name[] = "Tcp Connector";
     return name;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CTcpConnector::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     switch( iid )
     {

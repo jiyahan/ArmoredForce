@@ -1,14 +1,9 @@
 #include "CTcpIocpModel.h"
 #include "../../enumeration/INTERFACE_ID.h"
-//Begin section for file CTcpIocpModel.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CTcpIocpModel.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpIocpModel::CTcpIocpModel() 
 {
-    //TODO Auto-generated method stub
 	implement.SetNest( this );
 	threads  .SetNest( this );
 	life     .SetNest( this );
@@ -17,24 +12,18 @@ atom::CTcpIocpModel::CTcpIocpModel()
 	alias    .SetNest( this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpIocpModel::~CTcpIocpModel() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 const char * atom::CTcpIocpModel::ToString() 
 {
-    //TODO Auto-generated method stub
 	static char name[] = "Tcp Iocp Model";
     return name;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CTcpIocpModel::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     switch( iid )
     {

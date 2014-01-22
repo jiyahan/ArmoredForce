@@ -5,28 +5,19 @@
 #include "../../interface/IInstanceContainer.h"
 #include "../../enumeration/INTERFACE_ID.h"
 #include "../../enumeration/OBJECT_ID.h"
-//Begin section for file CEventServiceEntry.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CEventServiceEntry.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CEventServiceEntry::CEventServiceEntry() : 
 nest(NULL)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CEventServiceEntry::~CEventServiceEntry() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CEventServiceEntry::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -39,10 +30,8 @@ int atom::CEventServiceEntry::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CEventServiceEntry::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -55,10 +44,8 @@ int atom::CEventServiceEntry::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CEventServiceEntry::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -71,10 +58,8 @@ int atom::CEventServiceEntry::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CEventServiceEntry::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -82,17 +67,13 @@ atom::IInterface * atom::CEventServiceEntry::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CEventServiceEntry::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) nest = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U64 atom::CEventServiceEntry::Create() 
 {
-    //TODO Auto-generated method stub
 	U64 result = 0;
 	CObjectPtr instance = 
 		CInstanceUtility::CreateInstance( OID_EVENT_SPACE );
@@ -112,10 +93,8 @@ U64 atom::CEventServiceEntry::Create()
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CEventServiceEntry::Remove(U64 space) 
 {
-    //TODO Auto-generated method stub
 	if( space )
 	{
 		CInterface<IInstanceContainer> container;

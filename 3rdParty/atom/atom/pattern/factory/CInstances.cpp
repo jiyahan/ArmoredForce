@@ -1,26 +1,17 @@
 #include "CInstances.h"
 #include "../../utility/tool/CCriticalSectionScope.h"
-//Begin section for file CInstances.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CInstances.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CInstances::CInstances() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CInstances::~CInstances() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CInstances::Insert(CReferencedObject * instance) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     if( instance && instance -> GetName() )
     {
@@ -33,18 +24,14 @@ bool atom::CInstances::Insert(CReferencedObject * instance)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CInstances::Inside(U64 name) 
 {
-    //TODO Auto-generated method stub
     CCriticalSectionScope scope( section );
     return( instances.find(name) != instances.end() );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CObjectPtr atom::CInstances::Obtain(U64 name) 
 {
-    //TODO Auto-generated method stub
     CObjectPtr result;
     if( name )
     {
@@ -58,27 +45,21 @@ atom::CObjectPtr atom::CInstances::Obtain(U64 name)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CInstances::Obtain(CU64Array & indices) 
 {
-    //TODO Auto-generated method stub
     CCriticalSectionScope scope( section );
     std::transform( instances.begin(), instances.end(), 
         back_inserter(indices), atom::select1st<CInstancesBind::value_type>() );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U64 atom::CInstances::Amount() 
 {
-    //TODO Auto-generated method stub
     CCriticalSectionScope scope( section );
     return static_cast<U64>( instances.size() );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CReferencedObject * atom::CInstances::Remove(U64 name, bool & exist, bool force) 
 {
-    //TODO Auto-generated method stub
     CReferencedObject * result(NULL);
 	exist = false;
 

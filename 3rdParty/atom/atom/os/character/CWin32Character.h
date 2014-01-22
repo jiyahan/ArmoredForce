@@ -1,8 +1,5 @@
 #ifndef CWIN32CHARACTER_H
 #define CWIN32CHARACTER_H
-//Begin section for file CWin32Character.h
-//TODO: Add definitions that you want preserved
-//End section for file CWin32Character.h
 #include "CCodePage.h"
 #include "../memory/CMemory.h"
 #include "../../utility/stl/a_wstring.h"
@@ -15,43 +12,33 @@ namespace atom
 
 
 
-    //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
     class CWin32Character
     {
-        //Begin section for atom::CWin32Character
-        //TODO: Add attributes that you want preserved
-        //End section for atom::CWin32Character
 
 
 
         public:
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline static a_wstring MultiBytesToUnicode (const char * value, const char * codepage = DEFAULT_CODEPAGE); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline static a_string MultiBytesToUtf8     (const char * value, const char * codepage = DEFAULT_CODEPAGE); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline static a_string Utf8ToMultiBytes     (const char * value, const char * codepage = DEFAULT_CODEPAGE); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline static a_wstring Utf8ToUnicode       (const char * value); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline static a_string UnicodeToMultiBytes  (const wchar_t * value, const char * codepage = DEFAULT_CODEPAGE); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline static a_string UnicodeToUtf8        (const wchar_t * value); 
 
 
@@ -63,10 +50,8 @@ namespace atom
 
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::a_wstring atom::CWin32Character::MultiBytesToUnicode(const char * value, const char * codepage) 
 {
-    //TODO Auto-generated method stub
     a_wstring result;
     if( value && codepage )
     {
@@ -92,24 +77,18 @@ atom::a_wstring atom::CWin32Character::MultiBytesToUnicode(const char * value, c
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::a_string atom::CWin32Character::MultiBytesToUtf8(const char * value, const char * codepage) 
 {
-    //TODO Auto-generated method stub
     return UnicodeToUtf8( MultiBytesToUnicode( value, codepage ).c_str() );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::a_string atom::CWin32Character::Utf8ToMultiBytes(const char * value, const char * codepage) 
 {
-    //TODO Auto-generated method stub
     return UnicodeToMultiBytes( Utf8ToUnicode(value).c_str(), codepage );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::a_wstring atom::CWin32Character::Utf8ToUnicode(const char * value) 
 {
-    //TODO Auto-generated method stub
     a_wstring result;
     if( value )
     {
@@ -136,10 +115,8 @@ atom::a_wstring atom::CWin32Character::Utf8ToUnicode(const char * value)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::a_string atom::CWin32Character::UnicodeToMultiBytes(const wchar_t * value, const char * codepage) 
 {
-    //TODO Auto-generated method stub
     a_string result;
     if( value && codepage )
     {
@@ -167,10 +144,8 @@ atom::a_string atom::CWin32Character::UnicodeToMultiBytes(const wchar_t * value,
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::a_string atom::CWin32Character::UnicodeToUtf8(const wchar_t * value) 
 {
-    //TODO Auto-generated method stub
     a_string result;
     if( value )
     {

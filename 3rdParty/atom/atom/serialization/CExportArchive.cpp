@@ -3,31 +3,22 @@
 #include "../utility/tool/CInterface.h"
 #include "../interface/IExportable.h"
 #include "../enumeration/INTERFACE_ID.h"
-//Begin section for file CExportArchive.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CExportArchive.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CExportArchive::CExportArchive() : 
 nest(NULL)
 #ifdef _SHIPPING_
 ,cast(NULL)
 #endif
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CExportArchive::~CExportArchive() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CExportArchive::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -47,10 +38,8 @@ int atom::CExportArchive::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CExportArchive::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -70,10 +59,8 @@ int atom::CExportArchive::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CExportArchive::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -93,10 +80,8 @@ int atom::CExportArchive::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CExportArchive::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -104,10 +89,8 @@ atom::IInterface * atom::CExportArchive::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportArchive::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		nest = value;
@@ -117,130 +100,104 @@ void atom::CExportArchive::SetNest(IInterface * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportArchive::Bind(bool & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<IExportable> segment;
     if( segment.Mount(this, IID_EXPORTABLE) ) {
         segment -> Write( static_cast<U08>(value) );
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportArchive::Bind(char & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<IExportable> segment;
     if( segment.Mount(this, IID_EXPORTABLE) ) {
         segment -> Write( static_cast<U08>(value) );
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportArchive::Bind(I08 & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<IExportable> segment;
     if( segment.Mount(this, IID_EXPORTABLE) ) {
         segment -> Write( value );
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportArchive::Bind(I16 & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<IExportable> segment;
     if( segment.Mount(this, IID_EXPORTABLE) ) {
         segment -> Write( value );
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportArchive::Bind(I32 & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<IExportable> segment;
     if( segment.Mount(this, IID_EXPORTABLE) ) {
         segment -> Write( value );
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportArchive::Bind(I64 & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<IExportable> segment;
     if( segment.Mount(this, IID_EXPORTABLE) ) {
         segment -> Write( value );
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportArchive::Bind(U08 & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<IExportable> segment;
     if( segment.Mount(this, IID_EXPORTABLE) ) {
         segment -> Write( value );
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportArchive::Bind(U16 & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<IExportable> segment;
     if( segment.Mount(this, IID_EXPORTABLE) ) {
         segment -> Write( value );
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportArchive::Bind(U32 & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<IExportable> segment;
     if( segment.Mount(this, IID_EXPORTABLE) ) {
         segment -> Write( value );
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportArchive::Bind(U64 & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<IExportable> segment;
     if( segment.Mount(this, IID_EXPORTABLE) ) {
         segment -> Write( value );
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportArchive::Bind(float & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<IExportable> segment;
     if( segment.Mount(this, IID_EXPORTABLE) ) {
         segment -> Write( value );
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportArchive::Bind(double & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<IExportable> segment;
     if( segment.Mount(this, IID_EXPORTABLE) ) {
         segment -> Write( value );
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportArchive::Bind(a_string & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<IExportable> segment;
     if( segment.Mount(this, IID_EXPORTABLE) ) 
     {
@@ -250,10 +207,8 @@ void atom::CExportArchive::Bind(a_string & value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportArchive::Bind(a_wstring & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<IExportable> segment;
     if( segment.Mount(this, IID_EXPORTABLE) ) {
         segment -> Write( U08(true) );
@@ -261,10 +216,8 @@ void atom::CExportArchive::Bind(a_wstring & value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportArchive::Bind(void * buffer, U64 length) 
 {
-    //TODO Auto-generated method stub
     CInterface<IExportable> segment;
     if( segment.Mount(this, IID_EXPORTABLE) ) {
         segment -> Write( buffer, length );

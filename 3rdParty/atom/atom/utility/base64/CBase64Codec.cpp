@@ -1,13 +1,8 @@
 #include "CBase64Codec.h"
-//Begin section for file CBase64Codec.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CBase64Codec.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CBase64Codec::Encode(CMemory & source, CMemory & target) 
 {
-    //TODO Auto-generated method stub
     // encode table
     static const char table[] = {
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=" };
@@ -69,10 +64,8 @@ bool atom::CBase64Codec::Encode(CMemory & source, CMemory & target)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CBase64Codec::Decode(CMemory & source, CMemory & target) 
 {
-    //TODO Auto-generated method stub
     // decode table
     static const char table[] =
     {

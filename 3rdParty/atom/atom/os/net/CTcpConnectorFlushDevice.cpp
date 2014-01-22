@@ -6,12 +6,8 @@
 #include "../../utility/tool/CInterface.h"
 #include "../../utility/tool/CCriticalSectionScope.h"
 #include "../../enumeration/INTERFACE_ID.h"
-//Begin section for file CTcpConnectorFlushDevice.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CTcpConnectorFlushDevice.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpConnectorFlushDevice::CTcpConnectorFlushDevice() : 
 nest(NULL),
 #ifdef _SHIPPING_
@@ -19,19 +15,14 @@ cast(NULL),
 #endif
 connect(0)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpConnectorFlushDevice::~CTcpConnectorFlushDevice() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpConnectorFlushDevice::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -51,10 +42,8 @@ int atom::CTcpConnectorFlushDevice::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpConnectorFlushDevice::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -74,10 +63,8 @@ int atom::CTcpConnectorFlushDevice::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpConnectorFlushDevice::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -97,10 +84,8 @@ int atom::CTcpConnectorFlushDevice::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CTcpConnectorFlushDevice::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -108,10 +93,8 @@ atom::IInterface * atom::CTcpConnectorFlushDevice::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpConnectorFlushDevice::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		nest = value;
@@ -121,10 +104,8 @@ void atom::CTcpConnectorFlushDevice::SetNest(IInterface * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpConnectorFlushDevice::OnFlush(CMemory & data) 
 {
-    //TODO Auto-generated method stub
     // 先将数据写入队列；
     protect.Enter();
     waiting.push_back( data );
@@ -135,10 +116,8 @@ bool atom::CTcpConnectorFlushDevice::OnFlush(CMemory & data)
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpConnectorFlushDevice::Bind(U32 mold) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( mold && nest )
 	{
@@ -153,10 +132,8 @@ bool atom::CTcpConnectorFlushDevice::Bind(U32 mold)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpConnectorFlushDevice::OnDataSent(size_t bytes) 
 {
-    //TODO Auto-generated method stub
 	bool result = true;	
 	if( bytes ) {
 		result = prepare.IncreaseOffset( bytes );
@@ -174,10 +151,8 @@ bool atom::CTcpConnectorFlushDevice::OnDataSent(size_t bytes)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpConnectorFlushDevice::Reset() 
 {
-    //TODO Auto-generated method stub
 	prepare.Clear(); 
         
     protect.Enter();
@@ -190,10 +165,8 @@ void atom::CTcpConnectorFlushDevice::Reset()
 	section.Leave();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 size_t atom::CTcpConnectorFlushDevice::Send() 
 {
-    //TODO Auto-generated method stub
     // Send函数与OnDataSent函数共同组成了一个循环，即由Send
     // 开始，到OnDataSent结束，由计数器形成了一个单线程访问
     // 的环境。当计数为 1的时候，代表该线程获得了这个环境的

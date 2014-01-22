@@ -5,12 +5,8 @@
 #include "../../utility/byteswap/CByteSwap.h"
 #include "../../utility/charset/CUtf8Charset.h"
 #include "../../os/character/CCharacter.h"
-//Begin section for file CExportableWrapper.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CExportableWrapper.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CExportableWrapper::CExportableWrapper() : 
 nest(NULL),
 #ifdef _SHIPPING_
@@ -18,19 +14,14 @@ cast(NULL),
 #endif
 bind(NULL),wrap(IID_UNKNOW)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CExportableWrapper::~CExportableWrapper() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportableWrapper::Verify() 
 {
-    //TODO Auto-generated method stub
     if( bind )
     {
         IInterface * unknow;
@@ -55,20 +46,16 @@ void atom::CExportableWrapper::Verify()
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportableWrapper::Attach(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     /* not increase any reference, nest will do it */
     bind = value;
     wrap = IID_UNKNOW;
 	port.Clear(); 
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CExportableWrapper::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -88,10 +75,8 @@ int atom::CExportableWrapper::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CExportableWrapper::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -111,10 +96,8 @@ int atom::CExportableWrapper::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CExportableWrapper::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -134,10 +117,8 @@ int atom::CExportableWrapper::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CExportableWrapper::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -145,10 +126,8 @@ atom::IInterface * atom::CExportableWrapper::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportableWrapper::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		nest = value;
@@ -158,10 +137,8 @@ void atom::CExportableWrapper::SetNest(IInterface * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportableWrapper::Write(I08 value) 
 {
-    //TODO Auto-generated method stub
     if( !bind ) return;
 
     if( wrap == IID_UNKNOW ) {
@@ -183,10 +160,8 @@ void atom::CExportableWrapper::Write(I08 value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportableWrapper::Write(I16 value) 
 {
-    //TODO Auto-generated method stub
     if( !bind ) return;
 
     if( wrap == IID_UNKNOW ) {
@@ -210,10 +185,8 @@ void atom::CExportableWrapper::Write(I16 value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportableWrapper::Write(I32 value) 
 {
-    //TODO Auto-generated method stub
     if( !bind ) return;
 
     if( wrap == IID_UNKNOW ) {
@@ -237,10 +210,8 @@ void atom::CExportableWrapper::Write(I32 value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportableWrapper::Write(I64 value) 
 {
-    //TODO Auto-generated method stub
     if( !bind ) return;
 
     if( wrap == IID_UNKNOW ) {
@@ -264,10 +235,8 @@ void atom::CExportableWrapper::Write(I64 value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportableWrapper::Write(U08 value) 
 {
-    //TODO Auto-generated method stub
     if( !bind ) return;
 
     if( wrap == IID_UNKNOW ) {
@@ -289,10 +258,8 @@ void atom::CExportableWrapper::Write(U08 value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportableWrapper::Write(U16 value) 
 {
-    //TODO Auto-generated method stub
     if( !bind ) return;
 
     if( wrap == IID_UNKNOW ) {
@@ -316,10 +283,8 @@ void atom::CExportableWrapper::Write(U16 value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportableWrapper::Write(U32 value) 
 {
-    //TODO Auto-generated method stub
     if( !bind ) return;
 
     if( wrap == IID_UNKNOW ) {
@@ -343,10 +308,8 @@ void atom::CExportableWrapper::Write(U32 value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportableWrapper::Write(U64 value) 
 {
-    //TODO Auto-generated method stub
     if( !bind ) return;
 
     if( wrap == IID_UNKNOW ) {
@@ -370,10 +333,8 @@ void atom::CExportableWrapper::Write(U64 value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportableWrapper::Write(float value) 
 {
-    //TODO Auto-generated method stub
     if( !bind ) return;
 
     if( wrap == IID_UNKNOW ) {
@@ -398,10 +359,8 @@ void atom::CExportableWrapper::Write(float value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportableWrapper::Write(double value) 
 {
-    //TODO Auto-generated method stub
     if( !bind ) return;
 
     if( wrap == IID_UNKNOW ) {
@@ -426,10 +385,8 @@ void atom::CExportableWrapper::Write(double value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportableWrapper::Write(const char * value) 
 {
-    //TODO Auto-generated method stub
     if( !bind ) return;
 
     if( wrap == IID_UNKNOW ) {
@@ -470,10 +427,8 @@ void atom::CExportableWrapper::Write(const char * value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportableWrapper::Write(const wchar_t * value) 
 {
-    //TODO Auto-generated method stub
     if( !bind ) return;
 
     if( wrap == IID_UNKNOW ) {
@@ -507,10 +462,8 @@ void atom::CExportableWrapper::Write(const wchar_t * value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CExportableWrapper::Write(const void * bytes, U64 length) 
 {
-    //TODO Auto-generated method stub
     if( !bind || !bytes || !length ) return;
 
     if( wrap == IID_UNKNOW ) {

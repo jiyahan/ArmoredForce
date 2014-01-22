@@ -2,12 +2,8 @@
 #include "../../interface/IImportStream.h"
 #include "../../interface/IStream.h"
 #include "../../enumeration/INTERFACE_ID.h"
-//Begin section for file CTruncatableWrapper.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CTruncatableWrapper.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTruncatableWrapper::CTruncatableWrapper() : 
 nest(NULL),
 #ifdef _SHIPPING_
@@ -15,19 +11,14 @@ cast(NULL),
 #endif
 bind(NULL),wrap(IID_UNKNOW)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTruncatableWrapper::~CTruncatableWrapper() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTruncatableWrapper::Verify() 
 {
-    //TODO Auto-generated method stub
     if( bind )
     {
         IInterface * unknow;
@@ -52,20 +43,16 @@ void atom::CTruncatableWrapper::Verify()
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTruncatableWrapper::Attach(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     /* not increase any reference, nest will do it */
     bind = value;
     wrap = IID_UNKNOW;
 	port.Clear(); 
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTruncatableWrapper::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -85,10 +72,8 @@ int atom::CTruncatableWrapper::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTruncatableWrapper::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -108,10 +93,8 @@ int atom::CTruncatableWrapper::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTruncatableWrapper::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -131,10 +114,8 @@ int atom::CTruncatableWrapper::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CTruncatableWrapper::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -142,10 +123,8 @@ atom::IInterface * atom::CTruncatableWrapper::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTruncatableWrapper::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		nest = value;
@@ -155,10 +134,8 @@ void atom::CTruncatableWrapper::SetNest(IInterface * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTruncatableWrapper::Truncate() 
 {
-    //TODO Auto-generated method stub
     if( !bind ) return;
 
     if( wrap == IID_UNKNOW ) {

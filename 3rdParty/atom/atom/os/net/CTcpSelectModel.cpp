@@ -1,14 +1,9 @@
 #include "CTcpSelectModel.h"
 #include "../../enumeration/INTERFACE_ID.h"
-//Begin section for file CTcpSelectModel.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CTcpSelectModel.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpSelectModel::CTcpSelectModel()
 {
-    //TODO Auto-generated method stub
 	model    .SetNest( this );
 	thread   .SetNest( this );
 	life     .SetNest( this );
@@ -16,24 +11,18 @@ atom::CTcpSelectModel::CTcpSelectModel()
 	listener .SetNest( this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpSelectModel::~CTcpSelectModel() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 const char * atom::CTcpSelectModel::ToString() 
 {
-    //TODO Auto-generated method stub
 	static char name[] = "Tcp Select Model";
     return name;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CTcpSelectModel::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     switch( iid )
     {

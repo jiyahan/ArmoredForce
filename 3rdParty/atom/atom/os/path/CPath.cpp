@@ -1,8 +1,5 @@
 #include "CPath.h"
 #include "../character/CCharacter.h"
-//Begin section for file CPath.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CPath.cpp
 
 
 bool FindInTestword(const char value, size_t placeholder, const char* testword, size_t length, size_t& offset)
@@ -112,32 +109,24 @@ bool IsAnsiMatch(const char* wildcard, size_t length_1, size_t& offset_1, const 
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CPath::CPath(const char * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) path = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CPath::CPath(const wchar_t * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) {
         path = CCharacter::UnicodeToMultiBytes( value );
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CPath::~CPath() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::a_string atom::CPath::GetFileName() 
 {
-    //TODO Auto-generated method stub
     size_t offset = path.find_last_of( '\\' );
     if( offset == a_string::npos ) {
         offset = path.find_last_of( '/' );
@@ -150,10 +139,8 @@ atom::a_string atom::CPath::GetFileName()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::a_string atom::CPath::GetFilePath() 
 {
-    //TODO Auto-generated method stub
     size_t offset = path.find_last_of( '\\' );
     if( offset == a_string::npos ) {
         offset = path.find_last_of( '/' );
@@ -166,10 +153,8 @@ atom::a_string atom::CPath::GetFilePath()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CPath::IsMatch(const char * wildcard) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     if( wildcard )
     {
@@ -183,10 +168,8 @@ bool atom::CPath::IsMatch(const char * wildcard)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CPath::IsMatch(const wchar_t * wildcard) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     if( wildcard ) {
         result = IsMatch( CCharacter::UnicodeToMultiBytes(wildcard).c_str() );
@@ -194,9 +177,7 @@ bool atom::CPath::IsMatch(const wchar_t * wildcard)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CPath::operator const char *() 
 {
-    //TODO Auto-generated method stub
     return path.c_str();
 }

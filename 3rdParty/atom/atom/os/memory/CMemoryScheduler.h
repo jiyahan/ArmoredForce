@@ -1,8 +1,5 @@
 #ifndef CMEMORYSCHEDULER_H
 #define CMEMORYSCHEDULER_H
-//Begin section for file CMemoryScheduler.h
-//TODO: Add definitions that you want preserved
-//End section for file CMemoryScheduler.h
 #include "CMemorySchedulerSingletonBind.h"
 #include "CMemoryQueues.h"
 #include "tagMemoryCounts.h"
@@ -19,81 +16,64 @@ namespace atom
 
 
 
-    //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
     class CMemoryScheduler : public CMemorySchedulerSingletonBind
     {
 
-        //Begin section for atom::CMemoryScheduler
-        //TODO: Add attributes that you want preserved
-        //End section for atom::CMemoryScheduler
 
         private:
 
 
             //<p>thread allocated line</p>
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             static size_t TLS_DECLARE alloc;
 
 
 
             //<p>common memory queue used alloc or free counter</p>
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             CReference refer_1;
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             CReference refer_2;
 
 
 
             //<p>allocated memory line</p>
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             CReference upper;
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             CMilisecondTimer timer;
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             CMemoryQueues lines[MEMORY_AMOUNT_QUEUE];
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             tagMemoryCounts count[MEMORY_AMOUNT_QUEUE];
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             tagMemoryTotals total[MEMORY_AMOUNT_QUEUE];
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             tagMemoryTotals final[MEMORY_AMOUNT_QUEUE];
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             size_t quota[MEMORY_AMOUNT_QUEUE][MEMORY_FRAGMENT_QUEUE];
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             size_t cache;
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline void * NewMem(size_t size); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline void DelMem(void * pointer); 
 
 
@@ -101,57 +81,46 @@ namespace atom
 
         public:
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline CMemoryScheduler(); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline ~CMemoryScheduler(); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline bool Initiate(size_t cache_size); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline void Shutdown(); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline bool Register(); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline void SetLimit(size_t cache_size); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline tagMemorySector * Allocate(size_t size); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline void * Allocate(void * pointer, size_t size); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline void Released(tagMemorySector * pointer); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline void Released(void * pointer); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline void Maintain(); 
 
 
@@ -162,23 +131,17 @@ namespace atom
 }//end namespace atom
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CMemoryScheduler::CMemoryScheduler() : 
 cache(1048576)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CMemoryScheduler::~CMemoryScheduler() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void * atom::CMemoryScheduler::NewMem(size_t length) 
 {
-    //TODO Auto-generated method stub
     #ifdef _WIN32
     void* result = HeapAlloc( GetProcessHeap(), 0, length );
     if( !result )
@@ -197,10 +160,8 @@ void * atom::CMemoryScheduler::NewMem(size_t length)
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CMemoryScheduler::DelMem(void * pointer) 
 {
-    //TODO Auto-generated method stub
     #ifdef _WIN32
     HeapFree( GetProcessHeap(), 0, pointer );
     #endif
@@ -210,10 +171,8 @@ void atom::CMemoryScheduler::DelMem(void * pointer)
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CMemoryScheduler::Initiate(size_t cache_size) 
 {
-    //TODO Auto-generated method stub
     // 分配通用队列所占的编号，记录当前时间；
     timer.Record();
     upper.Assign( MEMORY_COMMON_QUEUE );
@@ -240,10 +199,8 @@ bool atom::CMemoryScheduler::Initiate(size_t cache_size)
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CMemoryScheduler::Shutdown() 
 {
-    //TODO Auto-generated method stub
     for( size_t i = 0, j = upper.GetReference(); 
         i < j && 
         i < MEMORY_AMOUNT_QUEUE; ++ i )
@@ -255,10 +212,8 @@ void atom::CMemoryScheduler::Shutdown()
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CMemoryScheduler::Register() 
 {
-    //TODO Auto-generated method stub
 	#if defined(TLS_NOT_SUPPORT)
 	return false;
 	#else
@@ -272,17 +227,13 @@ bool atom::CMemoryScheduler::Register()
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CMemoryScheduler::SetLimit(size_t cache_size) 
 {
-    //TODO Auto-generated method stub
     cache = cache_size;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::tagMemorySector * atom::CMemoryScheduler::Allocate(size_t size) 
 {
-    //TODO Auto-generated method stub
     // 如果请求空长度，则返回空；
     if( !size ) return NULL;
 
@@ -339,10 +290,8 @@ atom::tagMemorySector * atom::CMemoryScheduler::Allocate(size_t size)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void * atom::CMemoryScheduler::Allocate(void * pointer, size_t n_width) 
 {
-    //TODO Auto-generated method stub
     // 如果长度为0，则回收内存并返回空；
     if( !n_width ) {
         if( pointer ) Released( pointer ); return NULL;
@@ -382,10 +331,8 @@ void * atom::CMemoryScheduler::Allocate(void * pointer, size_t n_width)
     Released( prior ); return NULL;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CMemoryScheduler::Released(tagMemorySector * header) 
 {
-    //TODO Auto-generated method stub
     if( !header ) return;
 
     // 设置内存的数据为0xEE；
@@ -418,10 +365,8 @@ void atom::CMemoryScheduler::Released(tagMemorySector * header)
     if( destroy ) DelMem( header );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CMemoryScheduler::Released(void * pointer) 
 {
-    //TODO Auto-generated method stub
     if( !pointer ) return;
 
     // 恢复包头；
@@ -433,10 +378,8 @@ void atom::CMemoryScheduler::Released(void * pointer)
     Released( header );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CMemoryScheduler::Maintain() 
 {
-    //TODO Auto-generated method stub
     if( timer.GetElapsedTime() >= MEMORY_MAINTAIN_TIME )
     {
         timer.Record();

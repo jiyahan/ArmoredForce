@@ -4,28 +4,19 @@
 #include "../../interface/IInstanceAliasContainer.h"
 #include "../../enumeration/INTERFACE_ID.h"
 #include "../../utility/tool/CInterface.h"
-//Begin section for file CTcpKQueueModelLife.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CTcpKQueueModelLife.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpKQueueModelLife::CTcpKQueueModelLife() : 
 nest(NULL)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpKQueueModelLife::~CTcpKQueueModelLife() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpKQueueModelLife::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -38,10 +29,8 @@ int atom::CTcpKQueueModelLife::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpKQueueModelLife::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -54,10 +43,8 @@ int atom::CTcpKQueueModelLife::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpKQueueModelLife::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -70,10 +57,8 @@ int atom::CTcpKQueueModelLife::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CTcpKQueueModelLife::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -81,17 +66,13 @@ atom::IInterface * atom::CTcpKQueueModelLife::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpKQueueModelLife::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) nest = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpKQueueModelLife::Initiate() 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	CInterface<ITcpKQueueIOModel> segment_1;
 	if( segment_1.Mount(this, IID_TCP_KQUEUE_IO_MODEL) ) {
@@ -105,10 +86,8 @@ bool atom::CTcpKQueueModelLife::Initiate()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpKQueueModelLife::Shutdown() 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	CInterface<ITcpKQueueIOModel> segment_0;
 	if( segment_0.Mount(this, IID_TCP_KQUEUE_IO_MODEL) ) {

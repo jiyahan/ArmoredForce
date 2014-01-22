@@ -1,8 +1,5 @@
 #ifndef TAGSERIALIZER_H
 #define TAGSERIALIZER_H
-//Begin section for file tagSerializer.h
-//TODO: Add definitions that you want preserved
-//End section for file tagSerializer.h
 
 #include "trait/is_primitive.h"
 #include "trait/is_array.h"
@@ -19,20 +16,14 @@ namespace atom
 {
 	
 	//@uml.annotationsderived_abstraction="platform:/resource/SystemInterface/document/System%20Interface.emx#_BTpPEKxUEdyG2OUyJIn0qA"
-	//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 	template <class A, class T, bool B>
 	struct tagSerializer
 	{
 	
-	    //Begin section for si::tagSerializer
-	    //TODO: Add attributes that you want preserved
-	    //End section for si::tagSerializer
 	    public:
 	
-	        //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 	        inline static void Serialize(A & archive, T & data)
 	        {
-	        	//TODO Auto-generated method stub
                 typedef typename 
                 degradation_trait<T>::type C;
 

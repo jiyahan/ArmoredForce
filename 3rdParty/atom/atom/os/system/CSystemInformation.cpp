@@ -1,13 +1,8 @@
 #include "CSystemInformation.h"
-//Begin section for file CSystemInformation.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CSystemInformation.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U32 atom::CSystemInformation::GetProcessorCount()  
 {
-    //TODO Auto-generated method stub
 	U32 result(0);
 
 	#if defined(_WIN32)
@@ -23,10 +18,8 @@ U32 atom::CSystemInformation::GetProcessorCount()
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U64 atom::CSystemInformation::GetPhysicalMemorySize()  
 {
-    //TODO Auto-generated method stub
 	U64 result(0);
 
 	#if defined(_WIN32)
@@ -52,10 +45,8 @@ U64 atom::CSystemInformation::GetPhysicalMemorySize()
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U64 atom::CSystemInformation::GetPhysicalMemoryFree()  
 {
-    //TODO Auto-generated method stub
 	U64 result(0);
 
 	#if defined(_WIN32)

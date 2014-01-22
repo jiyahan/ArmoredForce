@@ -1,23 +1,16 @@
 #include "CLinuxSignal.h"
-//Begin section for file CLinuxSignal.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CLinuxSignal.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CLinuxSignal::CLinuxSignal() : state(false)
 {
-    //TODO Auto-generated method stub
     #ifdef __linux
     pthread_mutex_init( & region, NULL );
     pthread_cond_init ( & signal, NULL );
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CLinuxSignal::CLinuxSignal(const char * name) : state(false)
 {
-    //TODO Auto-generated method stub
     UNREFERENCED_PARAMETER(name);
 
     #ifdef __linux
@@ -26,20 +19,16 @@ atom::CLinuxSignal::CLinuxSignal(const char * name) : state(false)
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CLinuxSignal::~CLinuxSignal() 
 {
-    //TODO Auto-generated method stub
     #ifdef __linux
     pthread_cond_destroy ( & signal );
     pthread_mutex_destroy( & region );
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CLinuxSignal::Reset() 
 {
-    //TODO Auto-generated method stub
     #ifdef __linux
     pthread_mutex_lock  ( & region );   state = false;
     pthread_mutex_unlock( & region );
@@ -47,10 +36,8 @@ bool atom::CLinuxSignal::Reset()
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CLinuxSignal::Awake() 
 {
-    //TODO Auto-generated method stub
     #ifdef __linux
     pthread_mutex_lock    ( & region ); state = true;
     pthread_mutex_unlock  ( & region );
@@ -58,10 +45,8 @@ bool atom::CLinuxSignal::Awake()
     #endif
     return true;
 }
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CLinuxSignal::Await(U64 timeout) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     #ifdef __linux
 

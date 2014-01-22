@@ -2,31 +2,22 @@
 #include "../interface/IConnectorStubStatistics.h"
 #include "../enumeration/EVENT_ID.h"
 #include "../enumeration/INTERFACE_ID.h"
-//Begin section for file CConnectorStubEventReceiver.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CConnectorStubEventReceiver.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 electron::CConnectorStubEventReceiver::CConnectorStubEventReceiver() : 
 nest(NULL)
 #ifdef _SHIPPING_
 ,cast(NULL)
 #endif
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 electron::CConnectorStubEventReceiver::~CConnectorStubEventReceiver() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int electron::CConnectorStubEventReceiver::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -46,10 +37,8 @@ int electron::CConnectorStubEventReceiver::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int electron::CConnectorStubEventReceiver::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -69,10 +58,8 @@ int electron::CConnectorStubEventReceiver::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int electron::CConnectorStubEventReceiver::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -92,10 +79,8 @@ int electron::CConnectorStubEventReceiver::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 IInterface * electron::CConnectorStubEventReceiver::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -103,10 +88,8 @@ IInterface * electron::CConnectorStubEventReceiver::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void electron::CConnectorStubEventReceiver::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		nest = value;
@@ -116,10 +99,8 @@ void electron::CConnectorStubEventReceiver::SetNest(IInterface * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool electron::CConnectorStubEventReceiver::OnEvent(const tagEvent & value) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     CInterface<IEventEmitter> segment;
     if( segment.Mount(this ,IID_EVENT_EMITTER) ) {

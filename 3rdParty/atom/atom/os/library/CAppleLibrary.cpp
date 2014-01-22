@@ -2,31 +2,22 @@
 #include "../character/CCharacter.h"
 #include "../path/CPath.h"
 #include "../../utility/charset/CUtf8Charset.h"
-//Begin section for file CAppleLibrary.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CAppleLibrary.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CAppleLibrary::CAppleLibrary() : 
 handle(NULL)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CAppleLibrary::~CAppleLibrary() 
 {
-    //TODO Auto-generated method stub
     #ifdef __APPLE__
     if( handle ) Close();
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CAppleLibrary::Open(const char * value) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     if( value )
     {
@@ -57,18 +48,14 @@ bool atom::CAppleLibrary::Open(const char * value)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CAppleLibrary::Open(const wchar_t * file) 
 {
-    //TODO Auto-generated method stub
     if( !file ) return false;
 	return Open( CCharacter::UnicodeToUtf8(file).c_str() );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void * atom::CAppleLibrary::GetFunction(const char * name) 
 {
-    //TODO Auto-generated method stub
     void * result = NULL;
     if( name )
     {
@@ -84,10 +71,8 @@ void * atom::CAppleLibrary::GetFunction(const char * name)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CAppleLibrary::Close() 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     #ifdef __APPLE__
     if( handle )
@@ -106,9 +91,7 @@ bool atom::CAppleLibrary::Close()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::a_string atom::CAppleLibrary::GetPath() 
 {
-    //TODO Auto-generated method stub
     return locate;
 }

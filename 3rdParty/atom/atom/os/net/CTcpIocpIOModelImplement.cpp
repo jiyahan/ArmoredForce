@@ -16,16 +16,12 @@
 #include "../../enumeration/EVENT_ID.h"
 #include "../../enumeration/INTERFACE_ID.h"
 #include "../../enumeration/OBJECT_ID.h"
-//Begin section for file CTcpIocpIOModelImplement.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CTcpIocpIOModelImplement.cpp
 #define O_ACCEPT  1
 #define O_RECEIVE 2
 #define O_SEND    3
 
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpIocpIOModelImplement::CTcpIocpIOModelImplement() : nest(NULL)
 #ifdef _SHIPPING_
 ,cast(NULL)
@@ -34,22 +30,17 @@ atom::CTcpIocpIOModelImplement::CTcpIocpIOModelImplement() : nest(NULL)
 ,size(1)
 #endif
 {
-    //TODO Auto-generated method stub
 	#ifdef _WIN32
 	memset( port, 0, sizeof(port) );
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpIocpIOModelImplement::~CTcpIocpIOModelImplement() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpIocpIOModelImplement::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -69,10 +60,8 @@ int atom::CTcpIocpIOModelImplement::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpIocpIOModelImplement::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -92,10 +81,8 @@ int atom::CTcpIocpIOModelImplement::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpIocpIOModelImplement::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -115,10 +102,8 @@ int atom::CTcpIocpIOModelImplement::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CTcpIocpIOModelImplement::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -126,10 +111,8 @@ atom::IInterface * atom::CTcpIocpIOModelImplement::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpIocpIOModelImplement::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		nest = value;
@@ -139,10 +122,8 @@ void atom::CTcpIocpIOModelImplement::SetNest(IInterface * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 SOCKET atom::CTcpIocpIOModelImplement::Create() 
 {
-    //TODO Auto-generated method stub
 	#ifdef _WIN32
 		return WSASocket( AF_INET, SOCK_STREAM, IPPROTO_TCP, NULL, 0, WSA_FLAG_OVERLAPPED );
 	#else
@@ -150,19 +131,15 @@ SOCKET atom::CTcpIocpIOModelImplement::Create()
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpIocpIOModelImplement::Remove(SOCKET hs) 
 {
-    //TODO Auto-generated method stub
 	#ifdef _WIN32
 		if( hs != INVALID_SOCKET ) closesocket( hs );
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpIOModelImplement::Attach(U64 name) 
 {
-    //TODO Auto-generated method stub
 	if( !name ) return false;
 	bool result = false;
 
@@ -205,10 +182,8 @@ bool atom::CTcpIocpIOModelImplement::Attach(U64 name)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpIOModelImplement::Detach(U64 name) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 
 	#ifdef _WIN32
@@ -240,10 +215,8 @@ bool atom::CTcpIocpIOModelImplement::Detach(U64 name)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CObjectPtr atom::CTcpIocpIOModelImplement::Obtain(U64 name) 
 {
-    //TODO Auto-generated method stub
 	CObjectPtr result;
 	#ifdef _WIN32
 	if( name )
@@ -259,10 +232,8 @@ atom::CObjectPtr atom::CTcpIocpIOModelImplement::Obtain(U64 name)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpIOModelImplement::Initiate() 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 
 	#ifdef _WIN32
@@ -283,10 +254,8 @@ bool atom::CTcpIocpIOModelImplement::Initiate()
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpIOModelImplement::Shutdown() 
 {
-    //TODO Auto-generated method stub
 	#ifdef _WIN32
 	for( U32 i = 0; i < size && i < MAX_IOCP_HANDLE; ++ i ) 
 	{
@@ -301,10 +270,8 @@ bool atom::CTcpIocpIOModelImplement::Shutdown()
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpIOModelImplement::Listen(U64 name, const tagDomain & domain) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	
 	#ifdef _WIN32
@@ -347,10 +314,8 @@ bool atom::CTcpIocpIOModelImplement::Listen(U64 name, const tagDomain & domain)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpIOModelImplement::Connect(U64 name, const tagDomain & domain) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 
 	#ifdef _WIN32
@@ -389,10 +354,8 @@ bool atom::CTcpIocpIOModelImplement::Connect(U64 name, const tagDomain & domain)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpIOModelImplement::Send(U64 name, CMemory & data, size_t offset, size_t length) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 
 	#ifdef _WIN32
@@ -439,10 +402,8 @@ bool atom::CTcpIocpIOModelImplement::Send(U64 name, CMemory & data, size_t offse
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpIOModelImplement::Receive(U64 name) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	#ifdef _WIN32
 	CObjectPtr connector = Obtain( name );
@@ -484,10 +445,8 @@ bool atom::CTcpIocpIOModelImplement::Receive(U64 name)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpIOModelImplement::Accept(U64 name) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 
 	#ifdef _WIN32
@@ -531,10 +490,8 @@ bool atom::CTcpIocpIOModelImplement::Accept(U64 name)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 I32 atom::CTcpIocpIOModelImplement::OnProcess(U32 index) 
 {
-    //TODO Auto-generated method stub
 	I32 result = 0;
 
 	#ifdef _WIN32
@@ -595,10 +552,8 @@ I32 atom::CTcpIocpIOModelImplement::OnProcess(U32 index)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U32 atom::CTcpIocpIOModelImplement::GetAmount()
 {
-    //TODO Auto-generated method stub
 	#ifdef _WIN32
 	return size;
 	#else
@@ -606,10 +561,8 @@ U32 atom::CTcpIocpIOModelImplement::GetAmount()
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpIocpIOModelImplement::PreShutdown() 
 {
-    //TODO Auto-generated method stub
 	#ifdef _WIN32
 	CInterface<IInstanceAliasContainer<SOCKET> > segment;
 	if( segment.Mount(this, IID_INSTANCE_ALIAS_CONTAINER) )
@@ -636,10 +589,8 @@ void atom::CTcpIocpIOModelImplement::PreShutdown()
 }
 
 #ifdef _WIN32
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpIOModelImplement::OnAccept(tagIocpOperation * packet) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( packet )
 	{
@@ -674,10 +625,8 @@ bool atom::CTcpIocpIOModelImplement::OnAccept(tagIocpOperation * packet)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpIOModelImplement::OnAccept(SOCKET listener, SOCKET hs, CIocpBuffer * wb, CIocpOverlap * ol) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	DWORD bytes = 0;
 	// AcceptEx第四个参数为0，则表示缓冲区内实际用于接受数据的内存区长度为0，从而禁止
@@ -691,10 +640,8 @@ bool atom::CTcpIocpIOModelImplement::OnAccept(SOCKET listener, SOCKET hs, CIocpB
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpIOModelImplement::OnSend(size_t bytes, tagIocpOperation * packet) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( bytes && packet )
 	{
@@ -712,10 +659,8 @@ bool atom::CTcpIocpIOModelImplement::OnSend(size_t bytes, tagIocpOperation * pac
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpIOModelImplement::OnSend(SOCKET hs, CIocpBuffer * wb, CIocpOverlap * ol) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	DWORD bytes = 0;
 	if( false == ( 
@@ -725,10 +670,8 @@ bool atom::CTcpIocpIOModelImplement::OnSend(SOCKET hs, CIocpBuffer * wb, CIocpOv
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpIOModelImplement::OnReceive(size_t bytes, tagIocpOperation * packet) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( bytes && packet )
 	{
@@ -769,10 +712,8 @@ bool atom::CTcpIocpIOModelImplement::OnReceive(size_t bytes, tagIocpOperation * 
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpIOModelImplement::OnReceive(SOCKET hs, CIocpBuffer * wb, CIocpOverlap * ol) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	DWORD flag  = 0;
     DWORD byte  = 0; // 仅用于消除异常，不影响iocp的接受数据；
@@ -783,10 +724,8 @@ bool atom::CTcpIocpIOModelImplement::OnReceive(SOCKET hs, CIocpBuffer * wb, CIoc
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpIOModelImplement::GetCompletionEvent(U32 index, tagIocpEvent * ioe, U64 timeout) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( ioe )
 	{
@@ -838,10 +777,8 @@ bool atom::CTcpIocpIOModelImplement::GetCompletionEvent(U32 index, tagIocpEvent 
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpIOModelImplement::Report(CObjectPtr & connector, U32 eid) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( connector )
 	{

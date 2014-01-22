@@ -16,13 +16,9 @@
 #include "../../enumeration/EVENT_ID.h"
 #include "../../enumeration/INTERFACE_ID.h"
 #include "../../enumeration/OBJECT_ID.h"
-//Begin section for file CTcpKQueueIOModelImplement.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CTcpKQueueIOModelImplement.cpp
 
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpKQueueIOModelImplement::CTcpKQueueIOModelImplement() : 
 nest(NULL)
 #ifdef _SHIPPING_
@@ -32,22 +28,17 @@ nest(NULL)
 ,size(1),active(false)
 #endif
 {
-    //TODO Auto-generated method stub
 	#ifdef __APPLE__
 	memset( port, 0, sizeof(port) );
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpKQueueIOModelImplement::~CTcpKQueueIOModelImplement() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpKQueueIOModelImplement::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -67,10 +58,8 @@ int atom::CTcpKQueueIOModelImplement::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpKQueueIOModelImplement::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -90,10 +79,8 @@ int atom::CTcpKQueueIOModelImplement::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpKQueueIOModelImplement::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -113,10 +100,8 @@ int atom::CTcpKQueueIOModelImplement::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CTcpKQueueIOModelImplement::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -124,10 +109,8 @@ atom::IInterface * atom::CTcpKQueueIOModelImplement::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpKQueueIOModelImplement::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		nest = value;
@@ -137,10 +120,8 @@ void atom::CTcpKQueueIOModelImplement::SetNest(IInterface * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 SOCKET atom::CTcpKQueueIOModelImplement::Create() 
 {
-    //TODO Auto-generated method stub
 	#ifdef __APPLE__
 	return socket( AF_INET, SOCK_STREAM, 0 );
 	#else
@@ -148,10 +129,8 @@ SOCKET atom::CTcpKQueueIOModelImplement::Create()
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpKQueueIOModelImplement::Remove(SOCKET hs) 
 {
-    //TODO Auto-generated method stub
 	#ifdef __APPLE__
 	if( hs != INVALID_SOCKET ) {
 		close( hs );
@@ -161,10 +140,8 @@ void atom::CTcpKQueueIOModelImplement::Remove(SOCKET hs)
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpKQueueIOModelImplement::Attach(U64 name) 
 {
-    //TODO Auto-generated method stub
 	#ifdef __APPLE__
 	if( !name ) return false;
 	bool result = false;
@@ -205,10 +182,8 @@ bool atom::CTcpKQueueIOModelImplement::Attach(U64 name)
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpKQueueIOModelImplement::Detach(U64 name) 
 {
-    //TODO Auto-generated method stub
 	#ifdef __APPLE__
 
 	bool result = false;
@@ -245,10 +220,8 @@ bool atom::CTcpKQueueIOModelImplement::Detach(U64 name)
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CObjectPtr atom::CTcpKQueueIOModelImplement::Obtain(U64 name) 
 {
-    //TODO Auto-generated method stub
 	CObjectPtr result;
 	#ifdef __APPLE__
 	if( name )
@@ -264,10 +237,8 @@ atom::CObjectPtr atom::CTcpKQueueIOModelImplement::Obtain(U64 name)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpKQueueIOModelImplement::Initiate() 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 
 	#ifdef __APPLE__
@@ -286,10 +257,8 @@ bool atom::CTcpKQueueIOModelImplement::Initiate()
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpKQueueIOModelImplement::Shutdown() 
 {
-    //TODO Auto-generated method stub
 	#ifdef __APPLE__
 	for( U32 i = 0; i < size; ++ i ) {
 		if( port[i] == 0 || port[i] == -1 ) continue;
@@ -303,10 +272,8 @@ bool atom::CTcpKQueueIOModelImplement::Shutdown()
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpKQueueIOModelImplement::Listen(U64 name, const tagDomain & domain) 
 {
-    //TODO Auto-generated method stub
 	#ifdef __APPLE__
 
 	bool result = false;
@@ -352,10 +319,8 @@ bool atom::CTcpKQueueIOModelImplement::Listen(U64 name, const tagDomain & domain
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpKQueueIOModelImplement::Connect(U64 name, const tagDomain & domain) 
 {
-    //TODO Auto-generated method stub
 	#ifdef __APPLE__
 
 	bool result = false;
@@ -397,10 +362,8 @@ bool atom::CTcpKQueueIOModelImplement::Connect(U64 name, const tagDomain & domai
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpKQueueIOModelImplement::Send(U64 name, CMemory & data, size_t offset, size_t length) 
 {
-    //TODO Auto-generated method stub
 	#ifdef __APPLE__
 	if( name == 0 || length == 0 || data.GetLength() < offset + length ) {
 		return false;
@@ -445,10 +408,8 @@ bool atom::CTcpKQueueIOModelImplement::Send(U64 name, CMemory & data, size_t off
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpKQueueIOModelImplement::Receive(U64 connector) 
 {
-    //TODO Auto-generated method stub
 	UNREFERENCED_PARAMETER( connector );
 	#ifdef __APPLE__
     return true;
@@ -457,10 +418,8 @@ bool atom::CTcpKQueueIOModelImplement::Receive(U64 connector)
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpKQueueIOModelImplement::Accept(U64 listener) 
 {
-    //TODO Auto-generated method stub
 	UNREFERENCED_PARAMETER( listener );
 	#ifdef __APPLE__
     return true;
@@ -469,10 +428,8 @@ bool atom::CTcpKQueueIOModelImplement::Accept(U64 listener)
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 I32 atom::CTcpKQueueIOModelImplement::OnProcess(U32 index) 
 {
-    //TODO Auto-generated method stub
 	#ifdef __APPLE__
 	
 	if( index < size && port[index] > 0 )
@@ -526,10 +483,8 @@ I32 atom::CTcpKQueueIOModelImplement::OnProcess(U32 index)
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U32 atom::CTcpKQueueIOModelImplement::GetAmount() 
 {
-    //TODO Auto-generated method stub
 	#ifdef __APPLE__
 	return size;
 	#else
@@ -537,10 +492,8 @@ U32 atom::CTcpKQueueIOModelImplement::GetAmount()
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpKQueueIOModelImplement::PreShutdown() 
 {
-    //TODO Auto-generated method stub
 	#ifdef __APPLE__
 	CInterface<IInstanceAliasContainer<SOCKET> > segment;
 	if( segment.Mount(this, IID_INSTANCE_ALIAS_CONTAINER) )
@@ -565,10 +518,8 @@ void atom::CTcpKQueueIOModelImplement::PreShutdown()
 }
 
 #ifdef __APPLE__
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CObjectPtr atom::CTcpKQueueIOModelImplement::ObtainBySocket(SOCKET socket) 
 {
-    //TODO Auto-generated method stub
 	CObjectPtr result;
 	if( socket != INVALID_SOCKET )
 	{
@@ -580,10 +531,8 @@ atom::CObjectPtr atom::CTcpKQueueIOModelImplement::ObtainBySocket(SOCKET socket)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpKQueueIOModelImplement::Report(CObjectPtr & connector, U32 eid) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( connector )
 	{
@@ -599,10 +548,8 @@ bool atom::CTcpKQueueIOModelImplement::Report(CObjectPtr & connector, U32 eid)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpKQueueIOModelImplement::Change(int hs, int filter, int flag, void * data)
 {
-    //TODO Auto-generated method stub
 	#ifdef __APPLE__
 	const static timespec time = { 0, 0 };
 	struct kevent change[1]; 
@@ -614,10 +561,8 @@ bool atom::CTcpKQueueIOModelImplement::Change(int hs, int filter, int flag, void
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpKQueueIOModelImplement::OnAccept(CKQueueEvent * op) 
 {
-    //TODO Auto-generated method stub
 	if( !op ) return false;
 
 	SOCKET socket = static_cast<SOCKET>( op -> ident );
@@ -646,10 +591,8 @@ bool atom::CTcpKQueueIOModelImplement::OnAccept(CKQueueEvent * op)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpKQueueIOModelImplement::OnSend(CKQueueEvent * value) 
 {
-    //TODO Auto-generated method stub
 	if( !value ) return false;
 
 	tagTcpKQueueOperation * op = 
@@ -696,10 +639,8 @@ bool atom::CTcpKQueueIOModelImplement::OnSend(CKQueueEvent * value)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpKQueueIOModelImplement::OnReceive(CKQueueEvent * op) 
 {
-    //TODO Auto-generated method stub
 	if( !op ) return false;
 
 	SOCKET socket = static_cast<SOCKET>( op -> ident );

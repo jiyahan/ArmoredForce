@@ -1,8 +1,5 @@
 #ifndef CTIMELINE_H
 #define CTIMELINE_H
-//Begin section for file CTimeLine.h
-//TODO: Add definitions that you want preserved
-//End section for file CTimeLine.h
 #include "CTimeLineDefine.h"
 #include "../../os/thread/CCriticalSection.h"
 #include "../tool/CCriticalSectionScope.h"
@@ -14,55 +11,43 @@ namespace atom
 
 
     
-    //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
     typedef std::greater<U64> time_near;
     
         
         
-    //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
     typedef std::less<U64> time_away;
 
 
 
-    //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
     template <class T, bool E = false, class M = time_away >
     class CTimeLine
     {
 
-        //Begin section for atom::CTimeLine
-        //TODO: Add attributes that you want preserved
-        //End section for atom::CTimeLine
 
         public:
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             typedef std::vector<T, atom_allocator<T> >  CTimeLineResult ;
 
         private:
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             M comp;
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             bool sole;
 
 
             
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             typename CTimeLineDefine<T>::timeline_type line;
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             typename CTimeLineDefine<T>::timedata_type data;
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             CCriticalSection area;
 
 
@@ -71,33 +56,25 @@ namespace atom
         public:
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline CTimeLine() : sole(E)
             {
-                    //TODO Auto-generated method stub
             }
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline virtual ~CTimeLine()
             {
-                //TODO Auto-generated method stub
             }
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline size_t  Size()
             {
-                //TODO Auto-generated method stub
                 CCriticalSectionScope scope( area );
                 return line.size();
             }
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline void  Mark(U64 time, const T & value)
             {
-                //TODO Auto-generated method stub
                 if( time == U64(INFINITE) ) return;
                 area.Enter();
 
@@ -142,10 +119,8 @@ namespace atom
             }
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline U64  Forward(U64 time, CTimeLineResult & out)
             {
-                //TODO Auto-generated method stub
                 out.reserve( 256 );
 	        	U64 result = U64(INFINITE);
 

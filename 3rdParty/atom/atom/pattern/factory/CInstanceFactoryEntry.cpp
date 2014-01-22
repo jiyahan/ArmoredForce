@@ -4,30 +4,21 @@
 #include "../../interface/IInstanceFactoryAllocator.h"
 #include "../../enumeration/OBJECT_ID.h"
 #include "../../enumeration/INTERFACE_ID.h"
-//Begin section for file CInstanceFactoryEntry.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CInstanceFactoryEntry.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CInstanceFactoryEntry::CInstanceFactoryEntry() : 
 nest(NULL)
 {
-    //TODO Auto-generated method stub
 	// keep reserved object's type and name are the same;
     name.Assign( OBJECT_ID_RESERVE + 1 );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CInstanceFactoryEntry::~CInstanceFactoryEntry() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CInstanceFactoryEntry::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -40,10 +31,8 @@ int atom::CInstanceFactoryEntry::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CInstanceFactoryEntry::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -56,10 +45,8 @@ int atom::CInstanceFactoryEntry::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CInstanceFactoryEntry::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -72,10 +59,8 @@ int atom::CInstanceFactoryEntry::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CInstanceFactoryEntry::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -83,26 +68,20 @@ atom::IInterface * atom::CInstanceFactoryEntry::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CInstanceFactoryEntry::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) nest = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CInstanceFactoryEntry::Initiate() 
 {
-    //TODO Auto-generated method stub
 	CCriticalSectionScope scope( scopes );
 	active = true;
     return active;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CInstanceFactoryEntry::Shutdown() 
 {
-    //TODO Auto-generated method stub
 	CCriticalSectionScope scope( scopes );
 	active = false;
 
@@ -128,10 +107,8 @@ bool atom::CInstanceFactoryEntry::Shutdown()
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U64 atom::CInstanceFactoryEntry::Product(U32 type) 
 {
-    //TODO Auto-generated method stub
 	U64 result = 0;
 	if( type )
 	{
@@ -159,10 +136,8 @@ U64 atom::CInstanceFactoryEntry::Product(U32 type)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CObjectPtr atom::CInstanceFactoryEntry::Inquire(U64 name) 
 {
-    //TODO Auto-generated method stub
 	CObjectPtr result;
 	if( name ) {
 		result = instances.Obtain( name );
@@ -170,10 +145,8 @@ atom::CObjectPtr atom::CInstanceFactoryEntry::Inquire(U64 name)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CInstanceFactoryEntry::Destroy(U64 name) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( name )
 	{
@@ -203,10 +176,8 @@ bool atom::CInstanceFactoryEntry::Destroy(U64 name)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CInstanceFactoryEntry::Recycle() 
 {
-    //TODO Auto-generated method stub
 	// this critical section will visited by only two area, 
 	// one is maintain thread, and second is main thread 
 	// initial or shutdown function;

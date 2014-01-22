@@ -1,30 +1,21 @@
 #include "CInstanceContainerListener.h"
 #include "../life/CInstanceLife.h"
-//Begin section for file CInstanceContainerListener.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CInstanceContainerListener.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CInstanceContainerListener::CInstanceContainerListener() : 
 nest(NULL)
 #ifdef _SHIPPING_
 ,cast(NULL)
 #endif
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CInstanceContainerListener::~CInstanceContainerListener() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CInstanceContainerListener::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -44,10 +35,8 @@ int atom::CInstanceContainerListener::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CInstanceContainerListener::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -67,10 +56,8 @@ int atom::CInstanceContainerListener::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CInstanceContainerListener::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -90,10 +77,8 @@ int atom::CInstanceContainerListener::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CInstanceContainerListener::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -101,10 +86,8 @@ atom::IInterface * atom::CInstanceContainerListener::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CInstanceContainerListener::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		nest = value;
@@ -114,20 +97,16 @@ void atom::CInstanceContainerListener::SetNest(IInterface * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CInstanceContainerListener::OnInsertInstance(CObjectPtr & instance) 
 {
-    //TODO Auto-generated method stub
     if( instance )
     {
 		CInstanceLife::GetInstance() -> Increase( instance -> GetName() );
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CInstanceContainerListener::OnRemoveInstance(CObjectPtr & instance) 
 {
-    //TODO Auto-generated method stub
 	if( instance )
 	{
 		CInstanceLife::GetInstance() -> Decrease( instance -> GetName() );

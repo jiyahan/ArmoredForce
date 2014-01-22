@@ -1,8 +1,5 @@
 #ifndef CBYTESWAP_H
 #define CBYTESWAP_H
-//Begin section for file CByteSwap.h
-//TODO: Add definitions that you want preserved
-//End section for file CByteSwap.h
 #include "../../Common.h"
 
 
@@ -12,51 +9,40 @@ namespace atom
 
 
 
-    //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
     class CByteSwap
     {
-        //Begin section for atom::CByteSwap
-        //TODO: Add attributes that you want preserved
-        //End section for atom::CByteSwap
 
 
 
         public:
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline static U16 swap16(U16 value); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline static U32 swap32(U32 value); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline static U64 swap64(U64 value); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             template<class T>
             inline static T hton(T value); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             template<class T>
             inline static T ntoh(T value); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             template<class T>
             inline static void hton_float(T & inner, T & outer); 
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             template<class T>
             inline static void ntoh_float(T & inner, T & outer); 
 
@@ -68,17 +54,13 @@ namespace atom
 }//end namespace atom
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U16 atom::CByteSwap::swap16(U16 value) 
 {
-    //TODO Auto-generated method stub
     return ( (value & 0xFF00) >> 8 ) | ( (value & 0x00FF) << 8 ); 
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U32 atom::CByteSwap::swap32(U32 value) 
 {
-    //TODO Auto-generated method stub
     return 
         ( (value & 0xFF000000) >> 24 ) |
         ( (value & 0x00FF0000) >> 8  ) |
@@ -86,10 +68,8 @@ U32 atom::CByteSwap::swap32(U32 value)
         ( (value & 0x000000FF) << 24 );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U64 atom::CByteSwap::swap64(U64 value) 
 {
-    //TODO Auto-generated method stub
     return 
         ( (value & 0xFF00000000000000) >> 56 ) |
         ( (value & 0x00FF000000000000) >> 40 ) |
@@ -101,11 +81,9 @@ U64 atom::CByteSwap::swap64(U64 value)
         ( (value & 0x00000000000000FF) << 56 );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 template<class T>
 T atom::CByteSwap::hton(T value) 
 {
-    //TODO Auto-generated method stub
     #if BYTE_ORDER == LITTLE_ENDIAN
 
     // 如果是小端系统，则需要进行字节变换；
@@ -143,11 +121,9 @@ T atom::CByteSwap::hton(T value)
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 template<class T>
 T atom::CByteSwap::ntoh(T value) 
 {
-    //TODO Auto-generated method stub
     #if BYTE_ORDER == LITTLE_ENDIAN
 
     // 如果是小端系统，则需要进行字节变换；
@@ -185,11 +161,9 @@ T atom::CByteSwap::ntoh(T value)
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 template<class T>
 void atom::CByteSwap::hton_float(T & inner, T & outer) 
 {
-    //TODO Auto-generated method stub
     #if FLOAT_WORD_ORDER == LITTLE_ENDIAN
 
     // 如果是小端系统，则需要进行字节变换；
@@ -219,11 +193,9 @@ void atom::CByteSwap::hton_float(T & inner, T & outer)
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 template<class T>
 void atom::CByteSwap::ntoh_float(T & inner, T & outer) 
 {
-    //TODO Auto-generated method stub
     #if FLOAT_WORD_ORDER == LITTLE_ENDIAN
 
     // 如果是小端系统，则需要进行字节变换；

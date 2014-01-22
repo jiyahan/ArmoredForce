@@ -1,47 +1,32 @@
 #include "CVariants.h"
-//Begin section for file CVariants.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CVariants.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariants::CVariants() 
 {
-    //TODO Auto-generated method stub
     variants.reserve( 16 );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariants::CVariants(const CVariants & value) 
 {
-    //TODO Auto-generated method stub
 	* this = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariants::~CVariants() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CVariants::Clear() 
 {
-    //TODO Auto-generated method stub
 	variants.clear();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 size_t atom::CVariants::Amount() const 
 {
-    //TODO Auto-generated method stub
     return variants.size();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariants::Append(const char * name, const CVariant & data) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( name )
 	{
@@ -60,10 +45,8 @@ bool atom::CVariants::Append(const char * name, const CVariant & data)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariants::Remove(const char * name) 
 {
-    //TODO Auto-generated method stub
 	if( !name ) return false;
 
 	bool result = false;
@@ -78,10 +61,8 @@ bool atom::CVariants::Remove(const char * name)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariants::Remove(size_t offset) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( offset < variants.size() ) {
         result = true;
@@ -90,10 +71,8 @@ bool atom::CVariants::Remove(size_t offset)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariants::Obtain(const char * name, CVariant & data) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( name )
 	{
@@ -109,10 +88,8 @@ bool atom::CVariants::Obtain(const char * name, CVariant & data) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariants::Obtain(size_t offset, CVariant & data) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( offset < variants.size() ) {
 		data = variants[offset].second; result = true;
@@ -120,10 +97,8 @@ bool atom::CVariants::Obtain(size_t offset, CVariant & data) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariants::Obtain(size_t offset, a_string & name) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( offset < variants.size() ) {
 		name = variants[offset].first; result = true;
@@ -131,10 +106,8 @@ bool atom::CVariants::Obtain(size_t offset, a_string & name) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariants & atom::CVariants::operator =(const CVariants & value) 
 {
-    //TODO Auto-generated method stub
     variants.clear();
 	variants = value.variants;
 	return( * this );

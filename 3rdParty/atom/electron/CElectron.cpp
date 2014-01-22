@@ -1,16 +1,10 @@
 #include "CElectron.h"
-//Begin section for file CElectron.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CElectron.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool electron::CElectron::active = false;
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void electron::CElectron::Presetup() 
 {
-    //TODO Auto-generated method stub
 	if( active == false )
 	{
         CElectronAllocator  ::CreateInstance();
@@ -23,10 +17,8 @@ void electron::CElectron::Presetup()
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool electron::CElectron::Initiate(U32 thread_amount) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     if( active == false )
     {
@@ -41,10 +33,8 @@ bool electron::CElectron::Initiate(U32 thread_amount)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool electron::CElectron::Shutdown() 
 {
-    //TODO Auto-generated method stub
     if( active )
     {
 		CConnectionScheduler::GetInstance() -> Shutdown();
@@ -55,10 +45,8 @@ bool electron::CElectron::Shutdown()
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void electron::CElectron::Destruct() 
 {
-    //TODO Auto-generated method stub
 	if( active == false )
 	{
 		// Detach allocator
@@ -72,9 +60,7 @@ void electron::CElectron::Destruct()
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool electron::CElectron::IsActive() 
 {
-    //TODO Auto-generated method stub
     return active;
 }

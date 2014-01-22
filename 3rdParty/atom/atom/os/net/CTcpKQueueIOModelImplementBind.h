@@ -1,8 +1,5 @@
 #ifndef CTCPKQUEUEIOMODELIMPLEMENTBIND_H
 #define CTCPKQUEUEIOMODELIMPLEMENTBIND_H
-//Begin section for file CTcpKQueueIOModelImplementBind.h
-//TODO: Add definitions that you want preserved
-//End section for file CTcpKQueueIOModelImplementBind.h
 #include "../../utility/allocator/CAllocator.h"
 #include "tagTcpKQueueOperation.h"
 

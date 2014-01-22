@@ -2,12 +2,8 @@
 #include "../interface/IConnectorStubFrame.h"
 #include "../enumeration/INTERFACE_ID.h"
 #include "../enumeration/OBJECT_ID.h"
-//Begin section for file CConnectionSchedulerController.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CConnectionSchedulerController.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 electron::CConnectionSchedulerController::CConnectionSchedulerController() : 
 nest(NULL),
 #ifdef _SHIPPING_
@@ -15,19 +11,14 @@ cast(NULL),
 #endif
 amount(1),inner_space(0),outer_space(0)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 electron::CConnectionSchedulerController::~CConnectionSchedulerController() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int electron::CConnectionSchedulerController::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -47,10 +38,8 @@ int electron::CConnectionSchedulerController::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int electron::CConnectionSchedulerController::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -70,10 +59,8 @@ int electron::CConnectionSchedulerController::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int electron::CConnectionSchedulerController::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -93,10 +80,8 @@ int electron::CConnectionSchedulerController::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 IInterface * electron::CConnectionSchedulerController::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -104,10 +89,8 @@ IInterface * electron::CConnectionSchedulerController::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void electron::CConnectionSchedulerController::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		nest = value;
@@ -117,10 +100,8 @@ void electron::CConnectionSchedulerController::SetNest(IInterface * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool electron::CConnectionSchedulerController::Initiate() 
 {
-    //TODO Auto-generated method stub
     CInterface<IMultiThreadControl> segment_1;
     if( segment_1.Mount(this, IID_MULTI_THREAD_CONTROL) ) 
     {
@@ -162,10 +143,8 @@ bool electron::CConnectionSchedulerController::Initiate()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool electron::CConnectionSchedulerController::Shutdown() 
 {
-    //TODO Auto-generated method stub
     CInterface<IInstanceAliasContainer<U64> > segment_0;
     if( segment_0.Mount(this, IID_INSTANCE_ALIAS_CONTAINER) )
     {
@@ -216,10 +195,8 @@ bool electron::CConnectionSchedulerController::Shutdown()
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void electron::CConnectionSchedulerController::Retrieve(U32 index) 
 {
-    //TODO Auto-generated method stub
     if( index < amount )
     {
         U64 time = CMilisecondTimer::Now();
@@ -251,17 +228,13 @@ void electron::CConnectionSchedulerController::Retrieve(U32 index)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U64 electron::CConnectionSchedulerController::GetSpace() 
 {
-    //TODO Auto-generated method stub
     return outer_space;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U64 electron::CConnectionSchedulerController::Listen(const char * address, U16 port, U32 io_model, U64 message_queue) 
 {
-    //TODO Auto-generated method stub
     U64 result = 0;
     if( address && port && io_model && message_queue )
     {
@@ -292,10 +265,8 @@ U64 electron::CConnectionSchedulerController::Listen(const char * address, U16 p
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U64 electron::CConnectionSchedulerController::Connect(const char * address, U16 port, U32 io_model, U64 message_queue) 
 {
-    //TODO Auto-generated method stub
     U64 result = 0;
     if( address && port && io_model && message_queue )
     {
@@ -352,10 +323,8 @@ U64 electron::CConnectionSchedulerController::Connect(const char * address, U16 
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool electron::CConnectionSchedulerController::Send(U64 connector, CMessage * message) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     if( connector && message )
     {
@@ -375,10 +344,8 @@ bool electron::CConnectionSchedulerController::Send(U64 connector, CMessage * me
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool electron::CConnectionSchedulerController::Close(U64 name) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     if( name )
     {
@@ -415,17 +382,13 @@ bool electron::CConnectionSchedulerController::Close(U64 name)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void electron::CConnectionSchedulerController::OnConnectionLose(U64 name) 
 {
-    //TODO Auto-generated method stub
     disconnect[name % amount].Insert( name );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool electron::CConnectionSchedulerController::OnConnectionOpen(U64 l_name, U64 c_name) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     if( l_name && c_name )
     {
@@ -480,10 +443,8 @@ bool electron::CConnectionSchedulerController::OnConnectionOpen(U64 l_name, U64 
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void electron::CConnectionSchedulerController::OnReceive(U64 name) 
 {
-    //TODO Auto-generated method stub
     U32 index = name % amount; 
     connectors[index].Insert( name );
 

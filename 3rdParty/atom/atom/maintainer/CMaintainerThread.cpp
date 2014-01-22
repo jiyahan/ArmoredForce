@@ -6,42 +6,29 @@
 #include "../interface/IMaintainerTimeline.h"
 #include "../interface/IInstanceContainer.h"
 #include "../enumeration/INTERFACE_ID.h"
-//Begin section for file CMaintainerThread.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CMaintainerThread.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CMaintainerThread::CMaintainerThread() : 
 CThread("Maintainer"),nest(NULL),active(false)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CMaintainerThread::~CMaintainerThread() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CMaintainerThread::SetActive(bool value)
 {
-    //TODO Auto-generated method stub
     active = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CMaintainerThread::GetActive()
 {
-    //TODO Auto-generated method stub
     return active;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CMaintainerThread::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -54,10 +41,8 @@ int atom::CMaintainerThread::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CMaintainerThread::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -70,10 +55,8 @@ int atom::CMaintainerThread::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CMaintainerThread::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -86,10 +69,8 @@ int atom::CMaintainerThread::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CMaintainerThread::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -97,31 +78,23 @@ atom::IInterface * atom::CMaintainerThread::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CMaintainerThread::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) nest = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CMaintainerThread::OnThreadBegin() 
 {
-    //TODO Auto-generated method stub
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CMaintainerThread::OnThreadClose() 
 {
-    //TODO Auto-generated method stub
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U32 atom::CMaintainerThread::Run() 
 {
-    //TODO Auto-generated method stub
     CInterface<IInstanceContainer>  segment_1;
     CInterface<IMaintainerTimeline> segment_2;
 
@@ -178,25 +151,19 @@ U32 atom::CMaintainerThread::Run()
     return 0;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CMaintainerThread::OnBegin() 
 {
-    //TODO Auto-generated method stub
     SetActive( true );
     return Begin( TP_BELOW_NORMAL );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CMaintainerThread::OnClose() 
 {
-    //TODO Auto-generated method stub
     SetActive( false );
     Close( U64(INFINITE) );
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CMaintainerThread::OnAwake()
 {
-    //TODO Auto-generated method stub
 }

@@ -1,14 +1,9 @@
 #include "CTcpEpollModel.h"
 #include "../../enumeration/INTERFACE_ID.h"
-//Begin section for file CTcpEpollModel.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CTcpEpollModel.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpEpollModel::CTcpEpollModel() 
 {
-    //TODO Auto-generated method stub
 	implement.SetNest( this );
 	threads  .SetNest( this );
 	life     .SetNest( this );
@@ -16,24 +11,18 @@ atom::CTcpEpollModel::CTcpEpollModel()
 	listener .SetNest( this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpEpollModel::~CTcpEpollModel() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 const char * atom::CTcpEpollModel::ToString() 
 {
-    //TODO Auto-generated method stub
 	static char name[] = "Tcp Epoll Model";
     return name;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CTcpEpollModel::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     switch( iid )
     {

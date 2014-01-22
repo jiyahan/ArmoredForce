@@ -1,27 +1,18 @@
 #include "CLogExporter.h"
 #include "../utility/charset/CUtf8Charset.h"
 #include "../os/character/CCharacter.h"
-//Begin section for file CLogExporter.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CLogExporter.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CLogExporter::CLogExporter() : 
 nest(NULL)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CLogExporter::~CLogExporter() 
 {
-    //TODO Auto-generated method stub
 }
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CLogExporter::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -34,10 +25,8 @@ int atom::CLogExporter::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CLogExporter::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -50,10 +39,8 @@ int atom::CLogExporter::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CLogExporter::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -66,10 +53,8 @@ int atom::CLogExporter::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CLogExporter::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -77,17 +62,13 @@ atom::IInterface * atom::CLogExporter::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CLogExporter::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) nest = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CLogExporter::Bind(bool & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<ILogArchive> segment;
     if( segment.Mount(this, IID_LOG_ARCHIVE) )
     {
@@ -98,10 +79,8 @@ void atom::CLogExporter::Bind(bool & value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CLogExporter::Bind(char & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<ILogArchive> segment;
     if( segment.Mount(this, IID_LOG_ARCHIVE) )
     {
@@ -111,10 +90,8 @@ void atom::CLogExporter::Bind(char & value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CLogExporter::Bind(I08 & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<ILogArchive> segment;
     if( segment.Mount(this, IID_LOG_ARCHIVE) )
     {
@@ -124,10 +101,8 @@ void atom::CLogExporter::Bind(I08 & value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CLogExporter::Bind(I16 & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<ILogArchive> segment;
     if( segment.Mount(this, IID_LOG_ARCHIVE) )
     {
@@ -137,10 +112,8 @@ void atom::CLogExporter::Bind(I16 & value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CLogExporter::Bind(I32 & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<ILogArchive> segment;
     if( segment.Mount(this, IID_LOG_ARCHIVE) )
     {
@@ -150,10 +123,8 @@ void atom::CLogExporter::Bind(I32 & value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CLogExporter::Bind(I64 & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<ILogArchive> segment;
     if( segment.Mount(this, IID_LOG_ARCHIVE) )
     {
@@ -163,10 +134,8 @@ void atom::CLogExporter::Bind(I64 & value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CLogExporter::Bind(U08 & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<ILogArchive> segment;
     if( segment.Mount(this, IID_LOG_ARCHIVE) )
     {
@@ -176,10 +145,8 @@ void atom::CLogExporter::Bind(U08 & value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CLogExporter::Bind(U16 & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<ILogArchive> segment;
     if( segment.Mount(this, IID_LOG_ARCHIVE) )
     {
@@ -189,10 +156,8 @@ void atom::CLogExporter::Bind(U16 & value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CLogExporter::Bind(U32 & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<ILogArchive> segment;
     if( segment.Mount(this, IID_LOG_ARCHIVE) )
     {
@@ -202,10 +167,8 @@ void atom::CLogExporter::Bind(U32 & value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CLogExporter::Bind(U64 & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<ILogArchive> segment;
     if( segment.Mount(this, IID_LOG_ARCHIVE) )
     {
@@ -215,10 +178,8 @@ void atom::CLogExporter::Bind(U64 & value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CLogExporter::Bind(float & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<ILogArchive> segment;
     if( segment.Mount(this, IID_LOG_ARCHIVE) )
     {
@@ -228,10 +189,8 @@ void atom::CLogExporter::Bind(float & value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CLogExporter::Bind(double & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<ILogArchive> segment;
     if( segment.Mount(this, IID_LOG_ARCHIVE) )
     {
@@ -241,10 +200,8 @@ void atom::CLogExporter::Bind(double & value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CLogExporter::Bind(a_string & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<ILogArchive> segment;
     if( segment.Mount(this, IID_LOG_ARCHIVE) )
     {
@@ -261,10 +218,8 @@ void atom::CLogExporter::Bind(a_string & value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CLogExporter::Bind(a_wstring & value) 
 {
-    //TODO Auto-generated method stub
     CInterface<ILogArchive> segment;
     if( segment.Mount(this, IID_LOG_ARCHIVE) )
     {
@@ -276,10 +231,8 @@ void atom::CLogExporter::Bind(a_wstring & value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CLogExporter::Bind(void * buffer, U64 length) 
 {
-    //TODO Auto-generated method stub
     if( buffer && length )
     {
         CInterface<ILogArchive> segment;

@@ -6,28 +6,19 @@
 #include "../../interface/IInstanceContainer.h"
 #include "../../interface/IEventReceiver.h"
 #include "../../enumeration/INTERFACE_ID.h"
-//Begin section for file CEventSpaceController.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CEventSpaceController.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CEventSpaceController::CEventSpaceController() : 
 nest(NULL)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CEventSpaceController::~CEventSpaceController() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CEventSpaceController::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -40,10 +31,8 @@ int atom::CEventSpaceController::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CEventSpaceController::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -56,10 +45,8 @@ int atom::CEventSpaceController::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CEventSpaceController::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -72,10 +59,8 @@ int atom::CEventSpaceController::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CEventSpaceController::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -83,24 +68,18 @@ atom::IInterface * atom::CEventSpaceController::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CEventSpaceController::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) nest = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CEventSpaceController::Initiate() 
 {
-    //TODO Auto-generated method stub
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CEventSpaceController::Shutdown() 
 {
-    //TODO Auto-generated method stub
 	queue_entry.Enter();
 	queue.clear();
 	queue_entry.Leave();
@@ -112,10 +91,8 @@ bool atom::CEventSpaceController::Shutdown()
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CEventSpaceController::Attach(CObjectPtr & receiver, const char * name) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( receiver )
 	{
@@ -142,10 +119,8 @@ bool atom::CEventSpaceController::Attach(CObjectPtr & receiver, const char * nam
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CEventSpaceController::Detach(U64 receiver) 
 {
-    //TODO Auto-generated method stub
 	if( receiver )
 	{
 		CInterface<IInstanceContainer> segment;
@@ -164,10 +139,8 @@ void atom::CEventSpaceController::Detach(U64 receiver)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CEventSpaceController::OnEvent(const tagEvent & value) 
 {
-    //TODO Auto-generated method stub
 	// handle and source must not be empty;
 	bool result = value.handle && value.source && nest;
 
@@ -185,10 +158,8 @@ bool atom::CEventSpaceController::OnEvent(const tagEvent & value)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CEventSpaceController::OnProcess() 
 {
-    //TODO Auto-generated method stub
 	CEventSpaceControllerQueueBind events;
 
 	queue_entry.Enter();
@@ -230,10 +201,8 @@ void atom::CEventSpaceController::OnProcess()
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U64 atom::CEventSpaceController::GetTarget(a_string & name)
 {
-    //TODO Auto-generated method stub
 	U64 result = 0;
 	CCriticalSectionScope scope( alias_entry );
 	CEventSpaceControllerAliasBind::
@@ -244,10 +213,8 @@ U64 atom::CEventSpaceController::GetTarget(a_string & name)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CEventSpaceController::SendEvent(CObjectPtr & instance, tagEvent & value )
 {
-    //TODO Auto-generated method stub
 	if( instance != NULL )
 	{
 		CInterface<IEventReceiver> receiver;

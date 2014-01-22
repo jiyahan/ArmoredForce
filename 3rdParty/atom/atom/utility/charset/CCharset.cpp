@@ -1,13 +1,8 @@
 #include "CCharset.h"
-//Begin section for file CCharset.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CCharset.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CCharset::IsUtf8(const char * string) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( string )
 	{

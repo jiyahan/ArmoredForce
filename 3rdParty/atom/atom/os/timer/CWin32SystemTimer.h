@@ -1,8 +1,5 @@
 #ifndef CWIN32SYSTEMTIMER_H
 #define CWIN32SYSTEMTIMER_H
-//Begin section for file CWin32SystemTimer.h
-//TODO: Add definitions that you want preserved
-//End section for file CWin32SystemTimer.h
 #include "../../Common.h"
 #include "../../utility/stl/a_string.h"
 
@@ -14,18 +11,13 @@ namespace atom
 
 
 
-    //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
     class CWin32SystemTimer
     {
 
-        //Begin section for atom::CWin32SystemTimer
-        //TODO: Add attributes that you want preserved
-        //End section for atom::CWin32SystemTimer
 
         private:
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             I64 record;
 
 
@@ -33,26 +25,20 @@ namespace atom
 
         public:
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline CWin32SystemTimer() : record(0)
             {
-                //TODO Auto-generated method stub
             }
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline ~CWin32SystemTimer()
             {
-                //TODO Auto-generated method stub
             }
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline bool Record()
             {
-                //TODO Auto-generated method stub
                 #ifdef _WIN32
                 __time64_t value = 0;
                 _time64( &value ); record = value;
@@ -66,28 +52,22 @@ namespace atom
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline void SetRecord(I64 value)
             {
-                //TODO Auto-generated method stub
                 record = value;
             }
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline I64 GetRecord()
             {
-                //TODO Auto-generated method stub
                 return record;
             }
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline I64 GetElapsedTime()
             {
-                //TODO Auto-generated method stub
                 I64 result = 0;
 
                 #ifdef _WIN32
@@ -100,10 +80,8 @@ namespace atom
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline I64 GetElapsedTimeAndRecord()
             {
-                //TODO Auto-generated method stub
                 I64 result = 0;
 
                 #ifdef _WIN32
@@ -118,10 +96,8 @@ namespace atom
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline static I64 Now()
             {
-                //TODO Auto-generated method stub
                 I64 result = 0;
 
                 #ifdef _WIN32
@@ -134,10 +110,8 @@ namespace atom
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline static void TimeToString(I64 time, a_string & string)
             {
-                //TODO Auto-generated method stub
                 #ifdef _WIN32
                 tm desc;
                 memset( & desc, 0, sizeof(desc) );
@@ -158,10 +132,8 @@ namespace atom
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline static bool StringToTime(a_string & string, I64 & time)
             {
-                //TODO Auto-generated method stub
                 bool result = false;
 
                 #ifdef _WIN32

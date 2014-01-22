@@ -3,31 +3,22 @@
 #include "../../utility/tool/CInterface.h"
 #include "../../utility/tool/CInstanceUtility.h"
 #include "../../enumeration/INTERFACE_ID.h"
-//Begin section for file CTcpIocpModelThreads.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CTcpIocpModelThreads.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpIocpModelThreads::CTcpIocpModelThreads() : 
 nest(NULL)
 #ifdef _WIN32
 ,amount(IOCP_TH_RATIO)
 #endif
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpIocpModelThreads::~CTcpIocpModelThreads() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpIocpModelThreads::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -40,10 +31,8 @@ int atom::CTcpIocpModelThreads::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpIocpModelThreads::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -56,10 +45,8 @@ int atom::CTcpIocpModelThreads::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpIocpModelThreads::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -72,10 +59,8 @@ int atom::CTcpIocpModelThreads::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CTcpIocpModelThreads::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -83,17 +68,13 @@ atom::IInterface * atom::CTcpIocpModelThreads::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpIocpModelThreads::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) nest = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpModelThreads::OnBegin() 
 {
-    //TODO Auto-generated method stub
 	#ifdef _WIN32
     CObjectPtr object = 
         CInstanceUtility::MakeObject( nest );
@@ -120,10 +101,8 @@ bool atom::CTcpIocpModelThreads::OnBegin()
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpModelThreads::OnClose() 
 {
-    //TODO Auto-generated method stub
 	#ifdef _WIN32
     CObjectPtr object;
     for( size_t i = 0; i < amount; ++ i )
@@ -137,46 +116,34 @@ bool atom::CTcpIocpModelThreads::OnClose()
 	#endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpIocpModelThreads::OnAwake() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpModelThreads::OnBegin(U32 index) 
 {
-    //TODO Auto-generated method stub
 	UNREFERENCED_PARAMETER( index );
     return false;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpIocpModelThreads::OnClose(U32 index) 
 {
-    //TODO Auto-generated method stub
 	UNREFERENCED_PARAMETER( index );
     return false;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpIocpModelThreads::OnAwake(U32 index) 
 {
-    //TODO Auto-generated method stub
 	UNREFERENCED_PARAMETER( index );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpIocpModelThreads::SetThreadAmount(U32 value) 
 {
-    //TODO Auto-generated method stub
 	UNREFERENCED_PARAMETER( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U32 atom::CTcpIocpModelThreads::GetThreadAmount() 
 {
-    //TODO Auto-generated method stub
 	#ifdef _WIN32
 	return amount;
 	#else

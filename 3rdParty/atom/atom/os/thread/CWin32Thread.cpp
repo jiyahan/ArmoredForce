@@ -2,9 +2,6 @@
 #include "../callstack/CCallStack.h"
 #include "../timer/CSystemTimer.h"
 #include "../../utility/stl/a_string.h"
-//Begin section for file CWin32Thread.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CWin32Thread.cpp
 
 
 
@@ -122,31 +119,23 @@ unsigned __stdcall _Win32Entry(LPVOID argument)
 
 #endif
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CWin32Thread::CWin32Thread(const char * name) : 
 handle(NULL)
 {
-    //TODO Auto-generated method stub
     if( name ) thread = name;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CWin32Thread::~CWin32Thread() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 const char * atom::CWin32Thread::GetName() 
 {
-    //TODO Auto-generated method stub
     return thread.c_str();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CWin32Thread::Begin(U08 priority) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
 
     #ifdef _WIN32
@@ -207,10 +196,8 @@ bool atom::CWin32Thread::Begin(U08 priority)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CWin32Thread::Close(U64 timeout) 
 {
-    //TODO Auto-generated method stub
 
     #ifdef _WIN32
     region.Enter();
@@ -253,31 +240,23 @@ bool atom::CWin32Thread::Close(U64 timeout)
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CWin32Thread::OnThreadBegin() 
 {
-    //TODO Auto-generated method stub
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CWin32Thread::OnThreadClose() 
 {
-    //TODO Auto-generated method stub
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U32 atom::CWin32Thread::Run() 
 {
-    //TODO Auto-generated method stub
     return 0;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CWin32Thread::Sleep(U64 milisecond) 
 {
-    //TODO Auto-generated method stub
     #ifdef _WIN32
     ::Sleep( static_cast<DWORD>(milisecond) );
     #else
@@ -285,10 +264,8 @@ void atom::CWin32Thread::Sleep(U64 milisecond)
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U64 atom::CWin32Thread::GetCurrentThreadID() 
 {
-    //TODO Auto-generated method stub
     #ifdef _WIN32
     return ::GetCurrentThreadId();
     #else

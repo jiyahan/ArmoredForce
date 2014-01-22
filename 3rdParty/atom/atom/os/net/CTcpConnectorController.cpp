@@ -8,12 +8,8 @@
 #include "../../interface/IEventEmitter.h"
 #include "../../enumeration/EVENT_ID.h"
 #include "../../enumeration/INTERFACE_ID.h"
-//Begin section for file CTcpConnectorController.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CTcpConnectorController.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpConnectorController::CTcpConnectorController() : 
 nest(NULL),
 #ifdef _SHIPPING_
@@ -21,20 +17,15 @@ cast(NULL),
 #endif
 active(false),iomold(0),socket(INVALID_SOCKET)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpConnectorController::~CTcpConnectorController() 
 {
-    //TODO Auto-generated method stub
 	Shut();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpConnectorController::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -54,10 +45,8 @@ int atom::CTcpConnectorController::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpConnectorController::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -77,10 +66,8 @@ int atom::CTcpConnectorController::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CTcpConnectorController::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -100,10 +87,8 @@ int atom::CTcpConnectorController::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CTcpConnectorController::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -111,10 +96,8 @@ atom::IInterface * atom::CTcpConnectorController::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpConnectorController::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		nest = value;
@@ -124,10 +107,8 @@ void atom::CTcpConnectorController::SetNest(IInterface * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpConnectorController::Open(const char * host, U16 port, U32 mold) 
 {
-    //TODO Auto-generated method stub
 	// if argument is not valid, return false;
 	if( !nest || !host || !port || !mold ) {
 		return false;
@@ -215,10 +196,8 @@ bool atom::CTcpConnectorController::Open(const char * host, U16 port, U32 mold)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpConnectorController::Open(SOCKET hs, U32 io) 
 {
-    //TODO Auto-generated method stub
 	if( hs == INVALID_SOCKET || !io || !nest ) {
 		return 0;
 	}
@@ -295,10 +274,8 @@ bool atom::CTcpConnectorController::Open(SOCKET hs, U32 io)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpConnectorController::Shut() 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	U64  object = CInstanceUtility::GetInstanceName( nest );
 	region.Enter();
@@ -353,66 +330,50 @@ void atom::CTcpConnectorController::Shut()
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CTcpConnectorController::GetActive() 
 {
-    //TODO Auto-generated method stub
 	CCriticalSectionScope scope( region );
 	return active;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 SOCKET atom::CTcpConnectorController::GetSocket() 
 {
-    //TODO Auto-generated method stub
 	CCriticalSectionScope scope( region );
 	return socket;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U32 atom::CTcpConnectorController::GetIOMold() 
 {
-    //TODO Auto-generated method stub
 	CCriticalSectionScope scope( region );
 	return iomold;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::a_string atom::CTcpConnectorController::GetSelfAddress() 
 {
-    //TODO Auto-generated method stub
 	CCriticalSectionScope scope( region );
 	return domain.host;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U16 atom::CTcpConnectorController::GetSelfPort() 
 {
-    //TODO Auto-generated method stub
 	CCriticalSectionScope scope( region );
 	return domain.port;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::a_string atom::CTcpConnectorController::GetPeerAddress() 
 {
-    //TODO Auto-generated method stub
 	CCriticalSectionScope scope( region );
 	return remote.host;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U16 atom::CTcpConnectorController::GetPeerPort() 
 {
-    //TODO Auto-generated method stub
 	CCriticalSectionScope scope( region );
 	return remote.port;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CTcpConnectorController::Update() 
 {
-    //TODO Auto-generated method stub
 	sockaddr_in peer;
 	sockaddr_in self;
 

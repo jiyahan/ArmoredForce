@@ -1,14 +1,9 @@
 #include "CConnectorStub.h"
 #include "../enumeration/INTERFACE_ID.h"
-//Begin section for file CConnectorStub.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CConnectorStub.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 electron::CConnectorStub::CConnectorStub() 
 {
-    //TODO Auto-generated method stub
     receiver  .SetNest( this );
     emitter   .SetNest( this );
     frame     .SetNest( this );
@@ -18,24 +13,18 @@ electron::CConnectorStub::CConnectorStub()
     statistics.SetNest( this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 electron::CConnectorStub::~CConnectorStub() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 const char * electron::CConnectorStub::ToString() 
 {
-    //TODO Auto-generated method stub
     static char name[] = "Connector Stub";
     return name;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 IInterface * electron::CConnectorStub::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     switch( iid )
     {

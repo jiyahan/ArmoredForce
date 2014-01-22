@@ -4,31 +4,22 @@
 #include "../../utility/tool/CCriticalSectionScope.h"
 #include "../../interface/IEventReceiver.h"
 #include "../../enumeration/INTERFACE_ID.h"
-//Begin section for file CEventDirectEmitter.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CEventDirectEmitter.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CEventDirectEmitter::CEventDirectEmitter() : 
 nest(NULL)
 #ifdef _SHIPPING_
 ,cast(NULL)
 #endif
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CEventDirectEmitter::~CEventDirectEmitter() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CEventDirectEmitter::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -48,10 +39,8 @@ int atom::CEventDirectEmitter::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CEventDirectEmitter::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -71,10 +60,8 @@ int atom::CEventDirectEmitter::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CEventDirectEmitter::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -94,10 +81,8 @@ int atom::CEventDirectEmitter::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CEventDirectEmitter::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -105,10 +90,8 @@ atom::IInterface * atom::CEventDirectEmitter::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CEventDirectEmitter::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		nest = value;
@@ -118,18 +101,14 @@ void atom::CEventDirectEmitter::SetNest(IInterface * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CEventDirectEmitter::Attach(U64 object) 
 {
-    //TODO Auto-generated method stub
 	CObjectPtr instance = CInstanceFactory::GetInstance() -> Inquire( object );
 	return Attach( instance );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CEventDirectEmitter::Attach(CObjectPtr & object) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	CCriticalSectionScope scope( section );
 	if( object && node == NULL ) {
@@ -138,18 +117,14 @@ bool atom::CEventDirectEmitter::Attach(CObjectPtr & object)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CEventDirectEmitter::Detach() 
 {
-    //TODO Auto-generated method stub
 	CCriticalSectionScope scope( section );
     node = NULL;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CEventDirectEmitter::Report(const tagEvent & value) 
 {
-    //TODO Auto-generated method stub
 	bool result = false; 
 	CCriticalSectionScope scope( section );
 	if( node )
@@ -162,10 +137,8 @@ bool atom::CEventDirectEmitter::Report(const tagEvent & value)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CEventDirectEmitter::Report(const char * target, const tagEvent & value) 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( target )
 	{

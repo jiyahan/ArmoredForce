@@ -1,8 +1,5 @@
 #ifndef COBJECTCACHESET_H
 #define COBJECTCACHESET_H
-//Begin section for file CObjectCacheSet.h
-//TODO: Add definitions that you want preserved
-//End section for file CObjectCacheSet.h
 #include "CObjectCacheSetBind.h"
 #include "../tool/CObjectPtr.h"
 #include "../../pattern/factory/CInstanceFactory.h"
@@ -15,18 +12,13 @@ namespace atom
 
 
 
-    //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
     class CObjectCacheSet
     {
 
-        //Begin section for atom::CObjectCacheSet
-        //TODO: Add attributes that you want preserved
-        //End section for atom::CObjectCacheSet
 
         private:
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             CObjectCacheSetBind objects[CONTAINER_QUEUE];
 
 
@@ -34,27 +26,21 @@ namespace atom
 
         public:
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline CObjectCacheSet()
             {
-                //TODO Auto-generated method stub
             }
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline ~CObjectCacheSet() 
             {
-                //TODO Auto-generated method stub
                 Release();
             }
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline CObjectPtr Inquire(U64 name)
             {
-                //TODO Auto-generated method stub
                 size_t offset = name % CONTAINER_QUEUE;
 
                 // 先确认是否存在于队列内；
@@ -82,10 +68,8 @@ namespace atom
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline void ClearUp(U64 name)
             {
-                //TODO Auto-generated method stub
                 size_t offset = name % CONTAINER_QUEUE;
                 CObjectCacheSetBind::
                     iterator it = objects[offset].find( name );
@@ -97,10 +81,8 @@ namespace atom
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline void Recycle() 
             {
-                //TODO Auto-generated method stub
                 for( size_t i = 0; i < CONTAINER_QUEUE; ++ i )
                 {
                     // 如果队列为空，则跳过；
@@ -124,10 +106,8 @@ namespace atom
 
 
 
-            //@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
             inline void Release()
             {
-                //TODO Auto-generated method stub
                 for( size_t i = 0; i < CONTAINER_QUEUE; ++ i )
                 {
                     for( CObjectCacheSetBind::iterator

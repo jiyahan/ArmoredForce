@@ -9,28 +9,19 @@
 #include "../../utility/xml/CXmlDocument.h"
 #include "../../utility/xml/CXmlElement.h"
 #include "../../enumeration/OBJECT_ID.h"
-//Begin section for file CAtomInstanceAllocator.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CAtomInstanceAllocator.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CAtomInstanceAllocator::CAtomInstanceAllocator() : 
 nest(NULL)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CAtomInstanceAllocator::~CAtomInstanceAllocator() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CAtomInstanceAllocator::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -43,10 +34,8 @@ int atom::CAtomInstanceAllocator::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CAtomInstanceAllocator::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -59,10 +48,8 @@ int atom::CAtomInstanceAllocator::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CAtomInstanceAllocator::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -75,10 +62,8 @@ int atom::CAtomInstanceAllocator::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CAtomInstanceAllocator::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -86,17 +71,13 @@ atom::IInterface * atom::CAtomInstanceAllocator::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CAtomInstanceAllocator::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) nest = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CReferencedObject * atom::CAtomInstanceAllocator::Product(U32 type) 
 {
-    //TODO Auto-generated method stub
 	CReferencedObject * result = NULL;
 	if( type )
 	{
@@ -136,17 +117,13 @@ atom::CReferencedObject * atom::CAtomInstanceAllocator::Product(U32 type)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CAtomInstanceAllocator::Destroy(CReferencedObject * value) 
 {
-    //TODO Auto-generated method stub
 	SAFE_DELETE( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CAtomInstanceAllocator::Confine(U32 & lower, U32 & upper) 
 {
-    //TODO Auto-generated method stub
 	lower = OID_EVENT_SPACE;
 	upper = OID_ATOM_END;
 }

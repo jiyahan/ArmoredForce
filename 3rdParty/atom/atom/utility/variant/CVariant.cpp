@@ -1,132 +1,93 @@
 #include "CVariant.h"
 #include "../../os/character/CCharacter.h"
 #include "../../enumeration/VARIANT_TYPE.h"
-//Begin section for file CVariant.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CVariant.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::CVariant() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::CVariant(const CVariant & value) 
 {
-    //TODO Auto-generated method stub
 	*this = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::CVariant(I08 value) 
 {
-    //TODO Auto-generated method stub
 	*this = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::CVariant(I16 value) 
 {
-    //TODO Auto-generated method stub
 	*this = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::CVariant(I32 value) 
 {
-    //TODO Auto-generated method stub
 	*this = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::CVariant(I64 value) 
 {
-    //TODO Auto-generated method stub
 	*this = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::CVariant(U08 value) 
 {
-    //TODO Auto-generated method stub
 	*this = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::CVariant(U16 value) 
 {
-    //TODO Auto-generated method stub
 	*this = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::CVariant(U32 value) 
 {
-    //TODO Auto-generated method stub
 	*this = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::CVariant(U64 value) 
 {
-    //TODO Auto-generated method stub
 	*this = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::CVariant(float value) 
 {
-    //TODO Auto-generated method stub
 	*this = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::CVariant(double value) 
 {
-    //TODO Auto-generated method stub
 	*this = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::CVariant(const char * value) 
 {
-    //TODO Auto-generated method stub
 	*this = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::CVariant(const wchar_t * value) 
 {
-    //TODO Auto-generated method stub
 	*this = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::CVariant(const CMemory & value) 
 {
-    //TODO Auto-generated method stub
 	*this = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::~CVariant() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U32 atom::CVariant::Type() const
 {
-    //TODO Auto-generated method stub
 	return variant.type;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 size_t atom::CVariant::Size() const
 {
-    //TODO Auto-generated method stub
 	size_t result = 0;
 	switch( variant.type )
 	{
@@ -148,20 +109,16 @@ size_t atom::CVariant::Size() const
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CVariant::Clear() 
 {
-    //TODO Auto-generated method stub
 	variant.type   = VT_UNKNOW;
 	variant.base.u = 0;
 	variant.data.Clear();
 	convert.Clear();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::operator I08()  const
 {
-    //TODO Auto-generated method stub
 	I08 result = 0;
 	switch( variant.type )
 	{
@@ -193,10 +150,8 @@ atom::CVariant::operator I08()  const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::operator I16()  const
 {
-    //TODO Auto-generated method stub
 	I16 result = 0;
 	switch( variant.type )
 	{
@@ -228,10 +183,8 @@ atom::CVariant::operator I16()  const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::operator I32()  const
 {
-    //TODO Auto-generated method stub
 	I32 result = 0;
 	switch( variant.type )
 	{
@@ -263,10 +216,8 @@ atom::CVariant::operator I32()  const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::operator I64()  const
 {
-    //TODO Auto-generated method stub
 	I64 result = 0;
 	switch( variant.type )
 	{
@@ -308,10 +259,8 @@ atom::CVariant::operator I64()  const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::operator U08()  const
 {
-    //TODO Auto-generated method stub
 	U08 result = 0;
 	switch( variant.type )
 	{
@@ -343,10 +292,8 @@ atom::CVariant::operator U08()  const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::operator U16()  const
 {
-    //TODO Auto-generated method stub
 	U16 result = 0;
 	switch( variant.type )
 	{
@@ -378,10 +325,8 @@ atom::CVariant::operator U16()  const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::operator U32()  const
 {
-    //TODO Auto-generated method stub
 	U32 result = 0;
 	switch( variant.type )
 	{
@@ -413,10 +358,8 @@ atom::CVariant::operator U32()  const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::operator U64()  const
 {
-    //TODO Auto-generated method stub
 	U64 result = 0;
 	switch( variant.type )
 	{
@@ -458,10 +401,8 @@ atom::CVariant::operator U64()  const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::operator float()  const
 {
-    //TODO Auto-generated method stub
 	float result = 0.0f;
 	switch( variant.type )
 	{
@@ -493,10 +434,8 @@ atom::CVariant::operator float()  const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::operator double()  const
 {
-    //TODO Auto-generated method stub
 	double result = 0.0;
 	switch( variant.type )
 	{
@@ -528,10 +467,8 @@ atom::CVariant::operator double()  const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::operator const char *()  const
 {
-    //TODO Auto-generated method stub
 	char * result = NULL;
 	switch( variant.type )
 	{
@@ -615,10 +552,8 @@ atom::CVariant::operator const char *()  const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::operator const wchar_t *()  const
 {
-    //TODO Auto-generated method stub
 	wchar_t * result = NULL;
 	switch( variant.type )
 	{
@@ -702,117 +637,93 @@ atom::CVariant::operator const wchar_t *()  const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant::operator atom::CMemory()  const
 {
-    //TODO Auto-generated method stub
 	return variant.data;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator=(I08 value) 
 {
-    //TODO Auto-generated method stub
 	Clear();
 	variant.type   = VT_S_INT;
 	variant.base.i = value;
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator=(I16 value) 
 {
-    //TODO Auto-generated method stub
 	Clear();
 	variant.type   = VT_S_INT;
 	variant.base.i = value;
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator=(I32 value) 
 {
-    //TODO Auto-generated method stub
 	Clear();
 	variant.type   = VT_S_INT;
 	variant.base.i = value;
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator=(I64 value) 
 {
-    //TODO Auto-generated method stub
 	Clear();
 	variant.type   = VT_S_INT;
 	variant.base.i = value;
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator=(U08 value) 
 {
-    //TODO Auto-generated method stub
 	Clear();
 	variant.type   = VT_U_INT;
 	variant.base.u = value;
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator=(U16 value) 
 {
-    //TODO Auto-generated method stub
 	Clear();
 	variant.type   = VT_U_INT;
 	variant.base.u = value;
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator=(U32 value) 
 {
-    //TODO Auto-generated method stub
 	Clear();
 	variant.type   = VT_U_INT;
 	variant.base.u = value;
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator=(U64 value) 
 {
-    //TODO Auto-generated method stub
 	Clear();
 	variant.type   = VT_U_INT;
 	variant.base.u = value;
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator=(float value) 
 {
-    //TODO Auto-generated method stub
 	Clear();
 	variant.type   = VT_FLOAT;
 	variant.base.f = value;
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator=(double value) 
 {
-    //TODO Auto-generated method stub
 	Clear();
 	variant.type   = VT_FLOAT;
 	variant.base.f = value;
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator=(const char * value) 
 {
-    //TODO Auto-generated method stub
 	Clear();
 	U08 type = ST_TXT;
 	if( value ) {
@@ -864,10 +775,8 @@ atom::CVariant & atom::CVariant::operator=(const char * value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator=(const wchar_t * value) 
 {
-    //TODO Auto-generated method stub
 	Clear();
 	U08 type = ST_TXT;
 	if( value ) {
@@ -920,20 +829,16 @@ atom::CVariant & atom::CVariant::operator=(const wchar_t * value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator=(const CMemory & value) 
 {
-    //TODO Auto-generated method stub
 	Clear();
 	variant.type = VT_BLOCK;
 	variant.data = value.Clone();
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator=(const CVariant & value) 
 {
-    //TODO Auto-generated method stub
 	Clear();
 	variant.type = value.variant.type;
 	variant.base = value.variant.base;
@@ -942,31 +847,23 @@ atom::CVariant & atom::CVariant::operator=(const CVariant & value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator==(I08 value)  const
 {
-    //TODO Auto-generated method stub
 	return ( *this ) == static_cast<I64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator==(I16 value)  const
 {
-    //TODO Auto-generated method stub
 	return ( *this ) == static_cast<I64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator==(I32 value)  const
 {
-    //TODO Auto-generated method stub
 	return ( *this ) == static_cast<I64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator==(I64 value)  const
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( variant.type )
 	{
@@ -990,31 +887,23 @@ bool atom::CVariant::operator==(I64 value)  const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator==(U08 value)  const
 {
-    //TODO Auto-generated method stub
 	return ( *this ) == static_cast<U64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator==(U16 value)  const
 {
-    //TODO Auto-generated method stub
 	return ( *this ) == static_cast<U64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator==(U32 value)  const
 {
-    //TODO Auto-generated method stub
 	return ( *this ) == static_cast<U64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator==(U64 value)  const
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( variant.type )
 	{
@@ -1038,17 +927,13 @@ bool atom::CVariant::operator==(U64 value)  const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator==(float value)  const
 {
-    //TODO Auto-generated method stub
 	return ( *this ) == static_cast<double>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator==(double value)  const
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( variant.type )
 	{
@@ -1072,10 +957,8 @@ bool atom::CVariant::operator==(double value)  const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator==(const char * value)  const
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( value )
 	{
@@ -1098,10 +981,8 @@ bool atom::CVariant::operator==(const char * value)  const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator==(const wchar_t * value)  const
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( value )
 	{
@@ -1124,10 +1005,8 @@ bool atom::CVariant::operator==(const wchar_t * value)  const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator==(const CMemory & value)  const
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( variant.type == VT_BLOCK )
 	{
@@ -1138,10 +1017,8 @@ bool atom::CVariant::operator==(const CMemory & value)  const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator==(const CVariant & value)  const
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( value.variant.type )
 	{
@@ -1191,34 +1068,26 @@ bool atom::CVariant::operator==(const CVariant & value)  const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator+=(I08 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) += static_cast<I64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator+=(I16 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) += static_cast<I64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator+=(I32 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) += static_cast<I64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator+=(I64 value) 
 {
-    //TODO Auto-generated method stub
 	switch( variant.type )
 	{
 	case VT_S_INT:
@@ -1246,34 +1115,26 @@ atom::CVariant & atom::CVariant::operator+=(I64 value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator+=(U08 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) += static_cast<U64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator+=(U16 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) += static_cast<U64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator+=(U32 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) += static_cast<U64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator+=(U64 value) 
 {
-    //TODO Auto-generated method stub
 	switch( variant.type )
 	{
 	case VT_S_INT:
@@ -1301,18 +1162,14 @@ atom::CVariant & atom::CVariant::operator+=(U64 value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator+=(float value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) += static_cast<double>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator+=(double value) 
 {
-    //TODO Auto-generated method stub
 	switch( variant.type )
 	{
 	case VT_S_INT:
@@ -1342,10 +1199,8 @@ atom::CVariant & atom::CVariant::operator+=(double value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator+=(const char * value) 
 {
-    //TODO Auto-generated method stub
 	if( value )
 	{
 		switch( variant.type )
@@ -1428,10 +1283,8 @@ atom::CVariant & atom::CVariant::operator+=(const char * value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator+=(const wchar_t * value) 
 {
-    //TODO Auto-generated method stub
 	if( value )
 	{
 		switch( variant.type )
@@ -1514,10 +1367,8 @@ atom::CVariant & atom::CVariant::operator+=(const wchar_t * value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator+=(const CMemory & value) 
 {
-    //TODO Auto-generated method stub
 	if( value )
 	{
 		switch( variant.type )
@@ -1566,10 +1417,8 @@ atom::CVariant & atom::CVariant::operator+=(const CMemory & value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator+=(const CVariant & value) 
 {
-    //TODO Auto-generated method stub
 	switch( value.variant.type )
 	{
 	case VT_S_INT:
@@ -1618,34 +1467,26 @@ atom::CVariant & atom::CVariant::operator+=(const CVariant & value)
     return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator-=(I08 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) -= static_cast<I64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator-=(I16 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) -= static_cast<I64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator-=(I32 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) -= static_cast<I64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator-=(I64 value) 
 {
-    //TODO Auto-generated method stub
 	switch( variant.type )
 	{
 	case VT_S_INT:
@@ -1673,34 +1514,26 @@ atom::CVariant & atom::CVariant::operator-=(I64 value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator-=(U08 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) -= static_cast<U64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator-=(U16 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) -= static_cast<U64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator-=(U32 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) -= static_cast<U64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator-=(U64 value) 
 {
-    //TODO Auto-generated method stub
 	switch( variant.type )
 	{
 	case VT_S_INT:
@@ -1728,18 +1561,14 @@ atom::CVariant & atom::CVariant::operator-=(U64 value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator-=(float value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) -= static_cast<double>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator-=(double value) 
 {
-    //TODO Auto-generated method stub
 	switch( variant.type )
 	{
 	case VT_S_INT:
@@ -1769,10 +1598,8 @@ atom::CVariant & atom::CVariant::operator-=(double value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator-=(const char * value) 
 {
-    //TODO Auto-generated method stub
 	if( value )
 	{
 		U08 type = Parse( value );
@@ -1791,10 +1618,8 @@ atom::CVariant & atom::CVariant::operator-=(const char * value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator-=(const wchar_t * value) 
 {
-    //TODO Auto-generated method stub
 	if( value )
 	{
 		U08 type = Parse( value );
@@ -1813,18 +1638,14 @@ atom::CVariant & atom::CVariant::operator-=(const wchar_t * value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator-=(const CMemory & value) 
 {
-    //TODO Auto-generated method stub
 	UNREFERENCED_PARAMETER( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator-=(const CVariant & value) 
 {
-    //TODO Auto-generated method stub
 	switch( value.variant.type )
 	{
 	case VT_S_INT:
@@ -1873,34 +1694,26 @@ atom::CVariant & atom::CVariant::operator-=(const CVariant & value)
     return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator*=(I08 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) *= static_cast<I64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator*=(I16 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) *= static_cast<I64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator*=(I32 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) *= static_cast<I64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator*=(I64 value) 
 {
-    //TODO Auto-generated method stub
 	switch( variant.type )
 	{
 	case VT_S_INT:
@@ -1928,34 +1741,26 @@ atom::CVariant & atom::CVariant::operator*=(I64 value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator*=(U08 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) *= static_cast<U64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator*=(U16 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) *= static_cast<U64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator*=(U32 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) *= static_cast<U64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator*=(U64 value) 
 {
-    //TODO Auto-generated method stub
 	switch( variant.type )
 	{
 	case VT_S_INT:
@@ -1983,18 +1788,14 @@ atom::CVariant & atom::CVariant::operator*=(U64 value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator*=(float value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) *= static_cast<double>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator*=(double value) 
 {
-    //TODO Auto-generated method stub
 	switch( variant.type )
 	{
 	case VT_S_INT:
@@ -2024,10 +1825,8 @@ atom::CVariant & atom::CVariant::operator*=(double value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator*=(const char * value) 
 {
-    //TODO Auto-generated method stub
 	if( value )
 	{
 		U08 type = Parse( value );
@@ -2046,10 +1845,8 @@ atom::CVariant & atom::CVariant::operator*=(const char * value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator*=(const wchar_t * value) 
 {
-    //TODO Auto-generated method stub
 	if( value )
 	{
 		U08 type = Parse( value );
@@ -2068,18 +1865,14 @@ atom::CVariant & atom::CVariant::operator*=(const wchar_t * value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator*=(const CMemory & value) 
 {
-    //TODO Auto-generated method stub
 	UNREFERENCED_PARAMETER( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator*=(const CVariant & value) 
 {
-    //TODO Auto-generated method stub
 	switch( value.variant.type )
 	{
 	case VT_S_INT:
@@ -2128,34 +1921,26 @@ atom::CVariant & atom::CVariant::operator*=(const CVariant & value)
     return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator/=(I08 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) /= static_cast<I64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator/=(I16 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) /= static_cast<I64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator/=(I32 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) /= static_cast<I64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator/=(I64 value) 
 {
-    //TODO Auto-generated method stub
 	// if value is zero, assign paramater as double value;
 	if( value == 0 ) {
 		return ( *this ) /= 0.0;
@@ -2188,34 +1973,26 @@ atom::CVariant & atom::CVariant::operator/=(I64 value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator/=(U08 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) /= static_cast<U64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator/=(U16 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) /= static_cast<U64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator/=(U32 value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) /= static_cast<U64>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator/=(U64 value) 
 {
-    //TODO Auto-generated method stub
 	// if value is zero, assign paramater as double value;
 	if( value == 0 ) {
 		return ( *this ) /= 0.0;
@@ -2248,18 +2025,14 @@ atom::CVariant & atom::CVariant::operator/=(U64 value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator/=(float value) 
 {
-    //TODO Auto-generated method stub
 	( *this ) /= static_cast<double>( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator/=(double value) 
 {
-    //TODO Auto-generated method stub
 	switch( variant.type )
 	{
 	case VT_S_INT:
@@ -2289,10 +2062,8 @@ atom::CVariant & atom::CVariant::operator/=(double value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator/=(const char * value) 
 {
-    //TODO Auto-generated method stub
 	if( value )
 	{
 		U08 type = Parse( value );
@@ -2311,10 +2082,8 @@ atom::CVariant & atom::CVariant::operator/=(const char * value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator/=(const wchar_t * value) 
 {
-    //TODO Auto-generated method stub
 	if( value )
 	{
 		U08 type = Parse( value );
@@ -2333,18 +2102,14 @@ atom::CVariant & atom::CVariant::operator/=(const wchar_t * value)
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator/=(const CMemory & value) 
 {
-    //TODO Auto-generated method stub
 	UNREFERENCED_PARAMETER( value );
 	return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant & atom::CVariant::operator/=(const CVariant & value) 
 {
-    //TODO Auto-generated method stub
 	switch( value.variant.type )
 	{
 	case VT_S_INT:
@@ -2393,1003 +2158,779 @@ atom::CVariant & atom::CVariant::operator/=(const CVariant & value)
     return( *this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(const atom::CVariant & l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(const atom::CVariant & l, I08 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(I08 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(const atom::CVariant & l, I16 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(I16 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(const atom::CVariant & l, I32 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(I32 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(const atom::CVariant & l, I64 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(I64 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(const atom::CVariant & l, U08 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(U08 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(const atom::CVariant & l, U16 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(U16 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(const atom::CVariant & l, U32 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(U32 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(const atom::CVariant & l, U64 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(U64 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(const atom::CVariant & l, float r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(float l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(const atom::CVariant & l, double r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(double l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(const atom::CVariant & l, const char * r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(const char * l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(const atom::CVariant & l, const wchar_t * r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(const wchar_t * l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(const atom::CVariant & l, const atom::CMemory & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator+(const atom::CMemory & l, const atom::CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result += r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(const atom::CVariant & l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(const atom::CVariant & l, I08 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(I08 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(const atom::CVariant & l, I16 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(I16 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(const atom::CVariant & l, I32 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(I32 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(const atom::CVariant & l, I64 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(I64 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(const atom::CVariant & l, U08 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(U08 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(const atom::CVariant & l, U16 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(U16 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(const atom::CVariant & l, U32 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(U32 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(const atom::CVariant & l, U64 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(U64 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(const atom::CVariant & l, float r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(float l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(const atom::CVariant & l, double r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(double l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(const atom::CVariant & l, const char * r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(const char * l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(const atom::CVariant & l, const wchar_t * r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(const wchar_t * l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(const atom::CVariant & l, const atom::CMemory & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator-(const atom::CMemory & l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result -= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(const atom::CVariant & l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(const atom::CVariant & l, I08 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(I08 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(const atom::CVariant & l, I16 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(I16 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(const atom::CVariant & l, I32 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(I32 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(const atom::CVariant & l, I64 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(I64 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(const atom::CVariant & l, U08 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(U08 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(const atom::CVariant & l, U16 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(U16 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(const atom::CVariant & l, U32 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(U32 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(const atom::CVariant & l, U64 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(U64 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(const atom::CVariant & l, float r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(float l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(const atom::CVariant & l, double r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(double l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(const atom::CVariant & l, const char * r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(const char * l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(const atom::CVariant & l, const wchar_t * r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(const wchar_t * l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(const atom::CVariant & l, const atom::CMemory & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator*(const atom::CMemory & l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result *= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(const atom::CVariant & l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(const atom::CVariant & l, I08 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(I08 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(const atom::CVariant & l, I16 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(I16 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(const atom::CVariant & l, I32 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(I32 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(const atom::CVariant & l, I64 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(I64 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(const atom::CVariant & l, U08 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(U08 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(const atom::CVariant & l, U16 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(U16 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(const atom::CVariant & l, U32 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(U32 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(const atom::CVariant & l, U64 r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(U64 l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(const atom::CVariant & l, float r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(float l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(const atom::CVariant & l, double r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(double l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(const atom::CVariant & l, const char * r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(const char * l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(const atom::CVariant & l, const wchar_t * r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(const wchar_t * l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(const atom::CVariant & l, const atom::CMemory & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CVariant atom::operator/(const atom::CMemory & l, const atom::CVariant & r)
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	result /= r;
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<(I08 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) < static_cast<I64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<(I16 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) < static_cast<I64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<(I32 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) < static_cast<I64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<(I64 value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( variant.type )
 	{
@@ -3413,31 +2954,23 @@ bool atom::CVariant::operator<(I64 value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<(U08 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) < static_cast<U64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<(U16 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) < static_cast<U64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<(U32 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) < static_cast<U64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<(U64 value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( variant.type )
 	{
@@ -3461,17 +2994,13 @@ bool atom::CVariant::operator<(U64 value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<(float value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) < static_cast<double>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<(double value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( variant.type )
 	{
@@ -3495,10 +3024,8 @@ bool atom::CVariant::operator<(double value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<(const char * value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( value )
 	{
@@ -3521,10 +3048,8 @@ bool atom::CVariant::operator<(const char * value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<(const wchar_t * value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( value )
 	{
@@ -3547,10 +3072,8 @@ bool atom::CVariant::operator<(const wchar_t * value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<(const CMemory & value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( variant.type == VT_BLOCK )
 	{
@@ -3561,10 +3084,8 @@ bool atom::CVariant::operator<(const CMemory & value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<(const CVariant & value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( value.variant.type )
 	{
@@ -3614,31 +3135,23 @@ bool atom::CVariant::operator<(const CVariant & value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<=(I08 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) <= static_cast<I64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<=(I16 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) <= static_cast<I64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<=(I32 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) <= static_cast<I64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<=(I64 value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( variant.type )
 	{
@@ -3662,31 +3175,23 @@ bool atom::CVariant::operator<=(I64 value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<=(U08 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) <= static_cast<U64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<=(U16 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) <= static_cast<U64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<=(U32 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) <= static_cast<U64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<=(U64 value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( variant.type )
 	{
@@ -3710,17 +3215,13 @@ bool atom::CVariant::operator<=(U64 value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<=(float value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) <= static_cast<double>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<=(double value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( variant.type )
 	{
@@ -3744,10 +3245,8 @@ bool atom::CVariant::operator<=(double value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<=(const char * value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( value )
 	{
@@ -3770,10 +3269,8 @@ bool atom::CVariant::operator<=(const char * value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<=(const wchar_t * value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( value )
 	{
@@ -3796,10 +3293,8 @@ bool atom::CVariant::operator<=(const wchar_t * value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<=(const CMemory & value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( variant.type == VT_BLOCK )
 	{
@@ -3810,10 +3305,8 @@ bool atom::CVariant::operator<=(const CMemory & value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator<=(const CVariant & value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( value.variant.type )
 	{
@@ -3863,31 +3356,23 @@ bool atom::CVariant::operator<=(const CVariant & value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>(I08 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) > static_cast<I64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>(I16 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) > static_cast<I64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>(I32 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) > static_cast<I64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>(I64 value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( variant.type )
 	{
@@ -3911,31 +3396,23 @@ bool atom::CVariant::operator>(I64 value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>(U08 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) > static_cast<U64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>(U16 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) > static_cast<U64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>(U32 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) > static_cast<U64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>(U64 value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( variant.type )
 	{
@@ -3959,17 +3436,13 @@ bool atom::CVariant::operator>(U64 value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>(float value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) > static_cast<double>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>(double value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( variant.type )
 	{
@@ -3993,10 +3466,8 @@ bool atom::CVariant::operator>(double value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>(const char * value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( value )
 	{
@@ -4019,10 +3490,8 @@ bool atom::CVariant::operator>(const char * value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>(const wchar_t * value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( value )
 	{
@@ -4045,10 +3514,8 @@ bool atom::CVariant::operator>(const wchar_t * value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>(const CMemory & value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( variant.type == VT_BLOCK )
 	{
@@ -4059,10 +3526,8 @@ bool atom::CVariant::operator>(const CMemory & value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>(const CVariant & value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( value.variant.type )
 	{
@@ -4112,30 +3577,22 @@ bool atom::CVariant::operator>(const CVariant & value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>=(I08 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) >= static_cast<I64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>=(I16 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) >= static_cast<I64>( value );
 }
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>=(I32 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) >= static_cast<I64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>=(I64 value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( variant.type )
 	{
@@ -4159,31 +3616,23 @@ bool atom::CVariant::operator>=(I64 value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>=(U08 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) >= static_cast<U64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>=(U16 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) >= static_cast<U64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>=(U32 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) >= static_cast<U64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>=(U64 value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( variant.type )
 	{
@@ -4207,17 +3656,13 @@ bool atom::CVariant::operator>=(U64 value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>=(float value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) >= static_cast<double>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>=(double value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( variant.type )
 	{
@@ -4241,10 +3686,8 @@ bool atom::CVariant::operator>=(double value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>=(const char * value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( value )
 	{
@@ -4267,10 +3710,8 @@ bool atom::CVariant::operator>=(const char * value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>=(const wchar_t * value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( value )
 	{
@@ -4293,10 +3734,8 @@ bool atom::CVariant::operator>=(const wchar_t * value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>=(const CMemory & value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( variant.type == VT_BLOCK )
 	{
@@ -4307,10 +3746,8 @@ bool atom::CVariant::operator>=(const CMemory & value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator>=(const CVariant & value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( value.variant.type )
 	{
@@ -4360,31 +3797,23 @@ bool atom::CVariant::operator>=(const CVariant & value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator!=(I08 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) != static_cast<I64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator!=(I16 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) != static_cast<I64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator!=(I32 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) != static_cast<I64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator!=(I64 value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( variant.type )
 	{
@@ -4408,31 +3837,23 @@ bool atom::CVariant::operator!=(I64 value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator!=(U08 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) != static_cast<U64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator!=(U16 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) != static_cast<U64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator!=(U32 value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) != static_cast<U64>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator!=(U64 value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( variant.type )
 	{
@@ -4456,17 +3877,13 @@ bool atom::CVariant::operator!=(U64 value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator!=(float value) const 
 {
-    //TODO Auto-generated method stub
     return ( *this ) != static_cast<double>( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator!=(double value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( variant.type )
 	{
@@ -4490,10 +3907,8 @@ bool atom::CVariant::operator!=(double value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator!=(const char * value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( value )
 	{
@@ -4516,10 +3931,8 @@ bool atom::CVariant::operator!=(const char * value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator!=(const wchar_t * value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( value )
 	{
@@ -4542,10 +3955,8 @@ bool atom::CVariant::operator!=(const wchar_t * value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator!=(const CMemory & value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	if( variant.type == VT_BLOCK )
 	{
@@ -4556,10 +3967,8 @@ bool atom::CVariant::operator!=(const CMemory & value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CVariant::operator!=(const CVariant & value) const 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	switch( value.variant.type )
 	{
@@ -4609,10 +4018,8 @@ bool atom::CVariant::operator!=(const CVariant & value) const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 const void * atom::CVariant::operator &() const 
 {
-    //TODO Auto-generated method stub
     const void * result = NULL;
     switch( variant.type )
     {
@@ -4630,634 +4037,476 @@ const void * atom::CVariant::operator &() const
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>(I08 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result > r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>(I16 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result > r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>(I32 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result > r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>(I64 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result > r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>(U08 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result > r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>(U16 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result > r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>(U32 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result > r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>(U64 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result > r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>(float l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result > r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>(double l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result > r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>(const char * l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result > r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>(const wchar_t * l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result > r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>(const CMemory & l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result > r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>=(I08 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result >= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>=(I16 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result >= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>=(I32 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result >= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>=(I64 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result >= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>=(U08 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result >= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>=(U16 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result >= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>=(U32 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result >= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>=(U64 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result >= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>=(float l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result >= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>=(double l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result >= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>=(const char * l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result >= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>=(const wchar_t * l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result >= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator>=(const CMemory & l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result >= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<(I08 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result < r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<(I16 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result < r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<(I32 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result < r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<(I64 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result < r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<(U08 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result < r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<(U16 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result < r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<(U32 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result < r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<(U64 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result < r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<(float l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result < r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<(double l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result < r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<(const char * l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result < r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<(const wchar_t * l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result < r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<(const CMemory & l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result < r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<=(I08 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result <= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<=(I16 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result <= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<=(I32 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result <= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<=(I64 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result <= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<=(U08 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result <= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<=(U16 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result <= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<=(U32 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result <= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<=(U64 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result <= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<=(float l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result <= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<=(double l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result <= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<=(const char * l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result <= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<=(const wchar_t * l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result <= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator<=(const CMemory & l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result <= r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator!=(I08 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result != r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator!=(I16 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result != r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator!=(I32 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result != r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator!=(I64 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result != r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator!=(U08 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result != r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator!=(U16 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result != r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator!=(U32 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result != r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator!=(U64 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result != r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator!=(float l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result != r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator!=(double l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result != r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator!=(const char * l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result != r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator!=(const wchar_t * l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result != r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator!=(const CMemory & l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result != r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator==(I08 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result == r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator==(I16 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result == r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator==(I32 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result == r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator==(I64 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result == r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator==(U08 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result == r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator==(U16 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result == r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator==(U32 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result == r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator==(U64 l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result == r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator==(float l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result == r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator==(double l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result == r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator==(const char * l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result == r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator==(const wchar_t * l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result == r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::operator==(const CMemory & l, const CVariant & r) 
 {
-    //TODO Auto-generated method stub
 	atom::CVariant result = l;
 	return result == r;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U08 atom::CVariant::Parse(const char * value) 
 {
-    //TODO Auto-generated method stub
 	U08 result = ST_TXT;
 	if( value )
 	{
@@ -5305,10 +4554,8 @@ U08 atom::CVariant::Parse(const char * value)
 	return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U08 atom::CVariant::Parse(const wchar_t * value) 
 {
-    //TODO Auto-generated method stub
 	U08 result = ST_TXT;
 	if( value )
 	{

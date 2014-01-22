@@ -3,15 +3,10 @@
 #include "../character/CCharacter.h"
 #include "../file/CFile.h"
 #include "../../utility/charset/CUtf8Charset.h"
-//Begin section for file CWin32Directory.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CWin32Directory.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CWin32Directory::CWin32Directory(const char * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
     {
         if( CUtf8Charset::IsUtf8(value) ) {
@@ -22,25 +17,19 @@ atom::CWin32Directory::CWin32Directory(const char * value)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CWin32Directory::CWin32Directory(const wchar_t * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) {
         path = value;
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CWin32Directory::~CWin32Directory() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CWin32Directory::EnumFiles(const wchar_t * directory, CStringArray & files, bool sub_directory, bool absolute_path) 
 {
-    //TODO Auto-generated method stub
     #ifdef _WIN32
     if( directory )
     {
@@ -89,10 +78,8 @@ void atom::CWin32Directory::EnumFiles(const wchar_t * directory, CStringArray & 
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CWin32Directory::EnumFiles(const wchar_t * directory, CWStringArray & files, bool sub_directory, bool absolute_path) 
 {
-    //TODO Auto-generated method stub
     #ifdef _WIN32
     if( directory )
     {
@@ -141,10 +128,8 @@ void atom::CWin32Directory::EnumFiles(const wchar_t * directory, CWStringArray &
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CWin32Directory::EnumDirectories(const wchar_t * directory, CStringArray & files, bool sub_directory, bool absolute_path) 
 {
-    //TODO Auto-generated method stub
     #ifdef _WIN32
     if( directory )
     {
@@ -194,10 +179,8 @@ void atom::CWin32Directory::EnumDirectories(const wchar_t * directory, CStringAr
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CWin32Directory::EnumDirectories(const wchar_t * directory, CWStringArray & files, bool sub_directory, bool absolute_path) 
 {
-    //TODO Auto-generated method stub
     #ifdef _WIN32
     if( directory )
     {
@@ -245,38 +228,28 @@ void atom::CWin32Directory::EnumDirectories(const wchar_t * directory, CWStringA
     #endif
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CWin32Directory::EnumFiles(CStringArray & files, bool sub_directory, bool absolute_path) 
 {
-    //TODO Auto-generated method stub
     EnumFiles( path.c_str(), files, sub_directory, absolute_path );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CWin32Directory::EnumFiles(CWStringArray & files, bool sub_directory, bool absolute_path) 
 {
-    //TODO Auto-generated method stub
     EnumFiles( path.c_str(), files, sub_directory, absolute_path );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CWin32Directory::EnumDirectories(CStringArray & files, bool sub_directory, bool absolute_path) 
 {
-    //TODO Auto-generated method stub
     EnumDirectories( path.c_str(), files, sub_directory, absolute_path );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CWin32Directory::EnumDirectories(CWStringArray & files, bool sub_directory, bool absolute_path) 
 {
-    //TODO Auto-generated method stub
     EnumDirectories( path.c_str(), files, sub_directory, absolute_path );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CWin32Directory::CreateDirectory() 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     #ifdef _WIN32
     result = ( _wmkdir( path.c_str() ) == 0 );
@@ -284,10 +257,8 @@ bool atom::CWin32Directory::CreateDirectory()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CWin32Directory::RemoveDirectory(bool withfile) 
 {
-    //TODO Auto-generated method stub
     bool result = false;
     
     #ifdef _WIN32

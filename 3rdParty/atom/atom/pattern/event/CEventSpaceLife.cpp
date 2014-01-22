@@ -3,28 +3,19 @@
 #include "../../interface/IInstanceContainer.h"
 #include "../../enumeration/INTERFACE_ID.h"
 #include "../../utility/tool/CInterface.h"
-//Begin section for file CEventSpaceLife.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CEventSpaceLife.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CEventSpaceLife::CEventSpaceLife() : 
 nest(NULL)
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CEventSpaceLife::~CEventSpaceLife() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CEventSpaceLife::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -37,10 +28,8 @@ int atom::CEventSpaceLife::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CEventSpaceLife::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -53,10 +42,8 @@ int atom::CEventSpaceLife::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int atom::CEventSpaceLife::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
     if( nest )
     {
@@ -69,10 +56,8 @@ int atom::CEventSpaceLife::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CEventSpaceLife::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -80,17 +65,13 @@ atom::IInterface * atom::CEventSpaceLife::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CEventSpaceLife::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) nest = value;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CEventSpaceLife::Initiate() 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	CInterface<IEventSpaceController> segment;
 	if( segment.Mount(this, IID_EVENT_SPACE_CONTROLLER) ) {
@@ -99,10 +80,8 @@ bool atom::CEventSpaceLife::Initiate()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CEventSpaceLife::Shutdown() 
 {
-    //TODO Auto-generated method stub
 	bool result = false;
 	CInterface<IEventSpaceController> segment_1;
 	if( segment_1.Mount(this, IID_EVENT_SPACE_CONTROLLER) ) {

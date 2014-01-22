@@ -3,12 +3,8 @@
 #include "../enumeration/INTERFACE_ID.h"
 #include "../enumeration/MESSAGE_ID.h"
 #include "../enumeration/EVENT_ID.h"
-//Begin section for file CConnectorStubHeartBeat.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CConnectorStubHeartBeat.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 electron::CConnectorStubHeartBeat::CConnectorStubHeartBeat() : 
 nest(NULL),
 #ifdef _SHIPPING_
@@ -16,20 +12,15 @@ cast(NULL),
 #endif
 count(0),doing(false)
 {
-    //TODO Auto-generated method stub
     timer.Record();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 electron::CConnectorStubHeartBeat::~CConnectorStubHeartBeat() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int electron::CConnectorStubHeartBeat::IncRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -49,10 +40,8 @@ int electron::CConnectorStubHeartBeat::IncRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int electron::CConnectorStubHeartBeat::DecRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -72,10 +61,8 @@ int electron::CConnectorStubHeartBeat::DecRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 int electron::CConnectorStubHeartBeat::GetRef() 
 {
-    //TODO Auto-generated method stub
     int result = 0;
 	#ifdef _SHIPPING_
 	if( cast )
@@ -95,10 +82,8 @@ int electron::CConnectorStubHeartBeat::GetRef()
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 IInterface * electron::CConnectorStubHeartBeat::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     if( nest && iid ) {
         result = nest -> QueryInterface( iid );
@@ -106,10 +91,8 @@ IInterface * electron::CConnectorStubHeartBeat::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void electron::CConnectorStubHeartBeat::SetNest(IInterface * value) 
 {
-    //TODO Auto-generated method stub
     if( value ) 
 	{
 		nest = value;
@@ -119,10 +102,8 @@ void electron::CConnectorStubHeartBeat::SetNest(IInterface * value)
 	}
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void electron::CConnectorStubHeartBeat::OnMessage(CMessage * message) 
 {
-    //TODO Auto-generated method stub
     if( message )
     {
         CInterface<IConnectorStubFrame> segment;
@@ -144,10 +125,8 @@ void electron::CConnectorStubHeartBeat::OnMessage(CMessage * message)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 U64 electron::CConnectorStubHeartBeat::OnProcess(U64 now) 
 {
-    //TODO Auto-generated method stub
     U64 result = U64(INFINITE);
     CInterface<IConnectorStubFrame> segment;
     if( segment.Mount(this, IID_CONNECTOR_STUB_FRAME) )
@@ -203,10 +182,8 @@ U64 electron::CConnectorStubHeartBeat::OnProcess(U64 now)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void electron::CConnectorStubHeartBeat::Reset() 
 {
-    //TODO Auto-generated method stub
     doing = false;
     count = 0;
     timer.Record();

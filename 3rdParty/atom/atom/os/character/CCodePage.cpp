@@ -1,25 +1,16 @@
 #include "CCodePage.h"
-//Begin section for file CCodePage.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CCodePage.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CCodePage::CCodePage() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CCodePage::~CCodePage() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CCodePage::Initiate() 
 {
-    //TODO Auto-generated method stub
     a_string name;
     section.Enter();
         
@@ -54,19 +45,15 @@ bool atom::CCodePage::Initiate()
     return true;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CCodePage::Shutdown() 
 {
-    //TODO Auto-generated method stub
     section.Enter();
     related.clear();
     section.Leave();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 I32 atom::CCodePage::CodePage(const char * value) 
 {
-    //TODO Auto-generated method stub
     I32 result = DEFAULT_CODEPAGE_ID; 
     if( value )
     {
@@ -80,9 +67,7 @@ I32 atom::CCodePage::CodePage(const char * value)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 const char * atom::CCodePage::GetLocal() 
 {
-    //TODO Auto-generated method stub
     return DEFAULT_CODEPAGE;
 }

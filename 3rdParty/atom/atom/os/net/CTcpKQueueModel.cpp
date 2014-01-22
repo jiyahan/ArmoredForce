@@ -1,14 +1,9 @@
 #include "CTcpKQueueModel.h"
 #include "../../enumeration/INTERFACE_ID.h"
-//Begin section for file CTcpKQueueModel.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CTcpKQueueModel.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpKQueueModel::CTcpKQueueModel() 
 {
-    //TODO Auto-generated method stub
 	implement.SetNest( this );
 	threads  .SetNest( this );
 	life     .SetNest( this );
@@ -17,24 +12,18 @@ atom::CTcpKQueueModel::CTcpKQueueModel()
 	alias    .SetNest( this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CTcpKQueueModel::~CTcpKQueueModel() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 const char * atom::CTcpKQueueModel::ToString() 
 {
-    //TODO Auto-generated method stub
 	static char name[] = "Tcp KQueue Model";
     return name;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CTcpKQueueModel::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     switch( iid )
     {

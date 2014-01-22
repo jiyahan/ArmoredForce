@@ -1,15 +1,10 @@
 #include "CDataWriter.h"
 #include "../../enumeration/INTERFACE_ID.h"
-//Begin section for file CDataWriter.cpp
-//TODO: Add definitions that you want preserved
-//End section for file CDataWriter.cpp
 
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CDataWriter::CDataWriter() : 
 bind(NULL)
 {
-    //TODO Auto-generated method stub
     closable  .SetNest( this );
     swappable .SetNest( this );
     clonable  .SetNest( this );
@@ -17,16 +12,12 @@ bind(NULL)
     exportable.SetNest( this );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::CDataWriter::~CDataWriter() 
 {
-    //TODO Auto-generated method stub
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 atom::IInterface * atom::CDataWriter::QueryInterface(U32 iid) 
 {
-    //TODO Auto-generated method stub
     IInterface * result = NULL;
     switch( iid )
     {
@@ -49,10 +40,8 @@ atom::IInterface * atom::CDataWriter::QueryInterface(U32 iid)
     return result;
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CDataWriter::Attach(IInterface * node) 
 {
-    //TODO Auto-generated method stub
     if( node )
     {
         bind = node;
@@ -89,10 +78,8 @@ void atom::CDataWriter::Attach(IInterface * node)
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CDataWriter::Detach() 
 {
-    //TODO Auto-generated method stub
     if( bind )
     {
         closable  .Attach( NULL );
@@ -111,121 +98,87 @@ void atom::CDataWriter::Detach()
     }
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CDataWriter::Write(I08 value) 
 {
-    //TODO Auto-generated method stub
     exportable.Write( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CDataWriter::Write(I16 value) 
 {
-    //TODO Auto-generated method stub
     exportable.Write( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CDataWriter::Write(I32 value) 
 {
-    //TODO Auto-generated method stub
     exportable.Write( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CDataWriter::Write(I64 value) 
 {
-    //TODO Auto-generated method stub
     exportable.Write( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CDataWriter::Write(U08 value) 
 {
-    //TODO Auto-generated method stub
     exportable.Write( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CDataWriter::Write(U16 value) 
 {
-    //TODO Auto-generated method stub
     exportable.Write( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CDataWriter::Write(U32 value) 
 {
-    //TODO Auto-generated method stub
     exportable.Write( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CDataWriter::Write(U64 value) 
 {
-    //TODO Auto-generated method stub
     exportable.Write( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CDataWriter::Write(float value) 
 {
-    //TODO Auto-generated method stub
     exportable.Write( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CDataWriter::Write(double value) 
 {
-    //TODO Auto-generated method stub
     exportable.Write( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CDataWriter::Write(const char * value) 
 {
-    //TODO Auto-generated method stub
     exportable.Write( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CDataWriter::Write(const wchar_t * value) 
 {
-    //TODO Auto-generated method stub
     exportable.Write( value );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CDataWriter::Write(const void * bytes, U64 length) 
 {
-    //TODO Auto-generated method stub
     exportable.Write( bytes, length );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CDataWriter::Close() 
 {
-    //TODO Auto-generated method stub
     closable.Close();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 void atom::CDataWriter::Flush() 
 {
-    //TODO Auto-generated method stub
     flushable.Flush();
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CDataWriter::Clone(CMemory & data) 
 {
-    //TODO Auto-generated method stub
     return clonable.Clone( data );
 }
 
-//@generated "UML to C++ (com.ibm.xtools.transform.uml2.cpp.CPPTransformation)"
 bool atom::CDataWriter::Swap(CMemory & data) 
 {
-    //TODO Auto-generated method stub
     return swappable.Swap( data );
 }
