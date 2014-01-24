@@ -8,6 +8,7 @@
 #include <string>
 #include "easylogging++.h"
 #include "minion_app.h"
+#include "Utility.h"
 
 
 _INITIALIZE_EASYLOGGINGPP;
@@ -17,14 +18,19 @@ int main(int argc, char* argv[])
 {
     try
     {
-        const char* script = "app.lua";
+        std::string entry_script = "app.lua";
         if (argc >= 2)
         {
-            script = argv[1];
+            entry_script = argv[1];
         }
 
-        MinionApp app;
-        app.Start(script);
+        AtomAutoInit  init(1024, 1);
+
+        if (CreateApp())
+        {
+            GetApp().Start(entry_script);
+        }
+        DestroyApp();
     }
     catch(std::exception& ex)
     {

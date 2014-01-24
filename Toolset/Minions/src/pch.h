@@ -13,3 +13,5 @@
 
 #define _ELPP_STL_LOGGING
 #include "easylogging++.h"
+
+#include <electron/message/CMessage.h>

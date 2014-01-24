@@ -1,6 +1,6 @@
 #include "script_rt.h"
-#include <lua.hpp>
 #include "minion_script.h"
+#include "msg_script.h"
 
 lua_State*  ScriptRuntime::state_ = NULL;
 
@@ -9,6 +9,7 @@ bool ScriptRuntime::Init()
 {
     state_ = luaL_newstate();
     luaL_openlibs(state_);
+    InitMessageScript(state_);
     InitMinionScript(state_);
     return true;
 }
@@ -45,6 +46,26 @@ bool ScriptRuntime::Call(const char* func)
         return false;
     }
     return true;
+}
+
+bool ScriptRuntime::Call(int params /* = 0 */, int results /* = LUA_MULTRET */)
+{
+    bool ok = (lua_pcall(state_, params, results, 0) == 0);
+    if (!ok)
+    {
+        LOG(ERROR) << lua_tostring(state_, -1);
+        lua_pop(state_, 1);
+    }
+    return ok;
+}
+
+void ScriptRuntime::NewUserData(const char* meta, void* data)
+{
+    CHECK(meta && data);
+    void* udata = lua_newuserdata(state_, sizeof(data));
+    memcpy(udata, &data, sizeof(data));
+    luaL_getmetatable(state_, meta);
+    lua_setmetatable(state_, -2);
 }
 
 int ScriptRuntime::PerformGC(bool full /*= false*/)
