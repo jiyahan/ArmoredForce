@@ -8,6 +8,7 @@ local BOOST_DIR = os.getenv('BOOST_DIR')
 solution "Minions"
     configurations { "Release", "Debug" }
     language    "C++"
+    targetdir   "bin"
     flags       { "No64BitChecks", "StaticRuntime" }
     
     configuration "Debug"
@@ -39,8 +40,11 @@ solution "Minions"
         {
             "src/**.h",
             "src/**.cpp",
+            "src/**.c",
             
             "../../Server/Utility/easylogging++.h",
+            "../../Server/Utility/Utility.h",
+            "../../Server/Utility/Utility.cpp",
         }
 
         pchheader "pch.h"
@@ -49,21 +53,24 @@ solution "Minions"
         -- 包含目录
         includedirs 
         {
-            "../../3rdParty/lua/src/",
-            "../../Server/Utility/",
+            "../../3rdParty/atom",
+            "../../3rdParty/lua/src",
+            "../../Server/Utility",
             BOOST_DIR,
         }
         
         libdirs 
-        { 
+        {
+            "../../3rdParty/libs",
             BOOST_DIR .. '/stage/lib',
         }
         
         links 
-        {
-            "liblua",
+        {            
             "ws2_32",
             "mswsock",
+            "liblua",
+            "libatom",
         }
     
     -- Lua
