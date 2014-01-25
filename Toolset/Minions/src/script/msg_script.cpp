@@ -138,7 +138,7 @@ int32_t new_message(lua_State* L)
     int32_t arg = lua_gettop(L);
     if (arg  < 1)
     {
-        luaL_error(L, "Message.new(msg_type)");
+        luaL_error(L, "message type not feed.");
         return 0;
     }
     

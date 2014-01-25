@@ -34,21 +34,16 @@ bool ScriptRuntime::DoFile(const char* filename)
     return ok;
 }
 
-bool ScriptRuntime::Call(const char* func)
+void ScriptRuntime::NewUserData(const char* meta, void* data)
 {
-    CHECK(func);
-    int top = lua_gettop(state_);
-    lua_getglobal(state_, func);
-    if (lua_pcall(state_, 0, LUA_MULTRET, 0) != 0)
-    {
-        LOG(ERROR) << lua_tostring(state_, -1);
-        lua_pop(state_, 1);
-        return false;
-    }
-    return true;
+    CHECK(meta && data);
+    void* udata = lua_newuserdata(state_, sizeof(data));
+    memcpy(udata, &data, sizeof(data));
+    luaL_getmetatable(state_, meta);
+    lua_setmetatable(state_, -2);
 }
 
-bool ScriptRuntime::Call(int params /* = 0 */, int results /* = LUA_MULTRET */)
+bool ScriptRuntime::Call(int params /*= 0*/, int results /*= LUA_MULTRET*/)
 {
     bool ok = (lua_pcall(state_, params, results, 0) == 0);
     if (!ok)
@@ -59,13 +54,12 @@ bool ScriptRuntime::Call(int params /* = 0 */, int results /* = LUA_MULTRET */)
     return ok;
 }
 
-void ScriptRuntime::NewUserData(const char* meta, void* data)
+bool ScriptRuntime::Call(const char* func, const char* fmt, ...)
 {
-    CHECK(meta && data);
-    void* udata = lua_newuserdata(state_, sizeof(data));
-    memcpy(udata, &data, sizeof(data));
-    luaL_getmetatable(state_, meta);
-    lua_setmetatable(state_, -2);
+    CHECK(func && fmt);
+    va_list ap;
+    va_start(ap, fmt);
+    return DoCall(func, fmt, ap);
 }
 
 int ScriptRuntime::PerformGC(bool full /*= false*/)
@@ -84,4 +78,75 @@ int ScriptRuntime::PerformGC(bool full /*= false*/)
         count = lua_gc(state_, LUA_GCCOUNT, 0);
     }
     return ret;
+}
+
+int ScriptRuntime::ParseParam(const char* fmt, va_list ap)
+{
+    int params = 0;
+    for (; *fmt; ++fmt)
+    {
+        if (*fmt == '%')
+        {
+            ++fmt;
+            switch(*fmt)
+            {
+            case '\0': 
+                break;
+            case 'b':
+                {
+                    int b = va_arg(ap, int);
+                    lua_pushboolean(state_, b);
+                    params++;
+                }
+                break;
+            case 'c':
+            case 'h':
+            case 'i':
+                {
+                    int32_t n = va_arg(ap, int);
+                    lua_pushinteger(state_, n);
+                    params++;
+                }
+                break;
+            case 'f':
+            case 'd':
+                {
+                    double d = (double)va_arg(ap, double);
+                    lua_pushnumber(state_, d);
+                    params++;
+                }
+                break;
+            case 'q':
+                {
+                    int64_t n = (int64_t)va_arg(ap, int64_t);
+                    lua_pushnumber(state_, (lua_Number)n);
+                    params++;
+                }
+                break;
+            case 's':
+                {
+                    const char* s = (const char*)va_arg(ap, int);
+                    lua_pushstring(state_, s);
+                    params++;
+                }
+                break;
+            }
+        }
+    }    
+    return params;
+}
+
+bool ScriptRuntime::DoCall(const char* func, const char* fmt, va_list ap)
+{
+    CHECK(func && fmt);
+    lua_getglobal(state_, func);
+    int params = ParseParam(fmt, ap);
+    va_end(ap);
+    if (lua_pcall(state_, params, LUA_MULTRET, 0) != 0)
+    {
+        LOG(ERROR) << lua_tostring(state_, -1);
+        lua_pop(state_, 1);
+        return false;
+    }
+    return true;
 }

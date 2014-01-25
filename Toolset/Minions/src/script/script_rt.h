@@ -9,6 +9,7 @@
 #pragma once
 
 #include <lua.hpp>
+#include <cstdarg>
 #include <boost/noncopyable.hpp>
 
 
@@ -38,6 +39,7 @@ public:
     static void Push(double v)      {lua_pushnumber(state_, v);}
     static void Push(const char* s) {lua_pushstring(state_, s);}
     static void Push(void* v)       {lua_pushlightuserdata(state_, v);}
+    static void Pop(int n = 1)      {lua_pop(state_, n);}
 
     // access functions (stack -> C)
     static int IsNumber(int index)        {return lua_isnumber(state_, index);}
@@ -57,11 +59,16 @@ public:
 
     static void NewUserData(const char* meta, void* data);
     static bool DoFile(const char* filename);
-    static bool Call(const char* func);
     static bool Call(int params = 0, int results = LUA_MULTRET);
+    static bool Call(const char* func, const char* fmt, ...);    
     
     // garbage collection
     static int PerformGC(bool full = false);
+
+private:
+    static int ParseParam(const char* fmt, va_list ap);
+    static bool DoCall(const char* func, const char* fmt, va_list ap);
+    
 
 private:
     static lua_State*  state_;

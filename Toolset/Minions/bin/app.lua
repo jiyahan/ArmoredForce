@@ -5,8 +5,11 @@
 --  Jan 24, 2014
 -------------------------------------------------------
 
+require 'login'
+
 local app = {}
 app.minions = {}
+app.handlers = {}
 
 function get_minion(id)
     return assert(app.minions[id])
@@ -17,20 +20,20 @@ function on_start()
     local host = '127.0.0.1'
     local port = 32450
     
-    for n=1, 10 do
+    for n=1, 2 do
         local id, minion = new_minion(host, port, callback)
         if id then
             app.minions[id] = minion    
-        end  
+        end
+        print(string.format('%d [%s:%d] start connecting...', id, host, port))
     end
 end
 
 -- 连接上服务器
 function on_connect(minion, host, port)    
-    print(tostring(minion), host, port)
-    msg = new_message(603)
-    msg:pack('%i%i%i', 8, 0, 0)
-    minion:send(msg)
+    local id = minion:id()
+    print(id, 'connected OK.')
+    verify_version()
 end
 
 -- 读取到数据

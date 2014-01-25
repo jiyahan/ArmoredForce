@@ -43,7 +43,8 @@ void DestroyApp()
 //
 MinionApp::MinionApp()
 {
-    current_id_ = 1;
+    current_id_ = 1000;
+
     CHECK(script_.Init());
 }
 
@@ -88,7 +89,8 @@ bool MinionApp::Start(const std::string& script)
     {
         return false;
     }
-    script_.Call("on_start");
+
+    script_.Call("on_start", "");
 
     // 开始I/O事件循环
     io_service::work work(io_service_);
@@ -144,5 +146,18 @@ void MinionApp::OnTcpRead(size_t minion_id, TcpClientPtr cp, size_t bytes_transf
 // 网络错误
 void MinionApp::OnTcpError(size_t minion_id, TcpClientPtr cp, const bs::error_code& ec)
 {
+    const auto& iter = minion_list_.find(minion_id);
+    if (iter == minion_list_.end())
+    {
+        LOG(INFO) << "minion not found: " << minion_id;
+        return ;
+    }
+
+    Minion* ptr = iter->second;
+    script_.GetGlobal("on_error");
+    CHECK(script_.IsFunction(-1));
+    script_.NewUserData(MINION_META_HANDLE, ptr);
+    script_.Push(ec.message().c_str());
+    script_.Call(2, 0);
     minion_list_.erase(minion_id);
 }

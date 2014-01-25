@@ -6,7 +6,7 @@
 
 #include <cstdint>
 
-#define BOOST_ASIO_STANDALONE
+#define BOOST_REGEX_NO_LIB
 #define BOOST_ASIO_SEPARATE_COMPILATION
 #define BOOST_ASIO_NO_DEFAULT_LINKED_LIBS
 #include <boost/asio.hpp>
