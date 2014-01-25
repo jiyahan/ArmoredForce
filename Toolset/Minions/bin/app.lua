@@ -33,7 +33,7 @@ end
 function on_connect(minion, host, port)    
     local id = minion:id()
     print(id, 'connected OK.')
-    verify_version()
+    verify_version(minion)
 end
 
 -- 读取到数据
@@ -43,8 +43,8 @@ function on_read(minion, msg)
 end
 
 -- 发生错误
-function on_error(id, err)
-    print(id, err)
+function on_error(minion, err)
+    print(minion:id(), err)
 end
 
 
