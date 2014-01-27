@@ -29,9 +29,13 @@ function on_start()
     end
 end
 
+local function timer_callback()
+
+end
+
 -- 连接上服务器
 function on_connect(minion, host, port)    
-    local id = minion:id()
+    print(tostring(minion))
     print(id, 'connected OK.')
     verify_version(minion)
 end

@@ -1,6 +1,5 @@
 #include "minion_script.h"
 #include <lua.hpp>
-#include <unordered_map>
 #include <electron/message/CMessage.h>
 #include "msg_script.h"
 #include "../timer.h"
@@ -90,22 +89,45 @@ void make_meta(lua_State *L)
 
 //////////////////////////////////////////////////////////////////////////
 
-std::unordered_map<int32_t, TimerPtr>   g_timer_pool;
-
-void timer_handle(TimerPtr tp)
+void timer_handle(lua_State* L, TimerPtr tp)
 {
-
+    lua_rawgeti(L, LUA_REGISTRYINDEX, tp->GetID());
+    if (lua_pcall(L, 0, LUA_MULTRET, 0) != 0)
+    {
+        LOG(ERROR) << lua_tostring(L, -1);
+    }
 }
 
-int start_timer(lua_State* L)
+int create_timer(lua_State* L)
 {
     if (lua_isfunction(L, -1))
     {
-        luaL_error(L, "not function");
+        luaL_error(L, "type is not function");
         return 0;
     }
-
+    int milsec = luaL_checkinteger(L, -2);
+    int ref = luaL_ref(L, LUA_REGISTRYINDEX);
+    if (ref == LUA_REFNIL)
+    {
+        return 0;
+    }
+    TimerPtr tp = CreateTimer(GetApp().GetIOService(), ref);
+    if (!tp)
+    {
+        return 0;
+    }
+    tp->Associate(std::bind(timer_handle, L, tp));
+    tp->ExpireAfter(milsec);
+    lua_pushinteger(L, ref);
     return 1;
+}
+
+int destroy_timer(lua_State* L)
+{
+    int ref = luaL_checkinteger(L, -1);
+    luaL_unref(L, LUA_REGISTRYINDEX, ref);
+    DestroyTimer(ref);
+    return 0;
 }
 
 } // anonymous namespace
@@ -115,5 +137,7 @@ bool InitMinionScript(lua_State* L)
 {
     make_meta(L);
     lua_register(L, "new_minion", new_minion);
+    lua_register(L, "create_timer", create_timer);
+    lua_register(L, "destroy_timer", destroy_timer);
     return true;
 }

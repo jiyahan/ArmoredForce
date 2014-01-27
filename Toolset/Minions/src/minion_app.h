@@ -30,6 +30,8 @@ public:
     Minion* CreateMinion(const std::string& host, int16_t port);
     void    DestroyMinion(Minion* ptr);
 
+    boost::asio::io_service&    GetIOService() {return io_service_;}
+
 public:
     // 网络事件回调
     void    OnTcpError(size_t, TcpClientPtr, const bs::error_code&);
