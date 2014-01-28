@@ -4,7 +4,7 @@
 --
 --
 
-local BOOST_DIR = os.getenv("BOOST_DIR")
+local BOOST_DIR = os.getenv("BOOST_ROOT")
 
 solution "DenpendencyLibs"
     location (_ACTION or "")
@@ -27,6 +27,7 @@ solution "DenpendencyLibs"
         {
             "_CRT_SECURE_NO_WARNINGS",
             "WIN32_LEAN_AND_MEAN",
+            "_WIN32_WINNT=0x0601",
         }
         buildoptions " /wd\"4996\""
             
@@ -52,7 +53,7 @@ solution "DenpendencyLibs"
         }
         libdirs 
         {
-            "libs/"
+            "libs",
         }
         
         links "libmysql"
@@ -71,9 +72,6 @@ solution "DenpendencyLibs"
             "atom/electron/**.h",
             "atom/pch.cpp",
         }
-        includedirs 
-        {
-        }
         
         -- minilzo.c文件需要单独设置为不使用预编译头
         pchheader "pch.h"
@@ -86,10 +84,12 @@ solution "DenpendencyLibs"
         defines 
         {
             "RCF_USE_BOOST_ASIO",
+            "BOOST_ASIO_SEPARATE_COMPILATION",
         }
         files
         {
             "RCF/src/RCF/RCF.cpp",
+            "RCF/src/RCF/AsioSrc.cpp",
         }
         includedirs 
         {
@@ -114,18 +114,13 @@ solution "DenpendencyLibs"
         {
             "gtest",
             "gtest/include",
-        }        
+        }
         
     -- Lua
     project "liblua"
         kind "StaticLib"
         uuid "DDBAFE27-F999-E24B-91CC-E51FEBE65EE2"
         language "C"
-        defines
-        {
-            "",
-        }
-        
         files
         {
             "lua/src/*.h",
@@ -142,3 +137,20 @@ solution "DenpendencyLibs"
             "lua/src",
         }       
        
+       -- luabind
+    project "libluabind"
+        kind "StaticLib"
+        uuid "D14147C5-6030-40D9-91E6-EC674DBE5BB8"
+        language "C++"
+        files
+        {
+            "luabind/luabind/*.h",
+            "luabind/src/*.cpp",
+        }
+        includedirs 
+        {
+            "lua/src",
+            "luabind",
+            BOOST_DIR,
+        }
+        

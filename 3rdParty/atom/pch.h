@@ -1,8 +1,8 @@
 //
 // Precompiled header
 //
-#ifndef PCH_H
-#define PCH_H
+#ifndef PCH_H_INCLUDED
+#define PCH_H_INCLUDED
 
 #ifdef _MSC_VER
 #pragma once
@@ -11,4 +11,4 @@
 #include "atom/CAtom.h"
 #include "electron/CElectron.h"
 
-#endif
+#endif // PCH_H_INCLUDED
