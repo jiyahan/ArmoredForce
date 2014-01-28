@@ -13,6 +13,7 @@
 
 namespace electron {class CMessage;}
 
+
 class Minion : boost::noncopyable
 {
 public:
@@ -35,3 +36,6 @@ private:
     // TCPÁ¬½Ó
     TcpClientPtr    tcp_conn_;
 };
+
+typedef std::shared_ptr<Minion>     MinionPtr;
+

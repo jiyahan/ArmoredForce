@@ -11,41 +11,14 @@ using namespace std::placeholders;
 using namespace boost::asio;
 
 
-//////////////////////////////////////////////////////////////////////////
-//
-// 全局的单件
-//
-namespace {
-
-    std::unique_ptr<MinionApp>  theAppPtr;
-}
-
-bool CreateApp()
-{
-    theAppPtr.reset(new MinionApp);
-    return true;
-}
-
-MinionApp& GetApp()
-{
-    return *theAppPtr;
-}
-
-void DestroyApp()
-{
-    theAppPtr.reset(NULL);
-}
-
 
 //////////////////////////////////////////////////////////////////////////
 //
 // ctor and dctor
 //
 MinionApp::MinionApp()
-{
-    current_id_ = 1000;
-
-    CHECK(script_.Init());
+    : current_id_(1000)
+{ 
 }
 
 MinionApp::~MinionApp()
@@ -53,8 +26,31 @@ MinionApp::~MinionApp()
     script_.Release();
 }
 
+bool MinionApp::Init(const std::string& file)
+{
+    CHECK(script_.Init());
 
-Minion*  MinionApp::CreateMinion(const std::string& host, int16_t port)
+    // 执行脚本的on_start函数
+    if (!script_.DoFile(file.c_str()))
+    {
+        return false;
+    }
+
+    script_.Call("on_start", "");
+
+    return true;
+}
+
+bool MinionApp::Run()
+{    
+    // 开始I/O事件循环
+    io_service::work work(io_service_);
+    io_service_.run();
+
+    return true;
+}
+
+MinionPtr  MinionApp::CreateMinion(const std::string& host, int16_t port)
 {    
     try
     {
@@ -63,7 +59,7 @@ Minion*  MinionApp::CreateMinion(const std::string& host, int16_t port)
         read_handler on_read = std::bind(&MinionApp::OnTcpRead, this, minion_id, _1, _2);
         error_handler on_error = std::bind(&MinionApp::OnTcpError, this, minion_id, _1, _2);
         TcpClientPtr ptr = make_shared<TcpClient>(io_service_, on_connect, on_read, on_error);        
-        Minion* minion = new Minion(ptr);
+        MinionPtr minion = make_shared<Minion>(ptr);
         minion->SetID(minion_id);
         minion_list_[minion_id] = minion;
         ptr->AsynConnect(host, port);
@@ -72,31 +68,13 @@ Minion*  MinionApp::CreateMinion(const std::string& host, int16_t port)
     catch(std::exception& ex)
     {
         LOG(ERROR) << ex.what();
-        return NULL;
+        return nullptr;
     }
 }
 
 void MinionApp::DestroyMinion(Minion* ptr)
 {
     delete ptr;
-}
-
-
-bool MinionApp::Start(const std::string& script)
-{
-    // 执行脚本的on_start函数
-    if (!script_.DoFile(script.c_str()))
-    {
-        return false;
-    }
-
-    script_.Call("on_start", "");
-
-    // 开始I/O事件循环
-    io_service::work work(io_service_);
-    io_service_.run();
-
-    return true;
 }
 
 // 连接上服务器
@@ -109,10 +87,10 @@ void MinionApp::OnTcpConnect(size_t minion_id, TcpClientPtr cp, const std::strin
         return ;
     }
 
-    Minion* ptr = iter->second;
+    MinionPtr ptr = iter->second;
     script_.GetGlobal("on_connect");
     CHECK(script_.IsFunction(-1));
-    script_.NewUserData(MINION_META_HANDLE, ptr);
+    script_.NewUserData(MINION_META_HANDLE, ptr.get());
     script_.Push(host.c_str());
     script_.Push(port);
     script_.Call(3, 0);
@@ -130,13 +108,13 @@ void MinionApp::OnTcpRead(size_t minion_id, TcpClientPtr cp, size_t bytes_transf
         return ;
     }
 
-    Minion* ptr = iter->second;
+    MinionPtr ptr = iter->second;
     electron::CMessage* msg = UnCompressMessage(cp->GetDataBuffer().data(), bytes_transferred);
     if (msg)
     {
         script_.GetGlobal("on_read");
         CHECK(script_.IsFunction(-1));
-        script_.NewUserData(MINION_META_HANDLE, ptr);
+        script_.NewUserData(MINION_META_HANDLE, ptr.get());
         script_.NewUserData(MSG_META_HANDLE, msg);
         script_.Call(2, 0);
     }
@@ -153,10 +131,10 @@ void MinionApp::OnTcpError(size_t minion_id, TcpClientPtr cp, const bs::error_co
         return ;
     }
 
-    Minion* ptr = iter->second;
+    MinionPtr ptr = iter->second;
     script_.GetGlobal("on_error");
     CHECK(script_.IsFunction(-1));
-    script_.NewUserData(MINION_META_HANDLE, ptr);
+    script_.NewUserData(MINION_META_HANDLE, ptr.get());
     script_.Push(ec.message().c_str());
     script_.Call(2, 0);
     minion_list_.erase(minion_id);

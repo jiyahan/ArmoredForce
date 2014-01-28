@@ -25,12 +25,12 @@ int main(int argc, char* argv[])
         }
 
         AtomAutoInit  init(1024, 1);
-
-        if (CreateApp())
+        MinionApp& theApp = MinionApp::Create();
+        if (theApp.Init(entry_script))
         {
-            GetApp().Start(entry_script);
+            theApp.Run();
         }
-        DestroyApp();
+        MinionApp::Destroy();
     }
     catch(std::exception& ex)
     {

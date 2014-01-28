@@ -12,23 +12,25 @@
 #include <unordered_map>
 #include <boost/noncopyable.hpp>
 #include <boost/asio.hpp>
+#include "Singleton.h"
 #include "minion.h"
 #include "script/script_rt.h"
 
 
-
-class MinionApp : boost::noncopyable
+class MinionApp : public Singleton<MinionApp>
 {
 public:
     MinionApp();
     ~MinionApp();
 
+    bool Init(const std::string& file);
+
     // 开始启动
-    bool Start(const std::string& script);
+    bool Run();
 
     // 机器人对象的创建的销毁
-    Minion* CreateMinion(const std::string& host, int16_t port);
-    void    DestroyMinion(Minion* ptr);
+    MinionPtr   CreateMinion(const std::string& host, int16_t port);
+    void        DestroyMinion(Minion* ptr);
 
     boost::asio::io_service&    GetIOService() {return io_service_;}
 
@@ -39,19 +41,21 @@ public:
     void    OnTcpRead(size_t, TcpClientPtr, size_t);
 
 private:
-    // 机器人标识符
-    size_t     current_id_; 
-
-    // 所有的机器人
-    std::unordered_map<size_t, Minion*>   minion_list_;
+    // 提供I/O服务的完成端口对象(Windows实现)
+    boost::asio::io_service     io_service_;
 
     // lua虚拟机
     ScriptRuntime   script_;
 
-    // io_service对象(即I/O Completion Port)
-    boost::asio::io_service     io_service_;
+    // 所有的机器人
+    std::unordered_map<size_t, MinionPtr>   minion_list_;
+
+    // 机器人标识符
+    size_t     current_id_; 
 };
 
-bool        CreateApp();
-MinionApp&  GetApp();
-void        DestroyApp();
+// 仅有一个io_service对象
+inline boost::asio::io_service&  GetIOService()
+{
+    return MinionApp::GetInst().GetIOService();
+}

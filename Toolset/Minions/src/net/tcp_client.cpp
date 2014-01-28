@@ -34,7 +34,9 @@ void TcpClient::AsynClose()
     });
 }
 
-// asio的异步连接默认没有使用ConnectEx，而是采用另启线程的方案
+// async_connect在Windows下没有使用ConnectEx，而是采用另启线程的方案
+// 这是一个使用ConnectEx的方案
+// https://sourceforge.net/projects/asio-samples/
 void TcpClient::AsynConnect(const std::string& host, int16_t port)
 {
     ip::tcp::endpoint peer(ip::address::from_string(host), port);

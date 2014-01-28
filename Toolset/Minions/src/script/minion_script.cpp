@@ -16,7 +16,7 @@ namespace {
 int minion_gc(lua_State* L)
 {
     Minion** pptr = check_minion(L);
-    GetApp().DestroyMinion(*pptr);
+    MinionApp::GetInst().DestroyMinion(*pptr);
     *pptr = NULL;
     return 0;
 }
@@ -55,15 +55,16 @@ int new_minion(lua_State* L)
 {
     const char* host = luaL_checkstring(L, 1);
     int16_t port = luaL_checkinteger(L, 2);
-    Minion* ptr = GetApp().CreateMinion(host, port);
+    MinionPtr ptr = MinionApp::GetInst().CreateMinion(host, port);
     if (ptr == NULL)
     {
         luaL_error(L, "create minion failed.");
         return 0;
     }
     lua_pushinteger(L, ptr->GetID());
-    void* udata = lua_newuserdata(L, sizeof(ptr));
-    memcpy(udata, &ptr, sizeof(ptr));
+    Minion* raw_ptr = ptr.get();
+    void* udata = lua_newuserdata(L, sizeof(raw_ptr));
+    memcpy(udata, &raw_ptr, sizeof(raw_ptr));
     luaL_getmetatable(L, MINION_META_HANDLE);
     lua_setmetatable(L, -2);
     return 2;
@@ -92,26 +93,29 @@ void make_meta(lua_State *L)
 void timer_handle(lua_State* L, TimerPtr tp)
 {
     lua_rawgeti(L, LUA_REGISTRYINDEX, tp->GetID());
-    if (lua_pcall(L, 0, LUA_MULTRET, 0) != 0)
+    lua_pushinteger(L, tp->GetID());
+    if (lua_pcall(L, 1, LUA_MULTRET, 0) != 0)
     {
         LOG(ERROR) << lua_tostring(L, -1);
     }
 }
 
 int create_timer(lua_State* L)
-{
-    if (lua_isfunction(L, -1))
+{    
+    if (!lua_isfunction(L, -1))
     {
         luaL_error(L, "type is not function");
         return 0;
     }
+
     int milsec = luaL_checkinteger(L, -2);
     int ref = luaL_ref(L, LUA_REGISTRYINDEX);
     if (ref == LUA_REFNIL)
     {
         return 0;
     }
-    TimerPtr tp = CreateTimer(GetApp().GetIOService(), ref);
+    
+    TimerPtr tp = Timer::Create(ref);
     if (!tp)
     {
         return 0;
@@ -126,7 +130,7 @@ int destroy_timer(lua_State* L)
 {
     int ref = luaL_checkinteger(L, -1);
     luaL_unref(L, LUA_REGISTRYINDEX, ref);
-    DestroyTimer(ref);
+    Timer::Destroy(ref);
     return 0;
 }
 
