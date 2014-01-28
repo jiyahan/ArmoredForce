@@ -3,7 +3,7 @@
 -- http://industriousone.com/scripting-premake
 --
 
-local BOOST_DIR = os.getenv('BOOST_DIR')
+local BOOST_DIR = os.getenv('BOOST_ROOT')
 
 solution "Minions"
     configurations { "Release", "Debug" }
@@ -25,7 +25,6 @@ solution "Minions"
             "_CRT_SECURE_NO_WARNINGS",
             "_WIN32_WINNT=0x0502",
         }
-        
 
     project "Minions"
         kind "ConsoleApp"
@@ -55,6 +54,7 @@ solution "Minions"
         {
             "../../3rdParty/atom",
             "../../3rdParty/lua/src",
+            "../../3rdParty/luabind",
             "../../Server/Utility",
             BOOST_DIR,
         }
@@ -70,30 +70,6 @@ solution "Minions"
             "ws2_32",
             "mswsock",
             "liblua",
+            "libluabind",
             "libatom",
-        }
-    
-    -- Lua
-    project "liblua"
-        kind "StaticLib"
-        uuid "80B63F61-585A-49CC-B70F-71E13B1D1D9C"
-        language "C"
-        defines
-        {
-        }
-        
-        files
-        {
-            "../../3rdParty/lua/src/*.h",
-            "../../3rdParty/lua/src/*.c",
-        }
-        excludes 
-        {
-            "../../3rdParty/lua/src/lua.c",
-            "../../3rdParty/lua/src/luac.c",
-            "../../3rdParty/lua/src/print.c",
-        }
-        includedirs 
-        {
-            "../../3rdParty/lua/src/",
         }           
