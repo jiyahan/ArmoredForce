@@ -22,12 +22,10 @@ public:
         return *instance_;
     }
 
-    static T& Create()
+    template <typename... Args>
+    static T& Create(Args... args)
     {
-        // make_unique更好，但VC11不支持variadic template 
-        // 类型T需要满足默认构造
-        // instance_ = std::make_unique<T>();
-        instance_.reset(new T);
+        instance_.reset(new T(args...));
         return GetInst();
     }
 
