@@ -13,7 +13,7 @@
 #endif
 
 
-#define VERSION        "4.4-beta5"
+#define VERSION        "HEAD"
 #define COPYRIGHT      "Copyright (C) 2002-2013 Jason Perkins and the Premake Project"
 #define ERROR_MESSAGE  "%s\n"
 
