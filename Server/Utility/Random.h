@@ -36,7 +36,7 @@ public:
     
     // Randomly returns true ~"1/n" of the time, and false otherwise.
     // REQUIRES: n > 0
-    bool OneIn(uint64_t n) { return Uniform(n) == 0; }
+    bool OneIn(uint32_t n) { return Uniform(n) == 0; }
 
     // Returns a uniformly distributed value in the range [0..n-1]
     // REQUIRES: n > 0
