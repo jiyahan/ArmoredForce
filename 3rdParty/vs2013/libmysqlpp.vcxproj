@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{85BDBF0E-8BCC-6342-ACC3-F3B0D2EC54DC}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>libmysqlpp</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\libs\</OutDir>
+    <IntDir>obj\x32\Debug\libmysqlpp\</IntDir>
+    <TargetName>libmysqlpp</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\libs\</OutDir>
+    <IntDir>obj\x64\Debug\libmysqlpp\</IntDir>
+    <TargetName>libmysqlpp</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\libs\</OutDir>
+    <IntDir>obj\x32\Release\libmysqlpp\</IntDir>
+    <TargetName>libmysqlpp</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\libs\</OutDir>
+    <IntDir>obj\x64\Release\libmysqlpp\</IntDir>
+    <TargetName>libmysqlpp</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>DEBUG;_DEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;HAVE_MYSQL_SSL_SET;MYSQLPP_NO_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\MySQL++\include;..\libmysql\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)libmysqlpp.pdb</ProgramDataBaseFileName>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions> /wd"4996" %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>DEBUG;_DEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;HAVE_MYSQL_SSL_SET;MYSQLPP_NO_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\MySQL++\include;..\libmysql\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>DEBUG;_DEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;HAVE_MYSQL_SSL_SET;MYSQLPP_NO_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\MySQL++\include;..\libmysql\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)libmysqlpp.pdb</ProgramDataBaseFileName>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions> /wd"4996" %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>DEBUG;_DEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;HAVE_MYSQL_SSL_SET;MYSQLPP_NO_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\MySQL++\include;..\libmysql\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>NDEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;HAVE_MYSQL_SSL_SET;MYSQLPP_NO_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\MySQL++\include;..\libmysql\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)libmysqlpp.pdb</ProgramDataBaseFileName>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions> /wd"4996" %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;HAVE_MYSQL_SSL_SET;MYSQLPP_NO_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\MySQL++\include;..\libmysql\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>NDEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;HAVE_MYSQL_SSL_SET;MYSQLPP_NO_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\MySQL++\include;..\libmysql\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)libmysqlpp.pdb</ProgramDataBaseFileName>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions> /wd"4996" %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;HAVE_MYSQL_SSL_SET;MYSQLPP_NO_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\MySQL++\include;..\libmysql\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\mysql++\lib\autoflag.h" />
+    <ClInclude Include="..\mysql++\lib\beemutex.h" />
+    <ClInclude Include="..\mysql++\lib\cmdline.h" />
+    <ClInclude Include="..\mysql++\lib\common.h" />
+    <ClInclude Include="..\mysql++\lib\comparable.h" />
+    <ClInclude Include="..\mysql++\lib\connection.h" />
+    <ClInclude Include="..\mysql++\lib\cpool.h" />
+    <ClInclude Include="..\mysql++\lib\datetime.h" />
+    <ClInclude Include="..\mysql++\lib\dbdriver.h" />
+    <ClInclude Include="..\mysql++\lib\exceptions.h" />
+    <ClInclude Include="..\mysql++\lib\field.h" />
+    <ClInclude Include="..\mysql++\lib\field_names.h" />
+    <ClInclude Include="..\mysql++\lib\field_types.h" />
+    <ClInclude Include="..\mysql++\lib\insertpolicy.h" />
+    <ClInclude Include="..\mysql++\lib\manip.h" />
+    <ClInclude Include="..\mysql++\lib\myset.h" />
+    <ClInclude Include="..\mysql++\lib\mysql++.h" />
+    <ClInclude Include="..\mysql++\lib\mystring.h" />
+    <ClInclude Include="..\mysql++\lib\noexceptions.h" />
+    <ClInclude Include="..\mysql++\lib\null.h" />
+    <ClInclude Include="..\mysql++\lib\options.h" />
+    <ClInclude Include="..\mysql++\lib\qparms.h" />
+    <ClInclude Include="..\mysql++\lib\query.h" />
+    <ClInclude Include="..\mysql++\lib\querydef.h" />
+    <ClInclude Include="..\mysql++\lib\refcounted.h" />
+    <ClInclude Include="..\mysql++\lib\result.h" />
+    <ClInclude Include="..\mysql++\lib\row.h" />
+    <ClInclude Include="..\mysql++\lib\scopedconnection.h" />
+    <ClInclude Include="..\mysql++\lib\sql_buffer.h" />
+    <ClInclude Include="..\mysql++\lib\sql_types.h" />
+    <ClInclude Include="..\mysql++\lib\sqlstream.h" />
+    <ClInclude Include="..\mysql++\lib\ssqls.h" />
+    <ClInclude Include="..\mysql++\lib\ssqls2.h" />
+    <ClInclude Include="..\mysql++\lib\stadapter.h" />
+    <ClInclude Include="..\mysql++\lib\stream2string.h" />
+    <ClInclude Include="..\mysql++\lib\tcp_connection.h" />
+    <ClInclude Include="..\mysql++\lib\tiny_int.h" />
+    <ClInclude Include="..\mysql++\lib\transaction.h" />
+    <ClInclude Include="..\mysql++\lib\type_info.h" />
+    <ClInclude Include="..\mysql++\lib\uds_connection.h" />
+    <ClInclude Include="..\mysql++\lib\utility.h" />
+    <ClInclude Include="..\mysql++\lib\vallist.h" />
+    <ClInclude Include="..\mysql++\lib\wnp_connection.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\mysql++\lib\beemutex.cpp" />
+    <ClCompile Include="..\mysql++\lib\cmdline.cpp" />
+    <ClCompile Include="..\mysql++\lib\connection.cpp" />
+    <ClCompile Include="..\mysql++\lib\cpool.cpp" />
+    <ClCompile Include="..\mysql++\lib\datetime.cpp" />
+    <ClCompile Include="..\mysql++\lib\dbdriver.cpp" />
+    <ClCompile Include="..\mysql++\lib\field_names.cpp" />
+    <ClCompile Include="..\mysql++\lib\field_types.cpp" />
+    <ClCompile Include="..\mysql++\lib\manip.cpp" />
+    <ClCompile Include="..\mysql++\lib\myset.cpp" />
+    <ClCompile Include="..\mysql++\lib\mysql++.cpp" />
+    <ClCompile Include="..\mysql++\lib\mystring.cpp" />
+    <ClCompile Include="..\mysql++\lib\null.cpp" />
+    <ClCompile Include="..\mysql++\lib\options.cpp" />
+    <ClCompile Include="..\mysql++\lib\qparms.cpp" />
+    <ClCompile Include="..\mysql++\lib\query.cpp" />
+    <ClCompile Include="..\mysql++\lib\result.cpp" />
+    <ClCompile Include="..\mysql++\lib\row.cpp" />
+    <ClCompile Include="..\mysql++\lib\scopedconnection.cpp" />
+    <ClCompile Include="..\mysql++\lib\sql_buffer.cpp" />
+    <ClCompile Include="..\mysql++\lib\sqlstream.cpp" />
+    <ClCompile Include="..\mysql++\lib\ssqls2.cpp" />
+    <ClCompile Include="..\mysql++\lib\stadapter.cpp" />
+    <ClCompile Include="..\mysql++\lib\tcp_connection.cpp" />
+    <ClCompile Include="..\mysql++\lib\transaction.cpp" />
+    <ClCompile Include="..\mysql++\lib\type_info.cpp" />
+    <ClCompile Include="..\mysql++\lib\uds_connection.cpp" />
+    <ClCompile Include="..\mysql++\lib\utility.cpp" />
+    <ClCompile Include="..\mysql++\lib\vallist.cpp" />
+    <ClCompile Include="..\mysql++\lib\wnp_connection.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

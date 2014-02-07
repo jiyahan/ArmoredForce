@@ -1,0 +1,741 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{95269177-9BA3-1B42-98F3-8A901CA1B415}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>libAtom</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\libs\</OutDir>
+    <IntDir>obj\x32\Debug\libAtom\</IntDir>
+    <TargetName>libAtom</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\libs\</OutDir>
+    <IntDir>obj\x64\Debug\libAtom\</IntDir>
+    <TargetName>libAtom</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\libs\</OutDir>
+    <IntDir>obj\x32\Release\libAtom\</IntDir>
+    <TargetName>libAtom</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\libs\</OutDir>
+    <IntDir>obj\x64\Release\libAtom\</IntDir>
+    <TargetName>libAtom</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>DEBUG;_DEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)libAtom.pdb</ProgramDataBaseFileName>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions> /wd"4996" -Zm200 /FI"pch.h"  %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>DEBUG;_DEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>DEBUG;_DEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)libAtom.pdb</ProgramDataBaseFileName>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions> /wd"4996" -Zm200 /FI"pch.h"  %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>DEBUG;_DEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>NDEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)libAtom.pdb</ProgramDataBaseFileName>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions> /wd"4996" -Zm200 /FI"pch.h"  %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>NDEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)libAtom.pdb</ProgramDataBaseFileName>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions> /wd"4996" -Zm200 /FI"pch.h"  %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\atom\atom\CAtom.h" />
+    <ClInclude Include="..\atom\atom\Common.h" />
+    <ClInclude Include="..\atom\atom\enumeration\END_ALARM.h" />
+    <ClInclude Include="..\atom\atom\enumeration\END_DEBUG.h" />
+    <ClInclude Include="..\atom\atom\enumeration\END_ERROR.h" />
+    <ClInclude Include="..\atom\atom\enumeration\EVENT_ID.h" />
+    <ClInclude Include="..\atom\atom\enumeration\INTERFACE_ID.h" />
+    <ClInclude Include="..\atom\atom\enumeration\LINE_END.h" />
+    <ClInclude Include="..\atom\atom\enumeration\LOG_LEVEL.h" />
+    <ClInclude Include="..\atom\atom\enumeration\OBJECT_ID.h" />
+    <ClInclude Include="..\atom\atom\enumeration\SINGLETON_OBJECT_ID.h" />
+    <ClInclude Include="..\atom\atom\enumeration\THREAD_PRIORITY.h" />
+    <ClInclude Include="..\atom\atom\enumeration\VARIANT_TYPE.h" />
+    <ClInclude Include="..\atom\atom\interface\IAssignable.h" />
+    <ClInclude Include="..\atom\atom\interface\IClonable.h" />
+    <ClInclude Include="..\atom\atom\interface\IClosable.h" />
+    <ClInclude Include="..\atom\atom\interface\IEmbedInterface.h" />
+    <ClInclude Include="..\atom\atom\interface\IEventEmitter.h" />
+    <ClInclude Include="..\atom\atom\interface\IEventReceiver.h" />
+    <ClInclude Include="..\atom\atom\interface\IEventServiceEntry.h" />
+    <ClInclude Include="..\atom\atom\interface\IEventServiceTimeline.h" />
+    <ClInclude Include="..\atom\atom\interface\IEventSpaceController.h" />
+    <ClInclude Include="..\atom\atom\interface\IExportStream.h" />
+    <ClInclude Include="..\atom\atom\interface\IExportable.h" />
+    <ClInclude Include="..\atom\atom\interface\IFileStream.h" />
+    <ClInclude Include="..\atom\atom\interface\IFlushDevice.h" />
+    <ClInclude Include="..\atom\atom\interface\IFlushable.h" />
+    <ClInclude Include="..\atom\atom\interface\IImportStream.h" />
+    <ClInclude Include="..\atom\atom\interface\IImportable.h" />
+    <ClInclude Include="..\atom\atom\interface\IInstanceAliasContainer.h" />
+    <ClInclude Include="..\atom\atom\interface\IInstanceAllocator.h" />
+    <ClInclude Include="..\atom\atom\interface\IInstanceContainer.h" />
+    <ClInclude Include="..\atom\atom\interface\IInstanceContainerListener.h" />
+    <ClInclude Include="..\atom\atom\interface\IInstanceFactoryAllocator.h" />
+    <ClInclude Include="..\atom\atom\interface\IInstanceFactoryEntry.h" />
+    <ClInclude Include="..\atom\atom\interface\IInstanceLife.h" />
+    <ClInclude Include="..\atom\atom\interface\IInstanceLifeController.h" />
+    <ClInclude Include="..\atom\atom\interface\IInstanceLifeNotify.h" />
+    <ClInclude Include="..\atom\atom\interface\IInstanceLifeNotifyReceiver.h" />
+    <ClInclude Include="..\atom\atom\interface\IInstanceLifeReference.h" />
+    <ClInclude Include="..\atom\atom\interface\IInterface.h" />
+    <ClInclude Include="..\atom\atom\interface\ILogArchive.h" />
+    <ClInclude Include="..\atom\atom\interface\ILogServiceController.h" />
+    <ClInclude Include="..\atom\atom\interface\IMaintainable.h" />
+    <ClInclude Include="..\atom\atom\interface\IMaintainerTimeline.h" />
+    <ClInclude Include="..\atom\atom\interface\IMultiThreadControl.h" />
+    <ClInclude Include="..\atom\atom\interface\IReferencedInterface.h" />
+    <ClInclude Include="..\atom\atom\interface\IReferencedObject.h" />
+    <ClInclude Include="..\atom\atom\interface\IStream.h" />
+    <ClInclude Include="..\atom\atom\interface\ISwappable.h" />
+    <ClInclude Include="..\atom\atom\interface\ITcpConnectionController.h" />
+    <ClInclude Include="..\atom\atom\interface\ITcpConnectorController.h" />
+    <ClInclude Include="..\atom\atom\interface\ITcpConnectorFlushDevice.h" />
+    <ClInclude Include="..\atom\atom\interface\ITcpEpollIOModel.h" />
+    <ClInclude Include="..\atom\atom\interface\ITcpIOModel.h" />
+    <ClInclude Include="..\atom\atom\interface\ITcpIocpIOModel.h" />
+    <ClInclude Include="..\atom\atom\interface\ITcpKQueueIOModel.h" />
+    <ClInclude Include="..\atom\atom\interface\ITcpListenerController.h" />
+    <ClInclude Include="..\atom\atom\interface\ITcpNetworkServiceController.h" />
+    <ClInclude Include="..\atom\atom\interface\ITcpSelectIOModel.h" />
+    <ClInclude Include="..\atom\atom\interface\IThreadControl.h" />
+    <ClInclude Include="..\atom\atom\interface\ITruncatable.h" />
+    <ClInclude Include="..\atom\atom\interface\IXmlDocumentNode.h" />
+    <ClInclude Include="..\atom\atom\interface\IXmlElementNode.h" />
+    <ClInclude Include="..\atom\atom\log\CLog.h" />
+    <ClInclude Include="..\atom\atom\log\CLogArchive.h" />
+    <ClInclude Include="..\atom\atom\log\CLogExporter.h" />
+    <ClInclude Include="..\atom\atom\log\CLogService.h" />
+    <ClInclude Include="..\atom\atom\log\CLogServiceController.h" />
+    <ClInclude Include="..\atom\atom\log\CLogServiceControllerBind.h" />
+    <ClInclude Include="..\atom\atom\log\CLogServiceLife.h" />
+    <ClInclude Include="..\atom\atom\log\CLogServiceMaintainer.h" />
+    <ClInclude Include="..\atom\atom\log\CLogServiceSingletonBind.h" />
+    <ClInclude Include="..\atom\atom\maintainer\CMaintainer.h" />
+    <ClInclude Include="..\atom\atom\maintainer\CMaintainerLife.h" />
+    <ClInclude Include="..\atom\atom\maintainer\CMaintainerListener.h" />
+    <ClInclude Include="..\atom\atom\maintainer\CMaintainerSingletonBind.h" />
+    <ClInclude Include="..\atom\atom\maintainer\CMaintainerThread.h" />
+    <ClInclude Include="..\atom\atom\maintainer\CMaintainerTimeline.h" />
+    <ClInclude Include="..\atom\atom\maintainer\CMaintainerTimelineBind.h" />
+    <ClInclude Include="..\atom\atom\os\callstack\CCallStack.h" />
+    <ClInclude Include="..\atom\atom\os\character\CAppleCharacter.h" />
+    <ClInclude Include="..\atom\atom\os\character\CCharacter.h" />
+    <ClInclude Include="..\atom\atom\os\character\CCodePage.h" />
+    <ClInclude Include="..\atom\atom\os\character\CCodePageBind.h" />
+    <ClInclude Include="..\atom\atom\os\character\CCodePageSingletonBind.h" />
+    <ClInclude Include="..\atom\atom\os\character\CLinuxCharacter.h" />
+    <ClInclude Include="..\atom\atom\os\character\CWin32Character.h" />
+    <ClInclude Include="..\atom\atom\os\directory\CAppleDirectory.h" />
+    <ClInclude Include="..\atom\atom\os\directory\CDirectory.h" />
+    <ClInclude Include="..\atom\atom\os\directory\CLinuxDirectory.h" />
+    <ClInclude Include="..\atom\atom\os\directory\CWin32Directory.h" />
+    <ClInclude Include="..\atom\atom\os\file\CFile.h" />
+    <ClInclude Include="..\atom\atom\os\file\CFileStream.h" />
+    <ClInclude Include="..\atom\atom\os\library\CAppleLibrary.h" />
+    <ClInclude Include="..\atom\atom\os\library\CLibrary.h" />
+    <ClInclude Include="..\atom\atom\os\library\CLinuxLibrary.h" />
+    <ClInclude Include="..\atom\atom\os\library\CWin32Library.h" />
+    <ClInclude Include="..\atom\atom\os\memory\CMemory.h" />
+    <ClInclude Include="..\atom\atom\os\memory\CMemoryQueue.h" />
+    <ClInclude Include="..\atom\atom\os\memory\CMemoryQueueBind.h" />
+    <ClInclude Include="..\atom\atom\os\memory\CMemoryQueues.h" />
+    <ClInclude Include="..\atom\atom\os\memory\CMemoryScheduler.h" />
+    <ClInclude Include="..\atom\atom\os\memory\CMemorySchedulerSingletonBind.h" />
+    <ClInclude Include="..\atom\atom\os\memory\tagMemoryCount.h" />
+    <ClInclude Include="..\atom\atom\os\memory\tagMemoryCounts.h" />
+    <ClInclude Include="..\atom\atom\os\memory\tagMemorySector.h" />
+    <ClInclude Include="..\atom\atom\os\memory\tagMemoryTotal.h" />
+    <ClInclude Include="..\atom\atom\os\memory\tagMemoryTotals.h" />
+    <ClInclude Include="..\atom\atom\os\net\CIocpBuffer.h" />
+    <ClInclude Include="..\atom\atom\os\net\CIocpOverlap.h" />
+    <ClInclude Include="..\atom\atom\os\net\CKQueueEvent.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpConnector.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpConnectorController.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpConnectorEventEmitter.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpConnectorFlushDevice.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpConnectorFlushQueue.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpConnectorLife.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpEpollIOModelImplement.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpEpollModel.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpEpollModelLife.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpEpollModelThreadWorker.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpEpollModelThreads.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpIocpIOModelImplement.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpIocpIOModelImplementBind.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpIocpModel.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpIocpModelAliasContainer.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpIocpModelLife.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpIocpModelThreadWorker.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpIocpModelThreads.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpKQueueIOModelImplement.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpKQueueIOModelImplementBind.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpKQueueModel.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpKQueueModelAliasContainer.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpKQueueModelLife.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpKQueueModelThreadWorker.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpKQueueModelThreads.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpListener.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpListenerController.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpListenerLife.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpNetworkService.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpNetworkServiceController.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpNetworkServiceControllerBind.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpNetworkServiceLife.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpNetworkServiceSingletonBind.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpSelectModel.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpSelectModelImplement.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpSelectModelLife.h" />
+    <ClInclude Include="..\atom\atom\os\net\CTcpSelectModelThread.h" />
+    <ClInclude Include="..\atom\atom\os\net\tagDomain.h" />
+    <ClInclude Include="..\atom\atom\os\net\tagIocpEvent.h" />
+    <ClInclude Include="..\atom\atom\os\net\tagIocpOperation.h" />
+    <ClInclude Include="..\atom\atom\os\net\tagTcpKQueueOperation.h" />
+    <ClInclude Include="..\atom\atom\os\net\tagTcpSelectOperation.h" />
+    <ClInclude Include="..\atom\atom\os\net\utility\CSocketUtility.h" />
+    <ClInclude Include="..\atom\atom\os\path\CPath.h" />
+    <ClInclude Include="..\atom\atom\os\system\CSystemInformation.h" />
+    <ClInclude Include="..\atom\atom\os\thread\CAppleCriticalSection.h" />
+    <ClInclude Include="..\atom\atom\os\thread\CAppleSignal.h" />
+    <ClInclude Include="..\atom\atom\os\thread\CAppleThread.h" />
+    <ClInclude Include="..\atom\atom\os\thread\CCriticalSection.h" />
+    <ClInclude Include="..\atom\atom\os\thread\CLinuxCriticalSection.h" />
+    <ClInclude Include="..\atom\atom\os\thread\CLinuxSignal.h" />
+    <ClInclude Include="..\atom\atom\os\thread\CLinuxThread.h" />
+    <ClInclude Include="..\atom\atom\os\thread\CReference.h" />
+    <ClInclude Include="..\atom\atom\os\thread\CSignal.h" />
+    <ClInclude Include="..\atom\atom\os\thread\CThread.h" />
+    <ClInclude Include="..\atom\atom\os\thread\CWin32CriticalSection.h" />
+    <ClInclude Include="..\atom\atom\os\thread\CWin32Signal.h" />
+    <ClInclude Include="..\atom\atom\os\thread\CWin32Thread.h" />
+    <ClInclude Include="..\atom\atom\os\timer\CAppleMilisecondTimer.h" />
+    <ClInclude Include="..\atom\atom\os\timer\CAppleSystemTimer.h" />
+    <ClInclude Include="..\atom\atom\os\timer\CLinuxMilisecondTimer.h" />
+    <ClInclude Include="..\atom\atom\os\timer\CLinuxSystemTimer.h" />
+    <ClInclude Include="..\atom\atom\os\timer\CMilisecondTimer.h" />
+    <ClInclude Include="..\atom\atom\os\timer\CSystemTimer.h" />
+    <ClInclude Include="..\atom\atom\os\timer\CWin32MilisecondTimer.h" />
+    <ClInclude Include="..\atom\atom\os\timer\CWin32SystemTimer.h" />
+    <ClInclude Include="..\atom\atom\pattern\allocator\CAtomAllocator.h" />
+    <ClInclude Include="..\atom\atom\pattern\allocator\CAtomAllocatorSingletonBind.h" />
+    <ClInclude Include="..\atom\atom\pattern\allocator\CAtomInstanceAllocator.h" />
+    <ClInclude Include="..\atom\atom\pattern\container\CInstanceAliasContainer.h" />
+    <ClInclude Include="..\atom\atom\pattern\container\CInstanceAliasSet.h" />
+    <ClInclude Include="..\atom\atom\pattern\container\CInstanceAliasSetBind.h" />
+    <ClInclude Include="..\atom\atom\pattern\container\CInstanceContainable.h" />
+    <ClInclude Include="..\atom\atom\pattern\container\CInstanceContainableBind.h" />
+    <ClInclude Include="..\atom\atom\pattern\container\CInstanceContainer.h" />
+    <ClInclude Include="..\atom\atom\pattern\container\CInstanceContainerListener.h" />
+    <ClInclude Include="..\atom\atom\pattern\event\CEventDirectEmitter.h" />
+    <ClInclude Include="..\atom\atom\pattern\event\CEventEmitter.h" />
+    <ClInclude Include="..\atom\atom\pattern\event\CEventService.h" />
+    <ClInclude Include="..\atom\atom\pattern\event\CEventServiceEntry.h" />
+    <ClInclude Include="..\atom\atom\pattern\event\CEventServiceLife.h" />
+    <ClInclude Include="..\atom\atom\pattern\event\CEventServiceSingletonBind.h" />
+    <ClInclude Include="..\atom\atom\pattern\event\CEventServiceThread.h" />
+    <ClInclude Include="..\atom\atom\pattern\event\CEventServiceTimeline.h" />
+    <ClInclude Include="..\atom\atom\pattern\event\CEventServiceTimelineBind.h" />
+    <ClInclude Include="..\atom\atom\pattern\event\CEventSpace.h" />
+    <ClInclude Include="..\atom\atom\pattern\event\CEventSpaceController.h" />
+    <ClInclude Include="..\atom\atom\pattern\event\CEventSpaceControllerAliasBind.h" />
+    <ClInclude Include="..\atom\atom\pattern\event\CEventSpaceControllerQueueBind.h" />
+    <ClInclude Include="..\atom\atom\pattern\event\CEventSpaceLife.h" />
+    <ClInclude Include="..\atom\atom\pattern\event\tagEvent.h" />
+    <ClInclude Include="..\atom\atom\pattern\factory\CInstanceFactory.h" />
+    <ClInclude Include="..\atom\atom\pattern\factory\CInstanceFactoryAllocator.h" />
+    <ClInclude Include="..\atom\atom\pattern\factory\CInstanceFactoryEntry.h" />
+    <ClInclude Include="..\atom\atom\pattern\factory\CInstanceFactoryLife.h" />
+    <ClInclude Include="..\atom\atom\pattern\factory\CInstanceFactoryMaintainer.h" />
+    <ClInclude Include="..\atom\atom\pattern\factory\CInstanceFactoryRemoveBind.h" />
+    <ClInclude Include="..\atom\atom\pattern\factory\CInstanceFactorySingletonBind.h" />
+    <ClInclude Include="..\atom\atom\pattern\factory\CInstances.h" />
+    <ClInclude Include="..\atom\atom\pattern\factory\CInstancesBind.h" />
+    <ClInclude Include="..\atom\atom\pattern\factory\tagAllocator.h" />
+    <ClInclude Include="..\atom\atom\pattern\life\CInstanceLife.h" />
+    <ClInclude Include="..\atom\atom\pattern\life\CInstanceLifeController.h" />
+    <ClInclude Include="..\atom\atom\pattern\life\CInstanceLifeEntry.h" />
+    <ClInclude Include="..\atom\atom\pattern\life\CInstanceLifeMaintainer.h" />
+    <ClInclude Include="..\atom\atom\pattern\life\CInstanceLifeReference.h" />
+    <ClInclude Include="..\atom\atom\pattern\life\CInstanceLifeRemoveQueue.h" />
+    <ClInclude Include="..\atom\atom\pattern\life\CInstanceLifeRemoveQueueBind.h" />
+    <ClInclude Include="..\atom\atom\pattern\life\CInstanceLifeSingletonBind.h" />
+    <ClInclude Include="..\atom\atom\pattern\life\CInstanceLifeWakeReference.h" />
+    <ClInclude Include="..\atom\atom\pattern\life\CInstanceLifeWakeReferenceBind.h" />
+    <ClInclude Include="..\atom\atom\pattern\life\CInstanceLifeWakeReferenceX.h" />
+    <ClInclude Include="..\atom\atom\pattern\object\CReferencedObject.h" />
+    <ClInclude Include="..\atom\atom\pattern\singleton\CSingleton.h" />
+    <ClInclude Include="..\atom\atom\serialization\CArchive.h" />
+    <ClInclude Include="..\atom\atom\serialization\CExportArchive.h" />
+    <ClInclude Include="..\atom\atom\serialization\CImportArchive.h" />
+    <ClInclude Include="..\atom\atom\serialization\extend\atom.h" />
+    <ClInclude Include="..\atom\atom\serialization\extend\stl.h" />
+    <ClInclude Include="..\atom\atom\serialization\tagArray.h" />
+    <ClInclude Include="..\atom\atom\serialization\tagClass.h" />
+    <ClInclude Include="..\atom\atom\serialization\tagInvalid.h" />
+    <ClInclude Include="..\atom\atom\serialization\tagPrimitive.h" />
+    <ClInclude Include="..\atom\atom\serialization\tagSerializer.h" />
+    <ClInclude Include="..\atom\atom\serialization\trait\and.h" />
+    <ClInclude Include="..\atom\atom\serialization\trait\array_trait.h" />
+    <ClInclude Include="..\atom\atom\serialization\trait\degradation_trait.h" />
+    <ClInclude Include="..\atom\atom\serialization\trait\if_else.h" />
+    <ClInclude Include="..\atom\atom\serialization\trait\is_array.h" />
+    <ClInclude Include="..\atom\atom\serialization\trait\is_character.h" />
+    <ClInclude Include="..\atom\atom\serialization\trait\is_class.h" />
+    <ClInclude Include="..\atom\atom\serialization\trait\is_float_point.h" />
+    <ClInclude Include="..\atom\atom\serialization\trait\is_integral.h" />
+    <ClInclude Include="..\atom\atom\serialization\trait\is_pointer.h" />
+    <ClInclude Include="..\atom\atom\serialization\trait\is_primitive.h" />
+    <ClInclude Include="..\atom\atom\serialization\trait\is_reference.h" />
+    <ClInclude Include="..\atom\atom\serialization\trait\is_void.h" />
+    <ClInclude Include="..\atom\atom\serialization\trait\not.h" />
+    <ClInclude Include="..\atom\atom\serialization\trait\or.h" />
+    <ClInclude Include="..\atom\atom\stream\memory\CExportStream.h" />
+    <ClInclude Include="..\atom\atom\stream\memory\CImportStream.h" />
+    <ClInclude Include="..\atom\atom\stream\memory\CImportStreamBind.h" />
+    <ClInclude Include="..\atom\atom\stream\memory\CStream.h" />
+    <ClInclude Include="..\atom\atom\stream\object\CExporter.h" />
+    <ClInclude Include="..\atom\atom\stream\object\CIOPorter.h" />
+    <ClInclude Include="..\atom\atom\stream\object\CImporter.h" />
+    <ClInclude Include="..\atom\atom\stream\reader\CDataReader.h" />
+    <ClInclude Include="..\atom\atom\stream\wrapper\CAssignableWrapper.h" />
+    <ClInclude Include="..\atom\atom\stream\wrapper\CClonableWrapper.h" />
+    <ClInclude Include="..\atom\atom\stream\wrapper\CClosableWrapper.h" />
+    <ClInclude Include="..\atom\atom\stream\wrapper\CExportableWrapper.h" />
+    <ClInclude Include="..\atom\atom\stream\wrapper\CFlushableWrapper.h" />
+    <ClInclude Include="..\atom\atom\stream\wrapper\CImportableWrapper.h" />
+    <ClInclude Include="..\atom\atom\stream\wrapper\CSwappableWrapper.h" />
+    <ClInclude Include="..\atom\atom\stream\wrapper\CTruncatableWrapper.h" />
+    <ClInclude Include="..\atom\atom\stream\wrapper\tagWrapper.h" />
+    <ClInclude Include="..\atom\atom\stream\writer\CDataWriter.h" />
+    <ClInclude Include="..\atom\atom\utility\allocator\CAllocator.h" />
+    <ClInclude Include="..\atom\atom\utility\allocator\CAllocatorQueue.h" />
+    <ClInclude Include="..\atom\atom\utility\allocator\CAllocatorQueueBind.h" />
+    <ClInclude Include="..\atom\atom\utility\base64\CBase64Codec.h" />
+    <ClInclude Include="..\atom\atom\utility\byteswap\CByteSwap.h" />
+    <ClInclude Include="..\atom\atom\utility\cache\CObjectCache.h" />
+    <ClInclude Include="..\atom\atom\utility\cache\CObjectCacheSet.h" />
+    <ClInclude Include="..\atom\atom\utility\cache\CObjectCacheSetBind.h" />
+    <ClInclude Include="..\atom\atom\utility\cache\tagObjectCache.h" />
+    <ClInclude Include="..\atom\atom\utility\charset\CCharset.h" />
+    <ClInclude Include="..\atom\atom\utility\charset\CUtf8Charset.h" />
+    <ClInclude Include="..\atom\atom\utility\checksum\alogrithm\crc\crc.h" />
+    <ClInclude Include="..\atom\atom\utility\checksum\alogrithm\internet\internet.h" />
+    <ClInclude Include="..\atom\atom\utility\checksum\alogrithm\md5\md5.h" />
+    <ClInclude Include="..\atom\atom\utility\indices\CIndices.h" />
+    <ClInclude Include="..\atom\atom\utility\indices\CIndicesX.h" />
+    <ClInclude Include="..\atom\atom\utility\math\random\CRandom.h" />
+    <ClInclude Include="..\atom\atom\utility\member\CMembers.h" />
+    <ClInclude Include="..\atom\atom\utility\member\CMembersBind.h" />
+    <ClInclude Include="..\atom\atom\utility\stl\CI08Array.h" />
+    <ClInclude Include="..\atom\atom\utility\stl\CI16Array.h" />
+    <ClInclude Include="..\atom\atom\utility\stl\CI32Array.h" />
+    <ClInclude Include="..\atom\atom\utility\stl\CI64Array.h" />
+    <ClInclude Include="..\atom\atom\utility\stl\CStringArray.h" />
+    <ClInclude Include="..\atom\atom\utility\stl\CU08Array.h" />
+    <ClInclude Include="..\atom\atom\utility\stl\CU16Array.h" />
+    <ClInclude Include="..\atom\atom\utility\stl\CU32Array.h" />
+    <ClInclude Include="..\atom\atom\utility\stl\CU64Array.h" />
+    <ClInclude Include="..\atom\atom\utility\stl\CWStringArray.h" />
+    <ClInclude Include="..\atom\atom\utility\stl\a_string.h" />
+    <ClInclude Include="..\atom\atom\utility\stl\a_wstring.h" />
+    <ClInclude Include="..\atom\atom\utility\stl\allocator.h" />
+    <ClInclude Include="..\atom\atom\utility\stl\stl_extend.h" />
+    <ClInclude Include="..\atom\atom\utility\timeline\CTimeLine.h" />
+    <ClInclude Include="..\atom\atom\utility\timeline\CTimeLineDefine.h" />
+    <ClInclude Include="..\atom\atom\utility\timeline\tagTimeLine.h" />
+    <ClInclude Include="..\atom\atom\utility\tool\CCriticalSectionScope.h" />
+    <ClInclude Include="..\atom\atom\utility\tool\CInstanceUtility.h" />
+    <ClInclude Include="..\atom\atom\utility\tool\CInterface.h" />
+    <ClInclude Include="..\atom\atom\utility\tool\CObjectPtr.h" />
+    <ClInclude Include="..\atom\atom\utility\variant\CVariant.h" />
+    <ClInclude Include="..\atom\atom\utility\variant\CVariantArray.h" />
+    <ClInclude Include="..\atom\atom\utility\variant\CVariantPairBind.h" />
+    <ClInclude Include="..\atom\atom\utility\variant\CVariants.h" />
+    <ClInclude Include="..\atom\atom\utility\variant\CVariantsBind.h" />
+    <ClInclude Include="..\atom\atom\utility\variant\tagVariant.h" />
+    <ClInclude Include="..\atom\atom\utility\xml\CDefinedXmlNode.h" />
+    <ClInclude Include="..\atom\atom\utility\xml\CXmlDocument.h" />
+    <ClInclude Include="..\atom\atom\utility\xml\CXmlDocumentLife.h" />
+    <ClInclude Include="..\atom\atom\utility\xml\CXmlDocumentNode.h" />
+    <ClInclude Include="..\atom\atom\utility\xml\CXmlDocumentPtr.h" />
+    <ClInclude Include="..\atom\atom\utility\xml\CXmlElement.h" />
+    <ClInclude Include="..\atom\atom\utility\xml\CXmlElementLife.h" />
+    <ClInclude Include="..\atom\atom\utility\xml\CXmlElementNode.h" />
+    <ClInclude Include="..\atom\atom\utility\xml\CXmlElementPtr.h" />
+    <ClInclude Include="..\atom\electron\CElectron.h" />
+    <ClInclude Include="..\atom\electron\Common.h" />
+    <ClInclude Include="..\atom\electron\allocator\CElectronAllocator.h" />
+    <ClInclude Include="..\atom\electron\allocator\CElectronAllocatorSingletonBind.h" />
+    <ClInclude Include="..\atom\electron\allocator\CElectronInstanceAllocator.h" />
+    <ClInclude Include="..\atom\electron\compress\lzoconf.h" />
+    <ClInclude Include="..\atom\electron\compress\lzodefs.h" />
+    <ClInclude Include="..\atom\electron\compress\minilzo.h" />
+    <ClInclude Include="..\atom\electron\compress\pch.h" />
+    <ClInclude Include="..\atom\electron\enumeration\EVENT_ID.h" />
+    <ClInclude Include="..\atom\electron\enumeration\INTERFACE_ID.h" />
+    <ClInclude Include="..\atom\electron\enumeration\MESSAGE_ID.h" />
+    <ClInclude Include="..\atom\electron\enumeration\OBJECT_ID.h" />
+    <ClInclude Include="..\atom\electron\enumeration\SINGLETON_OBJECT_ID.h" />
+    <ClInclude Include="..\atom\electron\interface\IConnectionSchedulerController.h" />
+    <ClInclude Include="..\atom\electron\interface\IConnectorStubFrame.h" />
+    <ClInclude Include="..\atom\electron\interface\IConnectorStubHeartBeat.h" />
+    <ClInclude Include="..\atom\electron\interface\IConnectorStubStatistics.h" />
+    <ClInclude Include="..\atom\electron\interface\IMessageEntry.h" />
+    <ClInclude Include="..\atom\electron\interface\IMessageQueueController.h" />
+    <ClInclude Include="..\atom\electron\message\CMessage.h" />
+    <ClInclude Include="..\atom\electron\message\CMessageAllocator.h" />
+    <ClInclude Include="..\atom\electron\message\CMessageAllocatorBind.h" />
+    <ClInclude Include="..\atom\electron\message\CMessageAllocatorSingletonBind.h" />
+    <ClInclude Include="..\atom\electron\message\CMessageEntry.h" />
+    <ClInclude Include="..\atom\electron\message\CMessageLife.h" />
+    <ClInclude Include="..\atom\electron\message\CMessageQueue.h" />
+    <ClInclude Include="..\atom\electron\message\CMessageQueueController.h" />
+    <ClInclude Include="..\atom\electron\message\CMessageQueueControllerSet.h" />
+    <ClInclude Include="..\atom\electron\message\CMessageQueueControllerSetBind.h" />
+    <ClInclude Include="..\atom\electron\message\CMessageQueueLife.h" />
+    <ClInclude Include="..\atom\electron\scheduler\CConnectionScheduler.h" />
+    <ClInclude Include="..\atom\electron\scheduler\CConnectionSchedulerAliasContainer.h" />
+    <ClInclude Include="..\atom\electron\scheduler\CConnectionSchedulerController.h" />
+    <ClInclude Include="..\atom\electron\scheduler\CConnectionSchedulerControllerIndicesBind.h" />
+    <ClInclude Include="..\atom\electron\scheduler\CConnectionSchedulerControllerListenerBind.h" />
+    <ClInclude Include="..\atom\electron\scheduler\CConnectionSchedulerEventReceiver.h" />
+    <ClInclude Include="..\atom\electron\scheduler\CConnectionSchedulerLife.h" />
+    <ClInclude Include="..\atom\electron\scheduler\CConnectionSchedulerMultiThread.h" />
+    <ClInclude Include="..\atom\electron\scheduler\CConnectionSchedulerMultiThreadWorker.h" />
+    <ClInclude Include="..\atom\electron\scheduler\CConnectionSchedulerSingletonBind.h" />
+    <ClInclude Include="..\atom\electron\stub\CConnectorStub.h" />
+    <ClInclude Include="..\atom\electron\stub\CConnectorStubEventReceiver.h" />
+    <ClInclude Include="..\atom\electron\stub\CConnectorStubFrame.h" />
+    <ClInclude Include="..\atom\electron\stub\CConnectorStubHeartBeat.h" />
+    <ClInclude Include="..\atom\electron\stub\CConnectorStubLife.h" />
+    <ClInclude Include="..\atom\electron\stub\CConnectorStubMaintainable.h" />
+    <ClInclude Include="..\atom\electron\stub\CConnectorStubStatistics.h" />
+    <ClInclude Include="..\atom\electron\stub\tagFlowStatistics.h" />
+    <ClInclude Include="..\atom\electron\stub\tagFrame.h" />
+    <ClInclude Include="..\atom\pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\atom\atom\CAtom.cpp" />
+    <ClCompile Include="..\atom\atom\log\CLog.cpp" />
+    <ClCompile Include="..\atom\atom\log\CLogArchive.cpp" />
+    <ClCompile Include="..\atom\atom\log\CLogExporter.cpp" />
+    <ClCompile Include="..\atom\atom\log\CLogService.cpp" />
+    <ClCompile Include="..\atom\atom\log\CLogServiceController.cpp" />
+    <ClCompile Include="..\atom\atom\log\CLogServiceLife.cpp" />
+    <ClCompile Include="..\atom\atom\log\CLogServiceMaintainer.cpp" />
+    <ClCompile Include="..\atom\atom\maintainer\CMaintainer.cpp" />
+    <ClCompile Include="..\atom\atom\maintainer\CMaintainerLife.cpp" />
+    <ClCompile Include="..\atom\atom\maintainer\CMaintainerListener.cpp" />
+    <ClCompile Include="..\atom\atom\maintainer\CMaintainerThread.cpp" />
+    <ClCompile Include="..\atom\atom\maintainer\CMaintainerTimeline.cpp" />
+    <ClCompile Include="..\atom\atom\os\callstack\CCallStack.cpp" />
+    <ClCompile Include="..\atom\atom\os\character\CCodePage.cpp" />
+    <ClCompile Include="..\atom\atom\os\directory\CAppleDirectory.cpp" />
+    <ClCompile Include="..\atom\atom\os\directory\CLinuxDirectory.cpp" />
+    <ClCompile Include="..\atom\atom\os\directory\CWin32Directory.cpp" />
+    <ClCompile Include="..\atom\atom\os\file\CFile.cpp" />
+    <ClCompile Include="..\atom\atom\os\file\CFileStream.cpp" />
+    <ClCompile Include="..\atom\atom\os\library\CAppleLibrary.cpp" />
+    <ClCompile Include="..\atom\atom\os\library\CLinuxLibrary.cpp" />
+    <ClCompile Include="..\atom\atom\os\library\CWin32Library.cpp" />
+    <ClCompile Include="..\atom\atom\os\memory\CMemory.cpp" />
+    <ClCompile Include="..\atom\atom\os\memory\CMemoryQueue.cpp" />
+    <ClCompile Include="..\atom\atom\os\memory\CMemoryQueues.cpp" />
+    <ClCompile Include="..\atom\atom\os\memory\CMemoryScheduler.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpConnector.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpConnectorController.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpConnectorEventEmitter.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpConnectorFlushDevice.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpConnectorFlushQueue.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpConnectorLife.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpEpollIOModelImplement.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpEpollModel.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpEpollModelLife.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpEpollModelThreadWorker.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpEpollModelThreads.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpIocpIOModelImplement.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpIocpModel.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpIocpModelLife.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpIocpModelThreadWorker.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpIocpModelThreads.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpKQueueIOModelImplement.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpKQueueModel.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpKQueueModelLife.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpKQueueModelThreadWorker.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpKQueueModelThreads.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpListener.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpListenerController.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpListenerLife.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpNetworkService.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpNetworkServiceController.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpNetworkServiceLife.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpSelectModel.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpSelectModelImplement.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpSelectModelLife.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\CTcpSelectModelThread.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\tagDomain.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\tagIocpEvent.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\tagIocpOperation.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\tagTcpKQueueOperation.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\tagTcpSelectOperation.cpp" />
+    <ClCompile Include="..\atom\atom\os\net\utility\CSocketUtility.cpp" />
+    <ClCompile Include="..\atom\atom\os\path\CPath.cpp" />
+    <ClCompile Include="..\atom\atom\os\system\CSystemInformation.cpp" />
+    <ClCompile Include="..\atom\atom\os\thread\CAppleSignal.cpp" />
+    <ClCompile Include="..\atom\atom\os\thread\CAppleThread.cpp" />
+    <ClCompile Include="..\atom\atom\os\thread\CLinuxSignal.cpp" />
+    <ClCompile Include="..\atom\atom\os\thread\CLinuxThread.cpp" />
+    <ClCompile Include="..\atom\atom\os\thread\CWin32Signal.cpp" />
+    <ClCompile Include="..\atom\atom\os\thread\CWin32Thread.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\allocator\CAtomAllocator.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\allocator\CAtomInstanceAllocator.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\container\CInstanceContainable.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\container\CInstanceContainer.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\container\CInstanceContainerListener.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\event\CEventDirectEmitter.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\event\CEventEmitter.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\event\CEventService.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\event\CEventServiceEntry.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\event\CEventServiceLife.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\event\CEventServiceThread.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\event\CEventServiceTimeline.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\event\CEventSpace.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\event\CEventSpaceController.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\event\CEventSpaceLife.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\event\tagEvent.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\factory\CInstanceFactory.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\factory\CInstanceFactoryAllocator.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\factory\CInstanceFactoryEntry.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\factory\CInstanceFactoryLife.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\factory\CInstanceFactoryMaintainer.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\factory\CInstances.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\factory\tagAllocator.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\life\CInstanceLife.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\life\CInstanceLifeController.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\life\CInstanceLifeEntry.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\life\CInstanceLifeMaintainer.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\life\CInstanceLifeReference.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\life\CInstanceLifeRemoveQueue.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\life\CInstanceLifeWakeReference.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\life\CInstanceLifeWakeReferenceX.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\object\CReferencedObject.cpp" />
+    <ClCompile Include="..\atom\atom\pattern\singleton\CSingleton.cpp" />
+    <ClCompile Include="..\atom\atom\serialization\CArchive.cpp" />
+    <ClCompile Include="..\atom\atom\serialization\CExportArchive.cpp" />
+    <ClCompile Include="..\atom\atom\serialization\CImportArchive.cpp" />
+    <ClCompile Include="..\atom\atom\stream\memory\CExportStream.cpp" />
+    <ClCompile Include="..\atom\atom\stream\memory\CImportStream.cpp" />
+    <ClCompile Include="..\atom\atom\stream\memory\CStream.cpp" />
+    <ClCompile Include="..\atom\atom\stream\object\CExporter.cpp" />
+    <ClCompile Include="..\atom\atom\stream\object\CIOPorter.cpp" />
+    <ClCompile Include="..\atom\atom\stream\object\CImporter.cpp" />
+    <ClCompile Include="..\atom\atom\stream\reader\CDataReader.cpp" />
+    <ClCompile Include="..\atom\atom\stream\wrapper\CAssignableWrapper.cpp" />
+    <ClCompile Include="..\atom\atom\stream\wrapper\CClonableWrapper.cpp" />
+    <ClCompile Include="..\atom\atom\stream\wrapper\CClosableWrapper.cpp" />
+    <ClCompile Include="..\atom\atom\stream\wrapper\CExportableWrapper.cpp" />
+    <ClCompile Include="..\atom\atom\stream\wrapper\CFlushableWrapper.cpp" />
+    <ClCompile Include="..\atom\atom\stream\wrapper\CImportableWrapper.cpp" />
+    <ClCompile Include="..\atom\atom\stream\wrapper\CSwappableWrapper.cpp" />
+    <ClCompile Include="..\atom\atom\stream\wrapper\CTruncatableWrapper.cpp" />
+    <ClCompile Include="..\atom\atom\stream\wrapper\tagWrapper.cpp" />
+    <ClCompile Include="..\atom\atom\stream\writer\CDataWriter.cpp" />
+    <ClCompile Include="..\atom\atom\utility\base64\CBase64Codec.cpp" />
+    <ClCompile Include="..\atom\atom\utility\byteswap\CByteSwap.cpp" />
+    <ClCompile Include="..\atom\atom\utility\cache\CObjectCache.cpp" />
+    <ClCompile Include="..\atom\atom\utility\charset\CCharset.cpp" />
+    <ClCompile Include="..\atom\atom\utility\charset\CUtf8Charset.cpp" />
+    <ClCompile Include="..\atom\atom\utility\checksum\alogrithm\crc\crc.cpp" />
+    <ClCompile Include="..\atom\atom\utility\checksum\alogrithm\internet\internet.cpp" />
+    <ClCompile Include="..\atom\atom\utility\math\random\CRandom.cpp" />
+    <ClCompile Include="..\atom\atom\utility\tool\CInstanceUtility.cpp" />
+    <ClCompile Include="..\atom\atom\utility\variant\CVariant.cpp" />
+    <ClCompile Include="..\atom\atom\utility\variant\CVariants.cpp" />
+    <ClCompile Include="..\atom\atom\utility\variant\tagVariant.cpp" />
+    <ClCompile Include="..\atom\atom\utility\xml\CXmlDocument.cpp" />
+    <ClCompile Include="..\atom\atom\utility\xml\CXmlDocumentLife.cpp" />
+    <ClCompile Include="..\atom\atom\utility\xml\CXmlDocumentNode.cpp" />
+    <ClCompile Include="..\atom\atom\utility\xml\CXmlElement.cpp" />
+    <ClCompile Include="..\atom\atom\utility\xml\CXmlElementLife.cpp" />
+    <ClCompile Include="..\atom\atom\utility\xml\CXmlElementNode.cpp" />
+    <ClCompile Include="..\atom\electron\CElectron.cpp" />
+    <ClCompile Include="..\atom\electron\allocator\CElectronAllocator.cpp" />
+    <ClCompile Include="..\atom\electron\allocator\CElectronInstanceAllocator.cpp" />
+    <ClCompile Include="..\atom\electron\compress\minilzo.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\atom\electron\message\CMessage.cpp" />
+    <ClCompile Include="..\atom\electron\message\CMessageEntry.cpp" />
+    <ClCompile Include="..\atom\electron\message\CMessageLife.cpp" />
+    <ClCompile Include="..\atom\electron\message\CMessageQueue.cpp" />
+    <ClCompile Include="..\atom\electron\message\CMessageQueueController.cpp" />
+    <ClCompile Include="..\atom\electron\message\CMessageQueueControllerSet.cpp" />
+    <ClCompile Include="..\atom\electron\message\CMessageQueueLife.cpp" />
+    <ClCompile Include="..\atom\electron\scheduler\CConnectionScheduler.cpp" />
+    <ClCompile Include="..\atom\electron\scheduler\CConnectionSchedulerController.cpp" />
+    <ClCompile Include="..\atom\electron\scheduler\CConnectionSchedulerEventReceiver.cpp" />
+    <ClCompile Include="..\atom\electron\scheduler\CConnectionSchedulerLife.cpp" />
+    <ClCompile Include="..\atom\electron\scheduler\CConnectionSchedulerMultiThread.cpp" />
+    <ClCompile Include="..\atom\electron\scheduler\CConnectionSchedulerMultiThreadWorker.cpp" />
+    <ClCompile Include="..\atom\electron\stub\CConnectorStub.cpp" />
+    <ClCompile Include="..\atom\electron\stub\CConnectorStubEventReceiver.cpp" />
+    <ClCompile Include="..\atom\electron\stub\CConnectorStubFrame.cpp" />
+    <ClCompile Include="..\atom\electron\stub\CConnectorStubHeartBeat.cpp" />
+    <ClCompile Include="..\atom\electron\stub\CConnectorStubLife.cpp" />
+    <ClCompile Include="..\atom\electron\stub\CConnectorStubMaintainable.cpp" />
+    <ClCompile Include="..\atom\electron\stub\CConnectorStubStatistics.cpp" />
+    <ClCompile Include="..\atom\pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -6,7 +6,7 @@
 
 local BOOST_DIR = os.getenv("BOOST_ROOT")
 
-solution "DenpendencyLibs"
+solution "DepLibs"
     location (_ACTION or "")
     targetdir "libs"    
     language "C++"
@@ -33,6 +33,7 @@ solution "DenpendencyLibs"
             
     -- MySQL++
     project "libmysqlpp"
+        location (_ACTION or "")
         kind "StaticLib"
         uuid "85BDBF0E-8BCC-6342-ACC3-F3B0D2EC54DC"
         defines 
@@ -60,6 +61,7 @@ solution "DenpendencyLibs"
         
     -- Atom
     project "libAtom"
+        location (_ACTION or "")
         kind "StaticLib"
         uuid "95269177-9BA3-1B42-98F3-8A901CA1B415"
         buildoptions "-Zm200 /FI\"pch.h\" "
@@ -79,6 +81,7 @@ solution "DenpendencyLibs"
         
     -- RCF
     project "librcf"
+        location (_ACTION or "")
         kind "StaticLib"
         uuid "953B98EE-A11F-B44E-AF70-E1A6704A143E"
         defines 
@@ -99,6 +102,7 @@ solution "DenpendencyLibs"
     
     -- gtest
     project "libgtest"
+        location (_ACTION or "")
         kind "StaticLib"
         uuid "F6820085-B31D-1B44-BC9D-E3F65615604C"
         defines
@@ -118,6 +122,7 @@ solution "DenpendencyLibs"
         
     -- Lua
     project "liblua"
+        location (_ACTION or "")
         kind "StaticLib"
         uuid "DDBAFE27-F999-E24B-91CC-E51FEBE65EE2"
         language "C"
@@ -139,6 +144,7 @@ solution "DenpendencyLibs"
        
        -- luabind
     project "libluabind"
+        location (_ACTION or "")
         kind "StaticLib"
         uuid "D14147C5-6030-40D9-91E6-EC674DBE5BB8"
         language "C++"
