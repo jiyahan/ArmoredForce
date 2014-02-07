@@ -555,7 +555,6 @@
     <ClInclude Include="..\atom\electron\stub\CConnectorStubStatistics.h" />
     <ClInclude Include="..\atom\electron\stub\tagFlowStatistics.h" />
     <ClInclude Include="..\atom\electron\stub\tagFrame.h" />
-    <ClInclude Include="..\atom\pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\atom\atom\CAtom.cpp" />
