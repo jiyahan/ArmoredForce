@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1EFC1D41-464B-3147-94E8-25FAD0F1E1AA}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>DBServer</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\Run\dbserver\</OutDir>
+    <IntDir>obj\x32\Release\</IntDir>
+    <TargetName>DBServer</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\Run\dbserver\</OutDir>
+    <IntDir>obj\x64\Release\</IntDir>
+    <TargetName>DBServer</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\..\..\Run\dbserver\</OutDir>
+    <IntDir>obj\x32\Debug\</IntDir>
+    <TargetName>DBServer</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\..\..\Run\dbserver\</OutDir>
+    <IntDir>obj\x64\Debug\</IntDir>
+    <TargetName>DBServer</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>NDEBUG;WIN32_LEAN_AND_MEAN;__DB_SERVER__;MARKUP_STL;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;MYSQLPP_NO_DLL;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\Utility;..\..\..\3rdParty;..\..\..\3rdParty\atom;..\..\..\3rdParty\glog\src\windows;..\..\..\3rdParty\libmysql\include;..\..\..\3rdParty\mysql++\lib;..\..\..\3rdParty\RCF\include;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)DBServer.pdb</ProgramDataBaseFileName>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>-Zm200 /FI"stdafx.h" /wd"4996" /I"../../../" %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;WIN32_LEAN_AND_MEAN;__DB_SERVER__;MARKUP_STL;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;MYSQLPP_NO_DLL;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\Utility;..\..\..\3rdParty;..\..\..\3rdParty\atom;..\..\..\3rdParty\glog\src\windows;..\..\..\3rdParty\libmysql\include;..\..\..\3rdParty\mysql++\lib;..\..\..\3rdParty\RCF\include;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>libmysql.lib;libmysqlpp.lib;librcf.lib;libatom.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\3rdParty\libs;F:\Library\boost_1_55_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>NDEBUG;WIN32_LEAN_AND_MEAN;__DB_SERVER__;MARKUP_STL;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;MYSQLPP_NO_DLL;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\Utility;..\..\..\3rdParty;..\..\..\3rdParty\atom;..\..\..\3rdParty\glog\src\windows;..\..\..\3rdParty\libmysql\include;..\..\..\3rdParty\mysql++\lib;..\..\..\3rdParty\RCF\include;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)DBServer.pdb</ProgramDataBaseFileName>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>-Zm200 /FI"stdafx.h" /wd"4996" /I"../../../" %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;WIN32_LEAN_AND_MEAN;__DB_SERVER__;MARKUP_STL;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;MYSQLPP_NO_DLL;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\Utility;..\..\..\3rdParty;..\..\..\3rdParty\atom;..\..\..\3rdParty\glog\src\windows;..\..\..\3rdParty\libmysql\include;..\..\..\3rdParty\mysql++\lib;..\..\..\3rdParty\RCF\include;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>libmysql.lib;libmysqlpp.lib;librcf.lib;libatom.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\3rdParty\libs;F:\Library\boost_1_55_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>DEBUG;WIN32_LEAN_AND_MEAN;__DB_SERVER__;MARKUP_STL;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;MYSQLPP_NO_DLL;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\Utility;..\..\..\3rdParty;..\..\..\3rdParty\atom;..\..\..\3rdParty\glog\src\windows;..\..\..\3rdParty\libmysql\include;..\..\..\3rdParty\mysql++\lib;..\..\..\3rdParty\RCF\include;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)DBServer.pdb</ProgramDataBaseFileName>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>-Zm200 /FI"stdafx.h" /wd"4996" /I"../../../" %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>DEBUG;WIN32_LEAN_AND_MEAN;__DB_SERVER__;MARKUP_STL;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;MYSQLPP_NO_DLL;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\Utility;..\..\..\3rdParty;..\..\..\3rdParty\atom;..\..\..\3rdParty\glog\src\windows;..\..\..\3rdParty\libmysql\include;..\..\..\3rdParty\mysql++\lib;..\..\..\3rdParty\RCF\include;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>libmysql.lib;libmysqlpp.lib;librcf.lib;libatom.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\3rdParty\libs;F:\Library\boost_1_55_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>DEBUG;WIN32_LEAN_AND_MEAN;__DB_SERVER__;MARKUP_STL;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;MYSQLPP_NO_DLL;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\Utility;..\..\..\3rdParty;..\..\..\3rdParty\atom;..\..\..\3rdParty\glog\src\windows;..\..\..\3rdParty\libmysql\include;..\..\..\3rdParty\mysql++\lib;..\..\..\3rdParty\RCF\include;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)DBServer.pdb</ProgramDataBaseFileName>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>-Zm200 /FI"stdafx.h" /wd"4996" /I"../../../" %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>DEBUG;WIN32_LEAN_AND_MEAN;__DB_SERVER__;MARKUP_STL;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;MYSQLPP_NO_DLL;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\Utility;..\..\..\3rdParty;..\..\..\3rdParty\atom;..\..\..\3rdParty\glog\src\windows;..\..\..\3rdParty\libmysql\include;..\..\..\3rdParty\mysql++\lib;..\..\..\3rdParty\RCF\include;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>libmysql.lib;libmysqlpp.lib;librcf.lib;libatom.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\3rdParty\libs;F:\Library\boost_1_55_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\DBServer\AppConfig.h" />
+    <ClInclude Include="..\..\DBServer\DBRpcService.h" />
+    <ClInclude Include="..\..\DBServer\DBServer.h" />
+    <ClInclude Include="..\..\DBServer\stdafx.h" />
+    <ClInclude Include="..\..\RPC\IDBRpcService.h" />
+    <ClInclude Include="..\..\Utility\Markup.h" />
+    <ClInclude Include="..\..\Utility\MyConnectionPool.h" />
+    <ClInclude Include="..\..\Utility\ScopeGuard.h" />
+    <ClInclude Include="..\..\Utility\Singleton.h" />
+    <ClInclude Include="..\..\Utility\Utility.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\DBServer\AppConfig.cpp" />
+    <ClCompile Include="..\..\DBServer\DBRpcService.cpp" />
+    <ClCompile Include="..\..\DBServer\DBServer.cpp" />
+    <ClCompile Include="..\..\DBServer\Main.cpp" />
+    <ClCompile Include="..\..\DBServer\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\Utility\Markup.cpp" />
+    <ClCompile Include="..\..\Utility\MyConnectionPool.cpp" />
+    <ClCompile Include="..\..\Utility\Utility.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

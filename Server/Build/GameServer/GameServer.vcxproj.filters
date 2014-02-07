@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="GameServer">
+      <UniqueIdentifier>{76EA8437-62A2-C684-CBA9-9FE0B7806175}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameServer\App">
+      <UniqueIdentifier>{A61E5CEC-92EC-4FF2-7B80-C01867ED2B57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameServer\Net">
+      <UniqueIdentifier>{8C545CEC-7822-50F2-61B6-C0184D232C57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RPC">
+      <UniqueIdentifier>{4A1A880B-B623-887C-3F9F-9E7CABA7937C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Setup">
+      <UniqueIdentifier>{3651160E-A265-3EBF-6BE7-E11ED7BA3AF0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{594615A9-C525-9444-CE3D-1F1B3A9CFAA5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{AEFEE3F6-9AA0-0ECD-835B-22216F9C951D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\battle">
+      <UniqueIdentifier>{998420ED-0545-9C23-CE7F-E5A03AFFE0FF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\setup">
+      <UniqueIdentifier>{EE9F7C65-DA02-0C0A-8388-44C06FCAD78C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\update">
+      <UniqueIdentifier>{40E2781A-ACA2-F450-75DD-3DCEE15C392D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\GameServer\App\BattleSys.h">
+      <Filter>GameServer\App</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameServer\App\Officer.h">
+      <Filter>GameServer\App</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameServer\App\Player.h">
+      <Filter>GameServer\App</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameServer\App\Region.h">
+      <Filter>GameServer\App</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameServer\App\Skill.h">
+      <Filter>GameServer\App</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameServer\App\Troop.h">
+      <Filter>GameServer\App</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameServer\App\Weapon.h">
+      <Filter>GameServer\App</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameServer\AppConfig.h">
+      <Filter>GameServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameServer\GameServer.h">
+      <Filter>GameServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameServer\MsgProcess.h">
+      <Filter>GameServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameServer\Net\CClientEventHandle.h">
+      <Filter>GameServer\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameServer\Net\CClientEventHandleReceiver.h">
+      <Filter>GameServer\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameServer\Net\SocketServer.h">
+      <Filter>GameServer\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GameServer\stdafx.h">
+      <Filter>GameServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RPC\ICenterRpcService.h">
+      <Filter>RPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Setup\LoadSetup.h">
+      <Filter>Setup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Utility\Markup.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Utility\Utility.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Config.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\MESSAGE_ID.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\MSGCode.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\MSGGame.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\MSGLogin.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\OfficerCommon.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\RoleCommon.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\battle\tagBattle.h">
+      <Filter>common\battle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\setup\ArmyCategory.h">
+      <Filter>common\setup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\setup\LoadBinaryFile.h">
+      <Filter>common\setup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\setup\MonsterList.h">
+      <Filter>common\setup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\setup\OfficerList.h">
+      <Filter>common\setup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\setup\RegionList.h">
+      <Filter>common\setup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\update\tagGameServer.h">
+      <Filter>common\update</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\GameServer\App\BattleSys.cpp">
+      <Filter>GameServer\App</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameServer\App\Officer.cpp">
+      <Filter>GameServer\App</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameServer\App\Player.cpp">
+      <Filter>GameServer\App</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameServer\App\Region.cpp">
+      <Filter>GameServer\App</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameServer\App\Skill.cpp">
+      <Filter>GameServer\App</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameServer\App\Troop.cpp">
+      <Filter>GameServer\App</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameServer\App\Weapon.cpp">
+      <Filter>GameServer\App</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameServer\AppConfig.cpp">
+      <Filter>GameServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameServer\GameServer.cpp">
+      <Filter>GameServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameServer\Main.cpp">
+      <Filter>GameServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameServer\MsgProcess.cpp">
+      <Filter>GameServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameServer\Net\CClientEventHandle.cpp">
+      <Filter>GameServer\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameServer\Net\CClientEventHandleReceiver.cpp">
+      <Filter>GameServer\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameServer\Net\SocketServer.cpp">
+      <Filter>GameServer\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GameServer\stdafx.cpp">
+      <Filter>GameServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Setup\LoadSetup.cpp">
+      <Filter>Setup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Utility\Markup.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Utility\Utility.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\setup\ArmyCategory.cpp">
+      <Filter>common\setup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\setup\MonsterList.cpp">
+      <Filter>common\setup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\setup\OfficerList.cpp">
+      <Filter>common\setup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\setup\RegionList.cpp">
+      <Filter>common\setup</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
