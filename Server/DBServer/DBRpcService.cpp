@@ -17,7 +17,7 @@ int DBRpcService::QueryLogin(const std::string& user, const std::string& pwd)
 // 实现用户注册
 int DBRpcService::RegisterUser(const std::string& user, const std::string& pwd)
 {
-    ScopedConnection conn(DBServer::GetInstance().GetConnectionPool());
+    ScopedConnection conn(DBServer::GetInst().GetConnectionPool());
     Query query = conn->query("call sp_reg_user %0q, %1q");
     query.parse();
     SimpleResult result = query.execute(user, pwd);

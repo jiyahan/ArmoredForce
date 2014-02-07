@@ -50,12 +50,6 @@ bool GameServer::Init(const AppConfig& cfg)
     return true;
 }
 
-
-void GameServer::Release()
-{
-
-}
-
 bool GameServer::Run()
 {
     using namespace std::chrono;

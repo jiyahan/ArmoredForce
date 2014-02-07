@@ -46,13 +46,14 @@ int main(int argc, const char* argv[])
         AtomAutoInit atomInit(cfg.pool_size, cfg.thread_num);
 
         // 运行服务器
-        GameServer& theApp = GameServer::GetInstance();
+        GameServer::Create();
+        GameServer& theApp = GameServer::GetInst();
         if (theApp.Init(cfg))
         {
             while (theApp.Run())
                 ;
-            theApp.Release();
-        }        
+        }
+        GameServer::Destroy();
     }
     catch(std::exception& ex)
     {

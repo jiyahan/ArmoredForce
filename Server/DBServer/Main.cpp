@@ -36,13 +36,14 @@ int main(int argc, const char* argv[])
         // ³õÊ¼»¯RPC¿ò¼Ü
         RCF::RcfInitDeinit rcfInit;
 
-        DBServer& theApp = DBServer::GetInstance();
+        DBServer::Create();
+        DBServer& theApp = DBServer::GetInst();
         if (theApp.Init(cfg))
         {
             while(theApp.Run())
                 ;
-            theApp.Release();
         }
+        DBServer::Destroy();
     }
     catch(std::exception& ex)
     {

@@ -28,12 +28,7 @@ bool DBServer::Init(const AppConfig& cfg)
     conn_cfg.charset = config_.mysql_charset;
     conn_cfg.max_pool_size = config_.connection_pool_size;
     conn_cfg.max_idle_time = config_.max_idle_time;
-
-    if (!conn_pool_.init(conn_cfg))
-    {
-        LOG(ERROR) << "初始化mysql连接错误";
-        return false;
-    }
+    conn_pool_.reset(new MyConnectionPool(conn_cfg));
 
     // 初始化RPC服务器
     RCF::TcpEndpoint endpoint(config_.rpc_host, config_.rpc_port);
@@ -43,11 +38,6 @@ bool DBServer::Init(const AppConfig& cfg)
 
     LOG(INFO) << "服务器初始化成功.";
     return true;
-}
-
-
-void DBServer::Release()
-{
 }
 
 

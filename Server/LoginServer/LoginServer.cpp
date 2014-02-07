@@ -36,7 +36,7 @@ bool LoginServer::Init(const AppConfig& cfg)
     conn_cfg.max_pool_size = cfg.connection_pool_size;
     conn_cfg.max_idle_time = cfg.max_idle_time;
 
-    conn_pool_ = make_shared<MyConnectionPool>(conn_cfg);
+    //conn_pool_ = make_shared<MyConnectionPool>(conn_cfg);
 
     // 开始网络服务器	
     CHECK(server_.Start(config_.host, config_.port))
@@ -53,11 +53,6 @@ bool LoginServer::Init(const AppConfig& cfg)
     LOG(INFO) << "LoginServer初始化成功";
 
     return true;
-}
-
-
-void LoginServer::Release()
-{
 }
 
 bool LoginServer::Run()

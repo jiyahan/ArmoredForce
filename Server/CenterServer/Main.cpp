@@ -42,21 +42,22 @@ int main(int argc, const char* argv[])
         AtomAutoInit atomInit(cfg.pool_size, cfg.thread_num);
 
         // 运行服务器
-        CenterServer& theApp = CenterServer::GetInstance();
+        CenterServer::Create();
+        CenterServer& theApp = CenterServer::GetInst();
         if (theApp.Init(cfg))
         {
             while (theApp.Run())
                 ; 
-            theApp.Release();
-        }        
+        }
+        CenterServer::Destroy();
     }
     catch(std::exception& ex)
     {
-        LOG(ERROR) << ex.what();
+        LOG(FATAL) << ex.what();
     }
     catch(...)
     {
-        LOG(ERROR) << "unexpected exception.\n";
+        LOG(FATAL) << "unexpected exception.\n";
     }
 
     return 0;

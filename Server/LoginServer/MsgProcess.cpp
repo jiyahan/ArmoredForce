@@ -33,14 +33,14 @@ void ProcessRegister(CMessage& msg)
     int32_t reg_type = 0;
     try
     {
-        ScopedConnection conn(*GetConnectionPoolPtr());
-        Query query = conn->query("call sp_register_user(%0q, %1q, %2q, %3q, %4q, %5q)");
-        StoreQueryResult result = query.store(request.account, reg_type, reg_ip, 
-            request.email, pwd, salt);
-        if (!result.empty() && !result[0].empty())
-        {
-            int32_t status = static_cast<int32_t>(result[0][0]);
-        }
+        //ScopedConnection conn(*GetConnectionPoolPtr());
+        //Query query = conn->query("call sp_register_user(%0q, %1q, %2q, %3q, %4q, %5q)");
+        //StoreQueryResult result = query.store(request.account, reg_type, reg_ip, 
+        //    request.email, pwd, salt);
+        //if (!result.empty() && !result[0].empty())
+        //{
+        //    int32_t status = static_cast<int32_t>(result[0][0]);
+        //}
     }
     catch(mysqlpp::Exception& ex)
     {

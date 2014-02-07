@@ -22,9 +22,6 @@ public:
     //进行初始化
     bool    Init(const AppConfig& cfg);
 
-    // 释放申请的资源
-    void    Release();
-
     // 运行服务器
     bool    Run();
 
@@ -66,7 +63,7 @@ private:
 
 inline LoginServer& GetServer()
 {
-    return LoginServer::GetInstance();
+    return LoginServer::GetInst();
 }
 
 inline RpcClientPtr GetRpcClientPtr()

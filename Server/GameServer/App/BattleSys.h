@@ -1,12 +1,13 @@
 ﻿#pragma once
 
+#include <boost/noncopyable.hpp>
 #include "common/battle/tagBattle.h"
 #include "Singleton.h"
 #include "Troop.h"
 
 
 // 战斗
-class BattleSys : public Singleton<BattleSys>
+class BattleSys : boost::noncopyable
 {
 public:
     // 战斗结果
@@ -57,8 +58,3 @@ private:
     tagBattleRole   BattleRoleFromTroop(TroopPtr troop);
 
 };
-
-inline BattleSys&  GetBattleSys()
-{
-    return BattleSys::GetInstance();
-}

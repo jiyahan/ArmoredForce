@@ -8,7 +8,7 @@
 #include "Random.h"
 #include "Server/RPC/ICenterRpcService.h"
 #include "MsgProcess.h"
-
+#include "App/BattleSys.h"
 
 
 typedef std::shared_ptr<RcfClient<ICenterRpcService>>   RpcClientPtr;
@@ -39,7 +39,9 @@ public:
     RpcClientPtr    GetClient() { return client_;}
 
     // 随机数生成器
-    Random&         GetRandGen() {return rnd_gen_;}
+    Random&         GetRandGen() { return rnd_gen_; }
+
+    BattleSys&      GetBattleSys() { return battle_sys_; }
 
 private:
 
@@ -55,11 +57,13 @@ private:
     HandlerMap	        msg_handlers_;
 
     Random              rnd_gen_;   // 随机数生成器 
+
+    BattleSys           battle_sys_;
 };
 
 inline GameServer& GetServer()
 {
-    return GameServer::GetInstance();
+    return GameServer::GetInst();
 }
 
 inline RpcClientPtr GetRpcClientPtr()
@@ -75,4 +79,9 @@ inline SocketServer& GetTCPServer()
 inline uint32_t  Rand(uint32_t max)
 {
     return GetServer().GetRandGen().Uniform(max);
+}
+
+inline BattleSys&  GetBattleSys()
+{
+    return GetServer().GetBattleSys();
 }

@@ -28,16 +28,15 @@ void InitLogging(const string& conf_file, const string& dir)
 
 //
 // 慎用全局Class变量(和单件模式)
-// 1, 原则：为了让资源(内存，文件等)更可控，资源的分配应该在进入main后进行，
-//          资源的释放应该在main退出之前完成
-//          
-// 2，原理:
-//      C++未定义全局变量的顺序，Class类型的全局变量会在main函数之前分配资源(构造函数)，
-//      并在在main函数之后释放资源(析构函数)
-//      多线程安全的单件模式一般都会在main之前执行初始化
+// 为了让资源(内存，文件等)更可控，资源的分配应该在进入main后进行，相应的释放应该在main退出
+// 之前完成。因为C++未定义全局变量的构造顺序，Class类型的全局变量会在main函数之前通过构造
+// 函数分配资源，并在在main函数之后通过析构函数释放资源，这样在main函数内部的代码无法对所有
+// 的资源进行控制。
 //
 int main(int argc, const char* argv[])
 {
+    char buffer[200];
+    sprintf_s(buffer, 200, "%d%c", 30, 'c');
     try
     {
         AppConfig cfg = LoadAppConfig("login.config.xml");
@@ -52,13 +51,14 @@ int main(int argc, const char* argv[])
         AtomAutoInit  atomInit(cfg.pool_size, cfg.thread_num);
 
         // 运行服务器
-        LoginServer& theApp = LoginServer::GetInstance();
+        LoginServer::Create();
+        LoginServer& theApp = LoginServer::GetInst();
         if (theApp.Init(cfg))
         {
             while (theApp.Run())
                 ;
-            theApp.Release();
         }
+        LoginServer::Destroy();
     }
     catch(std::exception& ex)
     {
