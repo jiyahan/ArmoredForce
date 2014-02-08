@@ -25,6 +25,7 @@ public:
     template <typename... Args>
     static T& Create(Args... args)
     {
+        CHECK(!instance_);
         instance_.reset(new T(args...));
         return GetInst();
     }
