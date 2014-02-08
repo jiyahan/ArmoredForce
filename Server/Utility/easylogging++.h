@@ -1,8 +1,8 @@
 //
-//  Easylogging++ v9.45
+//  Easylogging++ v9.50
 //  Single-header only, cross-platform logging library for C++ applications
 //
-//  Copyright (c) 2013 Majid Khan
+//  Copyright (c) 2012 - 2014 Majid Khan
 //
 //  This library is released under the MIT Licence.
 //  http://www.easylogging.org/licence.php
@@ -643,8 +643,8 @@ namespace consts {
     static const char* kDaysAbbrev[7]                   =      { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
     static const char* kMonths[12]                      =      { "January", "February", "March", "Apri", "May", "June", "July", "August",
             "September", "October", "November", "December" };
-    static const char* kMonthsAbbrev[12]                =      { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Ju", "Aug", "Sep", "Oct", "Nov", "Dec" };
-    static const char* kDefaultDateTimeFormat           =      "%d/%M/%Y %h:%m:%s,%g";
+    static const char* kMonthsAbbrev[12]                =      { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+    static const char* kDefaultDateTimeFormat           =      "%d/%M/%Y %H:%m:%s,%g";
     static const int kYearBase                          =      1900;
     static const char* kAm                              =      "AM";
     static const char* kPm                              =      "PM";
@@ -1219,7 +1219,7 @@ class Str : base::StaticClass {
     static inline char* convertAndAddToBuff(std::size_t n, int len, char* buf, const char* bufLim, bool zeroPadded = true) {
         char localBuff[10] = "";
         char* p = localBuff + sizeof(localBuff) - 2;
-        for (; n > 0 && p > localBuff; n /= 10, --len) *--p = static_cast<char>(n % 10 + '0');
+        for (; n > 0 && p > localBuff && len > 0; n /= 10, --len) *--p = static_cast<char>(n % 10 + '0');
         if (zeroPadded)
             while (p > localBuff && len-- > 0) *--p = static_cast<char>('0');
         return addToBuff(p, buf, bufLim);
@@ -3314,6 +3314,17 @@ class RegisteredLoggers : public base::utils::Registry<Logger, std::string> {
         return logger_;
     }
 
+    bool remove(const std::string& id) {
+        if (id == "default") {
+            return false;
+        }
+        Logger* logger = base::utils::Registry<Logger, std::string>::get(id);
+        if (logger != nullptr) {
+            unregister(logger);
+        }
+        return true;
+    }
+
     inline bool has(const std::string& id) {
         return get(id, false) != nullptr;
     }
@@ -3959,7 +3970,7 @@ class Writer : base::NoCopy {
                 // Somehow default logger has been unregistered. Not good! Register again
                 elStorage->registeredLoggers()->get(std::string(base::consts::kDefaultLoggerId));
             }
-            Writer(base::consts::kDefaultLoggerId, Level::Error, file, line, func)
+            Writer(base::consts::kDefaultLoggerId, Level::Debug, file, line, func)
                     << "Logger [" << loggerId << "] is not registered yet!";
             m_proceed = false;
         } else {
@@ -4879,6 +4890,11 @@ class Loggers : base::StaticClass {
     static inline Logger* getLogger(const std::string& identity, bool registerIfNotAvailable = true) {
         return ELPP->registeredLoggers()->get(identity, registerIfNotAvailable);
     }
+    /// @brief Unregisters logger - use it only when you know what you are doing, you may unregister
+    ///        loggers initialized / used by third-party libs.
+    static inline bool unregisterLogger(const std::string& identity) {
+        return ELPP->registeredLoggers()->remove(identity);
+    }
     /// @brief Whether or not logger with id is registered
     static inline bool hasLogger(const std::string& identity) {
         return ELPP->registeredLoggers()->has(identity);
@@ -5017,9 +5033,9 @@ class Loggers : base::StaticClass {
 class VersionInfo : base::StaticClass {
  public:
     /// @brief Current version number
-    static inline const std::string version(void) { return std::string("9.45"); }
+    static inline const std::string version(void) { return std::string("9.50"); }
     /// @brief Release date of current version
-    static inline const std::string releaseDate(void) { return std::string("08-01-2014 1234hrs"); }
+    static inline const std::string releaseDate(void) { return std::string("04-02-2014 0822hrs"); }
 };
 }  // namespace el
 #undef VLOG_IS_ON
@@ -5519,12 +5535,12 @@ class VersionInfo : base::StaticClass {
 #define CCHECK_GT(a, b, loggerId) CCHECK(a > b, loggerId)
 #define CCHECK_LE(a, b, loggerId) CCHECK(a <= b, loggerId)
 #define CCHECK_GE(a, b, loggerId) CCHECK(a >= b, loggerId)
-#define CHECK_EQ(a, b) CCHECK(a, b, _CURRENT_FILE_LOGGER_ID)
-#define CHECK_NE(a, b) CCHECK(a, b, _CURRENT_FILE_LOGGER_ID)
-#define CHECK_LT(a, b) CCHECK(a, b, _CURRENT_FILE_LOGGER_ID)
-#define CHECK_GT(a, b) CCHECK(a, b, _CURRENT_FILE_LOGGER_ID)
-#define CHECK_LE(a, b) CCHECK(a, b, _CURRENT_FILE_LOGGER_ID)
-#define CHECK_GE(a, b) CCHECK(a, b, _CURRENT_FILE_LOGGER_ID)
+#define CHECK_EQ(a, b) CCHECK_EQ(a, b, _CURRENT_FILE_LOGGER_ID)
+#define CHECK_NE(a, b) CCHECK_NE(a, b, _CURRENT_FILE_LOGGER_ID)
+#define CHECK_LT(a, b) CCHECK_LT(a, b, _CURRENT_FILE_LOGGER_ID)
+#define CHECK_GT(a, b) CCHECK_GT(a, b, _CURRENT_FILE_LOGGER_ID)
+#define CHECK_LE(a, b) CCHECK_LE(a, b, _CURRENT_FILE_LOGGER_ID)
+#define CHECK_GE(a, b) CCHECK_GE(a, b, _CURRENT_FILE_LOGGER_ID)
 namespace el {
 namespace base {
 namespace utils {
@@ -5549,7 +5565,7 @@ static T* checkNotNull(T* ptr, const char* name, const char* loggerId = _CURRENT
 #define CHECK_STREQ(str1, str2) CCHECK_STREQ(str1, str2, _CURRENT_FILE_LOGGER_ID)
 #define CHECK_STRNE(str1, str2) CCHECK_STRNE(str1, str2, _CURRENT_FILE_LOGGER_ID)
 #define CHECK_STRCASEEQ(str1, str2) CCHECK_STRCASEEQ(str1, str2, _CURRENT_FILE_LOGGER_ID)
-#define CHECK_STRCASENE(str1, str2) CHECK_STRCASENE(str1, str2, _CURRENT_FILE_LOGGER_ID)
+#define CHECK_STRCASENE(str1, str2) CCHECK_STRCASENE(str1, str2, _CURRENT_FILE_LOGGER_ID)
 #undef DCCHECK
 #undef DCCHECK_EQ
 #undef DCCHECK_NE
