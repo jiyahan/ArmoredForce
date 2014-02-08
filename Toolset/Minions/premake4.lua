@@ -27,6 +27,7 @@ solution "Minions"
         }
 
     project "Minions"
+        location ("msvc")
         kind "ConsoleApp"
         uuid "FCB57495-BF77-44E3-9D5B-152CF5ADF10C"
         buildoptions "-Zm200 /FI\"pch.h\" /wd\"4996\"" 

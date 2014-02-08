@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Server">
+      <UniqueIdentifier>{7C62DFD0-6804-0AA7-51BF-1DFB3D0091F7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\Utility">
+      <UniqueIdentifier>{BFDCD354-ABAA-C75A-943E-388180ABA3BF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\net">
+      <UniqueIdentifier>{E32030A9-4F00-AF44-5818-3A1BC47615A6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\script">
+      <UniqueIdentifier>{F1E8BE78-DDA0-00C6-46A8-D921327F9BB6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Server\Utility\Utility.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Server\Utility\easylogging++.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\minion.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\minion_app.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\net\compress.h">
+      <Filter>src\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\net\data_reader.h">
+      <Filter>src\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\net\tcp_client.h">
+      <Filter>src\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\pch.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\script\minion_script.h">
+      <Filter>src\script</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\script\msg_script.h">
+      <Filter>src\script</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\script\script_rt.h">
+      <Filter>src\script</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\timer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Server\Utility\Utility.cpp">
+      <Filter>Server\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\minion.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\minion_app.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\net\asio_src.cpp">
+      <Filter>src\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\net\compress.cpp">
+      <Filter>src\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\net\tcp_client.cpp">
+      <Filter>src\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pch.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\script\minion_script.cpp">
+      <Filter>src\script</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\script\msg_script.cpp">
+      <Filter>src\script</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\script\script_rt.cpp">
+      <Filter>src\script</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\timer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
