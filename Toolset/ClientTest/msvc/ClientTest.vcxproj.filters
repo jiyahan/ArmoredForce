@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\game">
+      <UniqueIdentifier>{165530CF-0222-8BDA-2B3B-79821767C068}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\net">
+      <UniqueIdentifier>{E32030A9-4F00-AF44-5818-3A1BC47615A6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{993A4365-05A5-F7DB-4EE3-A881BA8CD530}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\battle">
+      <UniqueIdentifier>{24CA1DA7-10C3-3CF9-39F5-217E254D1C05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\setup">
+      <UniqueIdentifier>{19E0D134-856B-3FF9-8E7C-C2EDFA869BF9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\update">
+      <UniqueIdentifier>{CB2776D4-B720-9526-E052-7AABCCAA7432}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server">
+      <UniqueIdentifier>{679E3E3F-D308-F3B5-1C47-A45B88F0D00A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\Utility">
+      <UniqueIdentifier>{AAD3794E-16EA-77E4-5F61-0306CBB6486C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Server\Utility\Markup.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Server\Utility\Utility.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Server\Utility\easylogging.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Config.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\MESSAGE_ID.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\MSGCode.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\MSGGame.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\MSGLogin.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\OfficerCommon.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\RoleCommon.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\battle\tagBattle.h">
+      <Filter>common\battle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\setup\ArmyCategory.h">
+      <Filter>common\setup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\setup\LoadBinaryFile.h">
+      <Filter>common\setup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\setup\MonsterList.h">
+      <Filter>common\setup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\setup\OfficerList.h">
+      <Filter>common\setup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\setup\RegionList.h">
+      <Filter>common\setup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\update\tagGameServer.h">
+      <Filter>common\update</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ClientApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Config.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MessageProcess.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\ProcessGameBattle.h">
+      <Filter>src\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\ProcessLogin.h">
+      <Filter>src\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\net\ClientEventHandle.h">
+      <Filter>src\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\net\ClientEventHandleReceiver.h">
+      <Filter>src\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\net\SocketClient.h">
+      <Filter>src\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\stdafx.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Server\Utility\Markup.cpp">
+      <Filter>Server\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Server\Utility\Utility.cpp">
+      <Filter>Server\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\setup\ArmyCategory.cpp">
+      <Filter>common\setup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\setup\MonsterList.cpp">
+      <Filter>common\setup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\setup\OfficerList.cpp">
+      <Filter>common\setup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\setup\RegionList.cpp">
+      <Filter>common\setup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ClientApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Config.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MessageProcess.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\ProcessGameBattle.cpp">
+      <Filter>src\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\ProcessLogin.cpp">
+      <Filter>src\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\net\ClientEventHandle.cpp">
+      <Filter>src\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\net\ClientEventHandleReceiver.cpp">
+      <Filter>src\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\net\SocketClient.cpp">
+      <Filter>src\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\stdafx.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

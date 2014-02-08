@@ -3,7 +3,7 @@
 -- http://industriousone.com/scripting-premake
 --
 
-local BOOST_DIR = os.getenv('BOOST_DIR')
+local BOOST_DIR = os.getenv('BOOST_ROOT')
 
 -- 测试客户端
 solution "ClientTest"
@@ -27,10 +27,11 @@ solution "ClientTest"
         }        
 
     project "ClientTest"
+        location ("msvc")
         kind "ConsoleApp"
         uuid "0A9699F1-69F2-40E6-AEB9-A81CB4AF2CE2"
         buildoptions "" 
-        buildoptions '/I"../../" -Zm200 /FI"stdafx.h" /wd"4996" '
+        buildoptions '/I"../../../" -Zm200 /FI"stdafx.h" /wd"4996" '
         defines
         {
             "MARKUP_STL",
