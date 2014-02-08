@@ -75,6 +75,9 @@ public:
     // 获取指定怪物的的掉落
     const DropThingList* GetDropThing(const a_string& index)const;
 
+    //读取配置数据
+    bool Initiate();
+
 private:
     MonsterList      monster_list_;
 };

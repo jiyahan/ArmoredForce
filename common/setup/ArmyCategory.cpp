@@ -21,4 +21,10 @@ const tagArmyCategory*  ArmyCategorySetup::GetCategory(const a_string& name) con
     return NULL;
 }
 
+
+bool ArmyCategorySetup::Initiate() 
+{
+    return Load("armycategory.xml.bin");
+}
+
 } // namespace setup

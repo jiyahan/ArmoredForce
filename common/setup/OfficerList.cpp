@@ -21,4 +21,10 @@ const tagOfficer*   OfficerListSetup::GetOfficer(const a_string& index) const
     return NULL;
 }
 
+
+bool OfficerListSetup::Initiate() 
+{
+    return Load("officerlist.xml.bin");
+}
+
 } // namespace setup

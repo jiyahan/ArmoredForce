@@ -66,6 +66,8 @@ public:
     // 根据名称查找兵种
     const tagArmyCategory*  GetCategory(const a_string& name) const;
 
+    //读取配置数据
+    bool Initiate();
 private:
     ArmyCategoryList       categories_;
 };

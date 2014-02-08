@@ -2,17 +2,22 @@
 #define COMMON_CONFIG_H
 
 #include <string>
-#include <memory>
 
-
-//
-// ÊÇ·ñÊ¹ÓÃatom_allocator
-
-#ifdef NOT_USE_ATOM_ALLOCATOR
-#define atom_allocator  std::allocator
-#define a_string        std::string
+#if defined(_MSC_VER) && _MSC_VER >= 1700
+#include <unordered_map>
 #endif
 
+#ifndef __SERVER__
+#   if defined (__ANDROID__) || defined(__WINDOWS__) || defined(__APPLE__)
+#   include "cocos2d.h"
+using namespace cocos2d;
+#   endif
+#endif
+
+
+#ifdef NOT_USE_ATOM_ALLOCATOR
+#define a_string        std::string
+#endif
 
 
 enum 

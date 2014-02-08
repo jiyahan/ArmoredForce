@@ -22,4 +22,9 @@ const tagRegion*  RegionListSetup::GetRegion(const a_string& name) const
     return NULL;
 }
 
+bool RegionListSetup::Initiate() 
+{
+    return Load("regionlist.xml.bin");
+}
+
 } // namespace setup

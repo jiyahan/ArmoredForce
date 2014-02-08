@@ -28,4 +28,9 @@ const DropThingList*  MonsterListSetup::GetDropThing(const a_string& index) cons
     return (monster ? &monster->drop_things : NULL);
 }
 
+bool MonsterListSetup::Initiate() 
+{
+    return Load("monsterlist.xml.bin");
+}
+
 } // namespace setup

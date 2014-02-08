@@ -90,6 +90,8 @@ public:
     // 根据名称查找地图
     const tagRegion*    GetRegion(const a_string& name) const;
 
+    //初始化数据
+    bool Initiate();
 private:
     RegionList       regions_;
 };
