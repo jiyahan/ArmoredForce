@@ -3,11 +3,12 @@
 -- http://industriousone.com/scripting-premake
 --
 
-local BOOST_DIR = os.getenv('BOOST_DIR')
+local BOOST_DIR = os.getenv('BOOST_ROOT')
 
 -- 读取xml转换为二进制
 solution "Xml2Bin"
     configurations { "Release", "Debug" }
+    targetdir   "bin"
     language    "C++"
     flags       { "No64BitChecks", "StaticRuntime" }
     
@@ -29,8 +30,9 @@ solution "Xml2Bin"
     -- Test项目
     project "Xml2Bin"
         kind "ConsoleApp"
+        location "msvc"
         uuid "3C53977F-705F-7746-9DB1-AD248EE761F0"
-        buildoptions '/I"../../"'
+        buildoptions '/I"../../../"'
         defines
         {
             "MARKUP_STL",                       
@@ -64,7 +66,6 @@ solution "Xml2Bin"
         { 
             "../../Server/Utility",
             "../../3rdParty/atom",
-            "../../3rdParty/glog/src/windows/",
             BOOST_DIR,
         }
         
@@ -77,6 +78,5 @@ solution "Xml2Bin"
         links 
         {
             "libatom",
-            "libglog",
         }
         

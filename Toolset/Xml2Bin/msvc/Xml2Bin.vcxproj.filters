@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{993A4365-05A5-F7DB-4EE3-A881BA8CD530}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\setup">
+      <UniqueIdentifier>{19E0D134-856B-3FF9-8E7C-C2EDFA869BF9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server">
+      <UniqueIdentifier>{679E3E3F-D308-F3B5-1C47-A45B88F0D00A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\Setup">
+      <UniqueIdentifier>{4756A513-B3E1-12D8-BCF2-95CC28FD6ED8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\Utility">
+      <UniqueIdentifier>{AAD3794E-16EA-77E4-5F61-0306CBB6486C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Server\Setup\LoadSetup.h">
+      <Filter>Server\Setup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Server\Utility\Markup.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Server\Utility\Utility.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\setup\ArmyCategory.h">
+      <Filter>common\setup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\setup\LoadBinaryFile.h">
+      <Filter>common\setup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\setup\MonsterList.h">
+      <Filter>common\setup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\setup\OfficerList.h">
+      <Filter>common\setup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\setup\RegionList.h">
+      <Filter>common\setup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\command.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\stdafx.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Server\Setup\LoadSetup.cpp">
+      <Filter>Server\Setup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Server\Utility\Markup.cpp">
+      <Filter>Server\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Server\Utility\Utility.cpp">
+      <Filter>Server\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\setup\ArmyCategory.cpp">
+      <Filter>common\setup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\setup\MonsterList.cpp">
+      <Filter>common\setup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\setup\OfficerList.cpp">
+      <Filter>common\setup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\setup\RegionList.cpp">
+      <Filter>common\setup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\command.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\stdafx.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
