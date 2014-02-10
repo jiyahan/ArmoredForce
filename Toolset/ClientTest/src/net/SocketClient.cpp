@@ -1,10 +1,6 @@
 #include "SocketClient.h"
 #include "ClientEventHandle.h"
 
-
-#define THREAD_AMOUNT   1
-
-
 using namespace std;
 using namespace atom;
 using namespace electron;
@@ -49,8 +45,9 @@ void SocketClient::Send(CMessage& msg)
 }
 
 
-void SocketClient::GetSocketMessage(CMessageQueueControllerSetBind &messages)
+CMessageQueueControllerSetBind SocketClient::GetSocketMessage()
 { 
+    CMessageQueueControllerSetBind messages;
     if( msg_queue_ )
     {
         CInterface<IMessageQueueController> segment;
@@ -63,6 +60,7 @@ void SocketClient::GetSocketMessage(CMessageQueueControllerSetBind &messages)
             }
         }
     }
+    return move(messages);
 }
 
 bool SocketClient::RegisterEvent()

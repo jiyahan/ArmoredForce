@@ -18,7 +18,7 @@ namespace {
 void RequestRegister()
 {
     MSGLoginRegist reg = {"johnnie", "123456", "johne@gove.cn"};
-    //GetTCPClient().Send(MID_LOGIN_REGISTER, reg);
+    GetApp().SendMsg(MID_LOGIN_REGISTER, reg);
 }
 
 } // anonymouse namespace
@@ -106,5 +106,5 @@ void OnConnectLoginServer()
 {
     LOG(INFO) << "连接服务器成功, 发送登录请求...";
     MSGLoginVersionVerify verify_request = {};
-    GetTcpClient().Send(MID_VERSION_VERIFY, verify_request);
+    GetApp().SendMsg(MID_VERSION_VERIFY, verify_request);
 }

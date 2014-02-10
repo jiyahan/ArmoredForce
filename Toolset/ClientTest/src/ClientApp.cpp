@@ -60,9 +60,8 @@ bool ClientApp::ResetConnection(const std::string& host, U16 port)
 
 void ClientApp::ProcessMessage()
 {
-    CMessageQueueControllerSetBind messages;
-    client_.GetSocketMessage(messages);
-    for (CMessage* pMsg : messages)
+    CMessageQueueControllerSetBind messages = client_.GetSocketMessage();
+    for (auto pMsg : messages)
     {
         auto commandID = pMsg->GetCommandID();        
         auto iter = handler_map_.find(commandID);
@@ -86,25 +85,3 @@ void ClientApp::ProcessMessage()
     }
 }
 
-
-//////////////////////////////////////////////////////////////////////////
-namespace {
-
-    static std::unique_ptr<ClientApp>   global_app;
-}
-
-ClientApp&  GetClientApp()
-{
-    return *global_app;
-}
-
-bool CreateClientApp(const Config& cfg)
-{
-    global_app.reset(new ClientApp(cfg));
-    return global_app->Init();
-}
-
-void DestroyClientApp()
-{
-    global_app.reset(NULL);
-}

@@ -12,6 +12,8 @@ using namespace electron;
 class SocketClient : private boost::noncopyable
 {
 public:
+    enum { THREAD_AMOUNT = 1 };
+public:
     SocketClient();
     ~SocketClient();
 
@@ -23,17 +25,9 @@ public:
 
     void Send(CMessage& msg);
 
-    template <typename T>
-    void Send(U32 msgID, const T& data)
-    {
-        CMessage msg(msgID);
-        msg << data;
-        Send(msg);
-    }
-
     U64  GetID() {return client_id_;}
 
-    void GetSocketMessage(CMessageQueueControllerSetBind &messages);
+    CMessageQueueControllerSetBind GetSocketMessage();
 
 private:
     bool RegisterEvent();

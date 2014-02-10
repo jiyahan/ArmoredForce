@@ -23,12 +23,13 @@ int main(int argc, const char* argv[])
         AtomAutoInit init(cfg.pool_size, cfg.thread_num);
 
         // ÔËÐÐ
-        if (CreateClientApp(cfg))
+        ClientApp::Create(cfg);
+        if (GetApp().Init())
         {
-            while (GetClientApp().Run())
+            while (GetApp().Run())
                 ;
         }
-        DestroyClientApp();
+        ClientApp::Destroy();
     }
     catch(std::exception& ex)
     {

@@ -5,13 +5,10 @@
 #include "Net/SocketClient.h"
 #include "MessageProcess.h"
 #include "Config.h"
+#include "Singleton.h"
 
-class ClientApp;
-ClientApp&  GetClientApp();
-bool        CreateClientApp(const Config& cfg);
-void        DestroyClientApp();
 
-class ClientApp : boost::noncopyable
+class ClientApp : public Singleton<ClientApp>
 {
 public:
     explicit ClientApp(const Config& cfg);
@@ -24,6 +21,15 @@ public:
 
     // 重置与服务器的连接
     bool    ResetConnection(const std::string& host, U16 port);
+
+    template <typename T>
+    void SendMsg(U32 msgID, const T& data)
+    {
+        //static_assert(std::is_pod<T>::value, "pod only");
+        CMessage msg(msgID);
+        msg << data;
+        client_.Send(msg);
+    }
 
     SocketClient& GetTcpClient() { return client_;}
 
@@ -38,11 +44,7 @@ private:
     HandlerMap      handler_map_;   //  消息路由表
 };
 
-
-
-//////////////////////////////////////////////////////////////////////////
-
-inline SocketClient& GetTcpClient()
+inline ClientApp& GetApp()
 {
-    return GetClientApp().GetTcpClient();
+    return ClientApp::GetInst();
 }
