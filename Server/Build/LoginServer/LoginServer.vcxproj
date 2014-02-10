@@ -28,7 +28,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v120_xp</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -40,7 +40,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v120_xp</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -97,7 +97,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>NDEBUG;WIN32_LEAN_AND_MEAN;__LOGIN_SERVER__;MARKUP_STL;MYSQLPP_NO_DLL;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN32_LEAN_AND_MEAN;__SERVER__;__LOGIN_SERVER__;MARKUP_STL;MYSQLPP_NO_DLL;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\Utility;..\..\..\3rdParty;..\..\..\3rdParty\atom;..\..\..\3rdParty\RCF\include;..\..\..\3rdParty\glog\src\windows;..\..\..\3rdParty\libmysql\include;..\..\..\3rdParty\mysql++\lib;..\..\..\3rdParty\openssl\include;..\..\..\3rdParty\lua\src;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ProgramDataBaseFileName>$(OutDir)LoginServer.pdb</ProgramDataBaseFileName>
@@ -159,7 +159,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>DEBUG;WIN32_LEAN_AND_MEAN;__LOGIN_SERVER__;MARKUP_STL;MYSQLPP_NO_DLL;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEBUG;WIN32_LEAN_AND_MEAN;__SERVER__;__LOGIN_SERVER__;MARKUP_STL;MYSQLPP_NO_DLL;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\Utility;..\..\..\3rdParty;..\..\..\3rdParty\atom;..\..\..\3rdParty\RCF\include;..\..\..\3rdParty\glog\src\windows;..\..\..\3rdParty\libmysql\include;..\..\..\3rdParty\mysql++\lib;..\..\..\3rdParty\openssl\include;..\..\..\3rdParty\lua\src;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <ProgramDataBaseFileName>$(OutDir)LoginServer.pdb</ProgramDataBaseFileName>
