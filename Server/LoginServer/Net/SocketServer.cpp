@@ -1,22 +1,15 @@
 #include "SocketServer.h"
 #include "CClientEventHandle.h"
-
+#include <memory>
 
 using namespace std;
 using namespace atom;
 using namespace electron;
 
 
-#define LISTEN_THREAD_NUM   1
-
-
-static CClientEventHandle       nest;
-
-
 SocketServer::SocketServer(void)
 {
 }
-
 
 SocketServer::~SocketServer(void)
 {
@@ -24,7 +17,7 @@ SocketServer::~SocketServer(void)
 
 bool SocketServer::Start(const string& host, U16 port)
 {
-    //³õÊ¼»¯
+    static CClientEventHandle   nest;
     CObjectPtr phase = &nest;
     CObjectPtr space = CInstanceUtility::ObtainInstance(
         CConnectionScheduler::GetInstance()->GetEventSpace() );
@@ -50,20 +43,15 @@ bool SocketServer::Start(const string& host, U16 port)
         if( segment.Mount(msg_queue_, IID_MESSAGE_QUEUE_CONTROLLER) ) 
         {
             segment->SetQueueAmount( LISTEN_THREAD_NUM );
-#if defined(_WIN32)
-            U32 io_model = OID_TCP_IOCP_MODEL;
-#elif defined(__linux__)
-            U32 io_model = OID_TCP_EPOLL_MODEL
-#endif
             listener_ = CConnectionScheduler::GetInstance()->Listen( 
-                host.c_str(), port, io_model, msg_queue_->GetName() );
+            host.c_str(), port, OID_TCP_IOCP_MODEL, msg_queue_->GetName());
             return true;
         }
     }
     return false;
 }
 
-void SocketServer::Close()
+void SocketServer::Stop()
 {
     CConnectionScheduler::GetInstance()->Close( listener_ );
 
@@ -72,8 +60,9 @@ void SocketServer::Close()
     CInstanceUtility::ShutdownInstance(msg_queue_);
 }
 
-void SocketServer::GetSocketMessage(CMessageQueueControllerSetBind& messages)
+CMessageQueueControllerSetBind SocketServer::GetSocketMessage()
 { 
+    CMessageQueueControllerSetBind messages;
     if( msg_queue_ )
     {
         CInterface<IMessageQueueController> segment;
@@ -86,6 +75,7 @@ void SocketServer::GetSocketMessage(CMessageQueueControllerSetBind& messages)
             }
         }
     }
+    return move(messages);
 }
 
 
@@ -95,7 +85,23 @@ void SocketServer::Send(U64 connector, CMessage& msg)
     CConnectionScheduler::GetInstance()->Send( connector, &msg );
 }
 
-void SocketServer::CloseAConnection(U64 connector)
+void SocketServer::Close(U64 connector)
 {
     CConnectionScheduler::GetInstance()->Close( connector );
+}
+
+string SocketServer::GetPeerAddress(U64 connector)
+{
+    string addr;
+    CObjectPtr pTcpConnector = CInstanceUtility::ObtainInstance(connector);
+    if (pTcpConnector)
+    {
+        auto pTcpController = dynamic_cast<CTcpConnectorController*>(
+            pTcpConnector->QueryInterface(IID_TCP_CONNECTION_CONTROLLER));
+        if (pTcpController)
+        {
+            addr = pTcpController->GetPeerAddress().c_str();
+        }
+    }
+    return move(addr);
 }

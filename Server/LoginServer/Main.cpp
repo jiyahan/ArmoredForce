@@ -51,11 +51,10 @@ int main(int argc, const char* argv[])
         AtomAutoInit  atomInit(cfg.pool_size, cfg.thread_num);
 
         // 运行服务器
-        LoginServer::Create();
-        LoginServer& theApp = LoginServer::GetInst();
-        if (theApp.Init(cfg))
+        LoginServer::Create(cfg);        
+        if (GetApp().Init())
         {
-            while (theApp.Run())
+            while (GetApp().Run())
                 ;
         }
         LoginServer::Destroy();

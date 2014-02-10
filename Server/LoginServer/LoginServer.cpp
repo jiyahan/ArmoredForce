@@ -14,29 +14,29 @@ using namespace electron;
 
 
 //////////////////////////////////////////////////////////////////////////
-LoginServer::LoginServer()
+LoginServer::LoginServer(const AppConfig& cfg)
+    : config_(cfg)
 {
 }
 
 LoginServer::~LoginServer()
 {
+    Stop();
 }
 
-bool LoginServer::Init(const AppConfig& cfg)
+bool LoginServer::Init()
 {
-    config_ = cfg;
-
     MyConnectionPool::ConnetionConfig conn_cfg = {};
-    conn_cfg.host = cfg.mysql_host;
-    conn_cfg.port = cfg.mysql_port;
-    conn_cfg.user = cfg.mysql_user;
-    conn_cfg.pwd = cfg.mysql_pwd;
-    conn_cfg.db = cfg.mysql_default;
-    conn_cfg.charset = cfg.mysql_charset;
-    conn_cfg.max_pool_size = cfg.connection_pool_size;
-    conn_cfg.max_idle_time = cfg.max_idle_time;
+    conn_cfg.host = config_.mysql_host;
+    conn_cfg.port = config_.mysql_port;
+    conn_cfg.user = config_.mysql_user;
+    conn_cfg.pwd = config_.mysql_pwd;
+    conn_cfg.db = config_.mysql_default;
+    conn_cfg.charset = config_.mysql_charset;
+    conn_cfg.max_pool_size = config_.connection_pool_size;
+    conn_cfg.max_idle_time = config_.max_idle_time;
 
-    //conn_pool_ = make_shared<MyConnectionPool>(conn_cfg);
+    conn_pool_ = make_shared<MyConnectionPool>(conn_cfg);
 
     // 开始网络服务器	
     CHECK(server_.Start(config_.host, config_.port))
@@ -74,16 +74,21 @@ bool LoginServer::Run()
 
 void LoginServer::Stop()
 {
-    server_.Close();
+    server_.Stop();
 }
 
+tuple<string, string> LoginServer::CreatePassword(const std::string& plain)
+{
+    string salt = pbkdf2_.CreateSalt();
+    string pwd = pbkdf2_.CreateStrongPassword(plain, salt);
+    return make_tuple(move(pwd), move(salt));
+}
 
 // 处理网络消息
 void LoginServer::ProcessMessage()
-{
-    CMessageQueueControllerSetBind messages;
-    server_.GetSocketMessage(messages);
-    for(CMessage* pMsg : messages)
+{   
+    CMessageQueueControllerSetBind messages = server_.GetSocketMessage();
+    for(auto pMsg : messages)
     {
         U32 command_id = pMsg->GetCommandID();
         auto iter = handler_map_.find(command_id);

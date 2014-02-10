@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <tuple>
 #include "Singleton.h"
 #include "AppConfig.h"
 #include "Server/RPC/ICenterRpcService.h"
@@ -16,11 +17,11 @@ typedef std::shared_ptr<RcfClient<ICenterRpcService>>   RpcClientPtr;
 class LoginServer : public Singleton<LoginServer>
 {
 public:
-    LoginServer();
+    explicit LoginServer(const AppConfig& cfg);
     ~LoginServer();
 
     //进行初始化
-    bool    Init(const AppConfig& cfg);
+    bool    Init();
 
     // 运行服务器
     bool    Run();
@@ -28,15 +29,23 @@ public:
     // 停止服务器
     void    Stop();
 
-    SocketServer& GetSocketServer() { return server_; }
+    const AppConfig& GetConfig() { return config_; }
 
-    const AppConfig& GetConfig() {return config_;}
+    RpcClientPtr    GetClient() { return client_; }
 
-    RpcClientPtr    GetClient() {return client_;}
+    SocketServer&   GetTcpServer() { return server_; }
+
+    template <typename T>
+    void SendMsg(U64 connector, U32 msgid, const T& data)
+    {
+        CMessage msg(msgid);
+        msg << data;
+        server_.Send(connector, msg);
+    }
 
     MyConnectionPoolPtr GetConnectionPool() {return conn_pool_;}
 
-    PBKDF2&         GetPBKDF2() {return pbkdf2_;}
+    std::tuple<std::string, std::string>    CreatePassword(const std::string& plain);
 
 private:
     // 处理消息
@@ -61,22 +70,17 @@ private:
     PBKDF2              pbkdf2_;
 };
 
-inline LoginServer& GetServer()
+inline LoginServer& GetApp()
 {
     return LoginServer::GetInst();
 }
 
 inline RpcClientPtr GetRpcClientPtr()
 {
-    return GetServer().GetClient();
-}
-
-inline SocketServer& GetTCPServer()
-{
-    return GetServer().GetSocketServer();
+    return GetApp().GetClient();
 }
 
 inline MyConnectionPoolPtr GetConnectionPoolPtr()
 {
-    return GetServer().GetConnectionPool();
+    return GetApp().GetConnectionPool();
 }

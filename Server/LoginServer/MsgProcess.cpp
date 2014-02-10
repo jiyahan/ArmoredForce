@@ -4,7 +4,6 @@
 #include <RCF/RCF.hpp>
 #include <easylogging++.h>
 #include "LoginServer.h"
-#include "../Utility/MyConnectionPool.h"
 #include "common/MSGLogin.h"
 #include "common/MSGCode.h"
 #include "common/update/tagGameServer.h"
@@ -16,31 +15,26 @@ using namespace atom;
 using namespace electron;
 
 
-string GetPeerAddress(uint64_t connector)
-{
-    return "127.0.0.1";
-}
-
 void ProcessRegister(CMessage& msg)
 {
     MSGLoginRegist request;
     msg >> request;
     LOG(INFO) << request.account << ", " << request.email;
 
-    string salt = GetServer().GetPBKDF2().CreateSalt();
-    string pwd = GetServer().GetPBKDF2().CreateStrongPassword(request.password, salt);
-    string reg_ip = GetPeerAddress(msg.GetConnector());
+    string salt, pwd;
+    tie(pwd, salt) = GetApp().CreatePassword(request.password);
+    string reg_ip = GetApp().GetTcpServer().GetPeerAddress(msg.GetConnector());
     int32_t reg_type = 0;
     try
     {
-        //ScopedConnection conn(*GetConnectionPoolPtr());
-        //Query query = conn->query("call sp_register_user(%0q, %1q, %2q, %3q, %4q, %5q)");
-        //StoreQueryResult result = query.store(request.account, reg_type, reg_ip, 
-        //    request.email, pwd, salt);
-        //if (!result.empty() && !result[0].empty())
-        //{
-        //    int32_t status = static_cast<int32_t>(result[0][0]);
-        //}
+        ScopedConnection conn(*GetConnectionPoolPtr());
+        Query query = conn->query("call sp_register_user(%0q, %1q, %2q, %3q, %4q, %5q)");
+        StoreQueryResult result = query.store(request.account, reg_type, reg_ip, 
+            request.email, pwd, salt);
+        if (!result.empty() && !result[0].empty())
+        {
+            int32_t status = static_cast<int32_t>(result[0][0]);
+        }
     }
     catch(mysqlpp::Exception& ex)
     {
@@ -77,7 +71,7 @@ void ProcessUserLogin(CMessage& msg)
     string signatrue = GetRpcClientPtr()->GetLoginSignature(request.account.c_str());
 
     MSGLoginLoginResponse response = {signatrue.c_str(), status};
-    GetTCPServer().Send(msg.GetConnector(), MID_LOGIN_LOGINRESPONSE, response);
+    GetApp().SendMsg(msg.GetConnector(), MID_LOGIN_LOGINRESPONSE, response);
 }
 
 
@@ -108,7 +102,7 @@ void ProcessVerifyVersion(CMessage& msg)
     archive << game_area;
     archive.Clone(response.server_area);
     
-    GetTCPServer().Send(msg.GetConnector(), MID_VERSION_VERIFYRESPONSE, response);
+    GetApp().SendMsg(msg.GetConnector(), MID_VERSION_VERIFYRESPONSE, response);
 }
 
 
