@@ -24,7 +24,7 @@ PBKDF2::~PBKDF2()
 string  PBKDF2::CreateSalt()
 {
     SaltType salt = {};
-    for (int32_t i = 0; i < SALT_SIZE; i+=sizeof(int32_t))
+    for (auto i = 0; i < SALT_SIZE; i+=sizeof(int32_t))
     {
         *reinterpret_cast<int32_t*>(salt.data() + i) = generator_();
     }    
