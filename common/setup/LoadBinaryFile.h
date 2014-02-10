@@ -61,7 +61,7 @@ T   LoadBinaryFile(const a_string& path)
 }
 #endif
 
-#ifdef __WINDOWS__
+#ifdef _WIN32
 template <typename T>
 T   LoadBinaryFile(const a_string& path)
 {
