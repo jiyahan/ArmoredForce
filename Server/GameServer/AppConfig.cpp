@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "AppConfig.h"
 #include <Markup.h>
-#include <easylogging++.h>
+#include "easylogging++.h"
 
 AppConfig  LoadAppConfig(const std::string& path)
 {

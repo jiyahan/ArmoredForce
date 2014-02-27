@@ -3,7 +3,7 @@
 #include <chrono>
 #include <thread>
 #include "MsgProcess.h"
-#include "Server/Utility/ScopeGuard.h"
+#include "ScopeGuard.h"
 #include "Server/Setup/LoadSetup.h"
 
 
@@ -33,7 +33,7 @@ bool GameServer::Init(const AppConfig& cfg)
     CHECK(setup::MonsterListSetup::GetInstance()->Load("data/MonsterList.xml.bin"));
 
     // 开始网络服务器	
-    CHECK(server_.Start(config_.host.c_str(),config_.port))
+    CHECK(server_.Start(config_.host, config_.port))
         << "初始化TCP服务器失败! IP:" << config_.host << ",端口:" << config_.port;
 
     LOG(INFO) << "TCP服务器开始监听 " << config_.host << ":" << config_.port;

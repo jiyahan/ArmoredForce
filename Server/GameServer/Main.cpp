@@ -4,7 +4,7 @@
 #include <filesystem>
 #include <easylogging++.h>
 #include <RCF/RCF.hpp>
-#include "Server/Utility/Utility.h"
+#include "AtomAutoInit.h"
 #include "AppConfig.h"
 
 
@@ -46,8 +46,7 @@ int main(int argc, const char* argv[])
         AtomAutoInit atomInit(cfg.pool_size, cfg.thread_num);
 
         // 运行服务器
-        GameServer::Create();
-        GameServer& theApp = GameServer::GetInst();
+        auto& theApp = GameServer::Create();
         if (theApp.Init(cfg))
         {
             while (theApp.Run())
