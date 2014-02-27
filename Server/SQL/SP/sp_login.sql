@@ -9,21 +9,20 @@
 DELIMITER $$
 USE account_db $$
 DROP PROCEDURE IF EXISTS `account_db`.`sp_login` $$
-CREATE PROCEDURE `account_db`.`sp_login` 
-(
-    IN `account` varchar(32),
-    IN `login_ip` varchar(40)
+CREATE PROCEDURE account_db`.`sp_login`(
+    IN `user` varchar(32),
+    IN `login_ip` varchar(40),
+    IN `pwd` char(64),
+    IN `salt` char(16)
 )
-BEGIN
-    DECLARE `pwd` char(64) DEFAULT NULL;
-    DECLARE `salt` char(16) DEFAULT NULL;
-    SELECT passwd, salt into `pwd`, `salt` FROM account_info WHERE account=`account`;    
-    IF `pwd` == NULL or `salt` == NULL THEN
+BEGIN        
+    SELECT passwd, salt into `pwd`, `salt` FROM account_info WHERE account=`user`;    
+    IF `pwd` = NULL or `salt` = NULL THEN
         SELECT 1 AS result;     /* 角色不存在 */
     END IF;
     
     SELECT 0 AS result, `pwd` as passwd, `salt` as salt;
-END 
+END
 $$
 
 DELIMITER ;
