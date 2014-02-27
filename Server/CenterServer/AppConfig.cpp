@@ -23,6 +23,12 @@ AppConfig    LoadAppConfig(const std::string& path)
         cfg.rpc_db_port = std::stoi(xml.GetAttrib("port"));
     }
     xml.ResetMainPos();
+    if (xml.FindElem("loginserver"))
+    {
+        cfg.rpc_login_host = xml.GetAttrib("host");
+        cfg.rpc_login_port = std::stoi(xml.GetAttrib("port"));
+    }
+    xml.ResetMainPos();
     if (xml.FindElem("atom"))
     {
         cfg.pool_size = std::stoi(xml.GetAttrib("pool_size"));

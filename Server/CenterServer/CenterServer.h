@@ -7,7 +7,10 @@
 #include "../RPC/ICenterRpcService.h"
 #include "../RPC/ILoginRpcService.h"
 
-typedef std::set<std::pair<std::string, int32_t>>   GameServerList;
+
+
+typedef std::set<std::pair<std::string, int32_t>>       GameServerList;
+typedef std::shared_ptr<RcfClient<ILoginRpcService>>    RpcClientPtr;
 
 //
 // 中心服务器
@@ -45,7 +48,8 @@ public:
 
 private:
     AppConfig           config_;        // 配置    
-    RCF::RcfServer      rpc_server_;
-    //RCF::RcfClient<ILoginRpcService>      rpc_client_;
     GameServerList      gameserver_list_;
+
+    RCF::RcfServer      rpc_server_;
+    RpcClientPtr        rpc_client_;
 };

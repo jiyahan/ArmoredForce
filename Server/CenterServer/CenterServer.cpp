@@ -20,6 +20,10 @@ bool CenterServer::Init(const AppConfig& cfg)
 {
     config_ = cfg;
 
+    RCF::TcpEndpoint remoteEndPoint(config_.rpc_login_host, config_.rpc_login_port);
+    rpc_client_.reset(new RcfClient<ILoginRpcService>(remoteEndPoint));
+    CHECK(rpc_client_->GetUserLoginSign("") == "");
+
     // 初始化RPC服务器
     RCF::TcpEndpoint endpoint(config_.rpc_host, config_.rpc_port);
     rpc_server_.addEndpoint(endpoint);

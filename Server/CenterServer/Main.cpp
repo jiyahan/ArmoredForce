@@ -42,7 +42,7 @@ int main(int argc, const char* argv[])
         RCF::RcfInitDeinit rcfInit;
 
         // 运行服务器
-        CenterServer& theApp = CenterServer::Create();        
+        auto& theApp = CenterServer::Create();        
         if (theApp.Init(cfg))
         {
             while (theApp.Run())
