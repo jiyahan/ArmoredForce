@@ -15,6 +15,10 @@
 #endif
 #endif
 
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+
 #include <cstdint>
 
 //#define RCF_USE_ZLIB
@@ -22,6 +26,9 @@
 //#define RCF_USE_PROTOBUF
 #include <RCF/RCF.hpp>
 
+#ifdef _DEBUG
+#define _ELPP_DISABLE_DEFAULT_CRASH_HANDLING
+#endif
 #define _ELPP_THREAD_SAFE
 #define _ELPP_STL_LOGGING
 #define _ELPP_LOG_STD_ARRAY

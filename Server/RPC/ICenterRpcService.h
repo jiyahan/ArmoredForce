@@ -14,12 +14,11 @@
 
 
 RCF_BEGIN(ICenterRpcService, "ICenterRpcService")
-
+    
+    RCF_METHOD_R1(std::string, GetUserLoginSign, const std::string&)
+    
     // 获取GameServer地址
     RCF_METHOD_R2(bool, GetGameServerAddress, std::string&, int16_t&)
-    
-    // 登录验证码
-    RCF_METHOD_R1(std::string, GetLoginSignature, const std::string&)
 
     // 注册GameServer
     RCF_METHOD_R2(bool, RegisterGameServer, const std::string&, int16_t)

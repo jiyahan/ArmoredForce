@@ -1,7 +1,8 @@
 #include "CenterServer.h"
 #include <iostream>
 #include <filesystem>
-#include <easylogging++.h>#include <RCF/RCF.hpp>
+#include <RCF/RCF.hpp>
+#include "easylogging++.h"
 #include "Utility.h"
 #include "AppConfig.h"
 
@@ -9,6 +10,8 @@ using namespace std;
 namespace fs = std::tr2::sys;
 
 _INITIALIZE_EASYLOGGINGPP
+
+
 
 // 初始化日志
 void InitLogging(const string& conf_file, const string& dir)
@@ -38,12 +41,8 @@ int main(int argc, const char* argv[])
         // 初始化RPC框架
         RCF::RcfInitDeinit rcfInit;
 
-        // 初始化atom
-        AtomAutoInit atomInit(cfg.pool_size, cfg.thread_num);
-
         // 运行服务器
-        CenterServer::Create();
-        CenterServer& theApp = CenterServer::GetInst();
+        CenterServer& theApp = CenterServer::Create();        
         if (theApp.Init(cfg))
         {
             while (theApp.Run())

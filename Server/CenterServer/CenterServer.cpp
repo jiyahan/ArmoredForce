@@ -13,6 +13,7 @@ CenterServer::CenterServer()
 
 CenterServer::~CenterServer()
 {
+    Release();
 }
 
 bool CenterServer::Init(const AppConfig& cfg)
@@ -21,9 +22,9 @@ bool CenterServer::Init(const AppConfig& cfg)
 
     // 初始化RPC服务器
     RCF::TcpEndpoint endpoint(config_.rpc_host, config_.rpc_port);
-    rpc_server_.reset(new RCF::RcfServer(endpoint));
-    rpc_server_->bind<ICenterRpcService>(rpc_impl_);
-    rpc_server_->start();
+    rpc_server_.addEndpoint(endpoint);
+    rpc_server_.bind<ICenterRpcService>(*this);
+    rpc_server_.start();
 
     LOG(INFO) << "RPC server started at " << config_.rpc_host << ":" << config_.rpc_port;
 
@@ -51,8 +52,32 @@ bool CenterServer::Run()
     return true;
 }
 
-void CenterServer::Stop()
+
+bool  CenterServer::GetGameServerAddress(string& host, int16_t& port)
 {
+    if (!gameserver_list_.empty())
+    {
+        const auto& item = *gameserver_list_.begin();
+        host = item.first;
+        port = item.second;
+        return true;
+    }
+    LOG(WARNING) << "No registered GameServer found.";
+    return false;
+}
+
+string CenterServer::GetUserLoginSign(const string& account)
+{
+    const string& signature = "a_quick_fox_jumps_over_the_lazy_dog";
+    return signature;
+}
+
+bool CenterServer::RegisterGameServer(const string& host, int16_t port)
+{
+    gameserver_list_.emplace(make_pair(host, port));
+    LOG(INFO) << "GameServer " << host << ":" << port << " registered.";
+
+    return true;
 }
 
 
