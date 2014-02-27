@@ -4,23 +4,16 @@
 #include <openssl/evp.h>
 #include "Utility.h"
 
-
-
 using namespace std;
 
 typedef std::array<uint8_t, PBKDF2::SALT_SIZE>  SaltType;
 typedef std::array<uint8_t, PBKDF2::KEY_LEN>    KeyType;
 
+
+std::default_random_engine   PBKDF2::generator_( (uint32_t)std::random_device()() );
+
+
 //////////////////////////////////////////////////////////////////////////
-PBKDF2::PBKDF2()
-    : generator_(std::random_device()())
-{
-}
-
-PBKDF2::~PBKDF2()
-{
-}
-
 string  PBKDF2::CreateSalt()
 {
     SaltType salt = {};

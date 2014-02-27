@@ -31,8 +31,18 @@ public:
     };
 
 public:
-    explicit MyConnectionPool(const ConnetionConfig& cfg);
+    MyConnectionPool();
     ~MyConnectionPool();
+
+    // 初始化连接
+    bool init(const std::string& host,
+              int32_t port,
+              const std::string& user,
+              const std::string& pwd,
+              const std::string& default,
+              const std::string& charset,
+              int32_t max_pool_size,
+              int32_t max_idle_time);
     
     // 获取一个新连接
     mysqlpp::Connection* 	grab();
@@ -41,8 +51,6 @@ public:
     void release(const mysqlpp::Connection* p);
 
 private:
-    // 初始化连接
-    bool init();
 
     // 创建新连接
     mysqlpp::Connection* 	create();

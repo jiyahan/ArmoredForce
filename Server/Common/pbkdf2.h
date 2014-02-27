@@ -32,16 +32,14 @@ public:
     };
 
 public:
-    PBKDF2();
-    ~PBKDF2();
 
     // 随机生成一个salt
-    std::string CreateSalt();
+    static std::string CreateSalt();
 
     // 生成pbkdf2密码串
-    std::string CreateStrongPassword(const std::string& plain, const std::string& salt);
+    static std::string CreateStrongPassword(const std::string& plain, const std::string& salt);
 
 private:
-    std::default_random_engine       generator_;
+    static std::default_random_engine       generator_;
 };
 

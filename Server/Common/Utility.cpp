@@ -3,12 +3,6 @@
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include <boost/uuid/random_generator.hpp>
-#include <atom/CAtom.h>
-#include <electron/CElectron.h>
-
-
-using namespace atom;
-using namespace electron;
 
 
 std::string  CreateUniqueID()
@@ -17,19 +11,87 @@ std::string  CreateUniqueID()
     return std::move(to_string(random_generator()()));
 }
 
-AtomAutoInit::AtomAutoInit(int32_t pool_size, int32_t thread_num)
+inline void stringPrintfImpl(std::string& output, const char* format, va_list ap)
 {
-    CAtom::Presetup();
-    CElectron::Presetup();
-    CHECK(CAtom::Initiate(pool_size)) << "初始化atom错误"; 
-    CHECK(CElectron::Initiate(thread_num)) << "初始化electron错误";
+    // First try with a small fixed size buffer
+    static const int kSpaceLength = 128;
+    char space[kSpaceLength];
+
+    // It's possible for methods that use a va_list to invalidate
+    // the data in it upon use.  The fix is to make a copy
+    // of the structure before using it and use that copy instead.
+    va_list backup_ap;
+    va_copy(backup_ap, ap);
+    int result = vsnprintf(space, kSpaceLength, format, backup_ap);
+    va_end(backup_ap);
+
+    if (result < kSpaceLength) 
+    {
+        if (result >= 0) {
+            // Normal case -- everything fit.
+            output.append(space, result);
+            return;
+        }
+
+        // Error or MSVC running out of space.  MSVC 8.0 and higher
+        // can be asked about space needed with the special idiom below:
+        va_copy(backup_ap, ap);
+        result = vsnprintf(NULL, 0, format, backup_ap);
+        va_end(backup_ap);
+
+        if (result < 0) 
+        {
+            // Just an error.
+            return;
+        }
+    }
+
+    // Increase the buffer size to the size requested by vsnprintf,
+    // plus one for the closing \0.
+    int length = result + 1;
+    char* buf = new char[length];
+
+    // Restore the va_list before we use it again
+    va_copy(backup_ap, ap);
+    result = vsnprintf(buf, length, format, backup_ap);
+    va_end(backup_ap);
+
+    if (result >= 0 && result < length) 
+    {
+        // It fit
+        output.append(buf, result);
+    }
+    delete[] buf;
 }
 
-AtomAutoInit::~AtomAutoInit()
+
+std::string stringPrintf(const char* format, ...) 
 {
-    CElectron::Shutdown();
-    CAtom::Shutdown();
-    CElectron::Destruct();
-    CAtom::Destruct();
+    va_list ap;
+    va_start(ap, format);
+    std::string result;
+    stringPrintfImpl(result, format, ap);
+    va_end(ap);
+    return std::move(result);
 }
 
+
+// Basic declarations; allow for parameters of strings and string
+// pieces to be specified.
+std::string& stringAppendf(std::string* output, const char* format, ...) 
+{
+    va_list ap;
+    va_start(ap, format);
+    stringPrintfImpl(*output, format, ap);
+    va_end(ap);
+    return *output;
+}
+
+void stringPrintf(std::string* output, const char* format, ...) 
+{
+    output->clear();
+    va_list ap;
+    va_start(ap, format);
+    stringPrintfImpl(*output, format, ap);
+    va_end(ap);
+};

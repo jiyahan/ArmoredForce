@@ -27,23 +27,24 @@ inline std::string  BinaryToHex(const std::array<uint8_t, N>& ar)
     return std::move(result);
 }
 
+std::string escape_string(const std::string& str);
 
-// 自动初始化atom
-class AtomAutoInit : boost::noncopyable
-{
-public:
-    AtomAutoInit(int32_t pool_size, int32_t thread_num);
+/**
+ * stringPrintf is much like printf but deposits its result into a
+ * string. Two signatures are supported: the first simply returns the
+ * resulting string, and the second appends the produced characters to
+ * the specified string and returns a reference to it.
+ */
+std::string stringPrintf(const char* format, ...);
 
-    ~AtomAutoInit();
-};
+/** Similar to stringPrintf, with different signiture.
+ */
+void stringPrintf(std::string* out, const char* fmt, ...);
+
+std::string& stringAppendf(std::string* output, const char* format, ...);
 
 
 // 生成一个UUID
 std::string     CreateUniqueID();
 
 
-#ifndef NOT_USE_ATOM_ALLOCATOR
-#define AS2Std(s)  as2std((s).c_str())
-#else
-#define AS2Std(s)   (s)
-#endif
