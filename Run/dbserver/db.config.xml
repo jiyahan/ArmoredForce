@@ -13,7 +13,7 @@
         />
     
     <!-- RPC服务器配置 -->
-    <server host="127.0.0.1" port="42100" />
+    <server host="127.0.0.1" port="42300" />
     
     <!-- 日志配置 -->
     <log config_file="default-logger.conf" dir="logs" />    

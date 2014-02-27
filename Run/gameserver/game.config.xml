@@ -3,8 +3,8 @@
     <!-- RPC服务器配置 -->
     <server host="127.0.0.1" port="32451" />
 
-    <!-- 连接数CenterServer的RPC客户端配置 -->
-    <centerserver host="127.0.0.1" port="42200" />
+    <!-- 连接CenterServer的RPC客户端配置 -->
+    <centerserver host="127.0.0.1" port="42100" />
     
     <atom pool_size="10240" thread_num="1" />
     

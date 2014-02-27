@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <!-- RPC服务器配置 -->
-    <server host="127.0.0.1" port="42200" />
+    <server host="127.0.0.1" port="42100" />
 
-    <!-- 连接数DBServer的RPC客户端配置 -->
-    <dbserver host="127.0.0.1" port="42100" />
+     <!-- 连接LoginServer的RPC客户端配置 -->
+    <loginserver host="127.0.0.1" port="42200" />
     
+    <!-- 连接DBServer的RPC配置 -->
+    <dbserver host="127.0.0.1" port="42300" />
+         
     <!-- 日志配置 -->
     <log config_file="default-logger.conf" dir="logs" />
 </config>
