@@ -13,15 +13,27 @@ using namespace std;
 using namespace atom;
 using namespace electron;
 
-namespace {
-
 void RequestRegister()
 {
-    MSGLoginRegist reg = {"johnnie", "123456", "johne@gove.cn"};
-    GetApp().SendMsg(MID_LOGIN_REGISTER, reg);
+    for (int i = 1; i < 100; ++i)
+    {
+        char name[40] = {};
+        _snprintf(name, _countof(name), "test%03d", i);
+        string email = name + string("@gov.cn");
+        MSGLoginRegist req = { name, "111111", email.c_str() };
+        GetApp().SendMsg(MID_LOGIN_REGISTER, req);
+    }
 }
 
-} // anonymouse namespace
+void RequestLogin()
+{
+    a_string user = "test010";
+    a_string passwd = "111111";
+    MSGLoginLogin req = {user, passwd};
+    GetApp().SendMsg(MID_LOGIN_LOGIN, req);
+}
+
+//////////////////////////////////////////////////////////////////////////
 
 // 登录返回
 void HandleLoginResponse(CMessage& msg)
@@ -30,6 +42,9 @@ void HandleLoginResponse(CMessage& msg)
     msg >> response;
     cout << "result: " << (int)response.result 
         << " signature: " << response.sign << endl;
+
+    MSGLoginVersionVerify verify_request = {};
+    GetApp().SendMsg(MID_VERSION_VERIFY, verify_request);
 }
 
 void HandleRegisterResponse(CMessage& msg)
@@ -63,7 +78,7 @@ void HandleVerifyResponse(CMessage& msg)
         }
     }
 
-    RequestRegister();
+    RequestLogin();
 
 #if 0
     if (GetMinions().ResetConnection(domain.host.c_str(), domain.port))
@@ -105,6 +120,6 @@ void HandleAuthResponse(CMessage& msg)
 void OnConnectLoginServer()
 {
     LOG(INFO) << "连接服务器成功, 发送登录请求...";
-    MSGLoginVersionVerify verify_request = {};
-    GetApp().SendMsg(MID_VERSION_VERIFY, verify_request);
+    RequestLogin();
+
 }

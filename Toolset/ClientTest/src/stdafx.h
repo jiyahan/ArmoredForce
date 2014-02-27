@@ -7,6 +7,10 @@
 #endif
 #endif
 
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+
 #ifdef _MSC_VER
 #if _MSC_VER < 1800
 #error "代码使用了C++11(variadic template, rvalue reference)，需要Visual C++ 2013或更高版本."
