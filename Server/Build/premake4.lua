@@ -42,6 +42,7 @@ solution "LoginServer"
         buildoptions '/I"../../../"'
         defines
         {
+            "__SERVER__",
             "__LOGIN_SERVER__",
             "MARKUP_STL",
             "MYSQLPP_NO_DLL",
@@ -64,14 +65,14 @@ solution "LoginServer"
             "../Script/*.h",
             "../Script/*.cpp",
 
-            "../Utility/MyConnectionPool.h",
-            "../Utility/MyConnectionPool.cpp",
-            "../Utility/Markup.h",
-            "../Utility/Markup.cpp",
-            "../Utility/Utility.h",
-            "../Utility/Utility.cpp",
-            "../Utility/pbkdf2.h",
-            "../Utility/pbkdf2.cpp",
+            "../Common/MyConnectionPool.h",
+            "../Common/MyConnectionPool.cpp",
+            "../Common/Markup.h",
+            "../Common/Markup.cpp",
+            "../Common/Utility.h",
+            "../Common/Utility.cpp",
+            "../Common/pbkdf2.h",
+            "../Common/pbkdf2.cpp",
 
             "../RPC/ICenterRpcService.h",
         }
@@ -148,6 +149,7 @@ solution "GameServer"
         buildoptions '/I"../../../"'
         defines
         {
+            "__SERVER__",
             "__GAME_SERVER__",
             "MARKUP_STL",
             "RCF_USE_BOOST_ASIO",
@@ -161,10 +163,10 @@ solution "GameServer"
             "../../common/**.h",
             "../../common/**.cpp",
 
-            "../Utility/Markup.h",
-            "../Utility/Markup.cpp",
-            "../Utility/Utility.h",
-            "../Utility/Utility.cpp",
+            "../Common/Markup.h",
+            "../Common/Markup.cpp",
+            "../Common/Utility.h",
+            "../Common/Utility.cpp",
 
             "../GameServer/**.h",
             "../GameServer/**.cpp",
@@ -239,6 +241,7 @@ solution "CenterServer"
         buildoptions '/I"../../../"'
         defines
         {
+            "__SERVER__",
             "__CENTER_SERVER__",
             "MARKUP_STL",
             "RCF_USE_BOOST_ASIO",
@@ -257,10 +260,10 @@ solution "CenterServer"
             "../CenterServer/**.h",
             "../CenterServer/**.cpp",
 
-            "../Utility/Markup.h",
-            "../Utility/Markup.cpp",
-            "../Utility/Utility.h",
-            "../Utility/Utility.cpp",
+            "../Common/Markup.h",
+            "../Common/Markup.cpp",
+            "../Common/Utility.h",
+            "../Common/Utility.cpp",
 
             "../RPC/ICenterRpcService.h",
         }
@@ -330,6 +333,7 @@ solution "DBServer"
         buildoptions '/I"../../../"'
         defines
         {
+            "__SERVER__",
             "__DB_SERVER__",            
             "MARKUP_STL",
             "RCF_USE_BOOST_ASIO",
@@ -346,14 +350,14 @@ solution "DBServer"
             
             "../RPC/IDBRpcService.h",
             
-            "../Utility/Markup.h",
-            "../Utility/Markup.cpp",
-            "../Utility/MyConnectionPool.h",
-            "../Utility/MyConnectionPool.cpp",
-            "../Utility/Utility.h",
-            "../Utility/Utility.cpp",
-            "../Utility/Singleton.h",
-            "../Utility/ScopeGuard.h",
+            "../Common/Markup.h",
+            "../Common/Markup.cpp",
+            "../Common/MyConnectionPool.h",
+            "../Common/MyConnectionPool.cpp",
+            "../Common/Utility.h",
+            "../Common/Utility.cpp",
+            "../Common/Singleton.h",
+            "../Common/ScopeGuard.h",
         }
 
         -- 预编译头
@@ -432,8 +436,8 @@ solution "UnitTest"
         -- 源代码文件
         files
         {
-            "../Utility/*.h",
-            "../Utility/*.cpp",
+            "../Common/*.h",
+            "../Common/*.cpp",
             "../UnitTest/**.h",
             "../UnitTest/**.cpp",
         }
