@@ -57,7 +57,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>NDEBUG;_CRT_SECURE_NO_WARNINGS;MARKUP_STL;GOOGLE_GLOG_DLL_DECL=;GLOG_NO_ABBREVIATED_SEVERITIES;GTEST_HAS_TR1_TUPLE=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CRT_SECURE_NO_WARNINGS;MARKUP_STL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\;..\..\..\Server\Utility;..\..\..\3rdParty\atom;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ProgramDataBaseFileName>$(OutDir)ClientTest.pdb</ProgramDataBaseFileName>
@@ -88,8 +88,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>DEBUG;_CRT_SECURE_NO_WARNINGS;MARKUP_STL;GOOGLE_GLOG_DLL_DECL=;GLOG_NO_ABBREVIATED_SEVERITIES;GTEST_HAS_TR1_TUPLE=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\;..\..\..\Server\Utility;..\..\..\3rdParty\atom;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG;_CRT_SECURE_NO_WARNINGS;MARKUP_STL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\;..\..\..\Server\Common;..\..\..\3rdParty\atom;E:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <ProgramDataBaseFileName>$(OutDir)ClientTest.pdb</ProgramDataBaseFileName>
       <Optimization>Disabled</Optimization>
@@ -109,9 +109,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Server\Utility\Markup.h" />
-    <ClInclude Include="..\..\..\Server\Utility\Utility.h" />
-    <ClInclude Include="..\..\..\Server\Utility\easylogging.h" />
     <ClInclude Include="..\..\..\common\Config.h" />
     <ClInclude Include="..\..\..\common\MESSAGE_ID.h" />
     <ClInclude Include="..\..\..\common\MSGCode.h" />
@@ -126,6 +123,9 @@
     <ClInclude Include="..\..\..\common\setup\OfficerList.h" />
     <ClInclude Include="..\..\..\common\setup\RegionList.h" />
     <ClInclude Include="..\..\..\common\update\tagGameServer.h" />
+    <ClInclude Include="..\..\..\Server\Common\easylogging++.h" />
+    <ClInclude Include="..\..\..\Server\Common\Markup.h" />
+    <ClInclude Include="..\..\..\Server\Common\Utility.h" />
     <ClInclude Include="..\src\ClientApp.h" />
     <ClInclude Include="..\src\Config.h" />
     <ClInclude Include="..\src\MessageProcess.h" />
@@ -137,12 +137,12 @@
     <ClInclude Include="..\src\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Server\Utility\Markup.cpp" />
-    <ClCompile Include="..\..\..\Server\Utility\Utility.cpp" />
     <ClCompile Include="..\..\..\common\setup\ArmyCategory.cpp" />
     <ClCompile Include="..\..\..\common\setup\MonsterList.cpp" />
     <ClCompile Include="..\..\..\common\setup\OfficerList.cpp" />
     <ClCompile Include="..\..\..\common\setup\RegionList.cpp" />
+    <ClCompile Include="..\..\..\Server\Common\Markup.cpp" />
+    <ClCompile Include="..\..\..\Server\Common\Utility.cpp" />
     <ClCompile Include="..\src\ClientApp.cpp" />
     <ClCompile Include="..\src\Config.cpp" />
     <ClCompile Include="..\src\Main.cpp" />

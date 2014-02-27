@@ -97,8 +97,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>NDEBUG;WIN32_LEAN_AND_MEAN;__GAME_SERVER__;MARKUP_STL;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\Utility;..\..\..\3rdParty;..\..\..\3rdParty\atom;..\..\..\3rdParty\glog\src\windows;..\..\..\3rdParty\RCF\include;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN32_LEAN_AND_MEAN;__SERVER__;__GAME_SERVER__;MARKUP_STL;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\Common;..\..\..\3rdParty;..\..\..\3rdParty\atom;..\..\..\3rdParty\RCF\include;E:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -117,7 +117,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>libAtom.lib;librcf.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\3rdParty\libs;F:\Library\boost_1_55_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\3rdParty\libs;E:\Library\boost_1_55_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
@@ -155,8 +155,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>DEBUG;WIN32_LEAN_AND_MEAN;__GAME_SERVER__;MARKUP_STL;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\Utility;..\..\..\3rdParty;..\..\..\3rdParty\atom;..\..\..\3rdParty\glog\src\windows;..\..\..\3rdParty\RCF\include;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG;WIN32_LEAN_AND_MEAN;__SERVER__;__GAME_SERVER__;MARKUP_STL;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\Common;..\..\..\3rdParty;..\..\..\3rdParty\atom;..\..\..\3rdParty\RCF\include;E:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <ProgramDataBaseFileName>$(OutDir)GameServer.pdb</ProgramDataBaseFileName>
       <Optimization>Disabled</Optimization>
@@ -171,7 +171,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>libAtom.lib;librcf.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\3rdParty\libs;F:\Library\boost_1_55_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\3rdParty\libs;E:\Library\boost_1_55_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
@@ -201,6 +201,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Common\AtomAutoInit.h" />
+    <ClInclude Include="..\..\Common\easylogging++.h" />
+    <ClInclude Include="..\..\Common\Markup.h" />
+    <ClInclude Include="..\..\Common\Preprocessor.h" />
+    <ClInclude Include="..\..\Common\Random.h" />
+    <ClInclude Include="..\..\Common\ScopeGuard.h" />
+    <ClInclude Include="..\..\Common\Singleton.h" />
+    <ClInclude Include="..\..\Common\UncaughtExceptionCounter.h" />
+    <ClInclude Include="..\..\Common\Utility.h" />
     <ClInclude Include="..\..\GameServer\App\BattleSys.h" />
     <ClInclude Include="..\..\GameServer\App\Officer.h" />
     <ClInclude Include="..\..\GameServer\App\Player.h" />
@@ -217,8 +226,6 @@
     <ClInclude Include="..\..\GameServer\stdafx.h" />
     <ClInclude Include="..\..\RPC\ICenterRpcService.h" />
     <ClInclude Include="..\..\Setup\LoadSetup.h" />
-    <ClInclude Include="..\..\Utility\Markup.h" />
-    <ClInclude Include="..\..\Utility\Utility.h" />
     <ClInclude Include="..\..\..\common\Config.h" />
     <ClInclude Include="..\..\..\common\MESSAGE_ID.h" />
     <ClInclude Include="..\..\..\common\MSGCode.h" />
@@ -235,6 +242,8 @@
     <ClInclude Include="..\..\..\common\update\tagGameServer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Common\Markup.cpp" />
+    <ClCompile Include="..\..\Common\Utility.cpp" />
     <ClCompile Include="..\..\GameServer\App\BattleSys.cpp" />
     <ClCompile Include="..\..\GameServer\App\Officer.cpp" />
     <ClCompile Include="..\..\GameServer\App\Player.cpp" />
@@ -256,8 +265,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\Setup\LoadSetup.cpp" />
-    <ClCompile Include="..\..\Utility\Markup.cpp" />
-    <ClCompile Include="..\..\Utility\Utility.cpp" />
     <ClCompile Include="..\..\..\common\setup\ArmyCategory.cpp" />
     <ClCompile Include="..\..\..\common\setup\MonsterList.cpp" />
     <ClCompile Include="..\..\..\common\setup\OfficerList.cpp" />

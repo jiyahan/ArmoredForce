@@ -97,8 +97,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>NDEBUG;WIN32_LEAN_AND_MEAN;__CENTER_SERVER__;MARKUP_STL;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\Utility;..\..\..\3rdParty;..\..\..\3rdParty\atom;..\..\..\3rdParty\glog\src\windows;..\..\..\3rdParty\RCF\include;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN32_LEAN_AND_MEAN;__SERVER__;__CENTER_SERVER__;MARKUP_STL;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\Common;..\..\..\3rdParty;..\..\..\3rdParty\atom;..\..\..\3rdParty\RCF\include;E:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ProgramDataBaseFileName>$(OutDir)CenterServer.pdb</ProgramDataBaseFileName>
       <Optimization>Full</Optimization>
@@ -159,8 +159,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>DEBUG;WIN32_LEAN_AND_MEAN;__CENTER_SERVER__;MARKUP_STL;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\Utility;..\..\..\3rdParty;..\..\..\3rdParty\atom;..\..\..\3rdParty\glog\src\windows;..\..\..\3rdParty\RCF\include;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG;WIN32_LEAN_AND_MEAN;__SERVER__;__CENTER_SERVER__;MARKUP_STL;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\Common;..\..\..\3rdParty;..\..\..\3rdParty\atom;..\..\..\3rdParty\RCF\include;E:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <ProgramDataBaseFileName>$(OutDir)CenterServer.pdb</ProgramDataBaseFileName>
       <Optimization>Disabled</Optimization>
@@ -175,7 +175,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>librcf.lib;libatom.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\3rdParty\libs;F:\Library\boost_1_55_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\3rdParty\libs;E:\Library\boost_1_55_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
@@ -206,13 +206,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\CenterServer\AppConfig.h" />
-    <ClInclude Include="..\..\CenterServer\CenterRpcService.h" />
     <ClInclude Include="..\..\CenterServer\CenterServer.h" />
     <ClInclude Include="..\..\CenterServer\stdafx.h" />
+    <ClInclude Include="..\..\Common\easylogging++.h" />
+    <ClInclude Include="..\..\Common\Markup.h" />
+    <ClInclude Include="..\..\Common\Preprocessor.h" />
+    <ClInclude Include="..\..\Common\Random.h" />
+    <ClInclude Include="..\..\Common\ScopeGuard.h" />
+    <ClInclude Include="..\..\Common\Singleton.h" />
+    <ClInclude Include="..\..\Common\UncaughtExceptionCounter.h" />
     <ClInclude Include="..\..\RPC\ICenterRpcService.h" />
-    <ClInclude Include="..\..\Setup\LoadSetup.h" />
-    <ClInclude Include="..\..\Utility\Markup.h" />
-    <ClInclude Include="..\..\Utility\Utility.h" />
     <ClInclude Include="..\..\..\common\setup\ArmyCategory.h" />
     <ClInclude Include="..\..\..\common\setup\LoadBinaryFile.h" />
     <ClInclude Include="..\..\..\common\setup\MonsterList.h" />
@@ -221,7 +224,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\CenterServer\AppConfig.cpp" />
-    <ClCompile Include="..\..\CenterServer\CenterRpcService.cpp" />
     <ClCompile Include="..\..\CenterServer\CenterServer.cpp" />
     <ClCompile Include="..\..\CenterServer\Main.cpp" />
     <ClCompile Include="..\..\CenterServer\stdafx.cpp">
@@ -230,9 +232,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\..\Setup\LoadSetup.cpp" />
-    <ClCompile Include="..\..\Utility\Markup.cpp" />
-    <ClCompile Include="..\..\Utility\Utility.cpp" />
+    <ClCompile Include="..\..\Common\Markup.cpp" />
+    <ClCompile Include="..\..\Common\Utility.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

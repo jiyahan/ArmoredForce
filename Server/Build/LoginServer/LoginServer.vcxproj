@@ -98,7 +98,7 @@
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;WIN32_LEAN_AND_MEAN;__SERVER__;__LOGIN_SERVER__;MARKUP_STL;MYSQLPP_NO_DLL;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\Utility;..\..\..\3rdParty;..\..\..\3rdParty\atom;..\..\..\3rdParty\RCF\include;..\..\..\3rdParty\glog\src\windows;..\..\..\3rdParty\libmysql\include;..\..\..\3rdParty\mysql++\lib;..\..\..\3rdParty\openssl\include;..\..\..\3rdParty\lua\src;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Common;..\..\..\3rdParty;..\..\..\3rdParty\atom;..\..\..\3rdParty\RCF\include;..\..\..\3rdParty\libmysql\include;..\..\..\3rdParty\mysql++\lib;..\..\..\3rdParty\openssl\include;..\..\..\3rdParty\lua\src;E:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ProgramDataBaseFileName>$(OutDir)LoginServer.pdb</ProgramDataBaseFileName>
       <Optimization>Full</Optimization>
@@ -119,7 +119,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>librcf.lib;libAtom.lib;libmysqlpp.lib;libmysql.lib;libeay32.lib;liblua.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\3rdParty\libs;F:\Library\boost_1_55_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\3rdParty\libs;E:\Library\boost_1_55_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
@@ -160,7 +160,7 @@
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>DEBUG;WIN32_LEAN_AND_MEAN;__SERVER__;__LOGIN_SERVER__;MARKUP_STL;MYSQLPP_NO_DLL;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\Utility;..\..\..\3rdParty;..\..\..\3rdParty\atom;..\..\..\3rdParty\RCF\include;..\..\..\3rdParty\glog\src\windows;..\..\..\3rdParty\libmysql\include;..\..\..\3rdParty\mysql++\lib;..\..\..\3rdParty\openssl\include;..\..\..\3rdParty\lua\src;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Common;..\..\..\3rdParty;..\..\..\3rdParty\atom;..\..\..\3rdParty\RCF\include;..\..\..\3rdParty\libmysql\include;..\..\..\3rdParty\mysql++\lib;..\..\..\3rdParty\openssl\include;..\..\..\3rdParty\lua\src;E:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <ProgramDataBaseFileName>$(OutDir)LoginServer.pdb</ProgramDataBaseFileName>
       <Optimization>Disabled</Optimization>
@@ -175,7 +175,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>librcf.lib;libAtom.lib;libmysqlpp.lib;libmysql.lib;libeay32.lib;liblua.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\3rdParty\libs;F:\Library\boost_1_55_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\3rdParty\libs;E:\Library\boost_1_55_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
@@ -205,7 +205,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Common\Markup.h" />
+    <ClInclude Include="..\..\Common\MyConnectionPool.h" />
+    <ClInclude Include="..\..\Common\pbkdf2.h" />
+    <ClInclude Include="..\..\Common\Utility.h" />
     <ClInclude Include="..\..\LoginServer\AppConfig.h" />
+    <ClInclude Include="..\..\LoginServer\DB\DBLogin.h" />
     <ClInclude Include="..\..\LoginServer\LoginServer.h" />
     <ClInclude Include="..\..\LoginServer\MsgProcess.h" />
     <ClInclude Include="..\..\LoginServer\Net\CClientEventHandle.h" />
@@ -213,17 +218,18 @@
     <ClInclude Include="..\..\LoginServer\Net\SocketServer.h" />
     <ClInclude Include="..\..\LoginServer\stdafx.h" />
     <ClInclude Include="..\..\RPC\ICenterRpcService.h" />
-    <ClInclude Include="..\..\Utility\Markup.h" />
-    <ClInclude Include="..\..\Utility\MyConnectionPool.h" />
-    <ClInclude Include="..\..\Utility\Utility.h" />
-    <ClInclude Include="..\..\Utility\pbkdf2.h" />
     <ClInclude Include="..\..\..\common\MESSAGE_ID.h" />
     <ClInclude Include="..\..\..\common\MSGCode.h" />
     <ClInclude Include="..\..\..\common\MSGLogin.h" />
     <ClInclude Include="..\..\..\common\update\tagGameServer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Common\Markup.cpp" />
+    <ClCompile Include="..\..\Common\MyConnectionPool.cpp" />
+    <ClCompile Include="..\..\Common\pbkdf2.cpp" />
+    <ClCompile Include="..\..\Common\Utility.cpp" />
     <ClCompile Include="..\..\LoginServer\AppConfig.cpp" />
+    <ClCompile Include="..\..\LoginServer\DB\DBLogin.cpp" />
     <ClCompile Include="..\..\LoginServer\LoginServer.cpp" />
     <ClCompile Include="..\..\LoginServer\Main.cpp" />
     <ClCompile Include="..\..\LoginServer\MsgProcess.cpp" />
@@ -236,10 +242,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\..\Utility\Markup.cpp" />
-    <ClCompile Include="..\..\Utility\MyConnectionPool.cpp" />
-    <ClCompile Include="..\..\Utility\Utility.cpp" />
-    <ClCompile Include="..\..\Utility\pbkdf2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

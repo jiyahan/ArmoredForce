@@ -30,15 +30,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Server\Utility\Markup.h">
-      <Filter>Server\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Server\Utility\Utility.h">
-      <Filter>Server\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Server\Utility\easylogging.h">
-      <Filter>Server\Utility</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\common\Config.h">
       <Filter>common</Filter>
     </ClInclude>
@@ -108,14 +99,17 @@
     <ClInclude Include="..\src\stdafx.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Server\Common\easylogging++.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Server\Common\Markup.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Server\Common\Utility.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Server\Utility\Markup.cpp">
-      <Filter>Server\Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Server\Utility\Utility.cpp">
-      <Filter>Server\Utility</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\common\setup\ArmyCategory.cpp">
       <Filter>common\setup</Filter>
     </ClCompile>
@@ -157,6 +151,12 @@
     </ClCompile>
     <ClCompile Include="..\src\stdafx.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Server\Common\Markup.cpp">
+      <Filter>Server\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Server\Common\Utility.cpp">
+      <Filter>Server\Utility</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
