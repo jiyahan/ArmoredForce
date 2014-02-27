@@ -205,9 +205,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Common\AtomAutoInit.h" />
+    <ClInclude Include="..\..\Common\DBUtils.h" />
+    <ClInclude Include="..\..\Common\easylogging++.h" />
     <ClInclude Include="..\..\Common\Markup.h" />
     <ClInclude Include="..\..\Common\MyConnectionPool.h" />
     <ClInclude Include="..\..\Common\pbkdf2.h" />
+    <ClInclude Include="..\..\Common\Preprocessor.h" />
+    <ClInclude Include="..\..\Common\Random.h" />
+    <ClInclude Include="..\..\Common\ScopeGuard.h" />
+    <ClInclude Include="..\..\Common\Singleton.h" />
     <ClInclude Include="..\..\Common\Utility.h" />
     <ClInclude Include="..\..\LoginServer\AppConfig.h" />
     <ClInclude Include="..\..\LoginServer\DB\DBLogin.h" />

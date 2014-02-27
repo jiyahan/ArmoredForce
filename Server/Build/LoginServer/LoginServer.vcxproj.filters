@@ -75,6 +75,27 @@
     <ClInclude Include="..\..\LoginServer\DB\DBLogin.h">
       <Filter>LoginServer\DB</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Common\AtomAutoInit.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\DBUtils.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\easylogging++.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Preprocessor.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Random.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\ScopeGuard.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Singleton.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\LoginServer\AppConfig.cpp">
