@@ -101,10 +101,11 @@ void LoginServer::ProcessMessage()
     }
 }
 
-void LoginServer::CreateUserLogSign(const string& user)
+const string& LoginServer::CreateUserLogSign(const string& user)
 {
     DCHECK(user_login_sign_.count(user) == 0);
     user_login_sign_[user] = CreateUniqueID();
+    return user_login_sign_[user];
 }
 
 void LoginServer::DelUserLoginSign(const string& user)

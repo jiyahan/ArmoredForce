@@ -50,7 +50,7 @@ void ProcessUserLogin(CMessage& msg)
     string signatrue;
     if (status == 0)
     {
-        GetApp().CreateUserLogSign(req.account);
+        signatrue = GetApp().CreateUserLogSign(req.account);
     }
 
     MSGLoginLoginResponse response = {signatrue, status};

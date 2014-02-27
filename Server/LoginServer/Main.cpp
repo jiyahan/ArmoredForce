@@ -3,7 +3,7 @@
 #include <filesystem>
 #include <easylogging++.h>
 #include <RCF/RCF.hpp>
-#include "Utility.h"
+#include "AtomAutoInit.h"
 #include "AppConfig.h"
 
 
@@ -26,13 +26,6 @@ void InitLogging(const string& conf_file, const string& dir)
 }
 
 
-//
-// 慎用全局Class变量(和单件模式)
-// 为了让资源(内存，文件等)更可控，资源的分配应该在进入main后进行，相应的释放应该在main退出
-// 之前完成。因为C++未定义全局变量的构造顺序，Class类型的全局变量会在main函数之前通过构造
-// 函数分配资源，并在在main函数之后通过析构函数释放资源，这样在main函数内部的代码无法对所有
-// 的资源进行控制。
-//
 int main(int argc, const char* argv[])
 {
     char buffer[200];
@@ -51,10 +44,10 @@ int main(int argc, const char* argv[])
         AtomAutoInit  atomInit(cfg.pool_size, cfg.thread_num);
 
         // 运行服务器
-        LoginServer::Create(cfg);        
-        if (GetApp().Init())
+        auto& theApp = LoginServer::Create(cfg);        
+        if (theApp.Init())
         {
-            while (GetApp().Run())
+            while (theApp.Run())
                 ;
         }
         LoginServer::Destroy();
