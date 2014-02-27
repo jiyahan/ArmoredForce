@@ -5,7 +5,8 @@
 #include <RCF/RCF.hpp>
 #include "Server/RPC/ICenterRpcService.h"
 #include "MsgProcess.h"
-
+#include "Utility.h"
+#include "DB/DBLogin.h"
 
 using namespace std;
 using namespace atom;
@@ -26,17 +27,14 @@ LoginServer::~LoginServer()
 
 bool LoginServer::Init()
 {
-    MyConnectionPool::ConnetionConfig conn_cfg = {};
-    conn_cfg.host = config_.mysql_host;
-    conn_cfg.port = config_.mysql_port;
-    conn_cfg.user = config_.mysql_user;
-    conn_cfg.pwd = config_.mysql_pwd;
-    conn_cfg.db = config_.mysql_default;
-    conn_cfg.charset = config_.mysql_charset;
-    conn_cfg.max_pool_size = config_.connection_pool_size;
-    conn_cfg.max_idle_time = config_.max_idle_time;
-
-    conn_pool_ = make_shared<MyConnectionPool>(conn_cfg);
+    DBLogin::Init(config_.mysql_host, 
+        config_.mysql_port, 
+        config_.mysql_user,
+        config_.mysql_pwd, 
+        config_.mysql_default, 
+        config_.mysql_charset, 
+        config_.connection_pool_size, 
+        config_.max_idle_time);
 
     // 开始网络服务器	
     CHECK(server_.Start(config_.host, config_.port))
@@ -44,8 +42,10 @@ bool LoginServer::Init()
 
     LOG(INFO) << "TCP服务器开始监听" << config_.host << ":" << config_.port;
 
-    RCF::TcpEndpoint remoteEndPoint(config_.rpc_host, config_.rpc_port);
-    client_ = make_shared<RcfClient<ICenterRpcService>>(remoteEndPoint);
+    RCF::TcpEndpoint endpoint(config_.rpc_host, config_.rpc_port);
+    rpc_server_.reset(new RCF::RcfServer(endpoint));
+    rpc_server_->bind<ILoginRpcService>(*this);
+    rpc_server_->start();
 
     // 注册客户端消息回调处理函数
     handler_map_ = GetMsgHandlers();
@@ -77,13 +77,6 @@ void LoginServer::Stop()
     server_.Stop();
 }
 
-tuple<string, string> LoginServer::CreatePassword(const std::string& plain)
-{
-    string salt = pbkdf2_.CreateSalt();
-    string pwd = pbkdf2_.CreateStrongPassword(plain, salt);
-    return make_tuple(move(pwd), move(salt));
-}
-
 // 处理网络消息
 void LoginServer::ProcessMessage()
 {   
@@ -108,3 +101,25 @@ void LoginServer::ProcessMessage()
     }
 }
 
+void LoginServer::CreateUserLogSign(const string& user)
+{
+    DCHECK(user_login_sign_.count(user) == 0);
+    user_login_sign_[user] = CreateUniqueID();
+}
+
+void LoginServer::DelUserLoginSign(const string& user)
+{
+    DCHECK(user_login_sign_.count(user));
+    user_login_sign_.erase(user);
+}
+
+std::string LoginServer::GetUserLoginSign(const string& user)
+{
+    static const string dummy = "";
+    auto iter = user_login_sign_.find(user);
+    if (iter != user_login_sign_.end())
+    {
+        return iter->second;
+    }
+    return dummy;
+}

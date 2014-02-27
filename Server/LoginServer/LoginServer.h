@@ -4,15 +4,10 @@
 #include <tuple>
 #include "Singleton.h"
 #include "AppConfig.h"
-#include "Server/RPC/ICenterRpcService.h"
+#include "Server/RPC/ILoginRpcService.h"
 #include "Net/SocketServer.h"
 #include "MsgProcess.h"
-#include "MyConnectionPool.h"
-#include "pbkdf2.h"
 
-
-typedef std::shared_ptr<RcfClient<ICenterRpcService>>   RpcClientPtr;
- 
 
 class LoginServer : public Singleton<LoginServer>
 {
@@ -31,8 +26,6 @@ public:
 
     const AppConfig& GetConfig() { return config_; }
 
-    RpcClientPtr    GetClient() { return client_; }
-
     SocketServer&   GetTcpServer() { return server_; }
 
     template <typename T>
@@ -41,11 +34,21 @@ public:
         CMessage msg(msgid);
         msg << data;
         server_.Send(connector, msg);
-    }
+    }    
 
-    MyConnectionPoolPtr GetConnectionPool() {return conn_pool_;}
 
-    std::tuple<std::string, std::string>    CreatePassword(const std::string& plain);
+    //////////////////////////////////////////////////////////////////////////
+public:
+    void CreateUserLogSign(const std::string& user);
+
+
+    //////////////////////////////////////////////////////////////////////////
+    //
+    // RPC Service
+    //
+public:
+    std::string   GetUserLoginSign(const std::string& user);
+    void          DelUserLoginSign(const std::string& user);
 
 private:
     // 处理消息
@@ -55,32 +58,15 @@ private:
 private:
     // 配置信息
     AppConfig           config_;
-
-    // TCP服务器
     SocketServer        server_;
 
-    // RPC客户端
-    RpcClientPtr        client_;
+    std::shared_ptr<RCF::RcfServer> rpc_server_;
+    HandlerMap          handler_map_;         // 消息路由表
 
-    // 消息路由表
-    HandlerMap          handler_map_;
-
-    MyConnectionPoolPtr conn_pool_;
-
-    PBKDF2              pbkdf2_;
+    std::unordered_map<std::string, std::string>    user_login_sign_;    
 };
 
 inline LoginServer& GetApp()
 {
     return LoginServer::GetInst();
-}
-
-inline RpcClientPtr GetRpcClientPtr()
-{
-    return GetApp().GetClient();
-}
-
-inline MyConnectionPoolPtr GetConnectionPoolPtr()
-{
-    return GetApp().GetConnectionPool();
 }

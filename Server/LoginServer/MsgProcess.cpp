@@ -7,70 +7,53 @@
 #include "common/MSGLogin.h"
 #include "common/MSGCode.h"
 #include "common/update/tagGameServer.h"
+#include "Utility.h"
+#include "DB/DBLogin.h"
 
 
 using namespace std;
-using namespace mysqlpp;
 using namespace atom;
 using namespace electron;
 
 
 void ProcessRegister(CMessage& msg)
 {
-    MSGLoginRegist request;
-    msg >> request;
-    LOG(INFO) << request.account << ", " << request.email;
+    MSGLoginRegist req;
+    msg >> req;
 
-    string salt, pwd;
-    tie(pwd, salt) = GetApp().CreatePassword(request.password);
     string reg_ip = GetApp().GetTcpServer().GetPeerAddress(msg.GetConnector());
-    int32_t reg_type = 0;
-    try
+    int32_t reg_type = 1;
+    int32_t reg_status =  DBLogin::RegisterUser(req.account, reg_type, reg_ip, 
+        req.email, req.password);
+    if (reg_status == 0)
     {
-        ScopedConnection conn(*GetConnectionPoolPtr());
-        Query query = conn->query("call sp_register_user(%0q, %1q, %2q, %3q, %4q, %5q)");
-        StoreQueryResult result = query.store(request.account, reg_type, reg_ip, 
-            request.email, pwd, salt);
-        if (!result.empty() && !result[0].empty())
-        {
-            int32_t status = static_cast<int32_t>(result[0][0]);
-        }
+        LOG(INFO) << req.account << " registered OK";
     }
-    catch(mysqlpp::Exception& ex)
+    else
     {
-        cout << ex.what() << endl;
+        LOG(INFO) << req.account << " registered failed, " << reg_status;
     }
-
 }
 
 
 // 处理角色登录
 void ProcessUserLogin(CMessage& msg)
 {
-    MSGLoginLogin request;
-    msg >> request;
-    LOG(INFO) << request.account << endl << request.password << endl;
-    
-    int32_t status = 0;
-    // 调用存储过程sp_user_login获得登录结果
-    try
+    MSGLoginLogin req;
+    msg >> req;
+    LOG(INFO) << req.account << endl << req.password << endl;
+
+    string reg_ip = GetApp().GetTcpServer().GetPeerAddress(msg.GetConnector());
+    int32_t status = DBLogin::UserLogin(req.account, req.password);
+    DBLogin::SaveLoginHistory(req.account, reg_ip, status);
+
+    string signatrue;
+    if (status == 0)
     {
-        //ScopedConnection conn(MyConnectionPool::GetInstance());
-        //Query query = conn->query("call sp_user_login %0q, %1q");
-        //StoreQueryResult result = query.store(request.account.c_str(), request.password.c_str());    
-        //if (!result.empty() && !result[0].empty())
-        {
-            //status = static_cast<int32_t>(result[0][0]);
-        }
-    }
-    catch(mysqlpp::Exception& ex)
-    {
-        cout << ex.what() << endl;
+        GetApp().CreateUserLogSign(req.account);
     }
 
-    string signatrue = GetRpcClientPtr()->GetLoginSignature(request.account.c_str());
-
-    MSGLoginLoginResponse response = {signatrue.c_str(), status};
+    MSGLoginLoginResponse response = {signatrue, status};
     GetApp().SendMsg(msg.GetConnector(), MID_LOGIN_LOGINRESPONSE, response);
 }
 
