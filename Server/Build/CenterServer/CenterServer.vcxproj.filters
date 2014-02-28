@@ -66,6 +66,9 @@
     <ClInclude Include="..\..\Common\UncaughtExceptionCounter.h">
       <Filter>Utility</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\RPC\ILoginRpcService.h">
+      <Filter>RPC</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\CenterServer\AppConfig.cpp">

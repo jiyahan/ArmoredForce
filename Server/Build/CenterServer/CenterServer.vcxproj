@@ -221,6 +221,7 @@
     <ClInclude Include="..\..\..\common\setup\MonsterList.h" />
     <ClInclude Include="..\..\..\common\setup\OfficerList.h" />
     <ClInclude Include="..\..\..\common\setup\RegionList.h" />
+    <ClInclude Include="..\..\RPC\ILoginRpcService.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\CenterServer\AppConfig.cpp" />

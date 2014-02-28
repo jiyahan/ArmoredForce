@@ -123,8 +123,14 @@
     <ClInclude Include="..\..\..\common\setup\OfficerList.h" />
     <ClInclude Include="..\..\..\common\setup\RegionList.h" />
     <ClInclude Include="..\..\..\common\update\tagGameServer.h" />
+    <ClInclude Include="..\..\..\Server\Common\AtomAutoInit.h" />
     <ClInclude Include="..\..\..\Server\Common\easylogging++.h" />
+    <ClInclude Include="..\..\..\Server\Common\Foreach.h" />
     <ClInclude Include="..\..\..\Server\Common\Markup.h" />
+    <ClInclude Include="..\..\..\Server\Common\Preprocessor.h" />
+    <ClInclude Include="..\..\..\Server\Common\ScopeGuard.h" />
+    <ClInclude Include="..\..\..\Server\Common\Singleton.h" />
+    <ClInclude Include="..\..\..\Server\Common\UncaughtExceptionCounter.h" />
     <ClInclude Include="..\..\..\Server\Common\Utility.h" />
     <ClInclude Include="..\src\ClientApp.h" />
     <ClInclude Include="..\src\Config.h" />

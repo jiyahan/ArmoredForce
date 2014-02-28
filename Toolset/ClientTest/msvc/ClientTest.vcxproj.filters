@@ -108,6 +108,24 @@
     <ClInclude Include="..\..\..\Server\Common\Utility.h">
       <Filter>Server\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Server\Common\AtomAutoInit.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Server\Common\Foreach.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Server\Common\Preprocessor.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Server\Common\ScopeGuard.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Server\Common\Singleton.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Server\Common\UncaughtExceptionCounter.h">
+      <Filter>Server\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\common\setup\ArmyCategory.cpp">
