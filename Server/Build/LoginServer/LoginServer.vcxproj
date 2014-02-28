@@ -206,6 +206,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Common\AtomAutoInit.h" />
+    <ClInclude Include="..\..\Common\Conv.h" />
     <ClInclude Include="..\..\Common\DBUtils.h" />
     <ClInclude Include="..\..\Common\easylogging++.h" />
     <ClInclude Include="..\..\Common\Markup.h" />
@@ -231,6 +232,7 @@
     <ClInclude Include="..\..\..\common\update\tagGameServer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Common\Conv.cpp" />
     <ClCompile Include="..\..\Common\Markup.cpp" />
     <ClCompile Include="..\..\Common\MyConnectionPool.cpp" />
     <ClCompile Include="..\..\Common\pbkdf2.cpp" />

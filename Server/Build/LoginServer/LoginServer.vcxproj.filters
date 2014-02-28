@@ -96,6 +96,9 @@
     <ClInclude Include="..\..\Common\Singleton.h">
       <Filter>Utility</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Common\Conv.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\LoginServer\AppConfig.cpp">
@@ -136,6 +139,9 @@
     </ClCompile>
     <ClCompile Include="..\..\LoginServer\DB\DBLogin.cpp">
       <Filter>LoginServer\DB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Conv.cpp">
+      <Filter>Utility</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
