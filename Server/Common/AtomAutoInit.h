@@ -1,5 +1,6 @@
 #pragma once
 
+#include <boost/noncopyable.hpp>
 #include <atom/CAtom.h>
 #include <electron/CElectron.h>
 #include "easylogging++.h"

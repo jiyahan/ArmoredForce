@@ -12,6 +12,9 @@
 class LoginServer : public Singleton<LoginServer>
 {
 public:
+    typedef std::tuple<std::string, std::string, int16_t>       GameWorldStatus;
+    typedef std::unordered_map<std::string, std::set<GameWorldStatus> >    GameWorldInfo;
+public:
     explicit LoginServer(const AppConfig& cfg);
     ~LoginServer();
 
@@ -24,7 +27,7 @@ public:
     // 停止服务器
     void    Stop();
 
-    const AppConfig& GetConfig() { return config_; }
+    const AppConfig& GetConfig() const { return config_; }
 
     SocketServer&   GetTcpServer() { return server_; }
 
@@ -36,19 +39,22 @@ public:
         server_.Send(connector, msg);
     }    
 
-
-    //////////////////////////////////////////////////////////////////////////
-public:
-    const std::string& CreateUserLogSign(const std::string& user);
-
-
     //////////////////////////////////////////////////////////////////////////
     //
     // RPC Service
     //
 public:
-    std::string   GetUserLoginSign(const std::string& user);
-    void          DelUserLoginSign(const std::string& user);
+    std::string GetUserLoginSign(const std::string& user);
+    void        DelUserLoginSign(const std::string& user);
+    void        PutGameAddress(const std::string& name, 
+                               const std::string& status, 
+                               const std::string& host, 
+                               int16_t port);
+
+    //////////////////////////////////////////////////////////////////////////
+public:
+    const std::string&      CreateUserLogSign(const std::string& user);
+    const GameWorldInfo&    GetGameWorldInfo() const { return game_world_info_; }
 
 private:
     // 处理消息
@@ -63,7 +69,9 @@ private:
     std::shared_ptr<RCF::RcfServer> rpc_server_;
     HandlerMap          handler_map_;         // 消息路由表
 
-    std::unordered_map<std::string, std::string>    user_login_sign_;    
+    std::unordered_map<std::string, std::string>    user_login_sign_;
+
+    GameWorldInfo       game_world_info_;
 };
 
 inline LoginServer& GetApp()

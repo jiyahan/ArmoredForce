@@ -102,8 +102,7 @@ void LoginServer::ProcessMessage()
 }
 
 const string& LoginServer::CreateUserLogSign(const string& user)
-{
-    DCHECK(user_login_sign_.count(user) == 0);
+{    
     user_login_sign_[user] = CreateUniqueID();
     return user_login_sign_[user];
 }
@@ -123,4 +122,12 @@ std::string LoginServer::GetUserLoginSign(const string& user)
         return iter->second;
     }
     return dummy;
+}
+
+void LoginServer::PutGameAddress(const std::string& name,
+                                 const std::string& status,
+                                 const std::string& host,
+                                 int16_t port)
+{
+    game_world_info_[name].insert(std::make_tuple(status, host, port));
 }

@@ -51,7 +51,7 @@ int32_t DBLogin::RegisterUser(const std::string& username,
     }
     catch (mysqlpp::Exception& ex)
     {
-        LOG(WARNING) << ex.what();
+        LOG(DEBUG) << ex.what();
     }
     return status;
 }
@@ -85,7 +85,7 @@ int32_t DBLogin::UserLogin(const std::string& user,
     }
     catch (mysqlpp::Exception& ex)
     {
-        LOG(WARNING) << ex.what();
+        LOG(DEBUG) << ex.what();
     }
     return 1;
 }
@@ -109,7 +109,7 @@ string DBLogin::GetUserPasswdSalt(const std::string& user)
     }
     catch (mysqlpp::Exception& ex)
     {
-        LOG(WARNING) << ex.what();
+        LOG(DEBUG) << ex.what();
     }
 
     return salt;
@@ -137,7 +137,7 @@ bool DBLogin::SaveLoginHistory(const std::string& user,
     }
     catch (mysqlpp::Exception& ex)
     {
-        LOG(WARNING) << ex.what();
+        LOG(DEBUG) << ex.what();
     }
     return false;
 }

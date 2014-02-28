@@ -7,8 +7,10 @@
 #include "common/MSGLogin.h"
 #include "common/MSGCode.h"
 #include "common/update/tagGameServer.h"
-#include "Utility.h"
 #include "DB/DBLogin.h"
+#include "Utility.h"
+#include "Foreach.h"
+
 
 
 using namespace std;
@@ -64,19 +66,21 @@ void ProcessVerifyVersion(CMessage& msg)
     msg >> request;
     cout << request.major << "\t" << request.minor << endl;
 
-    // rpc调用
-    string host;
-    I16 port = 0;
-    //bool ok = GetRpcClientPtr()->GetGameServerAddress(host, port);
-
     version::GameServerArea game_area;
-    version::GameServerList server_list;
-    version::tagGameServer game_server;
-    game_server.domain.host = host.c_str();
-    game_server.domain.port = port;
-    game_server.entity = "Thunder";
-    server_list.push_back(game_server);
-    game_area["World 1"] = server_list;
+    const auto& game_world = GetApp().GetGameWorldInfo();
+    FOR_EACH_KV(name, game_list, game_world)
+    {        
+        version::GameServerList server_list;
+        for (const auto& gameinfo : game_list)
+        {
+            version::tagGameServer game_server;
+            game_server.entity = std::get<0>(gameinfo).c_str();
+            game_server.domain.host = std::get<1>(gameinfo).c_str();
+            game_server.domain.port = std::get<2>(gameinfo);
+            server_list.push_back(game_server);
+        }        
+        game_area[name] = server_list;
+    }
 
     MSGLoginVersionVerifyResponse response;
     response.result = 0;
