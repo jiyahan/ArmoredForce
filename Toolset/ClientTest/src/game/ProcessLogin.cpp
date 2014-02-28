@@ -13,7 +13,7 @@ using namespace std;
 using namespace atom;
 using namespace electron;
 
-void RequestRegister()
+static void RequestRegister()
 {
     for (int i = 1; i < 100; ++i)
     {
@@ -31,6 +31,23 @@ void RequestLogin()
     a_string passwd = "111111";
     MSGLoginLogin req = {user, passwd};
     GetApp().SendMsg(MID_LOGIN_LOGIN, req);
+}
+
+void RequestLoginGameServer(const a_string& host, int16_t port)
+{
+    if (GetApp().ResetConnection(host.c_str(), port))
+    {
+        MSGAccountAuthorize auth_request;
+        auth_request.device = "iOS";
+        auth_request.deviceType = "iPad air";
+        auth_request.account = "johnnie";
+        auth_request.usrsign = "hello,kitty";
+        GetApp().SendMsg(MID_ACCOUNT_AUTHORIZE_REQUEST, auth_request);
+    }
+    else
+    {
+        LOG(ERROR) << "连接GameServer失败, " << host << ":" << port;
+    }
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -78,23 +95,7 @@ void HandleVerifyResponse(CMessage& msg)
         }
     }
 
-    RequestLogin();
-
-#if 0
-    if (GetMinions().ResetConnection(domain.host.c_str(), domain.port))
-    {
-        MSGAccountAuthorize auth_request;
-        auth_request.device = "iOS";
-        auth_request.deviceType = "iPad air";
-        auth_request.account = "johnnie";
-        auth_request.usrsign = "hello,kitty";
-        GetMinions().GetClient().Send(MID_ACCOUNT_AUTHORIZE_REQUEST, auth_request);
-    }
-    else
-    {
-        LOG(ERROR) << "连接GameServer失败, " << domain.host << ":" << domain.port;
-    }
-#endif
+    RequestLoginGameServer(domain.host, domain.port);
 }
 
 void HandleAuthResponse(CMessage& msg)

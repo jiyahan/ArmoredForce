@@ -39,8 +39,11 @@ bool GameServer::Init(const AppConfig& cfg)
     LOG(INFO) << "TCP服务器开始监听 " << config_.host << ":" << config_.port;
 
     RCF::TcpEndpoint remoteEndPoint(config_.rpc_center_host, config_.rpc_center_port);
-    client_.reset(new RcfClient<ICenterRpcService>(remoteEndPoint));
-    bool status = client_->RegisterGameServer(config_.host, config_.port);
+    rpc_client_.reset(new RcfClient<ICenterRpcService>(remoteEndPoint));
+#ifdef _DEBUG
+    rpc_client_->getClientStub().setRemoteCallTimeoutMs(120 * 1000);
+#endif
+    bool status = rpc_client_->RegisterGameServer(config_.host, config_.port);
 
     // 注册客户端消息回调处理函数
     msg_handlers_ = GetHandlerMap();

@@ -77,8 +77,6 @@ static void HandleCombatRequest(CMessage& msg)
 {
     MSGBattleCombat request;
     msg >> request;
-    cout << request.mapId << "\t" << request.posId << endl;
-
     
     tagBattle battle = MockFight2();
 
@@ -86,7 +84,7 @@ static void HandleCombatRequest(CMessage& msg)
     CArchive ar;
     ar << battle;
     ar.Clone(response.data);
-    GetTCPServer().Send(msg.GetConnector(), response);
+    GetServer().SendMsg(msg.GetConnector(), MID_CHARACTER_INSTANCE_COMBAT_RESPOND, response);
 
 }
 
@@ -116,7 +114,7 @@ static void HandleUserAuth(CMessage& msg)
     archive << role << officer_list;
     archive.Clone(response.data);
 
-    GetTCPServer().Send(msg.GetConnector(), response);
+    GetServer().SendMsg(msg.GetConnector(), MID_ACCOUNT_AUTHORIZE_RESPOND, response);
 }
 
 

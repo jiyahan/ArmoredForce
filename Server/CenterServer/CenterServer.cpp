@@ -22,7 +22,9 @@ bool CenterServer::Init(const AppConfig& cfg)
 
     RCF::TcpEndpoint remoteEndPoint(config_.rpc_login_host, config_.rpc_login_port);
     rpc_client_.reset(new RcfClient<ILoginRpcService>(remoteEndPoint));
-    CHECK(rpc_client_->GetUserLoginSign("") == "");
+#ifdef _DEBUG
+    rpc_client_->getClientStub().setRemoteCallTimeoutMs(120 * 1000);
+#endif
 
     // 初始化RPC服务器
     RCF::TcpEndpoint endpoint(config_.rpc_host, config_.rpc_port);
@@ -58,7 +60,7 @@ bool CenterServer::Run()
 
 
 bool  CenterServer::GetGameServerAddress(string& host, int16_t& port)
-{
+{    
     if (!gameserver_list_.empty())
     {
         const auto& item = *gameserver_list_.begin();
@@ -72,14 +74,15 @@ bool  CenterServer::GetGameServerAddress(string& host, int16_t& port)
 
 string CenterServer::GetUserLoginSign(const string& account)
 {
-    const string& signature = "a_quick_fox_jumps_over_the_lazy_dog";
-    return signature;
+    return rpc_client_->GetUserLoginSign(account);
 }
 
 bool CenterServer::RegisterGameServer(const string& host, int16_t port)
 {
     gameserver_list_.emplace(make_pair(host, port));
     LOG(INFO) << "GameServer " << host << ":" << port << " registered.";
+
+    rpc_client_->PutGameAddress("Thunder", "full", host, port);
 
     return true;
 }

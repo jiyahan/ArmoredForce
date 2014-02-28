@@ -1,7 +1,7 @@
 #include <iostream>
 #include <exception>
 #include <filesystem>
-#include "Utility.h"
+#include "AtomAutoInit.h"
 #include "ClientApp.h"
 #include "Config.h"
 

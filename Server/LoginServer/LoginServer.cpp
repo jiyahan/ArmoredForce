@@ -102,13 +102,15 @@ void LoginServer::ProcessMessage()
 }
 
 const string& LoginServer::CreateUserLogSign(const string& user)
-{    
+{
+    std::lock_guard<mutex>  guard(login_sign_mutex_);
     user_login_sign_[user] = CreateUniqueID();
     return user_login_sign_[user];
 }
 
 void LoginServer::DelUserLoginSign(const string& user)
 {
+    std::lock_guard<mutex>  guard(login_sign_mutex_);
     DCHECK(user_login_sign_.count(user));
     user_login_sign_.erase(user);
 }
@@ -116,6 +118,8 @@ void LoginServer::DelUserLoginSign(const string& user)
 std::string LoginServer::GetUserLoginSign(const string& user)
 {
     static const string dummy = "";
+
+    std::lock_guard<mutex>  guard(login_sign_mutex_);
     auto iter = user_login_sign_.find(user);
     if (iter != user_login_sign_.end())
     {
@@ -129,5 +133,6 @@ void LoginServer::PutGameAddress(const std::string& name,
                                  const std::string& host,
                                  int16_t port)
 {
+    std::lock_guard<mutex>  guard(login_sign_mutex_);
     game_world_info_[name].insert(std::make_tuple(status, host, port));
 }

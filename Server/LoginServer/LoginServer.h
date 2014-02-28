@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <tuple>
+#include <mutex>
 #include "Singleton.h"
 #include "AppConfig.h"
 #include "Server/RPC/ILoginRpcService.h"
@@ -69,6 +70,7 @@ private:
     std::shared_ptr<RCF::RcfServer> rpc_server_;
     HandlerMap          handler_map_;         // 消息路由表
 
+    std::mutex      login_sign_mutex_;
     std::unordered_map<std::string, std::string>    user_login_sign_;
 
     GameWorldInfo       game_world_info_;

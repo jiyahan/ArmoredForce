@@ -32,11 +32,13 @@ public:
     // 停止服务器
     void    Stop();
 
-    // TCP服务
-    SocketServer&   GetSocketServer() {return server_;}
-
-    // RPC客户端
-    RpcClientPtr    GetClient() { return client_;}
+    template <typename T>
+    void SendMsg(U64 connector, U32 msgid, const T& data)
+    {
+        CMessage msg(msgid);
+        msg << data;
+        server_.Send(connector, msg);
+    }
 
     // 随机数生成器
     Random&         GetRandGen() { return rnd_gen_; }
@@ -52,7 +54,7 @@ private:
     AppConfig           config_;        // 配置
     SocketServer        server_;        // TCP服务器
 
-    RpcClientPtr        client_;
+    RpcClientPtr        rpc_client_;
     
     HandlerMap	        msg_handlers_;
 
@@ -64,16 +66,6 @@ private:
 inline GameServer& GetServer()
 {
     return GameServer::GetInst();
-}
-
-inline RpcClientPtr GetRpcClientPtr()
-{
-    return GetServer().GetClient();
-}
-
-inline SocketServer& GetTCPServer()
-{
-    return GetServer().GetSocketServer();
 }
 
 inline uint32_t  Rand(uint32_t max)
