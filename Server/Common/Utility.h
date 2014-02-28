@@ -7,8 +7,10 @@
  */
 #pragma once
 
+#include <cstdint>
 #include <cstdio>
 #include <string>
+#include <array>
 #include <boost/noncopyable.hpp>
 
 
