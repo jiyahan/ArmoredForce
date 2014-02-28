@@ -12,5 +12,18 @@
 #endif
 #endif
 
-#include <gtest/gtest.h>
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
 
+#include <WinSock2.h>   // timeval
+
+#ifdef _DEBUG
+#define _ELPP_DISABLE_DEFAULT_CRASH_HANDLING
+#endif
+#define _ELPP_THREAD_SAFE
+#define _ELPP_STL_LOGGING
+#define _ELPP_LOG_STD_ARRAY
+#define _ELPP_LOG_UNORDERED_MAP
+#define _ELPP_LOG_UNORDERED_SET
+#include <easylogging++.h>

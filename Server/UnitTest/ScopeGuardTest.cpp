@@ -15,10 +15,8 @@
  */
 
 #include "ScopeGuard.h"
-
+#include "easylogging++.h"
 #include <gtest/gtest.h>
-#include <glog/logging.h>
-
 #include <cstdint>
 #include <functional>
 #include <stdexcept>

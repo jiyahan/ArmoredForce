@@ -97,7 +97,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>NDEBUG;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_WARNINGS;GTEST_HAS_TR1_TUPLE=0;MYSQLPP_NO_DLL;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_WARNINGS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\Utility;..\..\..\3rdParty\atom;..\..\..\3rdParty\gtest\include;..\..\..\3rdParty\glog\src\windows;..\..\..\3rdParty\mysql++\lib;..\..\..\3rdParty\libmysql\include;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ProgramDataBaseFileName>$(OutDir)UnitTest.pdb</ProgramDataBaseFileName>
@@ -159,8 +159,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>DEBUG;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_WARNINGS;GTEST_HAS_TR1_TUPLE=0;MYSQLPP_NO_DLL;NOT_USE_ATOM_ALLOCATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\Utility;..\..\..\3rdParty\atom;..\..\..\3rdParty\gtest\include;..\..\..\3rdParty\glog\src\windows;..\..\..\3rdParty\mysql++\lib;..\..\..\3rdParty\libmysql\include;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_WARNINGS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\Common;..\..\..\3rdParty\atom;..\..\..\3rdParty\double-conversion\src;..\..\..\3rdParty\gtest\include;..\..\..\3rdParty\mysql++\lib;..\..\..\3rdParty\libmysql\include;E:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <ProgramDataBaseFileName>$(OutDir)UnitTest.pdb</ProgramDataBaseFileName>
       <Optimization>Disabled</Optimization>
@@ -175,7 +175,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>libgtest.lib;libatom.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\3rdParty\libs;F:\Library\boost_1_55_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\3rdParty\libs;E:\Library\boost_1_55_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
@@ -205,24 +205,36 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\3rdParty\double-conversion\src\bignum-dtoa.h" />
+    <ClInclude Include="..\..\..\3rdParty\double-conversion\src\bignum.h" />
+    <ClInclude Include="..\..\..\3rdParty\double-conversion\src\cached-powers.h" />
+    <ClInclude Include="..\..\..\3rdParty\double-conversion\src\diy-fp.h" />
+    <ClInclude Include="..\..\..\3rdParty\double-conversion\src\double-conversion.h" />
+    <ClInclude Include="..\..\..\3rdParty\double-conversion\src\fast-dtoa.h" />
+    <ClInclude Include="..\..\..\3rdParty\double-conversion\src\fixed-dtoa.h" />
+    <ClInclude Include="..\..\..\3rdParty\double-conversion\src\ieee.h" />
+    <ClInclude Include="..\..\..\3rdParty\double-conversion\src\strtod.h" />
+    <ClInclude Include="..\..\..\3rdParty\double-conversion\src\utils.h" />
+    <ClInclude Include="..\..\Common\Conv.h" />
+    <ClInclude Include="..\..\Common\Foreach.h" />
+    <ClInclude Include="..\..\Common\Preprocessor.h" />
+    <ClInclude Include="..\..\Common\ScopeGuard.h" />
+    <ClInclude Include="..\..\Common\UncaughtExceptionCounter.h" />
     <ClInclude Include="..\..\UnitTest\stdafx.h" />
-    <ClInclude Include="..\..\Utility\Markup.h" />
-    <ClInclude Include="..\..\Utility\MyConnectionPool.h" />
-    <ClInclude Include="..\..\Utility\Preprocessor.h" />
-    <ClInclude Include="..\..\Utility\Random.h" />
-    <ClInclude Include="..\..\Utility\ScopeGuard.h" />
-    <ClInclude Include="..\..\Utility\Singleton.h" />
-    <ClInclude Include="..\..\Utility\StackWalker.h" />
-    <ClInclude Include="..\..\Utility\UncaughtExceptionCounter.h" />
-    <ClInclude Include="..\..\Utility\Utility.h" />
-    <ClInclude Include="..\..\Utility\easylogging++.h" />
-    <ClInclude Include="..\..\Utility\inttypes.h" />
-    <ClInclude Include="..\..\Utility\pbkdf2.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\3rdParty\double-conversion\src\bignum-dtoa.cc" />
+    <ClCompile Include="..\..\..\3rdParty\double-conversion\src\bignum.cc" />
+    <ClCompile Include="..\..\..\3rdParty\double-conversion\src\cached-powers.cc" />
+    <ClCompile Include="..\..\..\3rdParty\double-conversion\src\diy-fp.cc" />
+    <ClCompile Include="..\..\..\3rdParty\double-conversion\src\double-conversion.cc" />
+    <ClCompile Include="..\..\..\3rdParty\double-conversion\src\fast-dtoa.cc" />
+    <ClCompile Include="..\..\..\3rdParty\double-conversion\src\fixed-dtoa.cc" />
+    <ClCompile Include="..\..\..\3rdParty\double-conversion\src\strtod.cc" />
+    <ClCompile Include="..\..\Common\Conv.cpp" />
+    <ClCompile Include="..\..\UnitTest\ConvTest.cpp" />
     <ClCompile Include="..\..\UnitTest\Main.cpp" />
     <ClCompile Include="..\..\UnitTest\ScopeGuardTest.cpp" />
-    <ClCompile Include="..\..\UnitTest\TestStackWalker.cpp" />
     <ClCompile Include="..\..\UnitTest\UtilityTest.cpp" />
     <ClCompile Include="..\..\UnitTest\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -230,10 +242,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\..\Utility\MyConnectionPool.cpp" />
-    <ClCompile Include="..\..\Utility\StackWalker.cpp" />
-    <ClCompile Include="..\..\Utility\Utility.cpp" />
-    <ClCompile Include="..\..\Utility\pbkdf2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

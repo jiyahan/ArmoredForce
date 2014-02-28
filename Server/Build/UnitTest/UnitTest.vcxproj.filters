@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="UnitTest">
@@ -7,46 +7,58 @@
     <Filter Include="Utility">
       <UniqueIdentifier>{594615A9-C525-9444-CE3D-1F1B3A9CFAA5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="double-conversion">
+      <UniqueIdentifier>{583ab735-1cb6-43ca-b535-d4c56003a946}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\UnitTest\stdafx.h">
       <Filter>UnitTest</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Utility\Markup.h">
+    <ClInclude Include="..\..\Common\Foreach.h">
       <Filter>Utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Utility\MyConnectionPool.h">
+    <ClInclude Include="..\..\Common\Preprocessor.h">
       <Filter>Utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Utility\Preprocessor.h">
+    <ClInclude Include="..\..\Common\ScopeGuard.h">
       <Filter>Utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Utility\Random.h">
+    <ClInclude Include="..\..\Common\UncaughtExceptionCounter.h">
       <Filter>Utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Utility\ScopeGuard.h">
+    <ClInclude Include="..\..\Common\Conv.h">
       <Filter>Utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Utility\Singleton.h">
-      <Filter>Utility</Filter>
+    <ClInclude Include="..\..\..\3rdParty\double-conversion\src\bignum.h">
+      <Filter>double-conversion</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Utility\StackWalker.h">
-      <Filter>Utility</Filter>
+    <ClInclude Include="..\..\..\3rdParty\double-conversion\src\bignum-dtoa.h">
+      <Filter>double-conversion</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Utility\UncaughtExceptionCounter.h">
-      <Filter>Utility</Filter>
+    <ClInclude Include="..\..\..\3rdParty\double-conversion\src\cached-powers.h">
+      <Filter>double-conversion</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Utility\Utility.h">
-      <Filter>Utility</Filter>
+    <ClInclude Include="..\..\..\3rdParty\double-conversion\src\diy-fp.h">
+      <Filter>double-conversion</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Utility\easylogging++.h">
-      <Filter>Utility</Filter>
+    <ClInclude Include="..\..\..\3rdParty\double-conversion\src\double-conversion.h">
+      <Filter>double-conversion</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Utility\inttypes.h">
-      <Filter>Utility</Filter>
+    <ClInclude Include="..\..\..\3rdParty\double-conversion\src\fast-dtoa.h">
+      <Filter>double-conversion</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Utility\pbkdf2.h">
-      <Filter>Utility</Filter>
+    <ClInclude Include="..\..\..\3rdParty\double-conversion\src\fixed-dtoa.h">
+      <Filter>double-conversion</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\3rdParty\double-conversion\src\ieee.h">
+      <Filter>double-conversion</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\3rdParty\double-conversion\src\strtod.h">
+      <Filter>double-conversion</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\3rdParty\double-conversion\src\utils.h">
+      <Filter>double-conversion</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -56,26 +68,41 @@
     <ClCompile Include="..\..\UnitTest\ScopeGuardTest.cpp">
       <Filter>UnitTest</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\UnitTest\TestStackWalker.cpp">
-      <Filter>UnitTest</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\UnitTest\UtilityTest.cpp">
       <Filter>UnitTest</Filter>
     </ClCompile>
     <ClCompile Include="..\..\UnitTest\stdafx.cpp">
       <Filter>UnitTest</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Utility\MyConnectionPool.cpp">
+    <ClCompile Include="..\..\Common\Conv.cpp">
       <Filter>Utility</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Utility\StackWalker.cpp">
-      <Filter>Utility</Filter>
+    <ClCompile Include="..\..\UnitTest\ConvTest.cpp">
+      <Filter>UnitTest</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Utility\Utility.cpp">
-      <Filter>Utility</Filter>
+    <ClCompile Include="..\..\..\3rdParty\double-conversion\src\bignum.cc">
+      <Filter>double-conversion</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Utility\pbkdf2.cpp">
-      <Filter>Utility</Filter>
+    <ClCompile Include="..\..\..\3rdParty\double-conversion\src\bignum-dtoa.cc">
+      <Filter>double-conversion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\3rdParty\double-conversion\src\cached-powers.cc">
+      <Filter>double-conversion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\3rdParty\double-conversion\src\diy-fp.cc">
+      <Filter>double-conversion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\3rdParty\double-conversion\src\double-conversion.cc">
+      <Filter>double-conversion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\3rdParty\double-conversion\src\fast-dtoa.cc">
+      <Filter>double-conversion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\3rdParty\double-conversion\src\fixed-dtoa.cc">
+      <Filter>double-conversion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\3rdParty\double-conversion\src\strtod.cc">
+      <Filter>double-conversion</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
