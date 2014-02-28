@@ -41,13 +41,10 @@ CREATE TABLE `login_history` (
   `login_ip` varchar(20) NOT NULL,
   `login_status` tinyint(4) NOT NULL,
   PRIMARY KEY (`logid`),
-  UNIQUE KEY `account_UNIQUE` (`account`),
   UNIQUE KEY `logid_UNIQUE` (`logid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 $$
 
 ALTER TABLE logid AUTO_INCREMENT=10000 $$
-
-
 
 /*
  * 
