@@ -1,0 +1,394 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Appendix - Building RCFProto</title>
+<link rel="stylesheet" href="../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.73.2">
+<link rel="start" href="../index.html" title="RCFProto User Guide">
+<link rel="up" href="../index.html" title="RCFProto User Guide">
+<link rel="prev" href="integrating_rcf_and_rcfproto.html" title="Integrating RCF and RCFProto">
+<link rel="next" href="appendix___logging.html" title="Appendix - Logging">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="spirit-nav">
+<a accesskey="p" href="integrating_rcf_and_rcfproto.html"><img src="../images/prev.png" alt="Prev"></a><a accesskey="u" href="../index.html"><img src="../images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../images/home.png" alt="Home"></a><a accesskey="n" href="appendix___logging.html"><img src="../images/next.png" alt="Next"></a>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="rcfproto_user_guide.appendix___building_rcfproto"></a><a class="link" href="appendix___building_rcfproto.html" title="Appendix - Building RCFProto">Appendix
+    - Building RCFProto</a>
+</h2></div></div></div>
+<div class="toc"><dl>
+<dt><span class="section"><a href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_from_source">Building
+      RCFProto from source</a></span></dt>
+<dt><span class="section"><a href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___c__">Building
+      RCFProto applications - C++</a></span></dt>
+<dt><span class="section"><a href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___c_">Building
+      RCFProto applications - C#</a></span></dt>
+<dt><span class="section"><a href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___java">Building
+      RCFProto applications - Java</a></span></dt>
+<dt><span class="section"><a href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___python">Building
+      RCFProto applications - Python</a></span></dt>
+</dl></div>
+<p>
+      Thsi section details how to build RCFProto bindings from source, for C++, C#,
+      Java and Python.
+    </p>
+<p>
+      Building RCFProto from source is only necessary for non-Windows development.
+      If you are developing on a Windows platform, it is advised to use the Windows
+      binary distribution instead.
+    </p>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_from_source"></a><a class="link" href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_from_source" title="Building RCFProto from source">Building
+      RCFProto from source</a>
+</h3></div></div></div>
+<p>
+        To build RCFProto from source, you need the following dependencies:
+      </p>
+<div class="itemizedlist"><ul type="disc">
+<li>
+            C++ compiler - any recent compiler will do (gcc 4.x, Visual Studio 2008
+            or newer, or similar)
+          </li>
+<li>
+            <a href="http://www.cmake.org/" target="_top">cmake</a> (2.8 or later)
+          </li>
+<li>
+            <a href="http://www.boost.org/" target="_top">Boost</a> (1.35.0 or later)
+          </li>
+<li>
+            <a href="http://www.zlib.net/" target="_top">zlib</a>
+          </li>
+<li>
+            <a href="http://www.openssl.org/" target="_top">OpenSSL</a>
+          </li>
+</ul></div>
+<p>
+        Additional dependencies are needed, depending on which language binding you
+        are building.
+      </p>
+<p>
+        For C++ bindings:
+      </p>
+<div class="itemizedlist"><ul type="disc"><li>
+            <a href="https://code.google.com/p/protobuf/" target="_top">Protocol Buffers</a>
+            C++ library
+          </li></ul></div>
+<p>
+        For C# bindings:
+      </p>
+<div class="itemizedlist"><ul type="disc">
+<li>
+            <a href="http://www.microsoft.com/net" target="_top">.NET SDK</a>
+          </li>
+<li>
+            <a href="https://code.google.com/p/protobuf-csharp-port/wiki/ProtoGen" target="_top">Protocol
+            Buffers</a> C# library
+          </li>
+</ul></div>
+<p>
+        For Java bindings:
+      </p>
+<div class="itemizedlist"><ul type="disc">
+<li>
+            <a href="http://en.wikipedia.org/wiki/Java_Development_Kit" target="_top">JDK</a>
+          </li>
+<li>
+            <a href="https://code.google.com/p/protobuf/" target="_top">Protocol Buffers</a>
+            Java library
+          </li>
+</ul></div>
+<p>
+        For Python bindings:
+      </p>
+<div class="itemizedlist"><ul type="disc">
+<li>
+            <a href="http://www.python.org/" target="_top">Python</a> interpreter and development
+            libraries
+          </li>
+<li>
+            <a href="https://code.google.com/p/protobuf/" target="_top">Protocol Buffers</a>
+            Python library
+          </li>
+</ul></div>
+<p>
+        RCFProto uses a <code class="computeroutput"><span class="identifier">cmake</span></code>-based
+        build system. <code class="computeroutput"><span class="identifier">cmake</span></code> is used
+        to generate a native build system (either Unix makefiles or Visual C++ <code class="computeroutput"><span class="identifier">nmake</span></code> makefiles). The native build system
+        is then used to build the executables.
+      </p>
+<p>
+        To build on Unix-like systems, use <code class="computeroutput"><span class="identifier">cmake</span></code>
+        with the <code class="computeroutput"><span class="string">"Unix Makefiles"</span></code>
+        generator. From the root directory of the RCFProto source distribution:
+      </p>
+<p>
+        
+</p>
+<pre class="programlisting"><span class="identifier">mkdir</span> <span class="identifier">bin</span>
+<span class="identifier">cd</span> <span class="identifier">bin</span>
+<span class="identifier">cmake</span> <span class="special">-</span><span class="identifier">G</span> <span class="string">"Unix Makefiles"</span> <span class="special">..</span>
+</pre>
+<p>
+      </p>
+<p>
+        This will generate a makefile, and to build RCFProto you then run <code class="computeroutput"><span class="identifier">make</span></code>:
+      </p>
+<p>
+        
+</p>
+<pre class="programlisting"><span class="identifier">make</span>
+</pre>
+<p>
+      </p>
+<p>
+        On Windows systems, use <code class="computeroutput"><span class="identifier">cmake</span></code>
+        with the Visual C++ <code class="computeroutput"><span class="identifier">nmake</span></code>
+        generator:
+      </p>
+<p>
+        
+</p>
+<pre class="programlisting"><span class="identifier">mkdir</span> <span class="identifier">bin</span>
+<span class="identifier">cd</span> <span class="identifier">bin</span>
+<span class="identifier">cmake</span> <span class="special">-</span><span class="identifier">G</span> <span class="string">"NMake Makefiles"</span> <span class="special">..</span>
+</pre>
+<p>
+      </p>
+<p>
+        This will generate a <code class="computeroutput"><span class="identifier">nmake</span></code>
+        makefile, which is then built by running <code class="computeroutput"><span class="identifier">nmake</span></code>
+        from a Visual C++ command prompt:
+      </p>
+<p>
+        
+</p>
+<pre class="programlisting"><span class="identifier">nmake</span>
+</pre>
+<p>
+      </p>
+<p>
+        When <code class="computeroutput"><span class="identifier">cmake</span></code> runs, it attempts
+        to automatically locate all dependencies and prints a summary of the dependencies
+        it found. For example, a build on Linux might produce this output:
+      </p>
+<p>
+        
+</p>
+<pre class="programlisting"><span class="special">...</span>
+<span class="special">************************************************</span>
+<span class="special">***</span> <span class="identifier">RCFProto</span> <span class="identifier">build</span><span class="special">:</span> <span class="identifier">Third</span> <span class="identifier">party</span> <span class="identifier">dependency</span> <span class="identifier">summary</span> <span class="special">***</span>
+<span class="identifier">RCF</span> <span class="identifier">include</span> <span class="identifier">path</span><span class="special">:</span> <span class="special">/</span><span class="identifier">home</span><span class="special">/</span><span class="identifier">user</span><span class="special">/</span><span class="identifier">Development</span><span class="special">/</span><span class="identifier">RCF</span><span class="special">/</span><span class="identifier">RCFProto</span><span class="special">/</span><span class="identifier">cpp</span><span class="special">/</span><span class="identifier">src</span><span class="special">/</span><span class="identifier">RCF</span><span class="special">/</span><span class="identifier">include</span>
+<span class="identifier">Boost</span> <span class="identifier">include</span> <span class="identifier">path</span><span class="special">:</span> <span class="special">/</span><span class="identifier">home</span><span class="special">/</span><span class="identifier">user</span><span class="special">/</span><span class="identifier">Development</span><span class="special">/</span><span class="identifier">boost_1_44_0</span>
+<span class="identifier">Protobuf</span> <span class="identifier">include</span> <span class="identifier">path</span><span class="special">:</span> <span class="special">/</span><span class="identifier">usr</span><span class="special">/</span><span class="identifier">include</span>
+<span class="identifier">Protobuf</span> <span class="identifier">libs</span><span class="special">:</span> <span class="special">/</span><span class="identifier">usr</span><span class="special">/</span><span class="identifier">lib</span><span class="special">/</span><span class="identifier">libprotobuf</span><span class="special">.</span><span class="identifier">so</span>
+<span class="identifier">Protobuf</span> <span class="identifier">debug</span> <span class="identifier">lib</span><span class="special">:</span> 
+<span class="identifier">Protobuf</span> <span class="identifier">Java</span> <span class="keyword">class</span> <span class="identifier">path</span><span class="special">:</span> <span class="special">/</span><span class="identifier">usr</span><span class="special">/</span><span class="identifier">share</span><span class="special">/</span><span class="identifier">java</span><span class="special">/</span><span class="identifier">protobuf</span><span class="special">.</span><span class="identifier">jar</span>
+<span class="identifier">JNI</span> <span class="identifier">include</span> <span class="identifier">paths</span><span class="special">:</span> <span class="special">/</span><span class="identifier">usr</span><span class="special">/</span><span class="identifier">lib</span><span class="special">/</span><span class="identifier">jvm</span><span class="special">/</span><span class="identifier">java</span><span class="special">-</span><span class="number">6</span><span class="special">-</span><span class="identifier">openjdk</span><span class="special">/</span><span class="identifier">include</span><span class="special">/</span><span class="identifier">usr</span><span class="special">/</span><span class="identifier">lib</span><span class="special">/</span><span class="identifier">jvm</span><span class="special">/</span><span class="identifier">java</span><span class="special">-</span><span class="number">6</span><span class="special">-</span><span class="identifier">openjdk</span><span class="special">/</span><span class="identifier">include</span><span class="special">/</span><span class="identifier">usr</span><span class="special">/</span><span class="identifier">lib</span><span class="special">/</span><span class="identifier">jvm</span><span class="special">/</span><span class="identifier">java</span><span class="special">-</span><span class="number">6</span><span class="special">-</span><span class="identifier">openjdk</span><span class="special">/</span><span class="identifier">include</span>
+<span class="identifier">Java</span> <span class="identifier">compiler</span><span class="special">:</span> <span class="special">/</span><span class="identifier">usr</span><span class="special">/</span><span class="identifier">bin</span><span class="special">/</span><span class="identifier">javac</span>
+<span class="identifier">Java</span> <span class="identifier">runtime</span><span class="special">:</span> <span class="special">/</span><span class="identifier">usr</span><span class="special">/</span><span class="identifier">bin</span><span class="special">/</span><span class="identifier">java</span>
+<span class="identifier">Java</span> <span class="identifier">archiver</span><span class="special">:</span> <span class="special">/</span><span class="identifier">usr</span><span class="special">/</span><span class="identifier">bin</span><span class="special">/</span><span class="identifier">jar</span>
+<span class="identifier">Python</span> <span class="identifier">include</span> <span class="identifier">paths</span><span class="special">:</span> <span class="special">/</span><span class="identifier">usr</span><span class="special">/</span><span class="identifier">include</span><span class="special">/</span><span class="identifier">python2</span><span class="special">.</span><span class="number">7</span>
+<span class="identifier">Python</span> <span class="identifier">libs</span><span class="special">:</span> <span class="special">/</span><span class="identifier">usr</span><span class="special">/</span><span class="identifier">lib</span><span class="special">/</span><span class="identifier">libpython2</span><span class="special">.</span><span class="number">7.</span><span class="identifier">so</span>
+<span class="identifier">ZLIB</span> <span class="identifier">include</span> <span class="identifier">path</span><span class="special">:</span> <span class="special">/</span><span class="identifier">usr</span><span class="special">/</span><span class="identifier">include</span>
+<span class="identifier">OpenSSL</span> <span class="identifier">include</span> <span class="identifier">path</span><span class="special">:</span> <span class="special">/</span><span class="identifier">usr</span><span class="special">/</span><span class="identifier">include</span>
+<span class="special">************************************************</span>
+<span class="special">...</span>
+</pre>
+<p>
+      </p>
+<p>
+        If you have a dependency installed to a custom location that cmake is unable
+        to locate automatically, you can set the relevant cmake variable:
+      </p>
+<p>
+        
+</p>
+<pre class="programlisting"><span class="preprocessor"># Custom</span> <span class="identifier">path</span> <span class="identifier">to</span> <span class="identifier">Protocol</span> <span class="identifier">Buffers</span> <span class="identifier">C</span><span class="special">++</span> <span class="identifier">library</span> <span class="special">(</span><span class="identifier">libprotobuf</span><span class="special">.</span><span class="identifier">so</span><span class="special">)</span>
+<span class="identifier">cmake</span> <span class="special">-</span><span class="identifier">G</span> <span class="string">"Unix Makefiles"</span> <span class="special">-</span><span class="identifier">DPROTOBUF_LIBRARY</span><span class="special">=</span><span class="identifier">path</span><span class="special">/</span><span class="identifier">to</span><span class="special">/</span><span class="identifier">libprotobuf</span><span class="special">.</span><span class="identifier">so</span> <span class="special">..</span>
+</pre>
+<p>
+      </p>
+<p>
+        Note that if you are building e.g. Python bindings, you do not need any of
+        the Java-related dependencies (JDK, Protobuf Java class path), and vice versa.
+        The RCFProto build will only build those bindings for which dependencies
+        are present.
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___c__"></a><a class="link" href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___c__" title="Building RCFProto applications - C++">Building
+      RCFProto applications - C++</a>
+</h3></div></div></div>
+<div class="toc"><dl>
+<dt><span class="section"><a href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___c__.building">Building</a></span></dt>
+<dt><span class="section"><a href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___c__.runtime_requirements">Runtime
+        requirements</a></span></dt>
+</dl></div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___c__.building"></a><a class="link" href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___c__.building" title="Building">Building</a>
+</h4></div></div></div>
+<p>
+          If you have already built RCFProto from source using the commands in the
+          preceding section, then you can build your C++ application by linking to
+          the static library libRCFProto.so (Unix) or RCFProto.lib (Windows).
+        </p>
+<p>
+          Alternatively, you can use your own build system to compile RCFProto.cpp
+          and RCF.cpp directly into your application. To export RCFProto functions
+          from a DLL, you will need to define RCF_BUILD_DLL.
+        </p>
+<p>
+          You will also need to link to Protocol Buffers. The Protocol Buffers package
+          contains the relevant build instructions.
+        </p>
+<p>
+          To generate Protocol Buffers C++ code, use protoc with the --cpp_out option:
+        </p>
+<p>
+          TODOTODO
+        </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___c__.runtime_requirements"></a><a class="link" href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___c__.runtime_requirements" title="Runtime requirements">Runtime
+        requirements</a>
+</h4></div></div></div>
+<p>
+          The RCFProto C++ bindings have no runtime requirements. Your compiler may
+          have its own runtime requirements (for example Visual C++-based builds
+          will need Visual C++ compiler runtimes).
+        </p>
+</div>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___c_"></a><a class="link" href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___c_" title="Building RCFProto applications - C#">Building
+      RCFProto applications - C#</a>
+</h3></div></div></div>
+<div class="toc"><dl>
+<dt><span class="section"><a href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___c_.building">Building</a></span></dt>
+<dt><span class="section"><a href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___c_.runtime_requirements">Runtime
+        requirements</a></span></dt>
+</dl></div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___c_.building"></a><a class="link" href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___c_.building" title="Building">Building</a>
+</h4></div></div></div>
+<p>
+          TODOTODO - C# Protobuf package overview
+        </p>
+<p>
+          C# applications need to reference the RCFProtoNET.dll assembly, and the
+          Protocol Buffers assembly (TODOTODO).
+        </p>
+<p>
+          To generate C# Protocol Buffer code, use protogen.exe from the XXX package,
+          with the -service_generator_type=GENERIC option:
+        </p>
+<p>
+          TODOTODO
+        </p>
+<p>
+          Without the -service_generator_type=GENERIC option, protogen will only
+          generate code for message types, and not for RPC services.
+        </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___c_.runtime_requirements"></a><a class="link" href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___c_.runtime_requirements" title="Runtime requirements">Runtime
+        requirements</a>
+</h4></div></div></div>
+<p>
+          At runtime, your C# application will load RCFProtoNET.dll . RCFProtoNET.dll
+          is a .NET based marshaling layer over the RCFProto C++ bindings. So at
+          runtime the RCFProto C++ DLL (RCFProto.dll) must also be available.
+        </p>
+</div>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___java"></a><a class="link" href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___java" title="Building RCFProto applications - Java">Building
+      RCFProto applications - Java</a>
+</h3></div></div></div>
+<div class="toc"><dl>
+<dt><span class="section"><a href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___java.building">Building</a></span></dt>
+<dt><span class="section"><a href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___java.runtime_requirements">Runtime
+        requirements</a></span></dt>
+</dl></div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___java.building"></a><a class="link" href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___java.building" title="Building">Building</a>
+</h4></div></div></div>
+<p>
+          Java applications need to specify the paths to RCFProto.jar and Protocol.Buffers.jar,
+          as part of the class path.
+        </p>
+<p>
+          To generate Java Protocol Buffer code, use protoc from the Protocol Buffers
+          package, with the --java_out option:
+        </p>
+<p>
+          TODOTODO
+        </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___java.runtime_requirements"></a><a class="link" href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___java.runtime_requirements" title="Runtime requirements">Runtime
+        requirements</a>
+</h4></div></div></div>
+<p>
+          Java applications need to specify the path to RCFProto.jar and Protocol.Buffers.jar,
+          as part of the class path. Additionally, at runtime the RCFProto C++ bindings
+          must be available (RCFProto.dll).
+        </p>
+</div>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___python"></a><a class="link" href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___python" title="Building RCFProto applications - Python">Building
+      RCFProto applications - Python</a>
+</h3></div></div></div>
+<div class="toc"><dl>
+<dt><span class="section"><a href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___python.building">Building</a></span></dt>
+<dt><span class="section"><a href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___python.runtime_requirements">Runtime
+        requirements</a></span></dt>
+</dl></div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___python.building"></a><a class="link" href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___python.building" title="Building">Building</a>
+</h4></div></div></div>
+<p>
+          Python applications need to import the deltavsoft.rcfproto package.
+        </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___python.runtime_requirements"></a><a class="link" href="appendix___building_rcfproto.html#rcfproto_user_guide.appendix___building_rcfproto.building_rcfproto_applications___python.runtime_requirements" title="Runtime requirements">Runtime
+        requirements</a>
+</h4></div></div></div>
+<p>
+          At runtime, Python must be able to locate the deltavsoft.rcfproto package,
+          along with the RCFProto Python extension (_rcfproto.so).
+        </p>
+<p>
+          The Protoocol Buffers package must also be installed and available to the
+          Python interpreter.
+        </p>
+</div>
+</div>
+</div>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<td align="left"></td>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2005 - 2013 Delta V Software</div></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="integrating_rcf_and_rcfproto.html"><img src="../images/prev.png" alt="Prev"></a><a accesskey="u" href="../index.html"><img src="../images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../images/home.png" alt="Home"></a><a accesskey="n" href="appendix___logging.html"><img src="../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>
