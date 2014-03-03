@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libmysqlpp", "msvc\libmysqlpp.vcxproj", "{85BDBF0E-8BCC-6342-ACC3-F3B0D2EC54DC}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libAtom", "msvc\libAtom.vcxproj", "{95269177-9BA3-1B42-98F3-8A901CA1B415}"
@@ -12,6 +14,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "liblua", "msvc\liblua.vcxproj", "{DDBAFE27-F999-E24B-91CC-E51FEBE65EE2}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libluabind", "msvc\libluabind.vcxproj", "{D14147C5-6030-40D9-91E6-EC674DBE5BB8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "double-conversion", "msvc\double-conversion.vcxproj", "{3F887A06-6BCF-4A6E-8F58-4A225EF14A78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +73,14 @@ Global
 		{D14147C5-6030-40D9-91E6-EC674DBE5BB8}.Release|Win32.Build.0 = Release|Win32
 		{D14147C5-6030-40D9-91E6-EC674DBE5BB8}.Release|x64.ActiveCfg = Release|x64
 		{D14147C5-6030-40D9-91E6-EC674DBE5BB8}.Release|x64.Build.0 = Release|x64
+		{3F887A06-6BCF-4A6E-8F58-4A225EF14A78}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3F887A06-6BCF-4A6E-8F58-4A225EF14A78}.Debug|Win32.Build.0 = Debug|Win32
+		{3F887A06-6BCF-4A6E-8F58-4A225EF14A78}.Debug|x64.ActiveCfg = Debug|x64
+		{3F887A06-6BCF-4A6E-8F58-4A225EF14A78}.Debug|x64.Build.0 = Debug|x64
+		{3F887A06-6BCF-4A6E-8F58-4A225EF14A78}.Release|Win32.ActiveCfg = Release|Win32
+		{3F887A06-6BCF-4A6E-8F58-4A225EF14A78}.Release|Win32.Build.0 = Release|Win32
+		{3F887A06-6BCF-4A6E-8F58-4A225EF14A78}.Release|x64.ActiveCfg = Release|x64
+		{3F887A06-6BCF-4A6E-8F58-4A225EF14A78}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

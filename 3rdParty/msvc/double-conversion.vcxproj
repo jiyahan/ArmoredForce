@@ -18,10 +18,32 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\double-conversion\src\bignum-dtoa.cc" />
+    <ClCompile Include="..\double-conversion\src\bignum.cc" />
+    <ClCompile Include="..\double-conversion\src\cached-powers.cc" />
+    <ClCompile Include="..\double-conversion\src\diy-fp.cc" />
+    <ClCompile Include="..\double-conversion\src\double-conversion.cc" />
+    <ClCompile Include="..\double-conversion\src\fast-dtoa.cc" />
+    <ClCompile Include="..\double-conversion\src\fixed-dtoa.cc" />
+    <ClCompile Include="..\double-conversion\src\strtod.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\double-conversion\src\bignum-dtoa.h" />
+    <ClInclude Include="..\double-conversion\src\bignum.h" />
+    <ClInclude Include="..\double-conversion\src\cached-powers.h" />
+    <ClInclude Include="..\double-conversion\src\diy-fp.h" />
+    <ClInclude Include="..\double-conversion\src\double-conversion.h" />
+    <ClInclude Include="..\double-conversion\src\fast-dtoa.h" />
+    <ClInclude Include="..\double-conversion\src\fixed-dtoa.h" />
+    <ClInclude Include="..\double-conversion\src\ieee.h" />
+    <ClInclude Include="..\double-conversion\src\strtod.h" />
+    <ClInclude Include="..\double-conversion\src\utils.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{D14147C5-6030-40D9-91E6-EC674DBE5BB8}</ProjectGuid>
+    <ProjectGuid>{3F887A06-6BCF-4A6E-8F58-4A225EF14A78}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>libluabind</RootNamespace>
+    <RootNamespace>librcf</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -66,43 +88,43 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>..\libs\</OutDir>
-    <IntDir>obj\x32\Debug\libluabind\</IntDir>
-    <TargetName>libluabind</TargetName>
+    <IntDir>obj\x32\Debug\double-conversion\</IntDir>
+    <TargetName>libdoubleconversion</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>..\libs\</OutDir>
-    <IntDir>obj\x64\Debug\libluabind\</IntDir>
-    <TargetName>libluabind</TargetName>
+    <IntDir>obj\x64\Debug\librcf\</IntDir>
+    <TargetName>librcf</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>..\libs\</OutDir>
-    <IntDir>obj\x32\Release\libluabind\</IntDir>
-    <TargetName>libluabind</TargetName>
+    <IntDir>obj\x32\Release\double-conversion\</IntDir>
+    <TargetName>libdoubleconversion</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>..\libs\</OutDir>
-    <IntDir>obj\x64\Release\libluabind\</IntDir>
-    <TargetName>libluabind</TargetName>
+    <IntDir>obj\x64\Release\librcf\</IntDir>
+    <TargetName>librcf</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>DEBUG;_DEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\lua\src;..\luabind;E:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG;_DEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\double-conversion\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <ProgramDataBaseFileName>$(OutDir)libluabind.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(OutDir)librcf.pdb</ProgramDataBaseFileName>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalOptions> /wd"4996" %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>DEBUG;_DEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\lua\src;..\luabind;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG;_DEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\RCF\include;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -113,17 +135,17 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>DEBUG;_DEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\lua\src;..\luabind;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG;_DEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\RCF\include;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ProgramDataBaseFileName>$(OutDir)libluabind.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(OutDir)librcf.pdb</ProgramDataBaseFileName>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalOptions> /wd"4996" %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>DEBUG;_DEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\lua\src;..\luabind;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG;_DEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\RCF\include;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -134,10 +156,10 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>NDEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\lua\src;..\luabind;E:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\double-conversion\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ProgramDataBaseFileName>$(OutDir)libluabind.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(OutDir)librcf.pdb</ProgramDataBaseFileName>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -147,8 +169,8 @@
       <AdditionalOptions> /wd"4996" %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>NDEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\lua\src;..\luabind;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\RCF\include;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -161,10 +183,10 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>NDEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\lua\src;..\luabind;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\RCF\include;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ProgramDataBaseFileName>$(OutDir)libluabind.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(OutDir)librcf.pdb</ProgramDataBaseFileName>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -174,8 +196,8 @@
       <AdditionalOptions> /wd"4996" %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>NDEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\lua\src;..\luabind;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;_CRT_SECURE_NO_WARNINGS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0601;RCF_USE_BOOST_ASIO;BOOST_ASIO_SEPARATE_COMPILATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\RCF\include;F:\Library\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -184,25 +206,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\luabind\src\class.cpp" />
-    <ClCompile Include="..\luabind\src\class_info.cpp" />
-    <ClCompile Include="..\luabind\src\class_registry.cpp" />
-    <ClCompile Include="..\luabind\src\class_rep.cpp" />
-    <ClCompile Include="..\luabind\src\create_class.cpp" />
-    <ClCompile Include="..\luabind\src\error.cpp" />
-    <ClCompile Include="..\luabind\src\exception_handler.cpp" />
-    <ClCompile Include="..\luabind\src\function.cpp" />
-    <ClCompile Include="..\luabind\src\inheritance.cpp" />
-    <ClCompile Include="..\luabind\src\link_compatibility.cpp" />
-    <ClCompile Include="..\luabind\src\object_rep.cpp" />
-    <ClCompile Include="..\luabind\src\open.cpp" />
-    <ClCompile Include="..\luabind\src\pcall.cpp" />
-    <ClCompile Include="..\luabind\src\scope.cpp" />
-    <ClCompile Include="..\luabind\src\stack_content_by_name.cpp" />
-    <ClCompile Include="..\luabind\src\weak_ref.cpp" />
-    <ClCompile Include="..\luabind\src\wrapper_base.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
